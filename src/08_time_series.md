@@ -766,7 +766,7 @@ SPY Returns → Stationary → Safe to model with ARIMA/GARCH
 
 **Strategy Design:**
 ```
-❌ WRONG: "If SPY drops to $300, buy because it will return to $350"
+ WRONG: "If SPY drops to $300, buy because it will return to $350"
            (Assumes mean reversion in prices – false!)
 
 ✓ CORRECT: "If SPY returns show +2% momentum, expect slight continuation"
@@ -861,7 +861,7 @@ quadrantChart
     title Stationarity Test Decision Matrix
     x-axis "ADF: Non-Stationary" --> "ADF: Stationary"
     y-axis "KPSS: Stationary" --> "KPSS: Non-Stationary"
-    quadrant-1 "⚠️ TREND-STATIONARY<br/>Detrend before modeling"
+    quadrant-1 " TREND-STATIONARY<br/>Detrend before modeling"
     quadrant-2 "✓ STATIONARY<br/>Safe to model (BEST)"
     quadrant-3 "? INCONCLUSIVE<br/>Increase sample size"
     quadrant-4 "✗ NON-STATIONARY<br/>Difference or abandon"
@@ -2772,18 +2772,18 @@ Conclusion: Profitable, but barely. Need:
       ;; Execute trade if signal
       (if (= signal "SHORT_SPREAD")
           (do
-            (log :message "📉 SHORT SPREAD: Sell 1 ETH, Buy {:.4f} BTC" beta)
+            (log :message " SHORT SPREAD: Sell 1 ETH, Buy {:.4f} BTC" beta)
             ;; place-order "ETH/USD" "sell" 1
             ;; place-order "BTC/USD" "buy" beta
             ))
 
       (if (= signal "LONG_SPREAD")
           (do
-            (log :message "📈 LONG SPREAD: Buy 1 ETH, Sell {:.4f} BTC" beta)
+            (log :message " LONG SPREAD: Buy 1 ETH, Sell {:.4f} BTC" beta)
             ;; place-order "ETH/USD" "buy" 1
             ;; place-order "BTC/USD" "sell" beta
             )))
-    (log :message "⚠️ Pair not cointegrated. Do not trade."))
+    (log :message " Pair not cointegrated. Do not trade."))
 ```
 
 ### 4.6 Error Correction Models (ECM): Modeling the Dynamics
@@ -2898,7 +2898,7 @@ Test cointegration in overlapping windows (e.g., 252 trading days, step 21 days)
 
 ;; If < 70%, relationship is unstable → don't trade
 (if (< pct-cointegrated 70)
-    (log :message "⚠️ WARNING: Cointegration unstable. High risk."))
+    (log :message " WARNING: Cointegration unstable. High risk."))
 ```
 
 ### 4.8 Summary: Cointegration for Pairs Trading
@@ -3131,10 +3131,10 @@ quadrantChart
     title Time Series Strategy Selection Matrix
     x-axis "Weak Pattern (|φ| < 0.1)" --> "Strong Pattern (|φ| > 0.2)"
     y-axis "Slow Reversion (τ > 20d)" --> "Fast Reversion (τ < 5d)"
-    quadrant-1 "🚀 HIGH FREQUENCY<br/>Momentum + Quick Scalp<br/>BTC hourly, limit orders"
+    quadrant-1 " HIGH FREQUENCY<br/>Momentum + Quick Scalp<br/>BTC hourly, limit orders"
     quadrant-2 "✓ PAIRS TRADING<br/>ETH/BTC cointegration<br/>Best risk/reward"
     quadrant-3 "✗ AVOID<br/>Weak + Slow<br/>Not tradeable"
-    quadrant-4 "⚠️ POSITION TRADING<br/>Weekly equity momentum<br/>High cost risk"
+    quadrant-4 " POSITION TRADING<br/>Weekly equity momentum<br/>High cost risk"
     ETH/BTC Pairs: [0.75, 0.80]
     BTC Hourly AR: [0.65, 0.25]
     SPY Weekly: [0.35, 0.15]
@@ -3150,11 +3150,11 @@ quadrantChart
 ### When It Fails
 
 **Warning Signs:**
-- ⚠️ Non-stationary after 2 differences (d > 2 suggests data quality issues)
-- ⚠️ Slow mean reversion (half-life > 30 days ties up capital)
-- ⚠️ Parameter instability (β changes >30% quarter-over-quarter)
-- ⚠️ Recent regime change (COVID, Fed pivot, new regulation)
-- ⚠️ High transaction costs (>0.20% per roundtrip eats edges)
+-  Non-stationary after 2 differences (d > 2 suggests data quality issues)
+-  Slow mean reversion (half-life > 30 days ties up capital)
+-  Parameter instability (β changes >30% quarter-over-quarter)
+-  Recent regime change (COVID, Fed pivot, new regulation)
+-  High transaction costs (>0.20% per roundtrip eats edges)
 
 **Failure Examples:**
 - **LTCM 1998:** Cointegration broke during Russian crisis

@@ -265,7 +265,7 @@ Loss: $100,000 - $50.03 = $99,949.97 (99.95% loss)
 
 ## 20.1 Introduction: The LP Economy
 
-> 💡 **Core Concept**: Liquidity provision (LP) forms the bedrock of decentralized finance—enabling trustless trading without centralized exchanges or market makers. By depositing token pairs into automated market maker (AMM) pools, liquidity providers earn trading fees while bearing impermanent loss risk from price divergence.
+>  **Core Concept**: Liquidity provision (LP) forms the bedrock of decentralized finance—enabling trustless trading without centralized exchanges or market makers. By depositing token pairs into automated market maker (AMM) pools, liquidity providers earn trading fees while bearing impermanent loss risk from price divergence.
 
 ### Market Scale and Significance
 
@@ -278,7 +278,7 @@ The LP economy represents one of DeFi's foundational pillars:
 | Active LP Participants | 500K+ | Growing institutional and retail involvement |
 | Risk Exposure | Variable | 15-30% of LPs suffer net losses from IL |
 
-> ⚠️ **Critical Reality**: Many retail participants misunderstand impermanent loss mechanics, resulting in losses despite generating fee income. This chapter treats liquidity provision as a sophisticated trading strategy requiring mathematical rigor and active risk management.
+>  **Critical Reality**: Many retail participants misunderstand impermanent loss mechanics, resulting in losses despite generating fee income. This chapter treats liquidity provision as a sophisticated trading strategy requiring mathematical rigor and active risk management.
 
 ---
 
@@ -330,7 +330,7 @@ timeline
 
 ### Empirical LP Profitability Distribution
 
-> 📊 **Performance Stratification**: The difference between top and bottom LP performers is understanding and managing impermanent loss—the central subject of this chapter.
+>  **Performance Stratification**: The difference between top and bottom LP performers is understanding and managing impermanent loss—the central subject of this chapter.
 
 ```mermaid
 graph TD
@@ -368,7 +368,7 @@ graph TD
 
 ### 20.2.1 The Constant Product Formula
 
-> 🔬 **Fundamental Invariant**: Uniswap V2 and similar AMMs maintain the relationship:
+>  **Fundamental Invariant**: Uniswap V2 and similar AMMs maintain the relationship:
 
 $$x \times y = k$$
 
@@ -385,7 +385,7 @@ The instantaneous price is derived from the reserve ratio:
 
 $$P = \frac{y}{x}$$
 
-> 💡 **Interpretation**: Price of token A in terms of token B equals the ratio of reserves.
+>  **Interpretation**: Price of token A in terms of token B equals the ratio of reserves.
 
 **Example: Initial Pool State**
 
@@ -448,7 +448,7 @@ $$y_{\text{out}} = 50,000 - 49,505 = 495 \text{ USDC}$$
 
 **Effective Price:** 495 ÷ 10 = **49.5 USDC/SOL**
 
-> ⚠️ **Slippage**: The effective price (49.5) is slightly worse than pre-trade price (50.0) due to the depth of the swap relative to pool size. This is **permanent** price impact.
+>  **Slippage**: The effective price (49.5) is slightly worse than pre-trade price (50.0) due to the depth of the swap relative to pool size. This is **permanent** price impact.
 
 **Final Pool State:**
 
@@ -463,7 +463,7 @@ $$y_{\text{out}} = 50,000 - 49,505 = 495 \text{ USDC}$$
 
 ### 20.2.2 Liquidity Provider Token Economics
 
-> 💡 **LP Token Formula**: When depositing liquidity, LP receives tokens representing proportional pool ownership.
+>  **LP Token Formula**: When depositing liquidity, LP receives tokens representing proportional pool ownership.
 
 **For Initial Deposit:**
 
@@ -490,7 +490,7 @@ If total pool has 10,000 LP tokens outstanding:
 
 $$\text{Ownership} = \frac{707.1}{10,000} = 7.07\%$$
 
-> 🎯 **Fee Accrual Mechanism**: Trading fees (0.25-0.3%) are added directly to reserves, increasing pool value without changing LP token supply. Therefore, each LP token claims progressively more reserves over time.
+>  **Fee Accrual Mechanism**: Trading fees (0.25-0.3%) are added directly to reserves, increasing pool value without changing LP token supply. Therefore, each LP token claims progressively more reserves over time.
 
 ---
 
@@ -517,7 +517,7 @@ graph TD
 
 ### 20.3.1 Impermanent Loss Definition
 
-> ⚠️ **Impermanent Loss (IL)**: The opportunity cost of providing liquidity versus simply holding the tokens in a wallet.
+>  **Impermanent Loss (IL)**: The opportunity cost of providing liquidity versus simply holding the tokens in a wallet.
 
 **Formal Definition:**
 
@@ -528,7 +528,7 @@ $$IL = \frac{V_{\text{LP}}}{V_{\text{hold}}} - 1$$
 - $V_{\text{hold}}$ = Value if tokens were held in wallet
 - IL < 0 indicates loss (LP worth less than holding)
 
-> 💡 **Why "Impermanent"?** The loss only crystallizes if you withdraw liquidity. If price reverts to the initial level, the loss disappears entirely. However, for long-term price divergence, the loss becomes very real.
+>  **Why "Impermanent"?** The loss only crystallizes if you withdraw liquidity. If price reverts to the initial level, the loss disappears entirely. However, for long-term price divergence, the loss becomes very real.
 
 ---
 
@@ -597,7 +597,7 @@ $$V_{\text{hold}} = (1 \times 3,000) + 2,000 = 5,000 \text{ USDC}$$
 
 $$IL = \frac{4,898}{5,000} - 1 = 0.9796 - 1 = -0.0204 = -2.04\%$$
 
-> 📊 **Interpretation**: A 50% price increase caused **2.04% impermanent loss**. The LP position underperformed simple holding by 2.04%.
+>  **Interpretation**: A 50% price increase caused **2.04% impermanent loss**. The LP position underperformed simple holding by 2.04%.
 
 ---
 
@@ -693,7 +693,7 @@ $$IL = \frac{V_{\text{LP}}}{V_{\text{hold}}} - 1 = \frac{2\sqrt{r}}{1 + r} - 1$$
 
 ### IL Lookup Table
 
-> 📊 **Reference Table**: Impermanent loss for various price changes
+>  **Reference Table**: Impermanent loss for various price changes
 
 | **Price Change** | **Ratio $r$** | **IL** | **Interpretation** |
 |------------------|---------------|--------|--------------------|
@@ -714,7 +714,7 @@ $$IL = \frac{V_{\text{LP}}}{V_{\text{hold}}} - 1 = \frac{2\sqrt{r}}{1 + r} - 1$$
 
 ### Key IL Properties
 
-> 💡 **Critical Insights**
+>  **Critical Insights**
 
 1. **Symmetry**: IL is symmetric around the initial price
    - 50% up = 50% down in magnitude
@@ -760,7 +760,7 @@ graph LR
 
 ### 20.4.1 Fee Accumulation Model
 
-> 💰 **Revenue Source**: AMMs charge fees (typically 0.25-0.3%) on each trade, with fees added to pool reserves and distributed proportionally to LPs.
+>  **Revenue Source**: AMMs charge fees (typically 0.25-0.3%) on each trade, with fees added to pool reserves and distributed proportionally to LPs.
 
 **Fee APR Calculation:**
 
@@ -792,7 +792,7 @@ $$\text{Fee APR} = 0.5 \times 0.003 \times 365 = 0.5475 = 54.75\%$$
 | **Mid-cap** | RAY/USDC | 40-100% | Medium volume, higher IL |
 | **Exotic** | New tokens | 100-500% | Extreme volume spikes, severe IL risk |
 
-> ⚠️ **Reality Check**: High fee APRs on exotic pairs often don't compensate for catastrophic impermanent loss. Many LPs chase 500% APRs only to suffer 80%+ IL.
+>  **Reality Check**: High fee APRs on exotic pairs often don't compensate for catastrophic impermanent loss. Many LPs chase 500% APRs only to suffer 80%+ IL.
 
 ```mermaid
 pie title Fee Tier Distribution
@@ -810,7 +810,7 @@ The fundamental profitability equation:
 
 $$\text{Net P\&L} = \text{Fees Earned} - \text{Impermanent Loss}$$
 
-> 🎯 **Profitability Condition**: LP position is profitable when fees earned exceed impermanent loss.
+>  **Profitability Condition**: LP position is profitable when fees earned exceed impermanent loss.
 
 ---
 
@@ -834,13 +834,13 @@ $$T = \frac{0.057}{0.40} = 0.1425 \text{ years} = 52 \text{ days}$$
 
 | **Scenario** | **IL** | **Fee APR** | **Break-Even Days** | **Profitable?** |
 |--------------|--------|-------------|---------------------|-----------------|
-| Stable pair, small move | -0.5% | 10% | 18 days | ✅ Likely |
-| Major pair, moderate move | -2.0% | 40% | 18 days | ✅ Likely |
-| Major pair, large move | -5.7% | 40% | 52 days | ⚠️ Uncertain |
-| Exotic pair, extreme move | -25% | 150% | 61 days | ❌ Unlikely |
-| Exotic pair collapse | -70% | 300% | 85 days | ❌ Very unlikely |
+| Stable pair, small move | -0.5% | 10% | 18 days |  Likely |
+| Major pair, moderate move | -2.0% | 40% | 18 days |  Likely |
+| Major pair, large move | -5.7% | 40% | 52 days |  Uncertain |
+| Exotic pair, extreme move | -25% | 150% | 61 days |  Unlikely |
+| Exotic pair collapse | -70% | 300% | 85 days |  Very unlikely |
 
-> 💡 **Strategic Insight**: The key to LP profitability is matching holding period to IL risk. Short-term positions (7-30 days) work for major pairs. Long-term positions (90+ days) necessary for volatile exotics.
+>  **Strategic Insight**: The key to LP profitability is matching holding period to IL risk. Short-term positions (7-30 days) work for major pairs. Long-term positions (90+ days) necessary for volatile exotics.
 
 ---
 
@@ -968,7 +968,7 @@ Days to break even on IL: 70.08
 
 ### 20.5.1 Price Range Mechanics
 
-> 🚀 **Innovation**: Concentrated liquidity allows LPs to specify a price range $[P_{\text{min}}, P_{\text{max}}]$ instead of providing liquidity across all prices (0 to ∞).
+>  **Innovation**: Concentrated liquidity allows LPs to specify a price range $[P_{\text{min}}, P_{\text{max}}]$ instead of providing liquidity across all prices (0 to ∞).
 
 **Capital Efficiency Formula:**
 
@@ -1010,7 +1010,7 @@ graph TD
 | **Ultra-Tight** | 0.99P to 1.01P | 50x | 50x | Very High |
 | **Stablecoin** | 0.9999P to 1.0001P | 200x | 200x | Extreme |
 
-> ⚠️ **Risk-Return Trade-off**: Higher capital efficiency generates more fees per dollar, but requires more frequent rebalancing and increases IL sensitivity.
+>  **Risk-Return Trade-off**: Higher capital efficiency generates more fees per dollar, but requires more frequent rebalancing and increases IL sensitivity.
 
 ---
 
@@ -1031,7 +1031,7 @@ $$\text{Efficiency} = \frac{1}{\sqrt{52.5}/\sqrt{47.5} - 1} = \frac{1}{1.051 - 1
 
 ### 20.5.2 Optimal Range Selection
 
-> 🎯 **Strategic Question**: How tight should your range be?
+>  **Strategic Question**: How tight should your range be?
 
 ```mermaid
 graph TD
@@ -1093,7 +1093,7 @@ $$[P_{\text{min}}, P_{\text{max}}] = [0.80P, 1.25P]$$
 
 ### Rebalancing Economics
 
-> 💻 **Key Decision**: When should you rebalance your concentrated position?
+>  **Key Decision**: When should you rebalance your concentrated position?
 
 **Rebalancing Costs:**
 - Gas fees: $0.50-5.00 per transaction (Solana is cheap)
@@ -1116,7 +1116,7 @@ $$[P_{\text{min}}, P_{\text{max}}] = [0.80P, 1.25P]$$
 
 (if out_of_range
     (do
-      (log :message "⚠️ OUT OF RANGE - Position earning zero fees")
+      (log :message " OUT OF RANGE - Position earning zero fees")
       (log :message "Action: Rebalance immediately")
 
       ;; Calculate opportunity cost
@@ -1130,7 +1130,7 @@ $$[P_{\text{min}}, P_{\text{max}}] = [0.80P, 1.25P]$$
 
       ;; Decision
       (log :message "Rebalance profitable:" :value (> opportunity_cost (* position_value 0.003))))
-    (log :message "✅ IN RANGE - Position active, monitor price"))
+    (log :message " IN RANGE - Position active, monitor price"))
 ```
 
 ---
@@ -1148,7 +1148,7 @@ $$[P_{\text{min}}, P_{\text{max}}] = [0.80P, 1.25P]$$
 
 ### 20.5.3 Just-In-Time (JIT) Liquidity
 
-> ⚡ **Advanced Strategy**: Provide liquidity for milliseconds to capture fees from specific large trades.
+>  **Advanced Strategy**: Provide liquidity for milliseconds to capture fees from specific large trades.
 
 ```mermaid
 sequenceDiagram
@@ -1201,13 +1201,13 @@ sequenceDiagram
 | $100,000 | $300 | $10,000 | 100% | 3% |
 | $1,000,000 | $3,000 | $50,000 | 100% | 6% |
 
-> ⚠️ **Technical Requirements**:
+>  **Technical Requirements**:
 > - MEV infrastructure (flashbots/jito bundles)
 > - Low-latency mempool monitoring
 > - Sophisticated bundling logic
 > - High-speed execution (<100ms)
 
-> 🎯 **Ethics Debate**: JIT is controversial—critics call it "extractive" (front-running long-term LPs). Proponents argue it's "efficient market-making" that improves price execution for traders.
+>  **Ethics Debate**: JIT is controversial—critics call it "extractive" (front-running long-term LPs). Proponents argue it's "efficient market-making" that improves price execution for traders.
 
 ---
 
@@ -1215,7 +1215,7 @@ sequenceDiagram
 
 ### 20.6.1 Impermanent Loss Risk by Pair Type
 
-> 📊 **Empirical Data**: 6-month IL statistics across different pool types
+>  **Empirical Data**: 6-month IL statistics across different pool types
 
 ```mermaid
 graph TD
@@ -1260,7 +1260,7 @@ graph TD
 | **Days with IL > 1%** | <1% | Extremely rare |
 | **Typical Fee APR** | 5-15% | Low volume/TVL ratio |
 
-> ✅ **Risk Assessment**: Stablecoin pairs are the safest LP strategy. IL is negligible except during rare depeg events. However, fee returns are also low.
+>  **Risk Assessment**: Stablecoin pairs are the safest LP strategy. IL is negligible except during rare depeg events. However, fee returns are also low.
 
 ---
 
@@ -1274,7 +1274,7 @@ graph TD
 | **Days with IL > 5%** | ~10% | Occasional divergence |
 | **Typical Fee APR** | 20-40% | Moderate returns |
 
-> ⚠️ **Risk Assessment**: Correlated pairs offer a good risk-return balance. Assets generally move together, reducing IL, while still generating decent fees.
+>  **Risk Assessment**: Correlated pairs offer a good risk-return balance. Assets generally move together, reducing IL, while still generating decent fees.
 
 ---
 
@@ -1288,7 +1288,7 @@ graph TD
 | **Days with IL > 10%** | ~25% | Frequent occurrence |
 | **Typical Fee APR** | 25-60% | Good returns |
 
-> ⚠️ **Risk Assessment**: Uncorrelated pairs are for experienced LPs who understand IL mechanics. Requires active monitoring and potential hedging strategies.
+>  **Risk Assessment**: Uncorrelated pairs are for experienced LPs who understand IL mechanics. Requires active monitoring and potential hedging strategies.
 
 ---
 
@@ -1302,7 +1302,7 @@ graph TD
 | **Days with IL > 30%** | ~40% | Very frequent |
 | **Typical Fee APR** | 100-500% | Extreme returns (if survive) |
 
-> ❌ **Risk Assessment**: Exotic pairs are essentially gambling. 70%+ of LPs lose money despite massive fee APRs. Only allocate <5% of portfolio to these strategies.
+>  **Risk Assessment**: Exotic pairs are essentially gambling. 70%+ of LPs lose money despite massive fee APRs. Only allocate <5% of portfolio to these strategies.
 
 ---
 
@@ -1319,7 +1319,7 @@ graph TD
 
 ### 20.6.2 Pool Drainage and Rug Pulls
 
-> 🚨 **Critical Risk**: Malicious token developers can drain LP pools through various attack vectors.
+>  **Critical Risk**: Malicious token developers can drain LP pools through various attack vectors.
 
 ```mermaid
 graph TD
@@ -1362,13 +1362,13 @@ graph TD
 | **Largest Rug (2024)** | $2.3M | Sophisticated operation |
 | **LPs Affected** | ~100,000/month | Widespread impact |
 
-> ⚠️ **Sobering Reality**: 15-20% of new token pools on Solana are scams. Many retail LPs lose everything by providing liquidity to unverified tokens.
+>  **Sobering Reality**: 15-20% of new token pools on Solana are scams. Many retail LPs lose everything by providing liquidity to unverified tokens.
 
 ---
 
 ### Rug Pull Mitigation Checklist
 
-> ✅ **Safety Protocol**: Before providing liquidity to any pool, verify:
+>  **Safety Protocol**: Before providing liquidity to any pool, verify:
 
 **Token Contract Verification:**
 - [ ] Mint authority renounced (can't create infinite tokens)
@@ -1474,7 +1474,7 @@ graph TD
 
 ### 20.6.3 Smart Contract Risk
 
-> 🔒 **Protocol Risk**: Even audited AMMs can have exploitable vulnerabilities.
+>  **Protocol Risk**: Even audited AMMs can have exploitable vulnerabilities.
 
 **Historical Exploits (2021-2024):**
 
@@ -1490,7 +1490,7 @@ graph TD
 
 ### Smart Contract Risk Management
 
-> 🛡️ **Defense Strategies**
+>  **Defense Strategies**
 
 **Protocol Selection:**
 1. **Audited protocols only**: Raydium, Orca, Meteora (multiple audits)
@@ -1618,7 +1618,7 @@ graph TD
 (log :message "Days already held:" :value days_held)
 
 (if (>= days_held days_to_breakeven)
-    (log :message "Status: Break-even point reached ✅")
+    (log :message "Status: Break-even point reached ")
     (do
       (define days_remaining (- days_to_breakeven days_held))
       (log :message "Status: Need more time ⏳")
@@ -1652,9 +1652,9 @@ graph TD
           (if (< il_pct -2) 1 0))))
 
 (define risk_label
-  (if (= risk_score 3) "HIGH RISK ⚠️"
+  (if (= risk_score 3) "HIGH RISK "
       (if (= risk_score 2) "MEDIUM RISK ⚠"
-          (if (= risk_score 1) "LOW RISK ✅" "MINIMAL RISK ✅"))))
+          (if (= risk_score 1) "LOW RISK " "MINIMAL RISK "))))
 
 (log :message "Risk level:" :value risk_label)
 ```
@@ -1778,7 +1778,7 @@ graph TD
 
 ### 20.8.1 Backtesting Case Study: SOL/USDC
 
-> 💻 **Real-World Performance**: Historical backtest using actual Raydium data
+>  **Real-World Performance**: Historical backtest using actual Raydium data
 
 **Testing Parameters:**
 
@@ -1894,7 +1894,7 @@ graph TD
     style C fill:#FFE6E6
 ```
 
-> 💡 **Conclusion**: Concentrated liquidity delivered **+71% higher profits** but required significant active management (26 rebalances, weekly monitoring). Best suited for professional LPs or those willing to dedicate substantial time.
+>  **Conclusion**: Concentrated liquidity delivered **+71% higher profits** but required significant active management (26 rebalances, weekly monitoring). Best suited for professional LPs or those willing to dedicate substantial time.
 
 ---
 
@@ -1929,7 +1929,7 @@ Final Withdrawal,Net P&L,781
 
 ### 20.9.1 Dynamic Fee Tier Selection
 
-> 🎯 **Strategic Choice**: Modern AMMs (Uniswap V3, Orca Whirlpools) offer multiple fee tiers for the same pair.
+>  **Strategic Choice**: Modern AMMs (Uniswap V3, Orca Whirlpools) offer multiple fee tiers for the same pair.
 
 **Available Fee Tiers:**
 
@@ -1971,14 +1971,14 @@ graph TD
 
 ### Dynamic Tier Migration Strategy
 
-> 💻 **Advanced Technique**: Monitor volume distribution across tiers and migrate capital to the most profitable tier.
+>  **Advanced Technique**: Monitor volume distribution across tiers and migrate capital to the most profitable tier.
 
 **Example: SOL/USDC Multi-Tier Analysis**
 
 | **Fee Tier** | **TVL** | **24h Volume** | **Volume/TVL** | **Fee APR** | **Optimal?** |
 |--------------|---------|----------------|----------------|-------------|--------------|
 | 0.05% | $5M | $2M | 0.40 | 29.2% | No |
-| 0.30% | $20M | $15M | 0.75 | **82.1%** | ✅ **Best** |
+| 0.30% | $20M | $15M | 0.75 | **82.1%** |  **Best** |
 | 1.00% | $2M | $500K | 0.25 | 45.6% | No |
 
 **Action:** Migrate all liquidity to 0.30% tier for maximum fee earnings.
@@ -2059,7 +2059,7 @@ quadrantChart
 
 ### 20.9.2 Delta-Neutral LP Strategy
 
-> 🛡️ **Hedging Technique**: Eliminate price risk while keeping fee income through perpetual futures hedging.
+>  **Hedging Technique**: Eliminate price risk while keeping fee income through perpetual futures hedging.
 
 ```mermaid
 graph TD
@@ -2114,13 +2114,13 @@ graph TD
 
 | **Advantages** | **Disadvantages** |
 |----------------|-------------------|
-| ✅ Eliminates price risk | ❌ Funding rates reduce returns |
-| ✅ Predictable returns | ❌ Requires perpetual exchange account |
-| ✅ Works in bear markets | ❌ Liquidation risk if under-collateralized |
-| ✅ Sleep soundly at night | ❌ Complexity of managing two positions |
-| ✅ Scalable to large capital | ❌ May miss out on big price rallies |
+|  Eliminates price risk |  Funding rates reduce returns |
+|  Predictable returns |  Requires perpetual exchange account |
+|  Works in bear markets |  Liquidation risk if under-collateralized |
+|  Sleep soundly at night |  Complexity of managing two positions |
+|  Scalable to large capital |  May miss out on big price rallies |
 
-> 💡 **Best Use Case**: Large capital allocations ($100K+) where stable 15-25% APR is attractive and managing complexity is worthwhile.
+>  **Best Use Case**: Large capital allocations ($100K+) where stable 15-25% APR is attractive and managing complexity is worthwhile.
 
 ---
 
@@ -2165,12 +2165,12 @@ graph TD
 
 | **Scenario** | **Base Fees** | **RAY Rewards** | **RAY Price** | **Effective Total APR** |
 |--------------|---------------|-----------------|---------------|-------------------------|
-| RAY holds value | 30% | 50% | Stable | **80%** ✅ |
-| RAY drops 25% | 30% | 37.5% | -25% | **67.5%** ⚠️ |
-| RAY drops 50% | 30% | 25% | -50% | **55%** ⚠️ |
-| RAY drops 75% | 30% | 12.5% | -75% | **42.5%** ❌ |
+| RAY holds value | 30% | 50% | Stable | **80%**  |
+| RAY drops 25% | 30% | 37.5% | -25% | **67.5%**  |
+| RAY drops 50% | 30% | 25% | -50% | **55%**  |
+| RAY drops 75% | 30% | 12.5% | -75% | **42.5%**  |
 
-> ⚠️ **Reality**: Many governance tokens depreciate 50-80% over 6-12 months, significantly reducing effective APR.
+>  **Reality**: Many governance tokens depreciate 50-80% over 6-12 months, significantly reducing effective APR.
 
 ---
 
@@ -2232,7 +2232,7 @@ Recommendation: AUTO-SELL strongly recommended - significant token depreciation
 
 ## 20.11 Five Liquidity Pool Disasters and How to Prevent Them
 
-> ⚠️ **$3.5+ Billion in LP losses from preventable mistakes**
+>  **$3.5+ Billion in LP losses from preventable mistakes**
 
 Beyond Iron Finance's $2B collapse (Section 20.0), liquidity providers have suffered massive losses from oracle manipulation, rug pulls, governance attacks, and impermanent loss catastrophes. Each disaster teaches critical lessons about risk management.
 
@@ -2998,12 +2998,12 @@ TOKEN_X/USDC pool:
 
 **Universal LP Safety Rules:**
 
-1. ✅ **Always verify transfer amounts** (prevent fee-on-transfer exploits)
-2. ✅ **Monitor for depeg events** (exit stablecoin pools at 2% deviation)
-3. ✅ **Never trust token-emission IL protection** (only accept fee-based protection)
-4. ✅ **Exit during liquidity drainage** (20% TVL drop/hour = emergency)
-5. ✅ **Verify organic volume** (volume/TVL should exceed 10% weekly)
-6. ✅ **Check voting distribution** (reject if top 3 voters control >50%)
+1.  **Always verify transfer amounts** (prevent fee-on-transfer exploits)
+2.  **Monitor for depeg events** (exit stablecoin pools at 2% deviation)
+3.  **Never trust token-emission IL protection** (only accept fee-based protection)
+4.  **Exit during liquidity drainage** (20% TVL drop/hour = emergency)
+5.  **Verify organic volume** (volume/TVL should exceed 10% weekly)
+6.  **Check voting distribution** (reject if top 3 voters control >50%)
 
 **The difference between profitable and ruined LPs:** Implementing these 6 checks (cost: $0-$30K/year, value: billions saved)
 
@@ -3701,11 +3701,11 @@ graph TD
 
 **System Features:**
 
-1. ✅ **Pre-deposit validation:** All 6 safety checks from 20.11.6
-2. ✅ **Continuous monitoring:** Every 5 minutes, all positions
-3. ✅ **Emergency response:** Automated exit on critical risk
-4. ✅ **Rebalancing:** Concentrated liquidity range optimization
-5. ✅ **Portfolio tracking:** Real-time P&L, fees, IL calculation
+1.  **Pre-deposit validation:** All 6 safety checks from 20.11.6
+2.  **Continuous monitoring:** Every 5 minutes, all positions
+3.  **Emergency response:** Automated exit on critical risk
+4.  **Rebalancing:** Concentrated liquidity range optimization
+5.  **Portfolio tracking:** Real-time P&L, fees, IL calculation
 
 **Performance Expectations:**
 
@@ -3792,16 +3792,16 @@ This worked example demonstrates the complete lifecycle of a concentrated liquid
 ;; ====== POOL SAFETY VALIDATION ======
 ;; Pool: orca-sol-usdc-001
 ;;
-;; ✅ TVL Check: PASS ($15,000,000 > $1,000,000 minimum)
-;; ✅ Transfer Check: PASS (No deflationary tokens)
-;; ✅ Depeg Check: PASS (Not a stablecoin pool)
-;; ✅ IL Protection: N/A (No IL protection offered)
-;; ✅ Volume Check: PASS
+;;  TVL Check: PASS ($15,000,000 > $1,000,000 minimum)
+;;  Transfer Check: PASS (No deflationary tokens)
+;;  Depeg Check: PASS (Not a stablecoin pool)
+;;  IL Protection: N/A (No IL protection offered)
+;;  Volume Check: PASS
 ;;    - Weekly volume/TVL: 45.2%
 ;;    - Organic APR: 12.8%
 ##    - Emissions APR: 0% (no token emissions)
 ;;    - Ratio: 0x (healthy - pure fee-driven pool)
-;; ✅ Voting Check: N/A (No gauge voting)
+;;  Voting Check: N/A (No gauge voting)
 ;;
 ;; VERDICT: SAFE TO DEPOSIT
 ;; Confidence: HIGH
@@ -3854,7 +3854,7 @@ Position:
 ;; Capital: $50,000
 ;; Position ID: pos-20241201-001
 ;; Entry time: 2024-12-01 00:00:00 UTC
-;; ✅ Position entered successfully
+;;  Position entered successfully
 ```
 
 **Initial State:**
@@ -3865,7 +3865,7 @@ Position:
 | **SOL Holdings** | 250 SOL |
 | **USDC Holdings** | $25,000 |
 | **Range** | $50 - $150 |
-| **Position in Range** | ✅ Centered |
+| **Position in Range** |  Centered |
 
 ---
 
@@ -3910,7 +3910,7 @@ Total_fees_10d = $77.92 × 10 = $779.20
 ;; Risk level: NORMAL
 ;; Current price: $102.50
 ;; Range: [$50.00, $150.00]
-;; Position in range: ✅ YES
+;; Position in range:  YES
 ;; Fees accumulated: $389.60
 ;; Impermanent loss: -1.2% ($600)
 ;; Net P&L: -$210.40 (-0.4%)
@@ -4024,7 +4024,7 @@ SOL has rallied to $145, approaching the $150 upper bound. If price exits range,
 ;; Deposited: 172.41 SOL + $38,500 USDC
 ;; New liquidity shares: 118,000 LP tokens
 ;;
-;; ✅ Rebalance completed
+;;  Rebalance completed
 ;; Gas cost: ~0.01 SOL ($1.45)
 ```
 
@@ -4089,7 +4089,7 @@ Total_fees_9d = $135 × 9 = $1,215
 ;; Reason: IL threshold approaching (15.8%)
 ;; Current price: $120.00
 ;; Range: [$63.80, $226.20]
-;; Position in range: ✅ YES
+;; Position in range:  YES
 ;; Impermanent loss: -15.8% ($10,670)
 ;; Fees accumulated (since rebalance): $1,215
 ;; Net P&L: +$9,060 (+18.1%)
@@ -4158,7 +4158,7 @@ Advantage = $59,194 - $55,000 = $4,194
 ;; Entry capital: $50,000
 ;; Net P&L: +$7,806 (+15.6%)
 ;;
-;; ✅ Emergency exit completed
+;;  Emergency exit completed
 ;; Capital preserved despite USDC depeg!
 ```
 
@@ -4256,11 +4256,11 @@ LP_outperformance = 104.8% better than holding!
 
 ### What Works: The 1% Elite LP Playbook
 
-> 💰 **Top LPs earn 50-200% APR while bottom 25% lose money**
+>  **Top LPs earn 50-200% APR while bottom 25% lose money**
 
 The difference isn't luck—it's systematic execution of proven principles that 99% of retail LPs ignore.
 
-#### ✅ Strategy 1: Only Enter Pools Passing All 6 Safety Checks
+####  Strategy 1: Only Enter Pools Passing All 6 Safety Checks
 
 **What the elite do:**
 - Minimum $1M TVL (avoid thin markets)
@@ -4279,7 +4279,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ✅ Strategy 2: Concentrated Liquidity with Active Rebalancing
+####  Strategy 2: Concentrated Liquidity with Active Rebalancing
 
 **What the elite do:**
 - Use 2σ range width (captures 95% of price action)
@@ -4296,7 +4296,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ✅ Strategy 3: Emergency Exit on Critical Signals
+####  Strategy 3: Emergency Exit on Critical Signals
 
 **What the elite do:**
 - TVL drainage >20%/hour → instant exit (vampire attack)
@@ -4313,7 +4313,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ✅ Strategy 4: Fee Autoselling for Volatile Reward Tokens
+####  Strategy 4: Fee Autoselling for Volatile Reward Tokens
 
 **What the elite do:**
 - Auto-sell reward tokens immediately
@@ -4329,7 +4329,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ✅ Strategy 5: Systematic Position Sizing (Kelly Criterion)
+####  Strategy 5: Systematic Position Sizing (Kelly Criterion)
 
 **What the elite do:**
 - Maximum 10% portfolio per pool
@@ -4346,9 +4346,9 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ### What Fails: The Retail LP Graveyard
 
-> ⚠️ **$5.85B+ lost to preventable mistakes (Iron Finance + 20.11 disasters)**
+>  **$5.85B+ lost to preventable mistakes (Iron Finance + 20.11 disasters)**
 
-#### ❌ Mistake 1: Chasing High APRs Without Due Diligence
+####  Mistake 1: Chasing High APRs Without Due Diligence
 
 **The trap:**
 - See 5,000% APR on Velodrome gauge
@@ -4365,7 +4365,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ❌ Mistake 2: Trusting "Impermanent Loss Protection"
+####  Mistake 2: Trusting "Impermanent Loss Protection"
 
 **The trap:**
 - Bancor promises "100% IL protection"
@@ -4383,7 +4383,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ❌ Mistake 3: Passive Concentrated Liquidity (Set & Forget)
+####  Mistake 3: Passive Concentrated Liquidity (Set & Forget)
 
 **The trap:**
 - Deposit $50K into Uniswap V3 SOL/USDC
@@ -4400,7 +4400,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ❌ Mistake 4: Ignoring Stablecoin Depeg Risk
+####  Mistake 4: Ignoring Stablecoin Depeg Risk
 
 **The trap:**
 - "Stablecoin pools are risk-free"
@@ -4417,7 +4417,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ---
 
-#### ❌ Mistake 5: Staying in Draining Pools
+####  Mistake 5: Staying in Draining Pools
 
 **The trap:**
 - SushiSwap vampire attack announced
@@ -4454,7 +4454,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 
 ### Final Verdict: LP in 2025+
 
-> 📊 **Liquidity provision is NOT passive income—it's active market-making**
+>  **Liquidity provision is NOT passive income—it's active market-making**
 
 **The Opportunity:**
 - **Realistic returns for skilled LPs:** 25-60% APR
@@ -4462,11 +4462,11 @@ The difference isn't luck—it's systematic execution of proven principles that 
 - **Disaster prevention value:** $30K-50K/year per $500K portfolio
 
 **The Requirements:**
-1. ✅ **Safety-first validation** (all 6 checks, every pool)
-2. ✅ **Active management** (rebalancing, monitoring, emergency response)
-3. ✅ **Mathematical literacy** (IL formulas, break-even calculations, risk metrics)
-4. ✅ **Automation** (continuous monitoring, instant emergency exit)
-5. ✅ **Realistic expectations** (25-60% APR, not 5,000%)
+1.  **Safety-first validation** (all 6 checks, every pool)
+2.  **Active management** (rebalancing, monitoring, emergency response)
+3.  **Mathematical literacy** (IL formulas, break-even calculations, risk metrics)
+4.  **Automation** (continuous monitoring, instant emergency exit)
+5.  **Realistic expectations** (25-60% APR, not 5,000%)
 
 **The Infrastructure:**
 - **Development cost:** $10K initial + $1,333/month ongoing

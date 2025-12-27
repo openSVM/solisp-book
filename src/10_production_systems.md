@@ -86,7 +86,7 @@ graph TB
 
 ### 10.1.3 Event Sourcing and CQRS
 
-💡 **Event Sourcing**: Store all state changes as immutable events.
+ **Event Sourcing**: Store all state changes as immutable events.
 
 **Benefits**:
 - Complete audit trail
@@ -232,7 +232,7 @@ erDiagram
 
 ### 10.1.4 Low-Latency Design
 
-🚀 **Latency Optimization Techniques**:
+ **Latency Optimization Techniques**:
 
 1. **In-Memory Data Structures**:
    - Use Redis for hot data (prices, positions)
@@ -601,7 +601,7 @@ stateDiagram-v2
 
 ### 10.3.1 Pre-Trade Risk Checks
 
-⚠️ **Kill Switch**: Reject orders if limits breached.
+ **Kill Switch**: Reject orders if limits breached.
 
 ```lisp
 ;; Pre-Trade Risk Manager
@@ -849,7 +849,7 @@ pie showData
 
 **Figure 10.4**: Root cause analysis of production system failures over 90 days. Exchange API issues (38%) dominate, requiring circuit breakers and failover logic. Network problems (28%) necessitate redundant connections. Internal bugs (18%) despite testing emphasize need for comprehensive monitoring. Data feed issues (12%) require backup providers. Hardware failures (4%) are rare due to cloud redundancy. This distribution informs where to invest reliability engineering effort: API resilience and network redundancy yield highest ROI.
 
-📊 **Performance Metrics**:
+ **Performance Metrics**:
 
 | Category | Metric | Target | Alert Threshold |
 |----------|--------|--------|----------------|
@@ -983,7 +983,7 @@ pie showData
 
 ### 10.5.1 Fault Tolerance Architecture
 
-🛡️ **No Single Point of Failure**:
+ **No Single Point of Failure**:
 
 ```mermaid
 graph TB
@@ -1108,7 +1108,7 @@ graph TB
 
 ### 10.5.4 Circuit Breaker Pattern
 
-💡 **Prevent cascade failures**:
+ **Prevent cascade failures**:
 
 ```lisp
 ;; Circuit Breaker
@@ -1170,7 +1170,7 @@ graph TB
 
 ### 10.6.1 Audit Trail Requirements
 
-📋 **Regulatory Requirements** (MiFID II, SEC, FINRA):
+ **Regulatory Requirements** (MiFID II, SEC, FINRA):
 - **Order Tracking**: Complete order lifecycle from inception to fill
 - **Clock Synchronization**: NTP within 1ms for HFT
 - **Data Retention**: 7 years for trade records
@@ -1366,7 +1366,7 @@ Production trading systems require rigorous engineering:
 6. **Disaster recovery** ensures business continuity
 7. **Compliance** meets regulatory requirements
 
-🎯 **Key Takeaways**:
+ **Key Takeaways**:
 - Design for failure (circuit breakers, failover, redundancy)
 - Monitor everything (latency, fill rates, P&L, system health)
 - Test disaster recovery procedures regularly

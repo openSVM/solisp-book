@@ -1,6 +1,6 @@
 # Chapter 12: Options Pricing and the Volatility Surface
 
-## 💥 The $550 Million Day: When LTCM's "Free Money" Evaporated
+##  The $550 Million Day: When LTCM's "Free Money" Evaporated
 
 **August 21, 1998**. Long-Term Capital Management, the hedge fund run by Nobel laureates and Wall Street legends, lost **$550 million in a single trading day**—15% of their entire $3.6 billion fund. Not from a rogue trader. Not from a fat-finger error. From a strategy that had generated steady profits for years: **selling volatility**.
 
@@ -58,7 +58,7 @@ timeline
 
 **The Lesson:**
 
-> **⚠️ Selling Volatility = Selling Insurance**
+> ** Selling Volatility = Selling Insurance**
 >
 > It works 95% of the time (collect premiums, theta decay, steady profits). But 5% of the time, **the house burns down and you're on the hook**.
 >
@@ -95,7 +95,7 @@ However, the model's simplifying assumptions—constant volatility, continuous t
 
 This chapter develops options pricing theory from first principles, implements the Black-Scholes formula in Solisp, explores the volatility surface structure, and builds practical trading strategies that exploit mispricing in options markets.
 
-> **💡 Key Concept**
+> ** Key Concept**
 > The Black-Scholes model assumes constant volatility σ, yet empirical markets reveal σ(K,T)—a volatility *surface* that varies with both strike price K and time to expiration T. Understanding this surface is the key to modern options trading.
 
 ### Chapter Roadmap
@@ -133,7 +133,7 @@ journey
 
 Options have existed since ancient times—Aristotle describes Thales profiting from olive press options in 600 BCE. But rigorous pricing remained elusive until the 20th century.
 
-> **📊 Empirical Result**
+> ** Empirical Result**
 > Louis Bachelier's 1900 dissertation *Théorie de la Spéculation* proposed the first mathematical model, using Brownian motion **five years before Einstein**. However, his work was largely forgotten for decades because it modeled prices in arithmetic terms, allowing negative values.
 
 The breakthrough came from recognizing three key insights:
@@ -154,7 +154,7 @@ They modeled stock prices to ensure positive values and capture empirical proper
 
 $$dS_t = \mu S_t dt + \sigma S_t dW_t$$
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > Geometric Brownian motion ensures $S_t > 0$ for all $t$, unlike Bachelier's arithmetic model. This captures the empirical property that *returns* (not prices) are normally distributed.
 
 **Innovation 2: Dynamic Delta Hedging**
@@ -183,7 +183,7 @@ $$\boxed{\frac{\partial V}{\partial t} + rS\frac{\partial V}{\partial S} + \frac
 
 The Chicago Board Options Exchange (CBOE) opened on **April 26, 1973**, just weeks before the Black-Scholes paper appeared in the *Journal of Political Economy*.
 
-> **📊 Empirical Result**
+> ** Empirical Result**
 > Within a decade, the options market exploded from $0 to hundreds of billions in notional value. Today, over **40 million** options contracts trade daily in the US alone.
 
 Traders quickly adopted the model, using:
@@ -197,7 +197,7 @@ The model's simplicity made it ubiquitous and transformed financial markets fore
 
 On **October 19, 1987** ("Black Monday"), the S&P 500 dropped 20% in a single day. Options markets revealed a stark reality: the model was wrong.
 
-> **⚠️ Warning**
+> ** Warning**
 > Out-of-the-money puts traded at implied volatilities far exceeding at-the-money options, creating a "volatility smile." The Black-Scholes assumption of constant σ was empirically violated.
 
 This gave birth to modern volatility surface modeling. Rather than treating σ as a constant, practitioners began viewing it as **σ(K, T)**—a function to be estimated from market prices. The Black-Scholes formula remained useful, but now as an *interpolation tool* for mapping prices to implied volatilities.
@@ -210,7 +210,7 @@ This gave birth to modern volatility surface modeling. Rather than treating σ a
 
 The core economic principle is **no arbitrage**: there exist no risk-free profit opportunities.
 
-> **💡 Key Concept**
+> ** Key Concept**
 > If two portfolios have identical payoffs in all states, they must have identical prices today. Otherwise, an arbitrageur would buy the cheap portfolio, sell the expensive one, and lock in risk-free profit.
 
 **Put-Call Parity (European Options)**:
@@ -247,7 +247,7 @@ No-arbitrage also implies fundamental bounds on option prices:
 | $P \geq \max(Ke^{-rT} - S, 0)$ | Put worth at least discounted intrinsic |
 | $P \leq Ke^{-rT}$ | Put cannot exceed discounted strike |
 
-> **🎯 Trading Tip**
+> ** Trading Tip**
 > Violations of these bounds create arbitrage opportunities that market makers exploit instantly. In practice, these violations rarely occur for more than milliseconds on liquid options.
 
 ### 12.2.2 Complete Markets and Replication
@@ -276,14 +276,14 @@ where:
 - $\Delta_t = N(d_1)$ shares of stock (the delta hedge)
 - $B_t = -Ke^{-r(T-t)}N(d_2)$ in bonds
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > The portfolio value $\Pi_t$ exactly equals the call price $C_t$ at all times, with no need to add or remove cash (self-financing property). This is the foundation of delta hedging.
 
 ### 12.2.3 Risk-Neutral Valuation
 
 A stunning Black-Scholes insight: option prices don't depend on the stock's expected return $\mu$. This seems paradoxical—surely a higher-growth stock should have more valuable calls?
 
-> **💡 Key Concept**
+> ** Key Concept**
 > Under the **risk-neutral measure** $\mathbb{Q}$:
 > 1. All assets grow at the risk-free rate: $\mathbb{E}^{\mathbb{Q}}[S_T] = S_0 e^{rT}$
 > 2. Option values are discounted expectations: $V_0 = e^{-rT}\mathbb{E}^{\mathbb{Q}}[V_T]$
@@ -332,7 +332,7 @@ The change in portfolio value:
 
 $$d\Pi = dV - \Delta dS = \left(\frac{\partial V}{\partial t} + \frac{1}{2}\sigma^2 S^2\frac{\partial^2 V}{\partial S^2}\right)dt$$
 
-> **💡 Key Concept**
+> ** Key Concept**
 > Notice the $dW$ terms cancel! The portfolio is riskless, so it must earn the risk-free rate:
 
 $$d\Pi = r\Pi dt = r(V - \Delta S)dt$$
@@ -376,7 +376,7 @@ The call formula decomposes into two economic terms:
 | **Expected Stock Value** | $S N(d_1)$ | Expected value of stock conditional on finishing in-the-money, weighted by probability |
 | **Discounted Strike** | $Ke^{-rT} N(d_2)$ | Present value of strike payment, weighted by risk-neutral probability of exercise |
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > $N(d_2)$ is the risk-neutral probability that $S_T > K$, while $N(d_1)$ incorporates the expected stock value given that the option finishes in-the-money.
 
 ### 12.3.4 Numerical Example
@@ -410,7 +410,7 @@ $$C = 100 \times 0.3772 - 105 \times e^{-0.05 \times 0.25} \times 0.3398$$
 
 $$C = 37.72 - 105 \times 0.9876 \times 0.3398 = 37.72 - 35.21 = \$2.51$$
 
-> **🎯 Trading Tip**
+> ** Trading Tip**
 > The call is worth $2.51, despite being out-of-the-money (strike $105 > spot $100). This **time value** reflects the probability of the stock rising above $105 before expiration.
 
 ---
@@ -448,7 +448,7 @@ $$\Delta = \frac{\partial V}{\partial S}$$
 - **For calls**: $\Delta_{\text{call}} = N(d_1) \in [0, 1]$
 - **For puts**: $\Delta_{\text{put}} = N(d_1) - 1 \in [-1, 0]$
 
-> **🎯 Trading Tip: Delta Hedging**
+> ** Trading Tip: Delta Hedging**
 > A market maker sells 100 calls with $\Delta = 0.6$. To hedge, they buy:
 >
 > $$\text{Hedge Ratio} = 100 \times 0.6 \times 100 = 6,000 \text{ shares}$$
@@ -475,7 +475,7 @@ where $N'(x) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$ is the standard normal density.
 | **Deep ITM/OTM** | Near zero | Delta becomes stable (0 or 1) |
 | **Near expiration** | Explosive | Short-dated options have very high gamma |
 
-> **💡 Key Concept: Gamma Scalping**
+> ** Key Concept: Gamma Scalping**
 > Long gamma positions profit from volatility through rebalancing:
 > 1. Stock moves up → Delta increases → Sell stock (high) to rehedge
 > 2. Stock moves down → Delta decreases → Buy stock (low) to rehedge
@@ -501,7 +501,7 @@ $$\mathcal{V} = S\sqrt{T} N'(d_1)$$
 | **Longer-dated > shorter-dated** | More time for volatility to matter |
 | **Always positive** | Both calls and puts benefit from higher volatility |
 
-> **🎯 Trading Tip: Volatility Arbitrage**
+> ** Trading Tip: Volatility Arbitrage**
 > If implied volatility $\sigma_{\text{impl}} = 25\%$ but you expect realized volatility $\sigma_{\text{real}} = 20\%$:
 > - **Sell the option**: Collect overpriced volatility premium
 > - **Delta hedge**: Rebalance to neutralize directional risk
@@ -537,7 +537,7 @@ pie title Greeks Exposure Distribution
     "Rho" : 5
 ```
 
-> **💡 Key Concept: Theta vs. Gamma Trade-off**
+> ** Key Concept: Theta vs. Gamma Trade-off**
 > The Black-Scholes PDE relates them:
 > $$\Theta + \frac{1}{2}\sigma^2 S^2 \Gamma + rS\Delta - rV = 0$$
 >
@@ -564,7 +564,7 @@ $$\rho = \frac{\partial V}{\partial r}$$
 | **Calls** | Positive | Higher rates → lower PV of strike → more valuable |
 | **Puts** | Negative | Higher rates → lower PV of strike → less valuable |
 
-> **⚠️ Warning**
+> ** Warning**
 > Rho is typically small and ignored for short-dated equity options. It becomes important for:
 > - Long-dated LEAPS (1-2 year options)
 > - Currency options
@@ -593,7 +593,7 @@ In practice, we observe market price $C_{\text{market}}$ and want to back out th
 
 $$C_{\text{market}} = C_{\text{model}}(S, K, T, r, \sigma_{\text{impl}})$$
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > This is an **inversion problem**: Given C, solve for σ. No closed-form solution exists, requiring numerical methods like Newton-Raphson.
 
 ### 12.5.2 Newton-Raphson Method
@@ -626,7 +626,7 @@ graph TD
    - c. Update: $\sigma_{n+1} = \sigma_n - (C_{\text{market}} - C_{\text{model}}) / \mathcal{V}$
 3. Return $\sigma_n$ when $|C_{\text{market}} - C_{\text{model}}| < \epsilon$ (e.g., $\epsilon = 0.0001$)
 
-> **🎯 Trading Tip**
+> ** Trading Tip**
 > Convergence typically requires only **3-5 iterations** to achieve $10^{-6}$ accuracy. This makes implied volatility calculation extremely fast in practice.
 
 ### 12.5.3 Numerical Example: Implied Volatility Calculation
@@ -692,7 +692,7 @@ graph LR
 - ATM options (K ≈ S): Moderate implied vol
 - Deep OTM calls (K >> S): Low implied vol
 
-> **📊 Empirical Result: Why the Skew?**
+> ** Empirical Result: Why the Skew?**
 > 1. **Leverage Effect**: Stock drop → Higher debt/equity ratio → More volatility
 > 2. **Crash Fear**: Investors overpay for downside protection
 > 3. **Supply/Demand**: Institutional demand for portfolio insurance (puts)
@@ -749,7 +749,7 @@ xychart-beta
 - **ATM term structure**: Forward volatility expectations
 - **Wings steepen near expiration**: OTM options become more expensive (in vol terms) as expiration nears
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > **Market Quoting Convention**: Instead of quoting option prices, traders quote implied vols. A typical quote:
 > - **50-delta call**: 20.5% implied vol
 > - **ATM straddle**: 19.8% implied vol
@@ -767,7 +767,7 @@ Not all volatility surfaces are economically feasible. Arbitrage-free conditions
 | **Butterfly Spread** | Convexity constraint on $\sigma(K)$ prevents negative probabilities |
 | **Put-Call Parity** | Implied vols from calls and puts must be consistent |
 
-> **⚠️ Warning**
+> ** Warning**
 > Violations create arbitrage opportunities that sophisticated traders exploit. In practice, these violations are rare and short-lived on liquid options.
 
 ---
@@ -823,7 +823,7 @@ $$N(x) = \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]$$
       result))
 ```
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > This achieves accuracy to $10^{-7}$, sufficient for financial calculations. For even higher precision, consider Marsaglia's polar method or inverse error function implementations.
 
 ### 12.6.2 Black-Scholes Pricing Functions
@@ -865,7 +865,7 @@ $$N(x) = \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]$$
   {:price put-price :call-price call-price})
 ```
 
-> **🎯 Trading Tip**
+> ** Trading Tip**
 > **What this does**: The `black-scholes-call` function returns not just the price, but also intermediate values (d1, d2, N(d1), N(d2)) that are useful for calculating Greeks without redundant computation.
 
 ### 12.6.3 Greeks Calculation
@@ -1044,7 +1044,7 @@ Let's put it all together with a real example:
   (log :message "Iterations:" :value iterations)
   (log :message "Converged:" :value converged)
 
-  "✅ Options pricing complete!")
+  " Options pricing complete!")
 ```
 
 **Expected Output**:
@@ -1113,7 +1113,7 @@ $$\text{P&L} = \max(S_T - K, 0) + \max(K - S_T, 0) - \text{Premium Paid}$$
 - **Vega**: Positive (benefits from volatility increase)
 - **Theta**: Negative (pays time decay)
 
-> **🎯 Trading Tip: When to Use**
+> ** Trading Tip: When to Use**
 > Expect large move but uncertain direction:
 > - Before earnings announcements
 > - Pending FDA approval (biotech)
@@ -1179,7 +1179,7 @@ graph TD
 - **Vega**: Negative (benefits from volatility decrease)
 - **Theta**: Positive (collects time decay)
 
-> **🎯 Trading Tip: Risk Management**
+> ** Trading Tip: Risk Management**
 > - Set stop-loss at **2x premium received** ($6 max loss on $3 credit)
 > - Close position at **50% profit** ($1.50) to preserve capital
 > - Best during high IV regimes where premiums are rich
@@ -1221,7 +1221,7 @@ graph LR
 
 $$\text{P&L} = \underbrace{\Theta \times dt}_{\text{Time Decay}} + \underbrace{\frac{1}{2}\Gamma (\Delta S)^2}_{\text{Realized Vol P&L}}$$
 
-> **💡 Key Concept**
+> ** Key Concept**
 > If $\sigma_{\text{realized}} < \sigma_{\text{implied}}$:
 > - Theta collected > Gamma costs → **Positive P&L**
 > - You're selling expensive insurance that expires worthlessly
@@ -1281,7 +1281,7 @@ graph TD
 | Realized Vol (Expected) | 18% | 25% | **+7%** |
 | **Profit Source** | | | Vol differential |
 
-> **📊 Empirical Result: When Correlation Breaks Down**
+> ** Empirical Result: When Correlation Breaks Down**
 > - **Market crises**: Stocks decouple (idiosyncratic risks dominate)
 > - **Sector rotation**: Some sectors rally, others fall
 > - **Earnings season**: Company-specific surprises
@@ -1317,7 +1317,7 @@ $$dv_t = \kappa(\theta - v_t)dt + \sigma_v \sqrt{v_t} dW_t^v$$
 2. **Leverage effect**: $\rho < 0$ captures asymmetric volatility (price drop → vol increase)
 3. **Volatility smile**: Model generates smile through stochastic vol
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 > **Pricing**: No closed form for American options, but European options have semi-closed form via Fourier transform (Carr-Madan method).
 
 **Calibration**: Fit $\kappa, \theta, \sigma_v, \rho$ to market implied volatility surface by minimizing:
@@ -1343,7 +1343,7 @@ $$C(S, K, T) = \sum_{n=0}^{\infty} \frac{e^{-\lambda T}(\lambda T)^n}{n!} C_{\te
 
 where $\sigma_n^2 = \sigma^2 + n\sigma_J^2/T$ incorporates jump variance.
 
-> **📊 Empirical Result**
+> ** Empirical Result**
 > **Volatility Smile**: Jumps create fat tails → OTM options more expensive → Smile emerges naturally from the model.
 
 **Calibration**: Fit $\lambda, \mu_J, \sigma_J$ to market prices, especially OTM puts (sensitive to crash risk).
@@ -1382,7 +1382,7 @@ Given European call prices $C(K, T)$ for all strikes and maturities, this recove
 | **Dupire Local Vol** | Deterministic $\sigma(S,t)$ | No | Perfect fit | Interpolation | Exotic pricing |
 | **SABR** | Stochastic + Beta | No | Yes | 4 parameters | Interest rate options |
 
-> **🎯 Trading Tip: Practitioner Approach**
+> ** Trading Tip: Practitioner Approach**
 > - Use **local vol** for pricing exotics
 > - Use **stochastic vol** for risk management
 > - Use **jump models** for tail hedging
@@ -1405,7 +1405,7 @@ Given European call prices $C(K, T)$ for all strikes and maturities, this recove
 | **Transaction costs** | Models ignore bid-ask spread, slippage |
 | **Liquidity risk** | Cannot hedge continuously in practice |
 
-> **⚠️ Warning: Historical Example - LTCM (1998)**
+> ** Warning: Historical Example - LTCM (1998)**
 > Long-Term Capital Management used sophisticated models but failed to account for:
 > - Extreme correlation changes during stress (all correlations → 1)
 > - Liquidity evaporation (couldn't unwind positions)
@@ -1457,7 +1457,7 @@ $$\text{Gamma P&L} \approx \frac{1}{2}\Gamma (\Delta S)^2$$
 
 ### 12.9.4 Tail Risk and Black Swans
 
-> **📊 Empirical Result: Model vs. Reality**
+> ** Empirical Result: Model vs. Reality**
 > - **Black-Scholes predicts**: -5σ event every ~7,000 years
 > - **Actual frequency**: -5σ events occur every few years (1987, 2008, 2020)
 
@@ -1531,7 +1531,7 @@ graph TD
 - Carr, P., & Madan, D. (1999). "Option Valuation Using the Fast Fourier Transform." *Journal of Computational Finance*, 2(4), 61-73.
 - Andersen, L., & Piterbarg, V. (2010). *Interest Rate Modeling*. Deep dive into derivatives.
 
-> **🔬 Research Direction: Next Steps**
+> ** Research Direction: Next Steps**
 > - **Chapter 44**: Advanced options strategies (butterflies, calendars, ratio spreads)
 > - **Chapter 46**: Volatility surface arbitrage and relative value trading
 > - **Chapter 29**: Volatility forecasting with GARCH and realized volatility
@@ -1590,7 +1590,7 @@ timeline
 
 **The Lesson:**
 
-> **⚠️ Gamma Risk Explodes Near Expiration**
+> ** Gamma Risk Explodes Near Expiration**
 >
 > - **Time to expiration > 30 days:** Gamma manageable
 > - **Time to expiration < 7 days:** Gamma explosive
@@ -1638,7 +1638,7 @@ Option value ≈ Intrinsic + Extrinsic
 
 **The Lesson:**
 
-> **💡 Volatility Crush Formula**
+> ** Volatility Crush Formula**
 >
 > For ATM options before earnings:
 > $$\Delta \text{Value} \approx \text{Vega} \times \Delta IV + \text{Delta} \times \Delta S$$
@@ -1679,7 +1679,7 @@ But the VIX spike was SO fast that:
 
 **The Lesson:**
 
-> **⚠️ Leveraged Short Volatility = Guaranteed Blowup**
+> ** Leveraged Short Volatility = Guaranteed Blowup**
 >
 > - **Vol of vol** (volatility OF volatility) is massive
 > - VIX can spike 50-100% in hours (fat tails)
@@ -1925,19 +1925,19 @@ Options trading combines elegant mathematics with brutal practical realities. Su
 
 ### What Works:
 
-✅ **Delta-neutral volatility trading:** Buy cheap vol, sell expensive vol
-✅ **Greeks-based risk management:** Limit vega, gamma, monitor daily
-✅ **Stress testing:** Always know worst-case scenario
-✅ **Mean reversion:** IV tends to revert to historical averages
-✅ **Calendar spreads:** Exploit time decay differences
+ **Delta-neutral volatility trading:** Buy cheap vol, sell expensive vol
+ **Greeks-based risk management:** Limit vega, gamma, monitor daily
+ **Stress testing:** Always know worst-case scenario
+ **Mean reversion:** IV tends to revert to historical averages
+ **Calendar spreads:** Exploit time decay differences
 
 ### What Fails:
 
-❌ **Selling vol without limits:** LTCM ($4.6B), XIV ($2B)
-❌ **Ignoring gamma:** GameStop (billions in MM losses)
-❌ **Buying elevated IV:** Volatility crush crushes retail traders
-❌ **Leverage:** 250x leverage + tail event = wipeout
-❌ **Model worship:** Black-Scholes is a language, not truth
+ **Selling vol without limits:** LTCM ($4.6B), XIV ($2B)
+ **Ignoring gamma:** GameStop (billions in MM losses)
+ **Buying elevated IV:** Volatility crush crushes retail traders
+ **Leverage:** 250x leverage + tail event = wipeout
+ **Model worship:** Black-Scholes is a language, not truth
 
 ### Disaster Prevention Checklist:
 

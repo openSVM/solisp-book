@@ -492,7 +492,7 @@ Find interest rate on day 15, given:
 
 **When NOT to Interpolate**:
 
-⚠️ **Interpolation Pitfall**: Don't interpolate discontinuous data!
+ **Interpolation Pitfall**: Don't interpolate discontinuous data!
 
 **Bad Example**: Credit ratings
 
@@ -1640,10 +1640,10 @@ Calculate average price for 1000 ticks.
 
 **Common Pitfalls**:
 
-- ⚠️ **Over-normalization**: Don't split ticks across too many tables (join overhead)
-- ⚠️ **Premature optimization**: Start simple (arrays), optimize when profiling shows bottlenecks
-- ⚠️ **Ignoring memory alignment**: Padding matters at scale (8-byte alignment is standard)
-- ⚠️ **Underestimating I/O costs**: Disk is **100,000× slower** than RAM—cache wisely
+-  **Over-normalization**: Don't split ticks across too many tables (join overhead)
+-  **Premature optimization**: Start simple (arrays), optimize when profiling shows bottlenecks
+-  **Ignoring memory alignment**: Padding matters at scale (8-byte alignment is standard)
+-  **Underestimating I/O costs**: Disk is **100,000× slower** than RAM—cache wisely
 
 **Performance Numbers to Remember**:
 

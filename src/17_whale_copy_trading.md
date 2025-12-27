@@ -199,22 +199,22 @@ The DeFi Degen disaster exposed the critical flaw in naive copy trading: **multi
 
 **Critical safeguards that would have prevented this:**
 
-1. ✅ **Wallet clustering analysis** (detect token overlap + temporal correlation)
+1.  **Wallet clustering analysis** (detect token overlap + temporal correlation)
    - Cost: $0, Time: 5 seconds per signal
    - Would have flagged 8/12 wallets as clustered (same entity)
    - True consensus: 4 independent whales (not 12)
 
-2. ✅ **Liquidity safety ratio** (pool liquidity ≥ 3x total buy volume)
+2.  **Liquidity safety ratio** (pool liquidity ≥ 3x total buy volume)
    - Cost: $0, Time: 2 seconds
    - $120K liquidity vs $2.88M estimated copy volume = 0.04x ratio
    - Threshold: 3.0x minimum → REJECT signal
 
-3. ✅ **Anomaly detection** (first-time consensus = suspicious)
+3.  **Anomaly detection** (first-time consensus = suspicious)
    - Cost: $0, Time: 10 seconds
    - 12 whales buying same token for first time = statistical outlier
    - Should trigger manual review
 
-4. ✅ **Position limits** (never >10% portfolio per signal)
+4.  **Position limits** (never >10% portfolio per signal)
    - Cost: $0, enforced by system
    - Average trader lost $1,056 (87% of capital) = overleveraged
    - With 10% limit: Max loss $120 per trader (10% of capital)
@@ -230,11 +230,11 @@ The DeFi Degen disaster exposed the critical flaw in naive copy trading: **multi
 
 ---
 
-> **💡 STRATEGY TYPE**: Information asymmetry exploitation through systematic whale position replication
+> ** STRATEGY TYPE**: Information asymmetry exploitation through systematic whale position replication
 >
-> **🎯 TARGET RETURN**: 200-400% annualized (historical 2023-2024)
+> ** TARGET RETURN**: 200-400% annualized (historical 2023-2024)
 >
-> **⚠️ RISK LEVEL**: Medium-High (strategy diffusion risk, false signals, manipulation)
+> ** RISK LEVEL**: Medium-High (strategy diffusion risk, false signals, manipulation)
 
 ---
 
@@ -254,7 +254,7 @@ graph TD
     H --> I[Exit Synchronization]
 ```
 
-### 📊 Copy Trading Performance Metrics
+###  Copy Trading Performance Metrics
 
 | Metric | Baseline (Manual) | Optimized Bot | Elite Systems |
 |--------|------------------|---------------|---------------|
@@ -292,7 +292,7 @@ timeline
 - **No insider trading laws**: Public blockchain = public information
 - **Democratized access**: Anyone can track any wallet
 
-> **⚡ Performance Reality Check**: Top whales generate 10,000% annual returns; copiers capture 30-50% of that alpha (still 3,000-5,000% APY for early adopters).
+> ** Performance Reality Check**: Top whales generate 10,000% annual returns; copiers capture 30-50% of that alpha (still 3,000-5,000% APY for early adopters).
 
 ---
 
@@ -358,11 +358,11 @@ When whale buys, two price effects occur:
 |------|-------|--------------|
 | t=0s | Whale buys | +8% spike (market impact) |
 | t=10s | Fast copiers | +12% spike (bot competition) |
-| t=30s | Retracement | +5% (temporary exhaust) ⭐ |
+| t=30s | Retracement | +5% (temporary exhaust)  |
 | t=2m | Rally | +25% (sustained move) |
 | t=10m | FOMO peak | +40% (retail entry) |
 
-> **💡 Pro Tip**: Enter during the 20-120 second retracement window for better prices than instant copiers. This "wait-and-copy" strategy outperforms instant replication by 15-25% on average.
+> ** Pro Tip**: Enter during the 20-120 second retracement window for better prices than instant copiers. This "wait-and-copy" strategy outperforms instant replication by 15-25% on average.
 
 ---
 
@@ -398,7 +398,7 @@ Distribution:
 - Bottom quartile: $AP < 15\%$
 - Median: $AP = 38\%$
 - Top quartile: $AP > 62\%$
-- **Top 5%: $AP > 120\%$** ⭐
+- **Top 5%: $AP > 120\%$** 
 
 **Component 3: Trade Consistency** ($C$)
 
@@ -415,7 +415,7 @@ $$W = 0.4 \cdot WR + 0.4 \cdot \frac{AP}{100} + 0.2 \cdot C$$
 - $W = 0.4(0.85) + 0.4(0.887) + 0.2(45/250)$
 - $W = 0.34 + 0.355 + 0.036 = 0.731$
 
-Score 0.731 exceeds 0.7 threshold → **✅ Copy-worthy whale**.
+Score 0.731 exceeds 0.7 threshold → ** Copy-worthy whale**.
 
 ### 17.3.2 Behavioral Fingerprinting
 
@@ -439,7 +439,7 @@ pie title Whale Specialization Distribution
     "DeFi Focused (15%)" : 15
 ```
 
-> **💡 Strategy Insight**: Specialist whales often have superior edge in their niche. Copy specialists when trading their specialty (e.g., memecoin specialist buying memecoins).
+> ** Strategy Insight**: Specialist whales often have superior edge in their niche. Copy specialists when trading their specialty (e.g., memecoin specialist buying memecoins).
 
 ### 17.3.3 Wallet Clustering and Sybil Detection
 
@@ -539,7 +539,7 @@ for wallet in whale_wallets:
     subscribe_to_account(ws, wallet)
 ```
 
-> **⚡ Infrastructure Reality**: Top-tier bots spend $5K-20K/month on RPC infrastructure. This creates natural barriers to entry, protecting profitability for well-capitalized operators.
+> ** Infrastructure Reality**: Top-tier bots spend $5K-20K/month on RPC infrastructure. This creates natural barriers to entry, protecting profitability for well-capitalized operators.
 
 ### 17.4.2 Transaction Parsing and Classification
 
@@ -557,7 +557,7 @@ graph TD
     F -->|<$10K| G[Too Small - Ignore]
     F -->|≥$10K| H{New Token?}
     H -->|Already Holds| I[Rebalance - Ignore]
-    H -->|First Purchase| J[✅ COPY SIGNAL]
+    H -->|First Purchase| J[ COPY SIGNAL]
 
     style J fill:#6bcf7f
     style C fill:#ff6b6b
@@ -621,9 +621,9 @@ Single whale buy = interesting. Multiple whales buying = **strong signal**.
 | 1 whale | Weak | 58% | Optional copy |
 | 2-3 whales | Moderate | 68% | Standard copy |
 | 4-5 whales | Strong | 78% | Aggressive position |
-| 6+ whales | Very Strong | 85% | Maximum position ⭐ |
+| 6+ whales | Very Strong | 85% | Maximum position  |
 
-> **📊 Statistical Note**: 6+ whale consensus occurs in only ~0.5% of tokens, but captures 40% of 10x+ returns.
+> ** Statistical Note**: 6+ whale consensus occurs in only ~0.5% of tokens, but captures 40% of 10x+ returns.
 
 ---
 
@@ -672,7 +672,7 @@ Single whale buy = interesting. Multiple whales buying = **strong signal**.
 ```mermaid
 graph LR
     A[t=0: Whale Buy +8%] --> B[t=10s: Bot Rush +12%]
-    B --> C[t=30s: Retracement +5% ⭐]
+    B --> C[t=30s: Retracement +5% ]
     C --> D[t=2m: Rally +25%]
     D --> E[t=10m: Peak +40%]
 
@@ -699,7 +699,7 @@ graph LR
   (log :message "OPTIMAL ENTRY - Execute copy trade"))
 ```
 
-**Result**: At $t=30s$, price is -5% from detection (retracement), timing is in 20-120s window → **✅ OPTIMAL ENTRY**.
+**Result**: At $t=30s$, price is -5% from detection (retracement), timing is in 20-120s window → ** OPTIMAL ENTRY**.
 
 ### 17.5.3 Position Sizing: Kelly-Adjusted Capital Allocation
 
@@ -757,7 +757,7 @@ Primary risk: whale exits while we're still holding.
 
 ;; Alert on whale exit
 (when (> whale4_sells 0)
-  (log :message "🚨 WHALE EXIT ALERT - Consider selling"
+  (log :message " WHALE EXIT ALERT - Consider selling"
        :whale "Whale4"
        :sell_count whale4_sells
        :amount whale4_sell_amount))
@@ -771,7 +771,7 @@ Primary risk: whale exits while we're still holding.
 | **Partial exit** | Sell 50%, hold 50% | Balance risk/reward | Complex | 68% |
 | **Ignore whale exit** | Only exit on profit target | Maximum gains | Bag holding risk | 61% |
 
-> **💡 Empirical Finding**: Immediate exit upon whale sell captures 85% of max profit with 15% false positive rate (whale rebalancing, not fully exiting). Partial exit balances these trade-offs.
+> ** Empirical Finding**: Immediate exit upon whale sell captures 85% of max profit with 15% false positive rate (whale rebalancing, not fully exiting). Partial exit balances these trade-offs.
 
 ---
 
@@ -785,7 +785,7 @@ Multiple whales selling simultaneously suggests:
 graph TD
     A[Multiple Whale Sells Detected] --> B{Dump Pattern Analysis}
     B -->|≥2 whales| C{Volume Check}
-    C -->|≥20 SOL total| D[🚨 COORDINATED DUMP]
+    C -->|≥20 SOL total| D[ COORDINATED DUMP]
     D --> E[Exit ALL positions immediately]
     B -->|Single whale| F[Monitor but don't panic]
     C -->|<20 SOL| G[Normal profit-taking]
@@ -817,7 +817,7 @@ graph TD
        (>= recent_sell_volume dump_threshold)))
 
 (when dump_detected
-  (log :message "🚨 COORDINATED DUMP DETECTED - EXIT IMMEDIATELY"
+  (log :message " COORDINATED DUMP DETECTED - EXIT IMMEDIATELY"
        :sellers unique_sellers
        :volume recent_sell_volume))
 ```
@@ -870,9 +870,9 @@ timeline
 
 | Warning Sign | Historical Behavior | Current Behavior | Risk Level |
 |--------------|---------------------|------------------|------------|
-| Token liquidity shift | $500K avg liquidity | $10K liquidity | 🚨 High |
-| Position size change | 2-5% of portfolio | 50% of portfolio | 🚨 High |
-| New wallet coordination | Independent trades | Synchronized with unknowns | ⚠️ Medium |
+| Token liquidity shift | $500K avg liquidity | $10K liquidity |  High |
+| Position size change | 2-5% of portfolio | 50% of portfolio |  High |
+| New wallet coordination | Independent trades | Synchronized with unknowns |  Medium |
 
 **Defense**: Diversify across 10-20 whales. If one turns malicious, loss contained to 5-10% of portfolio.
 
@@ -903,7 +903,7 @@ timeline
 | Sharpe ratio | 3.12 | 1.45 | +1.67 |
 | Sortino ratio | 5.08 | 2.21 | +2.87 |
 
-> **💡 Key Insight**: Copy trading captures ~25% of whale alpha (218% vs 890% for top whales) while dramatically reducing risk (18.5% drawdown vs 45% drawdown for whales).
+> ** Key Insight**: Copy trading captures ~25% of whale alpha (218% vs 890% for top whales) while dramatically reducing risk (18.5% drawdown vs 45% drawdown for whales).
 
 **Comparison matrix**:
 
@@ -977,8 +977,8 @@ Instead of hand-crafted scores, use ML to predict whale profitability:
 ```mermaid
 graph TD
     A[Whale Prediction Models] --> B[Linear Scoring: R²=0.29]
-    A --> C[Random Forest: R²=0.42 ⭐]
-    A --> D[XGBoost: R²=0.45 ⭐⭐]
+    A --> C[Random Forest: R²=0.42 ]
+    A --> D[XGBoost: R²=0.45 ]
     A --> E[Neural Network: R²=0.38]
 
     style C fill:#6bcf7f
@@ -1014,7 +1014,7 @@ if 'AI' in narratives['Solana'] and 'AI' not in narratives['Base']:
     # Front-run cross-chain expansion
 ```
 
-> **⚡ Alpha Opportunity**: Cross-chain narrative detection provides 24-72 hour lead time before whale expands to other chains.
+> ** Alpha Opportunity**: Cross-chain narrative detection provides 24-72 hour lead time before whale expands to other chains.
 
 ### 17.8.3 Temporal Pattern Exploitation
 
@@ -1072,7 +1072,7 @@ xychart-beta
 - **Market manipulation**: If coordination with whale to pump-and-dump, illegal
 - **Insider trading**: If copying whale based on non-public information, potentially illegal
 
-> **⚠️ Legal Disclaimer**: This textbook is for educational purposes only. Consult legal counsel before deploying copy trading strategies at scale or managing others' money.
+> ** Legal Disclaimer**: This textbook is for educational purposes only. Consult legal counsel before deploying copy trading strategies at scale or managing others' money.
 
 ### 17.9.2 Ethical Considerations
 
@@ -1084,7 +1084,7 @@ xychart-beta
 
 **Counter-argument**: Markets inherently competitive. Whales adapt (use private mempools, split trades) or accept lower returns.
 
-> **💭 Philosophical Note**: Each trader must decide for themselves. This textbook presents techniques; readers decide whether/how to use them ethically.
+> ** Philosophical Note**: Each trader must decide for themselves. This textbook presents techniques; readers decide whether/how to use them ethically.
 
 ---
 
@@ -1418,20 +1418,20 @@ High-volume wash trading whales appear at top of leaderboards:
 
     (if (< net-to-volume-ratio 0.10)
         (do
-          (log :message "🚨 LIKELY WASH TRADING")
+          (log :message " LIKELY WASH TRADING")
           (log :message "   Net position <10% of volume")
           (log :message "   Recommendation: EXCLUDE from whale tracking")
           {:wash-trading true :ratio net-to-volume-ratio})
 
         (do
-          (log :message "✅ LEGITIMATE TRADING PATTERN")
+          (log :message " LEGITIMATE TRADING PATTERN")
           {:wash-trading false :ratio net-to-volume-ratio}))))
 ```
 
 **Thresholds:**
-- Net-to-volume ratio > 30%: ✅ Legitimate trader
-- Ratio 10-30%: ⚠️ Possible partial wash trading
-- Ratio < 10%: 🚨 **Likely wash trading—exclude**
+- Net-to-volume ratio > 30%:  Legitimate trader
+- Ratio 10-30%:  Possible partial wash trading
+- Ratio < 10%:  **Likely wash trading—exclude**
 
 ---
 
@@ -1553,21 +1553,21 @@ timeline
 
     (if (>= avg-overlap 0.50)
         (do
-          (log :message "🚨 HIGH CROSS-CHAIN CORRELATION")
+          (log :message " HIGH CROSS-CHAIN CORRELATION")
           (log :message "   Same entity likely controls LP on multiple chains")
           (log :message "   Cross-chain trap scenario: 85% overlap")
           (log :message "   ⛔ FALSE DIVERSIFICATION - Avoid")
           {:correlated true :overlap avg-overlap})
 
         (do
-          (log :message "✅ INDEPENDENT CHAINS")
+          (log :message " INDEPENDENT CHAINS")
           {:correlated false :overlap avg-overlap}))))
 ```
 
 **Thresholds:**
-- LP overlap < 20%: ✅ True diversification
-- LP overlap 20-50%: ⚠️ Moderate correlation risk
-- LP overlap > 50%: 🚨 **High correlation—false diversification**
+- LP overlap < 20%:  True diversification
+- LP overlap 20-50%:  Moderate correlation risk
+- LP overlap > 50%:  **High correlation—false diversification**
 
 ---
 
@@ -1608,12 +1608,12 @@ timeline
 4. False sense of security from diversification (without checking correlation)
 
 **The solution:** Production copy trading requires:
-- ✅ Sybil detection (wallet clustering analysis)
-- ✅ Liquidity safety ratios (3x minimum)
-- ✅ Anomaly detection (behavioral shifts = alert)
-- ✅ Net position analysis (wash trading filter)
-- ✅ Cross-chain correlation checks (LP entity overlap)
-- ✅ Diversification across 20-30 whales (contain single failures)
+-  Sybil detection (wallet clustering analysis)
+-  Liquidity safety ratios (3x minimum)
+-  Anomaly detection (behavioral shifts = alert)
+-  Net position analysis (wash trading filter)
+-  Cross-chain correlation checks (LP entity overlap)
+-  Diversification across 20-30 whales (contain single failures)
 
 Cost: $0
 Time: 30-60 seconds per signal
@@ -1644,7 +1644,7 @@ The solution: **Automate all safety checks.** This section presents a production
    HOW: Jaccard similarity + temporal correlation + transfer graph analysis"
 
   (do
-    (log :message "🔍 SYBIL CLUSTERING ANALYSIS")
+    (log :message " SYBIL CLUSTERING ANALYSIS")
     (log :message "   Analyzing" :value (length whale-wallets) :unit "whales")
 
     ;; Store clustering scores for all pairs
@@ -1696,7 +1696,7 @@ The solution: **Automate all safety checks.** This section presents a production
                      :transfer transfer-score}))
 
                 (log :message "")
-                (log :message "🚨 CLUSTER DETECTED")
+                (log :message " CLUSTER DETECTED")
                 (log :message "   Wallet A:" :value (substring wallet-a 0 8))
                 (log :message "   Wallet B:" :value (substring wallet-b 0 8))
                 (log :message "   Score:" :value cluster-score)
@@ -1817,25 +1817,25 @@ The solution: **Automate all safety checks.** This section presents a production
     ;; DeFi Degen comparison
     (when (< safety-ratio 0.50)
       (log :message "")
-      (log :message "   ⚠️ WORSE than DeFi Degen (0.04x ratio)"))
+      (log :message "    WORSE than DeFi Degen (0.04x ratio)"))
 
     ;; Risk classification
     (if (>= safety-ratio 3.0)
         (do
-          (log :message "   ✅ SAFE - Sufficient exit liquidity")
+          (log :message "    SAFE - Sufficient exit liquidity")
           {:safe true
            :ratio safety-ratio
            :max-position-pct 100})
 
         (if (>= safety-ratio 1.5)
             (do
-              (log :message "   ⚠️ MARGINAL - Reduce position size")
+              (log :message "    MARGINAL - Reduce position size")
               {:safe "marginal"
                :ratio safety-ratio
                :max-position-pct 25})  ;; Only 25% of normal position
 
             (do
-              (log :message "   🚨 DANGEROUS - Insufficient liquidity")
+              (log :message "    DANGEROUS - Insufficient liquidity")
               (log :message "   Ratio" :value safety-ratio :unit "x vs 3.0x required")
               (log :message "   ⛔ REJECT SIGNAL")
               {:safe false
@@ -1844,15 +1844,15 @@ The solution: **Automate all safety checks.** This section presents a production
 ```
 
 **Thresholds:**
-- **≥ 3.0x:** ✅ SAFE (full position allowed)
-- **1.5-3.0x:** ⚠️ MARGINAL (25% position max)
-- **< 1.5x:** 🚨 DANGEROUS (reject signal)
+- **≥ 3.0x:**  SAFE (full position allowed)
+- **1.5-3.0x:**  MARGINAL (25% position max)
+- **< 1.5x:**  DANGEROUS (reject signal)
 
 **DeFi Degen would have been rejected:**
 - Pool liquidity: $120K
 - Total pressure: $2.88M
 - Ratio: 0.04x (way below 1.5x threshold)
-- Result: **REJECT** ✅
+- Result: **REJECT** 
 
 ---
 
@@ -1874,7 +1874,7 @@ The solution: **Automate all safety checks.** This section presents a production
 
   (do
     (log :message "")
-    (log :message "🧮 CLUSTER-AWARE CONSENSUS CALCULATION")
+    (log :message " CLUSTER-AWARE CONSENSUS CALCULATION")
 
     ;; Get detected clusters
     (define clusters (get clustering-data :clusters))
@@ -1957,7 +1957,7 @@ The solution: **Automate all safety checks.** This section presents a production
     ;; DeFi Degen comparison
     (when (< independent-whale-count (* (length whale-signals) 0.5))
       (log :message "")
-      (log :message "   ⚠️ >50% reduction after clustering")
+      (log :message "    >50% reduction after clustering")
       (log :message "   Similar to DeFi Degen: 12 → 4 real whales"))
 
     {:raw-count (length whale-signals)
@@ -2080,7 +2080,7 @@ Whale copy trading exploits information asymmetry and skill differentials in cry
 
 ```mermaid
 graph TD
-    A[Copy Trading Strategy] --> B[Early Adopters 2023-2024: 437% APY ⭐]
+    A[Copy Trading Strategy] --> B[Early Adopters 2023-2024: 437% APY ]
     A --> C[Current Entrants 2024: 100-300% APY]
     A --> D[Future Entrants 2025+: Marginal/Negative?]
 

@@ -1314,10 +1314,10 @@ where $c = -\frac{\text{Cov}(X,Y)}{\text{Var}(X)}$ is the optimal coefficient.
 
 **When to use QMC:**
 
-- ✅ Smooth payoffs (European options, vanilla swaps)
-- ✅ Low-to-moderate dimensions (<50)
-- ❌ Discontinuous payoffs (digital options)—QMC can be worse
-- ❌ Path-dependent with early exercise (American options)—randomization needed
+-  Smooth payoffs (European options, vanilla swaps)
+-  Low-to-moderate dimensions (<50)
+-  Discontinuous payoffs (digital options)—QMC can be worse
+-  Path-dependent with early exercise (American options)—randomization needed
 
 ---
 
@@ -1626,10 +1626,10 @@ where $\text{Corr}(dW_t^S, dW_t^V) = \rho$.
 
 **Common Pitfalls:**
 
-- ⚠️ **Ignoring fat tails**: Normal distributions underestimate crash risk—use jump-diffusion
-- ⚠️ **Constant volatility**: GARCH shows volatility clusters—use time-varying vol
-- ⚠️ **Overfitting calibration**: Out-of-sample validation essential
-- ⚠️ **Discretization error**: Use small $\Delta t$ (≤ 1/252 for daily data)
+-  **Ignoring fat tails**: Normal distributions underestimate crash risk—use jump-diffusion
+-  **Constant volatility**: GARCH shows volatility clusters—use time-varying vol
+-  **Overfitting calibration**: Out-of-sample validation essential
+-  **Discretization error**: Use small $\Delta t$ (≤ 1/252 for daily data)
 
 **Computational Efficiency:**
 

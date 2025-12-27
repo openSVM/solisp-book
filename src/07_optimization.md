@@ -396,10 +396,10 @@ v_t &= \beta_2 v_{t-1} + (1-\beta_2) (\nabla f(\theta_t))^2 \\
 
 **When to use Adam:**
 
-- ✅ Complex, non-convex optimization
-- ✅ Many parameters with different scales
-- ✅ Noisy gradients
-- ❌ Simple convex problems (vanilla GD is fine)
+-  Complex, non-convex optimization
+-  Many parameters with different scales
+-  Noisy gradients
+-  Simple convex problems (vanilla GD is fine)
 
 ---
 
@@ -417,8 +417,8 @@ $$f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda) f(y)$$
 
 **Examples:**
 
-- ✅ Convex: $f(x) = x^2$, $f(x) = e^x$, $f(x) = |x|$
-- ❌ Not convex: $f(x) = x^3$, $f(x) = \sin(x)$
+-  Convex: $f(x) = x^2$, $f(x) = e^x$, $f(x) = |x|$
+-  Not convex: $f(x) = x^3$, $f(x) = \sin(x)$
 
 **Why this matters:**
 
@@ -886,8 +886,8 @@ But many trading problems violate these:
 
 | Aspect | Genetic Algorithm | Gradient Descent |
 |--------|-------------------|------------------|
-| Requires derivatives | ❌ No | ✅ Yes |
-| Handles discrete params | ✅ Yes | ❌ No |
+| Requires derivatives |  No |  Yes |
+| Handles discrete params |  Yes |  No |
 | Global optimum | Maybe (stochastic) | Only if convex |
 | Computational cost | High (5000+ evaluations) | Low (100 evaluations) |
 | Best for | Complex, black-box | Smooth, differentiable |
@@ -1559,11 +1559,11 @@ Full Kelly maximizes growth but has high volatility. Half-Kelly sacrifices some 
 
 **Common Pitfalls:**
 
-- ⚠️ **Overfitting:** In-sample optimization ≠ future performance → use walk-forward
-- ⚠️ **Ignoring costs:** Theoretical optimum may be unprofitable after fees
-- ⚠️ **Parameter instability:** Optimal parameters change over time → re-optimize periodically
-- ⚠️ **Curse of dimensionality:** Grid search fails beyond 3 parameters → use Bayesian optimization
-- ⚠️ **Local optima:** Gradient descent gets stuck → use multiple random starts or GA
+-  **Overfitting:** In-sample optimization ≠ future performance → use walk-forward
+-  **Ignoring costs:** Theoretical optimum may be unprofitable after fees
+-  **Parameter instability:** Optimal parameters change over time → re-optimize periodically
+-  **Curse of dimensionality:** Grid search fails beyond 3 parameters → use Bayesian optimization
+-  **Local optima:** Gradient descent gets stuck → use multiple random starts or GA
 
 **Performance Benchmarks (2-parameter problem):**
 

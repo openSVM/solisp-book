@@ -77,7 +77,7 @@ function tend(uint id, uint lot, uint bid) external {
 ```
 
 **The critical flaw:** `require(bid >= auctions[id].bid)` with `initial bid = 0` means:
-- First bid of 0 DAI: ✅ Accepted (0 >= 0)
+- First bid of 0 DAI:  Accepted (0 >= 0)
 - Subsequent bids only need to beat 0 DAI
 - But gas wars prevented anyone from submitting even 1 DAI bids
 
@@ -118,16 +118,16 @@ While(other_bots_competing):
 **The Flashbots solution (launched June 2020, 3 months later):**
 
 **Problem 1: Gas wars waste money**
-- ❌ Pre-Flashbots: 80-90% failed transactions
-- ✅ Flashbots bundles: 0% failed transactions (simulate before submit)
+-  Pre-Flashbots: 80-90% failed transactions
+-  Flashbots bundles: 0% failed transactions (simulate before submit)
 
 **Problem 2: Network congestion prevents fair competition**
-- ❌ Pre-Flashbots: Highest gas price wins, but network can't handle volume
-- ✅ Flashbots bundles: Private mempool, validators include best bundles
+-  Pre-Flashbots: Highest gas price wins, but network can't handle volume
+-  Flashbots bundles: Private mempool, validators include best bundles
 
 **Problem 3: No atomicity guarantees**
-- ❌ Pre-Flashbots: Bid transaction may land but auction state changed
-- ✅ Flashbots bundles: All-or-nothing execution
+-  Pre-Flashbots: Bid transaction may land but auction state changed
+-  Flashbots bundles: All-or-nothing execution
 
 **How bundles would have prevented zero-bid attack:**
 
@@ -151,7 +151,7 @@ While(other_bots_competing):
 |--------|--------------------------|-------------------|
 | Failed transactions | 80-90% | 0% (simulate first) |
 | Gas wasted | $2.1M | $0 (revert if invalid) |
-| Zero-bid exploitation | ✅ Possible (network congestion) | ❌ Impossible (atomic bundles) |
+| Zero-bid exploitation |  Possible (network congestion) |  Impossible (atomic bundles) |
 | Competitive outcome | Winner: whoever avoids gas wars | Winner: highest tip/best execution |
 | MakerDAO deficit | $4.5M bad debt | $0 (bids compete fairly) |
 
@@ -165,19 +165,19 @@ Black Thursday crystallized why MEV bundle infrastructure is **essential**, not 
 
 **Critical safeguards bundles provide:**
 
-1. ✅ **Atomicity** (all-or-nothing execution)
+1.  **Atomicity** (all-or-nothing execution)
    - Black Thursday: Bids could land but lose auction → wasted gas
    - Bundles: Entire bundle reverts if any step fails → $0 waste
 
-2. ✅ **Private mempools** (no gas wars)
+2.  **Private mempools** (no gas wars)
    - Black Thursday: Public mempool → priority gas auctions → 80-90% failure
    - Bundles: Private submission → validators include best bundles → 0% waste
 
-3. ✅ **Simulation before submission** (catch errors)
+3.  **Simulation before submission** (catch errors)
    - Black Thursday: Submit and hope → $2.1M wasted gas
    - Bundles: Simulate → only submit if profitable → $0 waste
 
-4. ✅ **Tip-based competition** (replaces gas auctions)
+4.  **Tip-based competition** (replaces gas auctions)
    - Black Thursday: Gas price bidding wars (destructive)
    - Bundles: Tip bidding (constructive, no waste)
 
@@ -194,7 +194,7 @@ Black Thursday crystallized why MEV bundle infrastructure is **essential**, not 
 
 ## 18.1 Introduction: The MEV Revolution
 
-> 💡 **Key Insight**
+>  **Key Insight**
 > Maximal Extractable Value (MEV) represents one of blockchain's most profound innovations—the ability to atomically order and execute multiple transactions with guaranteed inclusion or complete reversion. Unlike traditional HFT requiring expensive infrastructure, blockchain MEV is **permissionless**—anyone can compete.
 
 **The MEV economy is massive:** Over **$600 million** extracted on Ethereum alone in 2023, with Solana MEV emerging as the fastest-growing segment.
@@ -232,7 +232,7 @@ timeline
 | **Flashbots Era (2020-2022)** | Private tx pools, bundle submission | Structured bidding | Failed tx: <15% |
 | **Solana MEV (2022-present)** | Jito Block Engine, validator tips | 0.005-0.1 SOL tips | Optimized execution |
 
-> ⚠️ **Economic Reality**
+>  **Economic Reality**
 > The transition from chaotic PGA wars to structured bundle markets improved efficiency—failed transactions reduced by **80%**, gas waste minimized, and MEV value redistributed from validators to searchers and users through better execution.
 
 ---
@@ -277,7 +277,7 @@ flowchart TD
 
 #### Why Atomicity Matters
 
-> 🎯 **Strategy Enabled**
+>  **Strategy Enabled**
 > Atomicity enables complex multi-step strategies **risk-free**:
 
 | Strategy | Bundle Structure | Risk Mitigation |
@@ -330,7 +330,7 @@ Total Bundle Value,Net Profit,650
 | **Block Engine** | Simulate and rank bundles | Infrastructure fees | Maximize validator revenue |
 | **Validator** | Propose blocks with bundles | 20% of MEV (tips) | Run Jito software |
 
-> 💡 **Alignment Mechanism**
+>  **Alignment Mechanism**
 > **Profit split (Jito default):** Searcher 80% / Validator 20%
 > This alignment incentivizes validators to run Jito (higher earnings) and searchers to submit bundles (exclusive MEV access).
 
@@ -340,7 +340,7 @@ Total Bundle Value,Net Profit,650
 
 Bundle transaction order **critically** affects success.
 
-#### Correct Order ✅
+#### Correct Order 
 
 ```lisp
 ;; Optimal bundle structure
@@ -352,7 +352,7 @@ Bundle transaction order **critically** affects success.
 ])
 ```
 
-#### Incorrect Order ❌
+#### Incorrect Order 
 
 ```lisp
 ;; WRONG: Tip last - will revert if compute exhausted
@@ -364,7 +364,7 @@ Bundle transaction order **critically** affects success.
 ])
 ```
 
-> ⚠️ **Critical Error**
+>  **Critical Error**
 > If compute units exhausted before reaching tip, transaction fails, bundle rejected.
 
 ---
@@ -437,7 +437,7 @@ $$\log(\text{Tip}) \sim N(\mu=-4.6, \sigma=0.8)$$
 ;; Result: optimal_tip = 0.024 SOL
 ```
 
-> 💡 **Calibration Strategy**
+>  **Calibration Strategy**
 > Observe historical tips for similar bundle types (snipes, arbs, sandwiches), position bid at **80-90th percentile** to achieve ~85% landing probability.
 
 ---
@@ -470,15 +470,15 @@ With calibration constant $k \approx 50$.
 
 | Tip (SOL) | P(Land) | Net Profit | Expected Value | Optimal? |
 |-----------|---------|------------|----------------|----------|
-| 0.005 | 22% | 1.495 | 0.329 | ❌ |
-| 0.010 | 39% | 1.490 | 0.581 | ❌ |
-| 0.015 | 53% | 1.485 | 0.787 | ❌ |
-| 0.020 | 63% | 1.480 | 0.932 | ❌ |
-| 0.025 | 71% | 1.475 | 1.047 | ❌ |
-| 0.030 | 78% | 1.470 | 1.147 | ❌ |
-| **0.035** | **83%** | **1.465** | **1.216** | **✅** |
+| 0.005 | 22% | 1.495 | 0.329 |  |
+| 0.010 | 39% | 1.490 | 0.581 |  |
+| 0.015 | 53% | 1.485 | 0.787 |  |
+| 0.020 | 63% | 1.480 | 0.932 |  |
+| 0.025 | 71% | 1.475 | 1.047 |  |
+| 0.030 | 78% | 1.470 | 1.147 |  |
+| **0.035** | **83%** | **1.465** | **1.216** | **** |
 
-> 🎯 **Optimal Strategy**
+>  **Optimal Strategy**
 > **Tip = 0.035 SOL** maximizes EV at **1.216 SOL** (vs 1.5 SOL gross MEV).
 
 ---
@@ -547,7 +547,7 @@ flowchart TD
 (log :message "Expected value:" :value best_ev)
 ```
 
-> 💻 **Output:**
+>  **Output:**
 > ```
 > Optimal tip: 0.020 SOL
 > Expected value: 1.258 SOL
@@ -608,7 +608,7 @@ $$\text{Fee} = 400,000 \times \frac{50,000}{1,000,000} = 20,000 \text{ lamports}
 |---------|--------|---------|
 | **Too Low** | Transaction fails | "exceeded compute unit limit" error |
 | **Too High** | Wasted fees | Unnecessary cost overhead |
-| **Optimal** | 120% of measured usage | ✅ Safety margin without waste |
+| **Optimal** | 120% of measured usage |  Safety margin without waste |
 
 ---
 
@@ -641,7 +641,7 @@ pie title Landing Probability Components
     "Submission Timing" : 10
 ```
 
-> 💡 **Calibration Guide**
+>  **Calibration Guide**
 > For most bundles, modest CU price (**25,000-100,000 micro-lamports**) sufficient.
 > Extreme CU prices (1M+ micro-lamports) only necessary during network congestion (>80% block capacity).
 
@@ -701,7 +701,7 @@ sequenceDiagram
 
 **ROI:** **18.5%** on 1.0 SOL capital (instant execution).
 
-> ⚠️ **Risk Warning**
+>  **Risk Warning**
 > Price moves between bundle submission and execution. If spread compresses to <1.5% before bundle lands, becomes **unprofitable**.
 
 ---
@@ -738,7 +738,7 @@ flowchart LR
 | **A: Buy-and-Hold** | 62% | +420% | -80% | **+186%** |
 | **B: Atomic Flip** | 71% | +65% | -15% | **+42%** |
 
-> 📊 **Strategy Selection**
+>  **Strategy Selection**
 > **Variant A:** Higher EV but higher variance (aggressive)
 > **Variant B:** Lower EV but more consistent (conservative)
 
@@ -798,7 +798,7 @@ $$\text{Profit} = B \times p - \text{Tip} - \text{Slippage}$$
 
 **Return:** 0.17 SOL on 3.0 SOL capital = **5.7% return in <1 second**
 
-> 🎯 **Scaling Potential**
+>  **Scaling Potential**
 > Execute **50 backruns per day** → 285% daily return (if sustained—which it won't be due to diminishing opportunities).
 
 ---
@@ -839,7 +839,7 @@ graph TD
 
 **Projection:** If linear trend continues, tips reach **5-7% of gross MEV** by end of 2024, substantially reducing searcher profitability.
 
-> ⚠️ **Mitigation Strategy**
+>  **Mitigation Strategy**
 > Focus on MEV opportunities with **informational edge** (proprietary signals, faster infrastructure, better algorithms) where pure tip bidding insufficient.
 
 ---
@@ -863,9 +863,9 @@ Not all submitted bundles land.
 
 | Bot Quality | Landing Rate | Interpretation |
 |-------------|--------------|----------------|
-| Well-optimized | 60-75% | ✅ Competitive |
-| Poorly optimized | 20-40% | ⚠️ Needs improvement |
-| Highly competitive niche | <10% | ❌ Consider alternatives |
+| Well-optimized | 60-75% |  Competitive |
+| Poorly optimized | 20-40% |  Needs improvement |
+| Highly competitive niche | <10% |  Consider alternatives |
 
 **Economic viability:** Need **3:1 profit ratio** to overcome 25% landing rate:
 
@@ -899,7 +899,7 @@ mindmap
       Protocol governance
 ```
 
-> 📊 **Prevalence Data**
+>  **Prevalence Data**
 > ~**5-10%** of validators employ some censorship (Ethereum data). Solana likely similar.
 
 **Mitigation:** Submit bundles to **multiple validators** simultaneously, diversify across validator set.
@@ -965,11 +965,11 @@ pie title Bundle Failure Modes
 ;; Decision threshold
 (define min_ev_threshold 0.5)
 (if (> expected_value min_ev_threshold)
-    (log :message "✅ Bundle viable - SUBMIT")
-    (log :message "❌ Bundle not viable - SKIP"))
+    (log :message " Bundle viable - SUBMIT")
+    (log :message " Bundle not viable - SKIP"))
 ```
 
-> 🎯 **Decision Rule**
+>  **Decision Rule**
 > Only submit if EV >**0.5 SOL** (ensures positive expectation accounting for failures).
 
 ---
@@ -989,19 +989,19 @@ Our bundles can be sandwiched by other MEV bots.
 
 (when (> size_ratio 0.1)  ;; >10% of pool
   (set! sandwich_risk_score (+ sandwich_risk_score 0.4))
-  (log :message "⚠️ Large trade size - increased risk"))
+  (log :message " Large trade size - increased risk"))
 
 ;; Factor 2: Pool volume (attracts sandwichers)
 (define pool_volume_24h 500.0)
 (when (> pool_volume_24h 100)
   (set! sandwich_risk_score (+ sandwich_risk_score 0.3))
-  (log :message "⚠️ High volume pool - increased risk"))
+  (log :message " High volume pool - increased risk"))
 
 ;; Mitigation: Using bundle reduces risk 80%
 (define using_bundle true)
 (when using_bundle
   (set! sandwich_risk_score (* sandwich_risk_score 0.2))
-  (log :message "✅ Bundle protection applied"))
+  (log :message " Bundle protection applied"))
 
 (log :message "Final sandwich risk score:" :value sandwich_risk_score)
 ;; Output: Risk score 0.7 → After bundle: 0.14 (acceptable)
@@ -1013,7 +1013,7 @@ Our bundles can be sandwiched by other MEV bots.
 
 ### 18.8.1 Backtesting Results
 
-> 📊 **Test Configuration**
+>  **Test Configuration**
 > **Period:** 3 months (Oct-Dec 2023 Solana)
 > **Strategy:** Cross-DEX arbitrage bundles
 > **Capital:** 10 SOL
@@ -1023,7 +1023,7 @@ Our bundles can be sandwiched by other MEV bots.
 | Metric | Value | Notes |
 |--------|-------|-------|
 | Total bundles submitted | 1,247 | ~14 per day |
-| Landed bundles | 823 (66%) | ✅ Good success rate |
+| Landed bundles | 823 (66%) |  Good success rate |
 | Profitable bundles | 758 (92% of landed) | Excellent efficiency |
 | Total gross profit | 42.3 SOL | 423% raw return |
 | Total tips paid | 11.8 SOL | 28% of gross profit |
@@ -1045,7 +1045,7 @@ bar
     "Buy & Hold SOL" : 28
 ```
 
-> 💡 **Key Insight**
+>  **Key Insight**
 > MEV bundles **outperformed** buy-and-hold by **10.8x** (303% vs 28%).
 
 ---
@@ -1067,8 +1067,8 @@ bar
 | Month | Net Profit (SOL) | Bundles Landed | Avg Profit/Bundle | Trend |
 |-------|------------------|----------------|-------------------|-------|
 | Oct | 14.2 | 312 | 0.046 | Baseline |
-| Nov | 10.8 | 285 | 0.038 | ⬇️ -24% |
-| Dec | 5.3 | 226 | 0.023 | ⬇️ -51% |
+| Nov | 10.8 | 285 | 0.038 |  -24% |
+| Dec | 5.3 | 226 | 0.023 |  -51% |
 
 ---
 
@@ -1087,7 +1087,7 @@ pie title Profitability Decay Factors
 | **Tip escalation** | -35% | Bidding wars erode profits |
 | **Market efficiency** | -25% | Arbitrage gaps closing |
 
-> ⚠️ **Projection Warning**
+>  **Projection Warning**
 > Current trajectory suggests strategy may become **marginally profitable or unprofitable by Q2 2024** without adaptation.
 
 ---
@@ -1139,9 +1139,9 @@ gantt
 
 | Aspect | Advantage | Disadvantage |
 |--------|-----------|--------------|
-| **Slippage** | ✅ Lower per-bundle slippage | ❌ Must all land (5× risk) |
-| **Sandwich Risk** | ✅ Small position each block | ❌ Price may move against position |
-| **Complexity** | ❌ Coordination overhead | ❌ Higher failure probability |
+| **Slippage** |  Lower per-bundle slippage |  Must all land (5× risk) |
+| **Sandwich Risk** |  Small position each block |  Price may move against position |
+| **Complexity** |  Coordination overhead |  Higher failure probability |
 
 ---
 
@@ -1153,8 +1153,8 @@ gantt
 
 | Bridge Type | Latency | Cost | Viability |
 |-------------|---------|------|-----------|
-| Canonical | Minutes to hours | 0.01-0.05% | ❌ Too slow |
-| Fast bridges (Across, Hop) | Seconds | 0.1-0.5% | ✅ Potentially viable |
+| Canonical | Minutes to hours | 0.01-0.05% |  Too slow |
+| Fast bridges (Across, Hop) | Seconds | 0.1-0.5% |  Potentially viable |
 
 **Profitability requirement:** Requires **>2% spread** to overcome fees and risk.
 
@@ -1322,8 +1322,8 @@ Over 20,000-50,000 major MEV events from 2017-2020, this adds up to **$100M+ in 
     ;; Result: 0% wasted gas (vs 80-90% in PGA approach)
 
     (if (bundle-included? result)
-        (log :message "✅ Bundle landed - profit realized, tip paid")
-        (log :message "❌ Bundle rejected - NO GAS WASTED"))
+        (log :message " Bundle landed - profit realized, tip paid")
+        (log :message " Bundle rejected - NO GAS WASTED"))
   ))
 ```
 
@@ -1427,7 +1427,7 @@ contract OtherdeedsLand {
       (do
         (transfer-from msg-sender (this-contract) current-price)
         (mint-nft msg-sender)
-        (log :message "✅ Minted at Dutch auction price"
+        (log :message " Minted at Dutch auction price"
              :price current-price
              :block (current-block))))
 
@@ -1563,10 +1563,10 @@ timeline
     ;; STEP 5: Validate bundle is within limits
     (if (> final-cu 1400000)
         (do
-          (log :message "🚨 BUNDLE TOO LARGE - Simplify strategy")
+          (log :message " BUNDLE TOO LARGE - Simplify strategy")
           (return {:success false :reason "compute-limit"}))
         (do
-          (log :message "✅ Bundle within CU limits"
+          (log :message " Bundle within CU limits"
                :value final-cu
                :margin (- 1400000 final-cu))
           (return {:success true :bundle safe-bundle})))
@@ -1625,10 +1625,10 @@ This disaster shows how **naive tip strategies** destroy profitability even when
 
 | Bundle Profit | Fixed Tip | Tip % | Competitor Tip (2%) | Outcome |
 |---------------|-----------|-------|---------------------|---------|
-| **0.5 SOL** | 0.01 SOL | 2.0% | 0.01 SOL | ✅ Competitive (50% win rate) |
-| **2.0 SOL** | 0.01 SOL | 0.5% | 0.04 SOL | ❌ Outbid (10% win rate) |
-| **4.5 SOL** | 0.01 SOL | 0.2% | 0.09 SOL | ❌ Massively outbid (2% win rate) |
-| **8.0 SOL** | 0.01 SOL | 0.125% | 0.16 SOL | ❌ Never wins (0% win rate) |
+| **0.5 SOL** | 0.01 SOL | 2.0% | 0.01 SOL |  Competitive (50% win rate) |
+| **2.0 SOL** | 0.01 SOL | 0.5% | 0.04 SOL |  Outbid (10% win rate) |
+| **4.5 SOL** | 0.01 SOL | 0.2% | 0.09 SOL |  Massively outbid (2% win rate) |
+| **8.0 SOL** | 0.01 SOL | 0.125% | 0.16 SOL |  Never wins (0% win rate) |
 
 **Actual Results (February 2024, 247 opportunities):**
 
@@ -1713,9 +1713,9 @@ timeline
 
 | Tip Amount | Tip % | P(Land) | Net Profit | Expected Value |
 |------------|-------|---------|------------|----------------|
-| 0.01 SOL | 0.2% | 5% | 4.49 SOL | **0.22 SOL** ❌ |
+| 0.01 SOL | 0.2% | 5% | 4.49 SOL | **0.22 SOL**  |
 | 0.05 SOL | 1.1% | 35% | 4.45 SOL | 1.56 SOL |
-| 0.09 SOL | 2.0% | 68% | 4.41 SOL | **3.00 SOL** ✅ **OPTIMAL** |
+| 0.09 SOL | 2.0% | 68% | 4.41 SOL | **3.00 SOL**  **OPTIMAL** |
 | 0.18 SOL | 4.0% | 92% | 4.32 SOL | 3.97 SOL |
 | 0.36 SOL | 8.0% | 98% | 4.14 SOL | 4.06 SOL |
 
@@ -1754,7 +1754,7 @@ This disaster illustrates the importance of **state deduplication** across multi
 │  ├─ Submits high-priority transactions          │
 │  └─ Competes via priority gas auction           │
 │                                                 │
-│  ❌ NO COMMUNICATION BETWEEN SYSTEMS!           │
+│   NO COMMUNICATION BETWEEN SYSTEMS!           │
 │  Result: System 2 front-runs System 1          │
 └─────────────────────────────────────────────────┘
 ```
@@ -1839,7 +1839,7 @@ timeline
     ;; STEP 2: Check if already being pursued
     (if (contains *pending-opportunities* opp-hash)
         (do
-          (log :message "⚠️  DUPLICATE OPPORTUNITY - Skipping"
+          (log :message "  DUPLICATE OPPORTUNITY - Skipping"
                :hash opp-hash
                :existing-strategy (get *pending-opportunities* opp-hash))
           (return {:skip true :reason "duplicate"}))
@@ -1853,7 +1853,7 @@ timeline
                         :timestamp (now)
                         :expires (+ (now) 5000)}))  ;; 5 second TTL
 
-          (log :message "✅ Opportunity registered" :hash opp-hash)
+          (log :message " Opportunity registered" :hash opp-hash)
           (return {:skip false})))
   ))
 
@@ -1888,7 +1888,7 @@ timeline
 │  ├─ Route to Bundle Bot (high-value, atomic)    │
 │  └─ Route to Mempool Bot (low-value, fast)     │
 │                                                 │
-│  ✅ ALL SYSTEMS COORDINATE VIA SHARED STATE!   │
+│   ALL SYSTEMS COORDINATE VIA SHARED STATE!   │
 │  Result: No self-front-running                  │
 └─────────────────────────────────────────────────┘
 ```
@@ -1981,7 +1981,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
 
     (when (> safe-cu cu-limit)
       (do
-        (log :message "🚨 BUNDLE REJECTED - Compute exhaustion risk"
+        (log :message " BUNDLE REJECTED - Compute exhaustion risk"
              :estimated estimated-cu
              :limit cu-limit
              :excess (- safe-cu cu-limit))
@@ -1997,7 +1997,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
 
     (when has-circular-deps
       (do
-        (log :message "🚨 BUNDLE REJECTED - Circular state dependencies")
+        (log :message " BUNDLE REJECTED - Circular state dependencies")
         (return {:safe false
                  :reason "circular-deps"
                  :graph state-graph})))
@@ -2015,7 +2015,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
 
     (when (< simulated-profit min-profit-threshold)
       (do
-        (log :message "🚨 BUNDLE REJECTED - Below minimum profit"
+        (log :message " BUNDLE REJECTED - Below minimum profit"
              :simulated simulated-profit
              :threshold min-profit-threshold)
         (return {:safe false
@@ -2030,7 +2030,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
 
     (when (> estimated-slippage max-slippage)
       (do
-        (log :message "🚨 BUNDLE REJECTED - Excessive slippage"
+        (log :message " BUNDLE REJECTED - Excessive slippage"
              :estimated estimated-slippage
              :max max-slippage)
         (return {:safe false
@@ -2045,7 +2045,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
 
     (when (< current-balance required-balance)
       (do
-        (log :message "🚨 BUNDLE REJECTED - Insufficient balance"
+        (log :message " BUNDLE REJECTED - Insufficient balance"
              :required required-balance
              :current current-balance
              :shortfall (- required-balance current-balance))
@@ -2061,7 +2061,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
 
     (when recently-failed
       (do
-        (log :message "⚠️  BUNDLE SKIPPED - Recently failed"
+        (log :message "  BUNDLE SKIPPED - Recently failed"
              :hash bundle-hash
              :last-failure (recently-failed :timestamp))
         (return {:safe false
@@ -2069,7 +2069,7 @@ The first line of defense is **simulation**: test bundles before submitting to c
                  :hash bundle-hash})))
 
     ;; ALL CHECKS PASSED
-    (log :message "✅ BUNDLE SIMULATION PASSED - All safety checks OK"
+    (log :message " BUNDLE SIMULATION PASSED - All safety checks OK"
          :compute-cu safe-cu
          :profit simulated-profit
          :slippage estimated-slippage)
@@ -2240,7 +2240,7 @@ The second critical component is **dynamic tip calculation** to maximize expecte
     (define best-result
       (first (filter ev-results (fn [r] (= (r :tip) best-tip)))))
 
-    (log :message "✅ OPTIMAL TIP CALCULATED"
+    (log :message " OPTIMAL TIP CALCULATED"
          :gross-mev gross-mev
          :tip best-tip
          :tip-pct (* (/ best-tip gross-mev) 100)
@@ -2361,7 +2361,7 @@ The third component prevents **self-front-running** (Disaster 18.11.5) by coordi
         (do
           (define existing (get *pending-opportunities* opp-hash))
 
-          (log :message "⚠️  DUPLICATE OPPORTUNITY - Skipping"
+          (log :message "  DUPLICATE OPPORTUNITY - Skipping"
                :hash opp-hash
                :this-strategy strategy-name
                :existing-strategy (existing :strategy)
@@ -2382,7 +2382,7 @@ The third component prevents **self-front-running** (Disaster 18.11.5) by coordi
                         :expires (+ (now) *opportunity-ttl*)
                         :opportunity opportunity}))
 
-          (log :message "✅ Opportunity registered (no duplicate)"
+          (log :message " Opportunity registered (no duplicate)"
                :hash opp-hash
                :strategy strategy-name
                :expires-in-ms *opportunity-ttl*)
@@ -2483,7 +2483,7 @@ Finally, integrate all components into a **production bundle construction pipeli
 
     (when (dedup-result :duplicate)
       (do
-        (log :message "❌ ABORTED - Duplicate opportunity"
+        (log :message " ABORTED - Duplicate opportunity"
              :existing-strategy (dedup-result :existing-strategy))
         (return {:success false
                  :reason "duplicate"
@@ -2508,7 +2508,7 @@ Finally, integrate all components into a **production bundle construction pipeli
 
     (when (not (simulation-result :safe))
       (do
-        (log :message "❌ ABORTED - Safety check failed"
+        (log :message " ABORTED - Safety check failed"
              :reason (simulation-result :reason))
         (mark-opportunity-completed opp-hash "simulation-failed")
         (return {:success false
@@ -2556,7 +2556,7 @@ Finally, integrate all components into a **production bundle construction pipeli
 
     (if (= (jito-result :status) "landed")
         (do
-          (log :message "✅ BUNDLE LANDED - Profit realized!"
+          (log :message " BUNDLE LANDED - Profit realized!"
                :slot (jito-result :slot)
                :gross-profit (opportunity :estimated-profit)
                :tip (tip-result :tip)
@@ -2575,7 +2575,7 @@ Finally, integrate all components into a **production bundle construction pipeli
 
         ;; Bundle rejected or failed
         (do
-          (log :message "❌ BUNDLE FAILED"
+          (log :message " BUNDLE FAILED"
                :status (jito-result :status)
                :reason (jito-result :reason))
 
@@ -2715,10 +2715,10 @@ MEV bundle construction combines **game theory**, **real-time optimization**, an
 
 | Factor | Importance | Current Barrier | Future Requirement |
 |--------|------------|-----------------|-------------------|
-| **Speed** | ⭐⭐⭐⭐⭐ | Sub-500ms | Sub-100ms |
-| **Capital** | ⭐⭐⭐⭐ | $10K-$100K | $100K-$1M |
-| **Sophistication** | ⭐⭐⭐⭐⭐ | Advanced algorithms | AI/ML models |
-| **Information** | ⭐⭐⭐⭐⭐ | Public data | Proprietary signals |
+| **Speed** |  | Sub-500ms | Sub-100ms |
+| **Capital** |  | $10K-$100K | $100K-$1M |
+| **Sophistication** |  | Advanced algorithms | AI/ML models |
+| **Information** |  | Public data | Proprietary signals |
 
 ---
 
@@ -2739,7 +2739,7 @@ timeline
           : Likely negative after costs
 ```
 
-> 💡 **Fundamental Truth**
+>  **Fundamental Truth**
 > MEV is fundamental to blockchain design. As long as decentralized systems allow transaction reordering, MEV opportunities will exist. Searchers must **continuously innovate** to maintain profitability in this arms race.
 
 ---

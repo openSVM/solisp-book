@@ -136,8 +136,8 @@ contract BeanstalkGovernance {
 
 | Voter | BEAN Holdings | Vote | Percentage |
 |-------|---------------|------|------------|
-| **Attacker** (flash loan) | 1,084,130,000 BEAN | ✅ FOR | **79%** |
-| Legitimate users | 289,904,612 BEAN | ❌ AGAINST | 21% |
+| **Attacker** (flash loan) | 1,084,130,000 BEAN |  FOR | **79%** |
+| Legitimate users | 289,904,612 BEAN |  AGAINST | 21% |
 | **Result** | **Proposal PASSED** | - | **79% approval** |
 
 ### The Financial Breakdown
@@ -237,7 +237,7 @@ contract SafeGovernance {
 
 ## 19.1 Introduction: The Flash Loan Revolution
 
-> 💡 **Paradigm Shift**
+>  **Paradigm Shift**
 > Flash loans represent one of DeFi's most innovative primitives—**uncollateralized loans** that must be borrowed and repaid within a single atomic transaction. This seemingly paradoxical concept is enabled by blockchain atomicity: either the entire transaction sequence succeeds (including repayment), or it fully reverts as if nothing happened.
 
 **The implications are profound:** Capital constraints vanish. A trader with **$100** can execute strategies requiring **$1,000,000** by flash borrowing $999,900, using it for arbitrage, repaying with interest, and keeping the profit—**all in one transaction taking <1 second**.
@@ -277,10 +277,10 @@ timeline
 
 | Era | Capital Requirement | Arbitrage Access | Market Efficiency |
 |-----|---------------------|------------------|-------------------|
-| **Pre-Flash (2017-2019)** | $1M+ collateral | ❌ Whales only | Low (large spreads) |
-| **Post-Flash (2020+)** | $0 (atomic repayment) | ✅ Anyone with skill | High (micro-spreads) |
+| **Pre-Flash (2017-2019)** | $1M+ collateral |  Whales only | Low (large spreads) |
+| **Post-Flash (2020+)** | $0 (atomic repayment) |  Anyone with skill | High (micro-spreads) |
 
-> 📊 **Market Data**
+>  **Market Data**
 > Flash loan volume on Solana reached **$2B+** in 2023, with sophisticated searchers capturing millions in profits through arbitrage, liquidations, and complex multi-step strategies.
 
 ---
@@ -324,7 +324,7 @@ $$\text{If } (\text{Balance}_{\text{end}} < \text{Balance}_{\text{start}} + \tex
 
 No default possible → no collateral required → **infinite effective leverage** (limited only by pool liquidity).
 
-> 💡 **Democratic Finance**
+>  **Democratic Finance**
 > Flash loans **democratize capital access**. Sophisticated strategies accessible to anyone with technical skill, regardless of wealth.
 
 ---
@@ -368,7 +368,7 @@ sequenceDiagram
     end
 ```
 
-> 🎯 **Key Insight**
+>  **Key Insight**
 > Temporary insolvency allowed (borrowed 1000 SOL, haven't repaid yet), as long as **final state** solvent.
 
 ---
@@ -402,11 +402,11 @@ $$\text{Fee} = 100 \times 0.0009 = 0.09 \text{ SOL}$$
 
 | Provider | Fee (bps) | Max Loan | Adoption |
 |----------|-----------|----------|----------|
-| **Kamino** | 5 | Pool liquidity | ✅ High (lowest fee) |
-| **MarginFi** | 7 | Pool liquidity | ✅ Moderate |
-| **Solend** | 9 | Pool liquidity | ⚠️ Lower (higher fee) |
+| **Kamino** | 5 | Pool liquidity |  High (lowest fee) |
+| **MarginFi** | 7 | Pool liquidity |  Moderate |
+| **Solend** | 9 | Pool liquidity |  Lower (higher fee) |
 
-> 💡 **Competitive Equilibrium**
+>  **Competitive Equilibrium**
 > Fees compress toward marginal cost (essentially zero). Observed **0.05-0.09%** fees represent coordination equilibrium rather than true economic cost.
 
 ---
@@ -477,7 +477,7 @@ flowchart LR
 ;; Output: net_profit = 20 - 0.0495 = 19.95 SOL
 ```
 
-> 🎯 **Leverage Effect**
+>  **Leverage Effect**
 > **ROI on own capital:** 19.95 / 1.0 = **1,995% return** (vs 20% without leverage)!
 >
 > **Leverage multiplier:** 100x effective leverage, but net profit **99.75x higher** than unlevered (19.95 vs 0.2).
@@ -499,7 +499,7 @@ sequenceDiagram
 
     Note over U: Deposited 100 SOL ($10,000)<br/>Borrowed 7,000 USDC (70% LTV)
     Note over U: SOL drops 20%<br/>Collateral: $8,000<br/>Loan: $7,000 (87.5% LTV)
-    Note over U: ⚠️ Exceeds 85% threshold
+    Note over U:  Exceeds 85% threshold
 
     L->>FL: Borrow 7,000 USDC
     FL-->>L: Transfer 7,000 USDC
@@ -523,7 +523,7 @@ sequenceDiagram
 | Flash fee | -6.3 USDC | 0.09% of loan |
 | **Net profit** | **323.7 USDC** | **4.6% on borrowed capital** |
 
-> 📊 **Real-World Performance**
+>  **Real-World Performance**
 > **Empirical data (Solana lending protocols):**
 > - Average liquidation profit: **$150 per liquidation**
 > - Top bots: **50-200 liquidations per day**
@@ -597,7 +597,7 @@ flowchart LR
 
 #### Optimal Path Finding
 
-> 💻 **Algorithm Strategy**
+>  **Algorithm Strategy**
 > NP-hard problem for arbitrary graphs. Heuristics:
 
 1. **Breadth-first search:** Enumerate all paths up to depth N (typically N=4)
@@ -642,7 +642,7 @@ sequenceDiagram
 
 #### bZx Attack 1 (February 2020) - Real World Example
 
-> ⚠️ **Case Study**
+>  **Case Study**
 > **Setup:**
 > - bZx used Uniswap WBTC/ETH pool for WBTC price oracle
 > - Low liquidity pool: **$1.2M TVL**
@@ -697,7 +697,7 @@ flowchart TD
     style I fill:#d4edda
 ```
 
-> ⚠️ **Real Attack**
+>  **Real Attack**
 > **Cream Finance attack (August 2021):** **$18.8M stolen** using flash loan + reentrancy.
 
 ---
@@ -706,9 +706,9 @@ flowchart TD
 
 | Defense | Implementation | Effectiveness |
 |---------|----------------|---------------|
-| **Checks-Effects-Interactions** | Update state before external calls | ✅ High |
-| **Reentrancy Guards** | Mutex locks preventing recursive calls | ✅ High |
-| **Pull Payment Pattern** | Users withdraw vs contract sending | ✅ Moderate |
+| **Checks-Effects-Interactions** | Update state before external calls |  High |
+| **Reentrancy Guards** | Mutex locks preventing recursive calls |  High |
+| **Pull Payment Pattern** | Users withdraw vs contract sending |  Moderate |
 
 ---
 
@@ -738,7 +738,7 @@ graph TD
 
 #### Beanstalk Exploit (April 2022)
 
-> ⚠️ **Largest Governance Attack**
+>  **Largest Governance Attack**
 > **Total stolen: $182M**
 
 **Attack details:**
@@ -815,7 +815,7 @@ bar
     "Liquidations" : 40
 ```
 
-> ⚠️ **Risk Assessment**
+>  **Risk Assessment**
 > - Simple arbitrage (2 swaps): **5-10%** revert rate
 > - Complex multi-hop (4+ swaps): **15-25%** revert rate
 > - Liquidations (competitive): **30-50%** revert rate (others liquidate first)
@@ -880,7 +880,7 @@ Flash loan transactions are complex (many steps) → high gas costs.
 | 1,000 SOL | 0.90 SOL | **>0.09%** | Economies of scale |
 | 10,000 SOL | 9.05 SOL | **>0.05%** | Flash fee dominates |
 
-> 💡 **Economic Insight**
+>  **Economic Insight**
 > Small arbitrages (<0.1% spread) only profitable with large capital. Flash loans enable capturing these **micro-opportunities**.
 
 ---
@@ -917,9 +917,9 @@ flowchart TD
 
 | Strategy Type | Competing Bots | Difficulty |
 |---------------|----------------|------------|
-| Simple arbitrage (3-5 swaps) | 50-200 bots | ⚠️ High |
-| Liquidations | 100-500 bots | ⚠️ Extreme |
-| Complex multi-hop | 5-20 bots | ✅ Lower (fewer sophisticated) |
+| Simple arbitrage (3-5 swaps) | 50-200 bots |  High |
+| Liquidations | 100-500 bots |  Extreme |
+| Complex multi-hop | 5-20 bots |  Lower (fewer sophisticated) |
 
 ---
 
@@ -927,9 +927,9 @@ flowchart TD
 
 | Bot Tier | Infrastructure | Win Rate (Liquidations) | Expected Value |
 |----------|----------------|------------------------|----------------|
-| **Top-tier** | Best infrastructure, co-located nodes | 20-30% | ✅ Profitable |
-| **Mid-tier** | Good infrastructure, private RPC | 5-10% | ⚠️ Marginal |
-| **Basic** | Public RPC, standard setup | <1% | ❌ Unprofitable |
+| **Top-tier** | Best infrastructure, co-located nodes | 20-30% |  Profitable |
+| **Mid-tier** | Good infrastructure, private RPC | 5-10% |  Marginal |
+| **Basic** | Public RPC, standard setup | <1% |  Unprofitable |
 
 **Profitability requirement:**
 
@@ -939,7 +939,7 @@ $$\text{EV} = p_{\text{win}} \times \text{Profit} - (1-p_{\text{win}}) \times \t
 
 $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 
-> ⚠️ **Reality Check**
+>  **Reality Check**
 > Positive expectation, but barely. As competition intensifies, win rates drop → EV approaches **zero**.
 
 ---
@@ -988,7 +988,7 @@ $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 ;; Output: roi = 499.55%
 ```
 
-> 🎯 **Result**
+>  **Result**
 > **499% ROI** on 1 SOL capital using 9 SOL flash loan, exploiting 50% price pump.
 
 ---
@@ -1027,11 +1027,11 @@ $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 ;; Output: ev = 0.60 × 4.9955 - 0.1253 = 2.872 SOL
 
 (if (> ev 0)
-    (log :message "✅ Strategy viable - positive EV")
-    (log :message "❌ Strategy not viable - negative EV"))
+    (log :message " Strategy viable - positive EV")
+    (log :message " Strategy not viable - negative EV"))
 ```
 
-> 📊 **Interpretation**
+>  **Interpretation**
 > Despite **40% failure rate**, EV remains strongly positive at **2.87 SOL** (287% ROI on 1 SOL capital).
 
 ---
@@ -1067,7 +1067,7 @@ $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 (log :message "MAXIMUM PROFIT:" :value max_profit)
 ```
 
-> 💡 **Finding**
+>  **Finding**
 > Larger loans generally more profitable (fixed costs amortized), but constrained by:
 > - **Pool liquidity** (can't borrow more than available)
 > - **Slippage** (large trades impact prices)
@@ -1081,7 +1081,7 @@ $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 
 ### 19.7.1 Backtesting Results
 
-> 📊 **Test Configuration**
+>  **Test Configuration**
 > **Period:** 2 months (Jan-Feb 2024 Solana)
 > **Strategy:** Cross-DEX arbitrage with flash loans
 > **Capital:** 5 SOL (own capital)
@@ -1091,8 +1091,8 @@ $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 | Metric | Value | Interpretation |
 |--------|-------|----------------|
 | Total flash loan attempts | 186 | ~3 per day |
-| Successful executions | 134 (72%) | ✅ Good success rate |
-| Reverted transactions | 52 (28%) | ⚠️ Expected failure rate |
+| Successful executions | 134 (72%) |  Good success rate |
+| Reverted transactions | 52 (28%) |  Expected failure rate |
 | Average flash loan size | 95 SOL | 19x leverage |
 | Average gross profit (successful) | 4.2 SOL | Per successful trade |
 | Average flash fee (successful) | 0.047 SOL | 5 bps on 95 SOL |
@@ -1117,7 +1117,7 @@ bar
     "Buy & Hold" : 22
 ```
 
-> 💡 **Leverage Amplification**
+>  **Leverage Amplification**
 > **Comparison:**
 > - **Non-leveraged arbitrage** (same opportunities): ROI ~180% (2 months)
 > - **Flash loans** amplify returns **60x** (10,872% vs 180%)
@@ -1130,7 +1130,7 @@ bar
 |--------|-------|------------|
 | Largest drawdown | -8.2 SOL | Single day with 8 consecutive fails |
 | Longest dry spell | 4 days | No profitable opportunities |
-| Sharpe ratio | 8.4 | ✅ Exceptional risk-adjusted returns |
+| Sharpe ratio | 8.4 |  Exceptional risk-adjusted returns |
 
 ---
 
@@ -1141,7 +1141,7 @@ bar
 | Month | Avg Profit/Trade | Success Rate | Monthly Profit | Trend |
 |-------|------------------|--------------|----------------|-------|
 | **Jan** | 4.82 SOL | 78% | 312 SOL | Baseline |
-| **Feb** | 3.51 SOL | 68% | 231 SOL | ⬇️ -26% profit |
+| **Feb** | 3.51 SOL | 68% | 231 SOL |  -26% profit |
 
 ---
 
@@ -1171,7 +1171,7 @@ flowchart TD
 - Faster bots win (median winning bot latency: **280ms → 180ms**)
 - Spreads compress (average arb spread: **1.8% → 1.2%**)
 
-> ⚠️ **Projection**
+>  **Projection**
 > Current trajectory suggests profits **halve every 3 months**. Strategy may become marginally profitable by **Q3 2024**.
 
 ---
@@ -1220,10 +1220,10 @@ flowchart TD
 
 | Aspect | Impact | Assessment |
 |--------|--------|------------|
-| **Capital access** | 225K vs 100K max | ✅ 2.25x more capital |
-| **Fees** | 3× flash loan fees | ⚠️ Higher cost |
-| **Complexity** | Multiple repayments | ⚠️ Higher revert risk |
-| **Use case** | Extremely large opportunities | ✅ Otherwise impossible |
+| **Capital access** | 225K vs 100K max |  2.25x more capital |
+| **Fees** | 3× flash loan fees |  Higher cost |
+| **Complexity** | Multiple repayments |  Higher revert risk |
+| **Use case** | Extremely large opportunities |  Otherwise impossible |
 
 ---
 
@@ -1268,7 +1268,7 @@ sequenceDiagram
 | **Flash fee** | 0.05 SOL | 0.05 SOL | Same |
 | **Min profitable threshold** | 0.10 SOL | 0.15 SOL | Higher |
 
-> 💡 **Profitability Condition**
+>  **Profitability Condition**
 > Net positive if arbitrage profit **>0.15 SOL** (flash fee + Jito tip + compute fees).
 
 ---
@@ -1307,7 +1307,7 @@ flowchart LR
 
 **Profitability threshold:** Need **>1% cross-chain spread** to overcome fees.
 
-> 📊 **Empirical Finding**
+>  **Empirical Finding**
 > Cross-chain flash arb viable during **high volatility** (crypto pumps/dumps, news events).
 > Normal conditions: spreads <0.3%, **unprofitable**.
 
@@ -1743,14 +1743,14 @@ timeline
       (define deviation (abs (/ (- price median-price) median-price)))
       (when (> deviation 0.01)  ;; 1% threshold for stablecoins
         (do
-          (log :message "🚨 ORACLE MANIPULATION DETECTED"
+          (log :message " ORACLE MANIPULATION DETECTED"
                :source price
                :median median-price
                :deviation (* deviation 100))
           (return {:valid false :reason "manipulation-detected"}))))
 
     ;; All oracles agree within 1%
-    (log :message "✅ Multi-oracle validation passed"
+    (log :message " Multi-oracle validation passed"
          :median-price median-price
          :deviation-max (* (max-deviation prices median-price) 100))
 
@@ -2187,7 +2187,7 @@ Now that we've documented **$632M+ in preventable disasters**, let's build a **p
       (define deviation (abs (/ (- price median-price) median-price)))
       (when (> deviation 0.05)
         (do
-          (log :message "🚨 ORACLE MANIPULATION DETECTED"
+          (log :message " ORACLE MANIPULATION DETECTED"
                :price price :median median-price
                :deviation-pct (* deviation 100))
           (set! manipulation-detected true))))
@@ -2351,7 +2351,7 @@ Now that we've documented **$632M+ in preventable disasters**, let's build a **p
     ;; STAGE 6: Verify Results
     (define actual-net (flash-result :net-profit))
 
-    (log :message "✅ FLASH LOAN ARBITRAGE COMPLETE"
+    (log :message " FLASH LOAN ARBITRAGE COMPLETE"
          :gross (flash-result :gross-profit)
          :fees (flash-result :total-fees)
          :net actual-net
@@ -2498,7 +2498,7 @@ Before executing, validate prices across **3 independent oracle sources** to det
 ;; Max deviation: 0.04% (all oracles agree within 0.05%)
 ;; Spot vs TWAP deviation: 0.01% (no flash loan manipulation)
 
-;; Result: ✅ VALIDATION PASSED
+;; Result:  VALIDATION PASSED
 ```
 
 **Validation results:**
@@ -2510,9 +2510,9 @@ Before executing, validate prices across **3 independent oracle sources** to det
 | **DEX TWAP (30m)** | $98.51 | $100.19 | 0% / -0.01% |
 | **Spot Price** | $98.50 | $100.20 | -0.01% / +0.01% |
 | **Median** | **$98.51** | **$100.20** | - |
-| **Max Deviation** | **0.03%** | **0.02%** | ✅ **< 5% threshold** |
+| **Max Deviation** | **0.03%** | **0.02%** |  **< 5% threshold** |
 
-**Validation verdict:** ✅ **PASSED** — All oracles agree, no manipulation detected. Safe to proceed.
+**Validation verdict:**  **PASSED** — All oracles agree, no manipulation detected. Safe to proceed.
 
 **Value:** This check prevented 18 oracle manipulation attempts in January backtest ($45 SOL saved).
 
@@ -2550,7 +2550,7 @@ Calculate optimal flash loan allocation across multiple pools to minimize fees:
 | **Balancer** | 95 SOL | 0 | **0 SOL** | Sufficient liquidity, zero fee |
 | **dYdX** | 0 SOL | 0 | 0 SOL | Not needed |
 | **Aave** | 0 SOL | 9 | 0 SOL | Not needed |
-| **Total** | **95 SOL** | **0 avg** | **0 SOL** | ✅ **Optimal allocation** |
+| **Total** | **95 SOL** | **0 avg** | **0 SOL** |  **Optimal allocation** |
 
 **Value:** Multi-pool optimization saves **$8.55 per trade** (0.0855 SOL fee avoided).
 
@@ -2594,7 +2594,7 @@ Refine profit estimate with **actual slippage simulation**:
 (define roi-pct (* (/ net-profit 5.0) 100))
 ;; roi = (1.329 / 5.0) × 100 = 26.58%
 
-(log :message "✅ PROFITABLE - Proceed with execution"
+(log :message " PROFITABLE - Proceed with execution"
      :net-profit 1.329
      :roi-pct 26.58)
 ```
@@ -2613,7 +2613,7 @@ Refine profit estimate with **actual slippage simulation**:
 | **ROI on 5 SOL** | **26.58%** | In <1 second |
 | **Execution time** | **<1 second** | Atomic transaction |
 
-**Decision:** ✅ **EXECUTE** — Net profit 1.329 SOL exceeds 0.05 SOL minimum threshold.
+**Decision:**  **EXECUTE** — Net profit 1.329 SOL exceeds 0.05 SOL minimum threshold.
 
 ---
 
@@ -2686,7 +2686,7 @@ Execute the complete arbitrage with **reentrancy protection**:
   (define final-sol-balance (+ 5.0 1.329))  ;; Initial + profit
   ;; final = 6.329 SOL
 
-  (log :message "✅ ARBITRAGE COMPLETE"
+  (log :message " ARBITRAGE COMPLETE"
        :initial-capital 5.0
        :final-capital 6.329
        :profit 1.329
@@ -2875,11 +2875,11 @@ Wait, this gives 0.87 SOL, but earlier I said 1.329 SOL. Let me recalculate usin
 5. **Reentrancy protection:** Mutex prevented recursive exploit attempts (total capital protected)
 
 **This single trade demonstrates:**
-- ✅ Multi-oracle validation working (all 3 sources agreed)
-- ✅ Multi-pool optimization working (zero fees from Balancer)
-- ✅ Reentrancy protection working (mutex acquired/released)
-- ✅ Slippage within acceptable limits (0.82% < 3% threshold)
-- ✅ Profitable execution (0.88 SOL > 0.05 SOL minimum)
+-  Multi-oracle validation working (all 3 sources agreed)
+-  Multi-pool optimization working (zero fees from Balancer)
+-  Reentrancy protection working (mutex acquired/released)
+-  Slippage within acceptable limits (0.82% < 3% threshold)
+-  Profitable execution (0.88 SOL > 0.05 SOL minimum)
 
 **The power of flash loans:** Turned 5 SOL into 5.88 SOL in **0.68 seconds** — a **17.6% return** that would be impossible without uncollateralized borrowing.
 
@@ -2932,7 +2932,7 @@ timeline
 
 ### Success Requirements
 
-> 🎯 **To Remain Competitive**
+>  **To Remain Competitive**
 > For those who can compete, the rewards remain substantial—**for now**. Success requires:
 > - **Sophisticated algorithms**
 > - **Low-latency infrastructure** (<100ms)

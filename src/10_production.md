@@ -355,7 +355,7 @@ graph TB
 
         (if (> time-since-heartbeat heartbeat-timeout)
             (do
-              (log :message (format "⚠️  Feed stale! {} seconds since last update"
+              (log :message (format "  Feed stale! {} seconds since last update"
                                    time-since-heartbeat))
 
               ;; Switch to backup feed
@@ -438,7 +438,7 @@ graph TB
           (emit-metric "strategy.calculation_time_us" calc-time-us)
 
           (if (> calc-time-us 1000)  ;; Warn if > 1ms
-              (log :message (format "⚠️  Slow signal calculation: {}μs for {}"
+              (log :message (format "  Slow signal calculation: {}μs for {}"
                                    calc-time-us (get market-event :symbol)))
               null)
 
@@ -505,7 +505,7 @@ graph TB
           ;; ─────────────────────────────────────────────────────────────
           (if circuit-breaker-active
               (do
-                (log :message (format "🚨 CIRCUIT BREAKER ACTIVE - Order rejected: {}"
+                (log :message (format " CIRCUIT BREAKER ACTIVE - Order rejected: {}"
                                      (get signal :symbol)))
                 (publish event-bus "order-rejections"
                         {:signal signal
@@ -521,7 +521,7 @@ graph TB
                       (emit-metric "risk.orders_approved" 1))
                     (do
                       ;; Order rejected
-                      (log :message (format "❌ Order rejected: {} - Reason: {}"
+                      (log :message (format " Order rejected: {} - Reason: {}"
                                            (get signal :symbol)
                                            (get risk-check-result :reason)))
                       (publish event-bus "order-rejections" risk-check-result)
@@ -598,7 +598,7 @@ graph TB
                    (not circuit-breaker-active))
               (do
                 (set! circuit-breaker-active true)
-                (log :message (format "🚨🚨🚨 CIRCUIT BREAKER TRIGGERED! 🚨🚨🚨"))
+                (log :message (format " CIRCUIT BREAKER TRIGGERED! "))
                 (log :message (format "Drawdown: {:.2f}% exceeds limit: {:.2f}%"
                                      (* 100 drawdown) (* 100 max-drawdown)))
                 (publish event-bus "circuit-breaker"
@@ -645,19 +645,19 @@ graph LR
     C --> D[Unit Tests]
     D --> E[Integration Tests]
     E --> F{All Pass?}
-    F -->|No| G[❌ Block Deploy]
+    F -->|No| G[ Block Deploy]
     F -->|Yes| H[Build Artifact]
     H --> I{Deploy to Staging}
     I --> J[Smoke Tests]
     J --> K{Tests Pass?}
-    K -->|No| L[❌ Rollback]
+    K -->|No| L[ Rollback]
     K -->|Yes| M{Manual Approval}
     M -->|Approved| N[Canary Deploy 10%]
     N --> O[Monitor 5 min]
     O --> P{Metrics OK?}
-    P -->|No| Q[❌ Auto Rollback]
+    P -->|No| Q[ Auto Rollback]
     P -->|Yes| R[Scale to 100%]
-    R --> S[✅ Deploy Complete]
+    R --> S[ Deploy Complete]
 ```
 
 **Figure 10.2**: CI/CD pipeline with safety gates. Every stage has a failure path that blocks deployment. Canary deployment (10% traffic) with 5-minute monitoring window allows automatic rollback before full deployment.
@@ -758,7 +758,7 @@ build:
   stage: build
   image: rust:latest
   script:
-    - echo "🔨 Building release binary..."
+    - echo " Building release binary..."
     - cargo build --release
     - cargo clippy -- -D warnings  # Fail on clippy warnings
     - cargo fmt -- --check          # Fail on formatting issues
@@ -774,7 +774,7 @@ test-unit:
   stage: test
   image: rust:latest
   script:
-    - echo "🧪 Running unit tests..."
+    - echo " Running unit tests..."
     - cargo test --lib --bins
     - cargo test --doc
 
@@ -785,7 +785,7 @@ test-integration:
     - redis:latest
     - postgres:latest
   script:
-    - echo "🧪 Running integration tests..."
+    - echo " Running integration tests..."
     - cargo test --test integration_tests
     - cargo test --test end_to_end_tests
 
@@ -793,14 +793,14 @@ test-coverage:
   stage: test
   image: rust:latest
   script:
-    - echo "📊 Checking code coverage..."
+    - echo " Checking code coverage..."
     - cargo install cargo-tarpaulin
     - cargo tarpaulin --out Xml --output-dir coverage
     - |
       COVERAGE=$(grep -oP 'line-rate="\K[^"]+' coverage/cobertura.xml | head -1 | awk '{printf "%.0f", $1*100}')
       echo "Coverage: ${COVERAGE}%"
       if [ "$COVERAGE" -lt 80 ]; then
-        echo "❌ Coverage ${COVERAGE}% below 80% threshold"
+        echo " Coverage ${COVERAGE}% below 80% threshold"
         exit 1
       fi
 
@@ -817,7 +817,7 @@ deploy-staging:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
   script:
-    - echo "🚀 Deploying to staging..."
+    - echo " Deploying to staging..."
 
     # Copy binary to staging server
     - scp target/release/osvm staging-server:/tmp/osvm-new
@@ -842,13 +842,13 @@ deploy-staging:
 
         # Health check
         if ! curl -f http://localhost:8080/health; then
-          echo "❌ Health check failed, rolling back"
+          echo " Health check failed, rolling back"
           systemctl stop osvm-staging
           systemctl start osvm-staging-backup
           exit 1
         fi
 
-        echo "✅ Staging deployment successful"
+        echo " Staging deployment successful"
       EOF
 
     # Run smoke tests
@@ -871,7 +871,7 @@ deploy-production-canary:
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   script:
-    - echo "🚀 Canary deployment to production (10%)..."
+    - echo " Canary deployment to production (10%)..."
 
     # Deploy to canary server (10% of traffic)
     - scp target/release/osvm prod-canary-server:/tmp/osvm-new
@@ -885,13 +885,13 @@ deploy-production-canary:
         systemctl start osvm
         sleep 5
         if ! curl -f http://localhost:8080/health; then
-          echo "❌ Canary health check failed"
+          echo " Canary health check failed"
           exit 1
         fi
       EOF
 
     # Monitor canary for 5 minutes
-    - echo "📊 Monitoring canary metrics for 5 minutes..."
+    - echo " Monitoring canary metrics for 5 minutes..."
     - |
       for i in {1..30}; do
         echo "Check $i/30..."
@@ -904,13 +904,13 @@ deploy-production-canary:
 
         # Check thresholds
         if [ "$(echo "$ERROR_RATE > 1.0" | bc)" -eq 1 ]; then
-          echo "❌ Error rate too high, rolling back"
+          echo " Error rate too high, rolling back"
           ssh prod-canary-server 'systemctl stop osvm && systemctl start osvm-backup'
           exit 1
         fi
 
         if [ "$(echo "$LATENCY_P99 > 500" | bc)" -eq 1 ]; then
-          echo "❌ Latency too high, rolling back"
+          echo " Latency too high, rolling back"
           ssh prod-canary-server 'systemctl stop osvm && systemctl start osvm-backup'
           exit 1
         fi
@@ -918,7 +918,7 @@ deploy-production-canary:
         sleep 10
       done
 
-    - echo "✅ Canary metrics healthy, proceeding to full deployment"
+    - echo " Canary metrics healthy, proceeding to full deployment"
   environment:
     name: production-canary
     url: http://prod-canary-server:8080
@@ -927,7 +927,7 @@ deploy-production-full:
   stage: deploy-production
   when: manual  # Require approval after canary success
   script:
-    - echo "🚀 Rolling out to all production servers..."
+    - echo " Rolling out to all production servers..."
     - |
       for server in prod-server-{1..8}; do
         echo "Deploying to $server..."
@@ -936,7 +936,7 @@ deploy-production-full:
         sleep 5
         curl -f http://$server:8080/health || exit 1
       done
-    - echo "✅ Full production deployment complete"
+    - echo " Full production deployment complete"
 ```
 
 ---
@@ -1355,7 +1355,7 @@ stateDiagram-v2
     (define order-count-last-second 0)
     (define last-second-timestamp (now))
 
-    (log :message "🛡️  Production Risk Manager initialized")
+    (log :message "  Production Risk Manager initialized")
     (log :message (format "Warning DD: {:.0f}%, Circuit breaker DD: {:.0f}%"
                           (* 100 warning-drawdown) (* 100 circuit-breaker-drawdown)))
 
@@ -1368,14 +1368,14 @@ stateDiagram-v2
           ;; CHECK 0: Kill switch active?
           (if (= state "KILL_SWITCH")
               (do
-                (log :message (format "🚨 KILL SWITCH ACTIVE - All trading stopped"))
+                (log :message (format " KILL SWITCH ACTIVE - All trading stopped"))
                 (publish event-bus "order-rejections"
                         {:signal signal :reason "kill-switch-active"}))
 
               ;; CHECK 1: Circuit breaker active?
               (if (= state "CIRCUIT_BREAKER")
                   (do
-                    (log :message (format "⚠️  CIRCUIT BREAKER ACTIVE - Order rejected"))
+                    (log :message (format "  CIRCUIT BREAKER ACTIVE - Order rejected"))
                     (publish event-bus "order-rejections"
                             {:signal signal :reason "circuit-breaker-active"}))
 
@@ -1391,7 +1391,7 @@ stateDiagram-v2
 
                     (if (> order-count-last-second max-order-rate)
                         (do
-                          (log :message (format "🚨 ORDER RATE LIMIT EXCEEDED: {}/sec > {}/sec"
+                          (log :message (format " ORDER RATE LIMIT EXCEEDED: {}/sec > {}/sec"
                                                order-count-last-second max-order-rate))
                           (log :message "Triggering KILL SWITCH")
                           (trigger-kill-switch "order-rate-exceeded"))
@@ -1406,7 +1406,7 @@ stateDiagram-v2
                                     (do
                                       (set-in! signal [:size]
                                               (* (get signal :size) 0.5))  ;; 50% size
-                                      (log :message (format "⚠️  WARNING STATE - Reduced order size by 50%")))
+                                      (log :message (format "  WARNING STATE - Reduced order size by 50%")))
                                     null)
 
                                 ;; Publish validated order
@@ -1443,7 +1443,7 @@ stateDiagram-v2
             ((and (= state "NORMAL") (> drawdown warning-drawdown))
              (do
                (set! state "WARNING")
-               (log :message (format "⚠️⚠️⚠️ WARNING STATE ENTERED ⚠️⚠️⚠️"))
+               (log :message (format " WARNING STATE ENTERED "))
                (log :message (format "Drawdown: {:.2f}% > warning threshold: {:.2f}%"
                                     (* 100 drawdown) (* 100 warning-drawdown)))
                (log :message "Actions: Reduced position sizes, tighter price collars")
@@ -1459,7 +1459,7 @@ stateDiagram-v2
             ((and (= state "WARNING") (< drawdown (- warning-drawdown 0.02)))  ;; 2% buffer
              (do
                (set! state "NORMAL")
-               (log :message (format "✅ Recovered to NORMAL state (DD: {:.2f}%)"
+               (log :message (format " Recovered to NORMAL state (DD: {:.2f}%)"
                                     (* 100 drawdown)))))
 
             ;; CIRCUIT_BREAKER → COOLDOWN (manual reset)
@@ -1479,9 +1479,9 @@ stateDiagram-v2
         (set! circuit-breaker-cooldown-until (+ (now) 900))  ;; 15 min cooldown
 
         (log :message "")
-        (log :message "🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
-        (log :message "🚨 CIRCUIT BREAKER TRIGGERED! 🚨")
-        (log :message "🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
+        (log :message "")
+        (log :message " CIRCUIT BREAKER TRIGGERED! ")
+        (log :message "")
         (log :message "")
         (log :message (format "Drawdown: {:.2f}% exceeds limit: {:.2f}%"
                              (* 100 drawdown) (* 100 circuit-breaker-drawdown)))
@@ -1516,9 +1516,9 @@ stateDiagram-v2
         (set! state "KILL_SWITCH")
 
         (log :message "")
-        (log :message "🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
-        (log :message "🚨🚨🚨 KILL SWITCH ACTIVATED 🚨🚨🚨")
-        (log :message "🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
+        (log :message "")
+        (log :message " KILL SWITCH ACTIVATED ")
+        (log :message "")
         (log :message "")
         (log :message (format "Reason: {}" reason))
         (log :message "Actions:")
@@ -1539,7 +1539,7 @@ stateDiagram-v2
 
         ;; Send emergency alerts
         (send-alert :severity "EMERGENCY"
-                   :title "🚨 KILL SWITCH ACTIVATED"
+                   :title " KILL SWITCH ACTIVATED"
                    :message (format "Reason: {}" reason)
                    :page-all true)))
 
@@ -1558,7 +1558,7 @@ stateDiagram-v2
                               (if (= state "CIRCUIT_BREAKER")
                                   (do
                                     (set! state "NORMAL")
-                                    (log :message "✅ Circuit breaker manually reset"))
+                                    (log :message " Circuit breaker manually reset"))
                                   null))
      :trigger-kill-switch trigger-kill-switch}))
 ```
@@ -1573,7 +1573,7 @@ stateDiagram-v2
 
 Building production trading systems is fundamentally different from backtesting. Knight Capital learned this the hard way: $460 million lost in 45 minutes because they skipped the basics.
 
-### 🎯 Key Takeaways
+###  Key Takeaways
 
 1. **Production is a battlefield, not a laboratory**
    - Data arrives late, out of order, sometimes wrong

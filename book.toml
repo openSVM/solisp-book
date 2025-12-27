@@ -10,11 +10,14 @@ build-dir = "book"
 create-missing = false
 
 [output.html]
-default-theme = "rust"
-preferred-dark-theme = "ayu"
+theme = "theme"
+default-theme = "light"
+preferred-dark-theme = "coal"
 git-repository-url = "https://github.com/openSVM/solisp-book"
 edit-url-template = "https://github.com/openSVM/solisp-book/edit/main/{path}"
 site-url = "/solisp-book/"
+additional-css = ["theme/css/general.css"]
+additional-js = ["theme/book.js"]
 
 [output.html.playground]
 editable = true

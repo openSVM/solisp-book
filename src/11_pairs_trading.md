@@ -140,7 +140,7 @@ This disaster sets the stage for understanding that pairs trading, while mathema
 
 ## 11.1 Introduction and Historical Context
 
-> **💡 Key Concept**
+> ** Key Concept**
 >
 > Statistical arbitrage accepts short-term risk to exploit mean-reverting relationships between financial instruments, unlike traditional arbitrage which is riskless.
 
@@ -154,7 +154,7 @@ Pairs trading emerged from the quantitative trading group at Morgan Stanley in t
 2. Wait for temporary divergences in their price relationship
 3. Bet on convergence by longing the underperformer and shorting the outperformer
 
-> **📊 Empirical Result**
+> ** Empirical Result**
 >
 > Gatev et al. (2006) documented excess returns of **11% annually** with Sharpe ratios near **2.0** over the period 1962-2002. Returns were not explained by standard risk factors, suggesting genuine alpha from mean reversion.
 
@@ -167,7 +167,7 @@ Pairs trading emerged from the quantitative trading group at Morgan Stanley in t
 3. **Scalability**: The approach applies to thousands of potential pairs across asset classes
 4. **Transparency**: Unlike black-box algorithms, pairs trading logic is interpretable
 
-> **⚠️ Warning**
+> ** Warning**
 >
 > Pairs trading is NOT arbitrage in the classical sense. The spread may diverge further before converging, or may never revert if the historical relationship breaks down permanently.
 
@@ -179,7 +179,7 @@ The October 1987 stock market crash demonstrated pairs trading risk dramatically
 - Nureddin Zaman (head of Morgan Stanley's quant group) reportedly lost $7 million in one day
 - Pairs failed to converge as expected during market stress
 
-> **📊 Historical Evidence**
+> ** Historical Evidence**
 >
 > Despite the 1987 setback, the strategy survived and flourished through the 1990s, generating consistent profits and spawning academic interest.
 
@@ -193,7 +193,7 @@ Academic attention followed practitioner success:
 | Do & Faff (2010) | 1962-2008 | 6.7% (declining) | 0.87 |
 | Krauss (2017) meta-analysis | Various | 8-12% | Variable |
 
-> **⚠️ Strategy Decay**
+> ** Strategy Decay**
 >
 > Returns declined over time, particularly after 1990. Gatev et al. attributed deterioration to **strategy crowding**—as more capital pursued pairs opportunities, profitable divergences became rarer and shorter-lived.
 
@@ -201,10 +201,10 @@ Academic attention followed practitioner success:
 
 The August 2007 quant meltdown (detailed in Section 11.0) taught the industry harsh lessons. Modern pairs trading incorporates safeguards:
 
-- ✅ **Cointegration testing**: Formal statistical tests identify pairs with genuine long-term relationships
-- ✅ **Kalman filtering**: Adaptive techniques track time-varying hedge ratios
-- ✅ **Machine learning**: Algorithms detect regime changes and prevent trades during structural breaks
-- ✅ **Risk management**: Position sizing scales with confidence, stop-losses limit divergence risk
+-  **Cointegration testing**: Formal statistical tests identify pairs with genuine long-term relationships
+-  **Kalman filtering**: Adaptive techniques track time-varying hedge ratios
+-  **Machine learning**: Algorithms detect regime changes and prevent trades during structural breaks
+-  **Risk management**: Position sizing scales with confidence, stop-losses limit divergence risk
 
 ---
 
@@ -212,7 +212,7 @@ The August 2007 quant meltdown (detailed in Section 11.0) taught the industry ha
 
 ### 11.2.1 Stationarity and Integration
 
-> **💡 Key Concept**
+> ** Key Concept**
 >
 > A time series is **stationary** if its statistical properties (mean, variance, autocorrelation) remain constant over time. Stationary series exhibit mean reversion—deviations from the long-run mean are temporary.
 
@@ -235,7 +235,7 @@ $$
 
 Most financial asset prices are **non-stationary**—they exhibit trending behavior with current prices strongly influencing future prices.
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 >
 > A random walk is the canonical non-stationary process: $P_t = P_{t-1} + \epsilon_t$ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$
 
@@ -245,7 +245,7 @@ $$\Delta P_t = P_t - P_{t-1} = \epsilon_t \sim I(0)$$
 
 ### The Fundamental Insight
 
-> **💡 Key Insight**
+> ** Key Insight**
 >
 > Trading individual $I(1)$ prices for mean reversion **fails**. There is no mean to revert to—prices drift without bound. However, **linear combinations of multiple $I(1)$ series can be stationary** if the series share common stochastic trends. This is **cointegration**.
 
@@ -270,7 +270,7 @@ Cointegrated series share a common stochastic trend. Individually, $X_t$ and $Y_
 | Companies in same industry | Common demand shocks create correlation |
 | Currency exchange rates | Purchasing power parity provides long-run anchor |
 
-> **📊 Economic Principle**
+> ** Economic Principle**
 >
 > Cointegration arises when economic forces—arbitrage, substitution, equilibrium conditions—prevent two series from drifting apart permanently. Short-run deviations create trading opportunities.
 
@@ -296,7 +296,7 @@ Both mechanisms push the spread toward zero. The adjustment speed determines the
 
 $$t_{1/2} = \frac{\ln(2)}{|\gamma_Y + \gamma_X|}$$
 
-> **📊 Empirical Finding**
+> ** Empirical Finding**
 >
 > Typical equity pairs exhibit half-lives of **5-20 days** (Gatev et al., 2006). Shorter half-lives are preferable for trading—faster reversion reduces holding period risk.
 
@@ -323,7 +323,7 @@ $$\Delta \hat{Z}_t = \rho \hat{Z}_{t-1} + \sum_{i=1}^{p} \phi_i \Delta \hat{Z}_{
 - **Null hypothesis**: $H_0: \rho = 0$ (unit root, non-stationary)
 - **Alternative**: $H_1: \rho < 0$ (stationary)
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 >
 > Critical values differ from standard ADF tests because $\hat{Z}_t$ uses an estimated $\hat{\beta}$ rather than known $\beta$ (Engle & Yoo, 1987).
 
@@ -370,7 +370,7 @@ The rank $r$ of matrix $\Pi$ gives the cointegration rank:
 1. **Trace test**: Tests $H_0: r \leq r_0$ vs. $H_1: r > r_0$
 2. **Maximum eigenvalue test**: Tests $H_0: r = r_0$ vs. $H_1: r = r_0 + 1$
 
-> **🎯 Trading Application**
+> ** Trading Application**
 >
 > For pairs trading, Johansen offers minimal advantage over Engle-Granger. Its power lies in **basket arbitrage**: constructing portfolios of 3+ assets with stable relationships (e.g., sector indices).
 
@@ -380,7 +380,7 @@ The rank $r$ of matrix $\Pi$ gives the cointegration rank:
 
 ### 11.3.1 Continuous-Time Mean Reversion
 
-> **💡 Key Concept**
+> ** Key Concept**
 >
 > The **Ornstein-Uhlenbeck (OU) process** provides the canonical continuous-time model for mean-reverting spreads.
 
@@ -438,7 +438,7 @@ The conditional distribution $X_t \mid X_0$ is Gaussian:
 
 $$X_t \mid X_0 \sim \mathcal{N}\left(\mu + (X_0 - \mu)e^{-\theta t}, \frac{\sigma^2}{2\theta}(1 - e^{-2\theta t})\right)$$
 
-> **💻 Implementation Advantage**
+> ** Implementation Advantage**
 >
 > This enables maximum likelihood estimation and analytical option pricing on mean-reverting spreads.
 
@@ -492,7 +492,7 @@ t_{1/2} &= \ln(2) / 0.4 \approx 1.73 \text{ days}
 \end{align}
 $$
 
-> **🎯 Trading Insight**
+> ** Trading Insight**
 >
 > The spread reverts to 0.05 with a half-life of **1.73 days**—fast enough for active trading.
 
@@ -556,10 +556,10 @@ $$Z_t = \frac{X_t - \mu}{\sigma / \sqrt{2\theta}}$$
 
 **Common Trading Rules:**
 
-- ✅ Enter when $|Z_t| > 2$ (2 standard deviations)
-- ✅ Exit when $|Z_t| < 0.5$ (within 0.5 standard deviations)
+-  Enter when $|Z_t| > 2$ (2 standard deviations)
+-  Exit when $|Z_t| < 0.5$ (within 0.5 standard deviations)
 
-> **💻 Implementation Note**
+> ** Implementation Note**
 >
 > While not strictly optimal, Z-score rules are robust and interpretable—essential for production systems.
 
@@ -593,8 +593,8 @@ graph TD
    $$D_{ij} = \sum_{t=1}^{n} (P_{i,t}^* - P_{j,t}^*)^2$$
 3. Select pairs with smallest $D_{ij}$ (most similar normalized price paths)
 
-**Pros:** ✅ Simple, computationally efficient, no distributional assumptions
-**Cons:** ❌ Doesn't test stationarity, sensitive to formation period, ignores economic relationships
+**Pros:**  Simple, computationally efficient, no distributional assumptions
+**Cons:**  Doesn't test stationarity, sensitive to formation period, ignores economic relationships
 
 ### Cointegration Method (Vidyamurthy, 2004)
 
@@ -603,16 +603,16 @@ graph TD
 3. Apply ADF test to $Z_t$
 4. Select pairs where ADF statistic rejects unit root at 5% significance
 
-**Pros:** ✅ Directly tests mean reversion, economically motivated
-**Cons:** ❌ Requires long time series (12-36 months), computationally intensive
+**Pros:**  Directly tests mean reversion, economically motivated
+**Cons:**  Requires long time series (12-36 months), computationally intensive
 
 ### Correlation Method
 
 1. Compute correlation $\rho_{ij}$ over formation period
 2. Select pairs with $\rho_{ij} > 0.8$ (high correlation)
 
-**Pros:** ✅ Intuitive, fast computation
-**Cons:** ❌ Correlation does NOT imply cointegration (two trending series can have high correlation without mean-reverting spread)
+**Pros:**  Intuitive, fast computation
+**Cons:**  Correlation does NOT imply cointegration (two trending series can have high correlation without mean-reverting spread)
 
 ### Machine Learning Methods
 
@@ -622,7 +622,7 @@ graph TD
 
 This reduces the $O(n^2)$ pair testing problem to $O(kn)$ where $k$ is the number of clusters.
 
-> **🎯 Recommended Practice**
+> ** Recommended Practice**
 >
 > Use **cointegration as primary filter**, augment with correlation and fundamental similarity (same sector, similar market cap) to ensure economic relationship.
 
@@ -650,7 +650,7 @@ After 6-month trading period, repeat process:
 - Update parameters
 - Begin new 6-month trading period
 
-> **⚠️ Critical Consideration**
+> ** Critical Consideration**
 >
 > Transaction costs can exceed profits for pairs with infrequent signals. Gatev et al. (2006) required **at least one trading signal** during formation period to qualify a pair.
 
@@ -665,7 +665,7 @@ After 6-month trading period, repeat process:
 | Gatev et al. (2006) | 1990-2002 | 9.1% | 1.7 | Later period |
 | Do & Faff (2010) | 2003-2008 | 6.7% | 0.87 | Continued decline |
 
-> **📊 Key Finding**
+> ** Key Finding**
 >
 > Returns declined over time, with the decline attributed to **strategy crowding** as more capital pursued pairs opportunities.
 
@@ -713,7 +713,7 @@ graph TD
     H --> I[Recovery as Liquidations Complete]
 ```
 
-> **⚠️ Key Lessons**
+> ** Key Lessons**
 >
 > - **Crowding risk**: Similar strategies create correlation in crisis
 > - **Liquidity risk**: Mean reversion assumes ability to wait for convergence—forced liquidation precludes this
@@ -862,7 +862,7 @@ This section presents complete Solisp code for pairs trading, progressing from b
     (else :hold)))
 ```
 
-> **💻 What This Code Does**
+> ** What This Code Does**
 >
 > 1. **calculate-hedge-ratio**: Computes OLS beta coefficient
 > 2. **calculate-spread**: Constructs the spread time series
@@ -977,7 +977,7 @@ This section presents complete Solisp code for pairs trading, progressing from b
 (log :message "Is stationary:" :value (get adf-result :is-stationary))
 ```
 
-> **💡 Interpretation**
+> ** Interpretation**
 >
 > If `is-stationary` is `true`, the spread passes the ADF test, providing statistical evidence for cointegration. The pair is a candidate for trading.
 
@@ -987,7 +987,7 @@ This section presents complete Solisp code for pairs trading, progressing from b
 
 The Ornstein-Uhlenbeck (OU) process provides a rigorous framework for modeling mean-reverting spreads. Estimating its parameters enables quantitative assessment of mean reversion speed and optimal holding periods.
 
-> **💡 Why OU Parameters Matter**
+> ** Why OU Parameters Matter**
 >
 > - **Half-life** tells you expected time to reversion → guides trade timing
 > - **Mean** identifies equilibrium level → sets profit targets
@@ -1148,27 +1148,27 @@ $$
 
     ;; Check 1: Positive mean reversion
     (if (<= theta 0.0)
-        (push! warnings "❌ Theta <= 0: No mean reversion detected"))
+        (push! warnings " Theta <= 0: No mean reversion detected"))
 
     ;; Check 2: Reasonable half-life (5-60 days for daily data)
     (if (< half-life 3.0)
-        (push! warnings "⚠️ Half-life < 3 days: Very fast reversion (check for overfitting)"))
+        (push! warnings " Half-life < 3 days: Very fast reversion (check for overfitting)"))
 
     (if (> half-life 60.0)
-        (push! warnings "⚠️ Half-life > 60 days: Slow reversion (long holding periods)"))
+        (push! warnings " Half-life > 60 days: Slow reversion (long holding periods)"))
 
     ;; Check 3: Mean close to zero (market-neutral spread)
     (define mu (get ou-params :mu))
     (define sigma (get ou-params :sigma))
     (if (> (abs mu) (* 0.5 sigma))
-        (push! warnings (format "⚠️ Non-zero mean: μ={:.4f}, adjust entry thresholds" mu)))
+        (push! warnings (format " Non-zero mean: μ={:.4f}, adjust entry thresholds" mu)))
 
     (define valid (= (length warnings) 0))
 
     (if valid
-        (log :message "✅ OU model validation passed")
+        (log :message " OU model validation passed")
         (do
-          (log :message "⚠️ OU model validation warnings:")
+          (log :message " OU model validation warnings:")
           (for (w warnings)
             (log :message w))))
 
@@ -1222,9 +1222,9 @@ The August 2007 quant quake occurred when half-lives suddenly went from 5-10 day
 
 ;; Trading decision
 (if (> current-spread (* 2.0 (get ou-params :sigma)))
-    (log :message "🔴 Signal: SHORT spread (expect reversion down)")
+    (log :message " Signal: SHORT spread (expect reversion down)")
     (if (< current-spread (- (* 2.0 (get ou-params :sigma))))
-        (log :message "🟢 Signal: LONG spread (expect reversion up)")
+        (log :message " Signal: LONG spread (expect reversion up)")
         (log :message "⚪ Signal: HOLD (within normal range)")))
 ```
 
@@ -1236,16 +1236,16 @@ The August 2007 quant quake occurred when half-lives suddenly went from 5-10 day
 σ (volatility): 0.2156
 Half-life: 2.13 days
 
-✅ OU model validation passed
+ OU model validation passed
 
 Current spread: -0.2800
 Expected tomorrow: -0.0742
 Expected reversion: 0.2058
 
-🟢 Signal: LONG spread (expect reversion up)
+ Signal: LONG spread (expect reversion up)
 ```
 
-> **🎯 Trading Insight**
+> ** Trading Insight**
 >
 > This spread has a **half-life of 2.13 days**, making it excellent for active trading. The current spread (-0.28) is more than 1 standard deviation below the mean (0.0125), suggesting **long entry**. The OU model predicts +0.21 reversion tomorrow—a strong mean-reversion signal.
 
@@ -1254,7 +1254,7 @@ Expected reversion: 0.2058
 
 Static hedge ratios—estimated once during formation and held fixed—fail when the relationship between pairs changes over time. The Kalman filter provides a recursive framework for tracking time-varying hedge ratios.
 
-> **⚠️ The Static Hedge Ratio Problem**
+> ** The Static Hedge Ratio Problem**
 >
 > In August 2007, many pairs trading funds used static hedge ratios estimated from 12-month formation periods. When market regimes shifted violently, these fixed ratios became obsolete **within hours**. Funds that continued using stale hedge ratios experienced catastrophic losses as their "market-neutral" positions developed large directional exposures.
 
@@ -1517,8 +1517,8 @@ $$
                           adf-improvement))
 
     (if (> vol-improvement 0.0)
-        (log :message "✅ Kalman filter produces more stationary spread")
-        (log :message "⚠️ Static hedge ratio performed better (stable relationship)"))
+        (log :message " Kalman filter produces more stationary spread")
+        (log :message " Static hedge ratio performed better (stable relationship)"))
 
     {:static-spread static-spread
      :kalman-spread kalman-spread
@@ -1602,7 +1602,7 @@ stateDiagram-v2
 
 Backtesting pairs trading requires careful attention to avoid look-ahead bias, overfitting, and underestimating transaction costs—the three horsemen of backtest apocalypse.
 
-> **📊 Reference to Chapter 9**
+> ** Reference to Chapter 9**
 >
 > This section applies the walk-forward framework and 5-component transaction cost model developed in Chapter 9 (Backtesting Frameworks) to pairs trading specifically. The Epsilon Capital disaster ($100M, 2018) resulted from overfitting on in-sample data without walk-forward validation.
 
@@ -2080,7 +2080,7 @@ For a 1% expected profit per trade, 38 bps costs consume **38% of gross profit**
 
 The August 2007 quant quake demonstrated that **statistical relationships can fail precisely when most needed**. A production pairs trading system requires multi-layered risk controls to survive rare but catastrophic events.
 
-> **⚠️ The $150 Billion Lesson (August 2007)**
+> ** The $150 Billion Lesson (August 2007)**
 >
 > Quantitative funds lost $100-150B in AUM in 5 trading days. The common thread: **inadequate risk management**. Funds that survived had:
 > 1. **Position limits** (max 2-3% per pair, 30% aggregate)
@@ -2287,7 +2287,7 @@ graph TD
 
               (if breakdown
                   (do
-                    (log :message (format "🚨 CORRELATION BREAKDOWN: avg={:.3f} (threshold {:.2f})"
+                    (log :message (format " CORRELATION BREAKDOWN: avg={:.3f} (threshold {:.2f})"
                                           avg-corr correlation-threshold))
                     (push! (get state :alerts)
                            {:type "correlation-breakdown"
@@ -2357,7 +2357,7 @@ graph TD
         (if (> drawdown max-drawdown)
             (do
               (set! (get state :mode) "CIRCUIT_BREAKER")
-              (log :message (format "🚨 CIRCUIT BREAKER: Drawdown {:.2f}% exceeds limit {:.2f}%"
+              (log :message (format " CIRCUIT BREAKER: Drawdown {:.2f}% exceeds limit {:.2f}%"
                                     (* 100 drawdown) (* 100 max-drawdown)))
               {:trigger true
                :reason (format "Max drawdown {:.2f}%" (* 100 drawdown))})
@@ -2368,7 +2368,7 @@ graph TD
               (if (> var var-limit)
                   (do
                     (set! (get state :mode) "CIRCUIT_BREAKER")
-                    (log :message (format "🚨 CIRCUIT BREAKER: VaR {:.2f}% exceeds limit {:.2f}%"
+                    (log :message (format " CIRCUIT BREAKER: VaR {:.2f}% exceeds limit {:.2f}%"
                                           (* 100 var) (* 100 var-limit)))
                     {:trigger true
                      :reason (format "VaR {:.2f}% > limit" (* 100 var))})
@@ -2377,7 +2377,7 @@ graph TD
                   (if (> market-vol circuit-breaker-vol)
                       (do
                         (set! (get state :mode) "CIRCUIT_BREAKER")
-                        (log :message (format "🚨 CIRCUIT BREAKER: Market vol {:.1f}x normal"
+                        (log :message (format " CIRCUIT BREAKER: Market vol {:.1f}x normal"
                                               market-vol))
                         {:trigger true
                          :reason (format "Market volatility {:.1f}x normal" market-vol)})
@@ -2402,7 +2402,7 @@ graph TD
         (set! (get state :mode) "KILL_SWITCH")
         (log :message "")
         (log :message "╔═══════════════════════════════════════════════╗")
-        (log :message "║   🚨 KILL SWITCH ACTIVATED 🚨                ║")
+        (log :message "║    KILL SWITCH ACTIVATED                 ║")
         (log :message "║   ALL TRADING HALTED                         ║")
         (log :message (format "║   Reason: {}                              ║" reason))
         (log :message "╚═══════════════════════════════════════════════╝")
@@ -2456,25 +2456,25 @@ graph TD
 **What August 2007 Survivors Did Right:**
 
 **Renaissance Technologies (Medallion Fund):**
-- ✅ **Position limits:** 2% max per pair, 25% aggregate
-- ✅ **Rapid deleveraging:** Reduced gross exposure from 8x to 3x within 24 hours
-- ✅ **Liquidity buffer:** $2B cash reserve (20% of AUM)
+-  **Position limits:** 2% max per pair, 25% aggregate
+-  **Rapid deleveraging:** Reduced gross exposure from 8x to 3x within 24 hours
+-  **Liquidity buffer:** $2B cash reserve (20% of AUM)
 - **Result:** -5% loss in August, recovered fully by September
 
 **AQR Capital:**
-- ✅ **Correlation monitoring:** Detected spike on August 7 (day 2)
-- ✅ **Circuit breaker:** Halted new positions, reduced leverage 50%
-- ✅ **Client communication:** Transparent daily updates
+-  **Correlation monitoring:** Detected spike on August 7 (day 2)
+-  **Circuit breaker:** Halted new positions, reduced leverage 50%
+-  **Client communication:** Transparent daily updates
 - **Result:** -13% loss (vs. -30% for peers), survived crisis
 
 **What Failed Funds Did Wrong:**
 
 **Anonymous Multi-Strategy Fund ($1.5B AUM → Liquidated):**
-- ❌ No position limits (some pairs 10%+ of capital)
-- ❌ High leverage (6x gross exposure)
-- ❌ Static hedge ratios (ignored regime change)
-- ❌ No circuit breaker (kept adding to losers)
-- ❌ **Result:** -65% in 5 days, forced liquidation, fund closure
+-  No position limits (some pairs 10%+ of capital)
+-  High leverage (6x gross exposure)
+-  Static hedge ratios (ignored regime change)
+-  No circuit breaker (kept adding to losers)
+-  **Result:** -65% in 5 days, forced liquidation, fund closure
 
 **Cost-Benefit Analysis:**
 
@@ -2524,15 +2524,15 @@ Pairs trading remains one of the most intellectually rigorous and empirically va
 
 **1. Cointegration Testing (Not Just Correlation)**
 
-✅ **Why:** Cointegration directly tests mean reversion (stationary spread)
-❌ **Common mistake:** Using correlation alone (two trending series can have high correlation without mean-reverting spread)
+ **Why:** Cointegration directly tests mean reversion (stationary spread)
+ **Common mistake:** Using correlation alone (two trending series can have high correlation without mean-reverting spread)
 
 **Evidence:** Gatev et al. (2006) showed cointegration-selected pairs outperformed distance-method pairs by 2-3% annually.
 
 **2. Walk-Forward Validation**
 
-✅ **Why:** Prevents overfitting (Epsilon Capital: Sharpe 2.5 in-sample → 0.3 out-of-sample)
-❌ **Common mistake:** Optimizing on full dataset, testing on same data
+ **Why:** Prevents overfitting (Epsilon Capital: Sharpe 2.5 in-sample → 0.3 out-of-sample)
+ **Common mistake:** Optimizing on full dataset, testing on same data
 
 **Implementation:**
 - Formation period: 12 months (estimate parameters)
@@ -2541,8 +2541,8 @@ Pairs trading remains one of the most intellectually rigorous and empirically va
 
 **3. Realistic Transaction Costs**
 
-✅ **Why:** Naive estimates (5 bps) vs. reality (38 bps) can erase 73% of profits
-❌ **Common mistake:** Ignoring spread, impact, timing, opportunity costs
+ **Why:** Naive estimates (5 bps) vs. reality (38 bps) can erase 73% of profits
+ **Common mistake:** Ignoring spread, impact, timing, opportunity costs
 
 **5-Component Model (Chapter 9):**
 | Component | Per Round-Trip |
@@ -2556,8 +2556,8 @@ Pairs trading remains one of the most intellectually rigorous and empirically va
 
 **4. Multi-Layered Risk Management**
 
-✅ **Why:** August 2007 demonstrated statistical relationships fail during crises
-❌ **Common mistake:** Relying solely on historical correlations
+ **Why:** August 2007 demonstrated statistical relationships fail during crises
+ **Common mistake:** Relying solely on historical correlations
 
 **Required Controls:**
 1. **Position limits:** 2-3% per pair, 30% aggregate
@@ -2570,8 +2570,8 @@ Pairs trading remains one of the most intellectually rigorous and empirically va
 
 **5. Adaptive Hedge Ratios (Kalman Filter)**
 
-✅ **When to use:** Regime changes expected, long trading periods, volatile markets
-✅ **When to avoid:** Stable relationships, high transaction costs, short periods
+ **When to use:** Regime changes expected, long trading periods, volatile markets
+ **When to avoid:** Stable relationships, high transaction costs, short periods
 
 **Evidence:** Kalman filters reduced spread volatility 10-25% vs. static hedge ratios in regime-change periods (2007-2008, 2020).
 
@@ -2591,20 +2591,20 @@ Pairs trading remains one of the most intellectually rigorous and empirically va
 **The August 2007 Pattern:**
 
 All failed funds shared these characteristics:
-- ❌ High leverage (5-8x gross exposure)
-- ❌ Static hedge ratios (estimated pre-2007)
-- ❌ No circuit breakers (kept adding to losers)
-- ❌ Concentrated positions (10%+ in single pairs)
-- ❌ No liquidity buffer (couldn't withstand drawdowns)
+-  High leverage (5-8x gross exposure)
+-  Static hedge ratios (estimated pre-2007)
+-  No circuit breakers (kept adding to losers)
+-  Concentrated positions (10%+ in single pairs)
+-  No liquidity buffer (couldn't withstand drawdowns)
 
 **Result:** -30% to -65% losses in 5 days, many forced to liquidate.
 
 **Survivors had:**
-- ✅ Position limits (2-3% max)
-- ✅ Low leverage (2-3x gross)
-- ✅ Circuit breakers (auto-deleverage)
-- ✅ Cash reserves (20% of AUM)
-- ✅ Correlation monitoring (early warning)
+-  Position limits (2-3% max)
+-  Low leverage (2-3x gross)
+-  Circuit breakers (auto-deleverage)
+-  Cash reserves (20% of AUM)
+-  Correlation monitoring (early warning)
 
 **Result:** -5% to -15% losses, full recovery within weeks.
 
@@ -2632,14 +2632,14 @@ All failed funds shared these characteristics:
 
 **Is it still worth it?**
 
-✅ **Yes, if:**
+ **Yes, if:**
 - You implement ALL risk controls (cost: $0-500/mo)
 - You use walk-forward validation (catches overfitting)
 - You model realistic transaction costs (38 bps)
 - You diversify pair selection (cointegration + fundamentals)
 - You accept 8-10% returns (vs. 12%+ historically)
 
-❌ **No, if:**
+ **No, if:**
 - You expect 1990s performance (Sharpe 2.0+)
 - You skip risk management (August 2007 will happen again)
 - You use static models (relationships change)
@@ -2907,7 +2907,7 @@ Investigate why pairs trading Sharpe fell from 2.0 to 0.8:
 
 ## 11.10 Four More Pairs Trading Disasters and How to Prevent Them
 
-> ⚠️ **$22B+ in additional losses from preventable pairs trading mistakes**
+>  **$22B+ in additional losses from preventable pairs trading mistakes**
 
 Beyond the August 2007 quant meltdown (Section 11.0, $150B), pairs traders have suffered massive losses from regime changes, correlation breakdowns, and leverage amplification.
 
@@ -3014,12 +3014,12 @@ ROI = -656% on "market neutral" trade!
 
 **Universal Pairs Trading Safety Rules:**
 
-1. ✅ **Monitor crowding:** If correlation with peers >0.80, reduce size
-2. ✅ **Watch correlations:** If avg stock correlation >0.80, exit ALL pairs
-3. ✅ **Flight-to-quality detection:** VIX >40 OR credit spreads >200 bps = exit
-4. ✅ **Sector limits:** No single sector >30% of portfolio
-5. ✅ **Dynamic leverage:** Reduce leverage inversely with volatility
-6. ✅ **Liquidity monitoring:** Halt trading if bid-ask spreads >5x normal
+1.  **Monitor crowding:** If correlation with peers >0.80, reduce size
+2.  **Watch correlations:** If avg stock correlation >0.80, exit ALL pairs
+3.  **Flight-to-quality detection:** VIX >40 OR credit spreads >200 bps = exit
+4.  **Sector limits:** No single sector >30% of portfolio
+5.  **Dynamic leverage:** Reduce leverage inversely with volatility
+6.  **Liquidity monitoring:** Halt trading if bid-ask spreads >5x normal
 
 ---
 
@@ -3541,13 +3541,13 @@ graph TD
 
 **System Features:**
 
-1. ✅ **Regime detection:** VIX, correlation, credit spreads, liquidity (prevents all 5 disasters)
-2. ✅ **Cointegration testing:** Engle-Granger + half-life calculation
-3. ✅ **Safety validation:** Sector limits, liquidity checks, regime verification
-4. ✅ **Dynamic hedge ratios:** Kalman filter for time-varying relationships
-5. ✅ **Continuous monitoring:** Every 5 minutes, all positions
-6. ✅ **Emergency response:** Instant exit on crisis signals
-7. ✅ **Stop-losses:** Z-score >4.0 = automatic exit
+1.  **Regime detection:** VIX, correlation, credit spreads, liquidity (prevents all 5 disasters)
+2.  **Cointegration testing:** Engle-Granger + half-life calculation
+3.  **Safety validation:** Sector limits, liquidity checks, regime verification
+4.  **Dynamic hedge ratios:** Kalman filter for time-varying relationships
+5.  **Continuous monitoring:** Every 5 minutes, all positions
+6.  **Emergency response:** Instant exit on crisis signals
+7.  **Stop-losses:** Z-score >4.0 = automatic exit
 
 **Performance Expectations:**
 
@@ -3596,12 +3596,12 @@ This example demonstrates a PEP (PepsiCo) vs KO (Coca-Cola) pair trade from entr
 ;; OUTPUT:
 ;; ====== PAIR SAFETY VALIDATION ======
 ;; Pair: PEP vs KO
-;; ✅ Sector concentration: Beverages currently 15% (<30% limit)
-;; ✅ Market regime: NORMAL
+;;  Sector concentration: Beverages currently 15% (<30% limit)
+;;  Market regime: NORMAL
 ;;    - VIX: 14.2
 ##    - Avg correlation: 0.48
 ;;    - Credit spreads: 95 bps
-;; ✅ Liquidity: PEP $2.1B daily, KO $1.8B daily
+;;  Liquidity: PEP $2.1B daily, KO $1.8B daily
 ;; VERDICT: SAFE
 ```
 
@@ -3617,7 +3617,7 @@ This example demonstrates a PEP (PepsiCo) vs KO (Coca-Cola) pair trade from entr
 ;; Hedge ratio: 2.52 (PEP = 2.52 × KO)
 ;; ADF statistic: -4.18
 ;; ADF p-value: 0.002 (<0.05 threshold)
-;; VERDICT: COINTEGRATED ✅
+;; VERDICT: COINTEGRATED 
 ```
 
 **Stage 3: Mean Reversion Analysis**
@@ -3871,9 +3871,9 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ### What Works: The Elite Pairs Trader Playbook
 
-> 💰 **Renaissance earns 66% annually on stat arb while retail loses money**
+>  **Renaissance earns 66% annually on stat arb while retail loses money**
 
-#### ✅ Strategy 1: Cointegration (Not Correlation)
+####  Strategy 1: Cointegration (Not Correlation)
 
 **What elite traders do:**
 - Engle-Granger ADF test (p < 0.05)
@@ -3886,7 +3886,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ---
 
-#### ✅ Strategy 2: Regime Detection + Emergency Exit
+####  Strategy 2: Regime Detection + Emergency Exit
 
 **What elite traders do:**
 - VIX >40 = exit ALL pairs
@@ -3900,7 +3900,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ---
 
-#### ✅ Strategy 3: Leverage Discipline (2-3x Max)
+####  Strategy 3: Leverage Discipline (2-3x Max)
 
 **What elite traders do:**
 - Base 2-3x (not 25x)
@@ -3914,7 +3914,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ### What Fails: The $171.7B Graveyard
 
-#### ❌ Mistake 1: Correlation ≠ Cointegration
+####  Mistake 1: Correlation ≠ Cointegration
 
 **The trap:** "0.85 correlation = good pair!"
 
@@ -3924,7 +3924,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ---
 
-#### ❌ Mistake 2: Ignoring Regime Changes
+####  Mistake 2: Ignoring Regime Changes
 
 **The trap:** "My pairs are market-neutral!"
 
@@ -3936,7 +3936,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ---
 
-#### ❌ Mistake 3: Excessive Leverage
+####  Mistake 3: Excessive Leverage
 
 **The trap:** "Low-risk, can use 25x leverage"
 
@@ -3946,7 +3946,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ---
 
-#### ❌ Mistake 4: Sector Over-Concentration
+####  Mistake 4: Sector Over-Concentration
 
 **The trap:** 71% in one sector
 
@@ -3958,19 +3958,19 @@ The production system (Section 11.11) prevented the exact disaster documented in
 
 ### Final Verdict: Pairs Trading in 2025+
 
-> 📊 **NOT dead—but requires professional-grade risk management**
+>  **NOT dead—but requires professional-grade risk management**
 
 **The Opportunity:**
 - Realistic: 8-18% annual, Sharpe 1.2-1.8
 - System (11.11): 12-18% expected
 
 **The Requirements:**
-1. ✅ Cointegration testing
-2. ✅ Regime detection (VIX, correlation)
-3. ✅ Dynamic hedge ratios (Kalman)
-4. ✅ Leverage discipline (2-3x)
-5. ✅ Sector limits (30% max)
-6. ✅ Emergency exit automation
+1.  Cointegration testing
+2.  Regime detection (VIX, correlation)
+3.  Dynamic hedge ratios (Kalman)
+4.  Leverage discipline (2-3x)
+5.  Sector limits (30% max)
+6.  Emergency exit automation
 
 **The Cost:** ~$50K dev + $30K-60K/year
 

@@ -301,7 +301,7 @@ Let's backtest a **pairs trading strategy** on ETH/BTC with walk-forward analysi
     (log :message (format "In-sample Return: {:.2f}%" (* 100 (get full-result :total-return))))
 
     (define degradation (- 1 (/ (mean oos-sharpes) (get full-result :sharpe))))
-    (log :message (format "\n🚨 OVERFITTING PENALTY: {:.1f}%%" (* 100 degradation)))
+    (log :message (format "\n OVERFITTING PENALTY: {:.1f}%%" (* 100 degradation)))
 
     {:window-results results
      :aggregate {:sharpe (mean oos-sharpes)
@@ -571,7 +571,7 @@ OOS Consistency: 85.7% positive quarters (6 of 7)
 In-sample Sharpe: 2.82
 In-sample Return: 31.2%
 
-🚨 OVERFITTING PENALTY: 50.0%
+ OVERFITTING PENALTY: 50.0%
 ```
 
 **Key Insights:**
@@ -1244,8 +1244,8 @@ Where:
     (log :message (format "P-value: {:.4f}" p-value))
 
     (if (> p-value 0.05)
-        (log :message "⚠️  LIKELY DATA SNOOPING - Cannot reject null hypothesis of no skill")
-        (log :message "✅ STATISTICALLY SIGNIFICANT - Likely genuine alpha"))
+        (log :message "  LIKELY DATA SNOOPING - Cannot reject null hypothesis of no skill")
+        (log :message " STATISTICALLY SIGNIFICANT - Likely genuine alpha"))
 
     {:deflated-sr deflated-sr
      :z-score z-score
@@ -1272,7 +1272,7 @@ Z-score: 1.34
 Deflated Sharpe: 1.91
 P-value: 0.0901
 
-⚠️  MARGINAL SIGNIFICANCE - Cannot confidently reject null hypothesis
+  MARGINAL SIGNIFICANCE - Cannot confidently reject null hypothesis
 ```
 
 **Interpretation:** After testing 100 strategies, your best Sharpe of 2.50 is only marginally better than the 1.82 you'd expect by chance. The deflated Sharpe of 1.91 is your "honest" performance metric accounting for data snooping.
@@ -1366,10 +1366,10 @@ P-value: 0.0901
 
     (if (> (length warnings) 0)
         (do
-          (log :message "\n⚠️  OVERFITTING WARNINGS:")
+          (log :message "\n  OVERFITTING WARNINGS:")
           (for (warning warnings)
             (log :message (format "  - {}" warning))))
-        (log :message "\n✅ No obvious overfitting detected"))
+        (log :message "\n No obvious overfitting detected"))
 
     {:degradation degradation
      :sharpe-ratio-is sr-is
@@ -1560,7 +1560,7 @@ xychart-beta
                            :max-drawdown 0.25          ;; 25% stop-loss
                            :max-concentration 0.4))    ;; Max 40% in single sector
 
-    (log :message "✅ Components initialized\n")
+    (log :message " Components initialized\n")
 
     ;; STEP 2: Run backtest simulation
     ;; ─────────────────────────────────────────────────────────────
@@ -1568,7 +1568,7 @@ xychart-beta
     (define backtest-results (run-backtest strategy data-handler
                                            portfolio execution
                                            :risk-manager risk-manager))
-    (log :message "✅ Simulation complete\n")
+    (log :message " Simulation complete\n")
 
     ;; STEP 3: Extract results
     ;; ─────────────────────────────────────────────────────────────
@@ -1643,7 +1643,7 @@ xychart-beta
 
 Backtesting is the most dangerous tool in quantitative finance: powerful when used correctly, catastrophic when abused. The $100 million Epsilon Capital disaster teaches us that **every backtest lies**, and our job is to minimize those lies.
 
-### 🎯 Key Takeaways
+###  Key Takeaways
 
 1. **Sharpe Ratio Decay is Real**
    - In-sample Sharpe 3.0 → Live Sharpe 1.0 is typical

@@ -1,10 +1,10 @@
 # Chapter 15: Decentralized Exchange Sniping and MEV Extraction
 
-> **⚠️ CRITICAL DISCLAIMER**: MEV strategies exist in regulatory gray areas. Sandwiching may constitute market manipulation. Always consult legal counsel before deployment. This chapter is for educational purposes only.
+> ** CRITICAL DISCLAIMER**: MEV strategies exist in regulatory gray areas. Sandwiching may constitute market manipulation. Always consult legal counsel before deployment. This chapter is for educational purposes only.
 
 ---
 
-## 💥 The $8 Million Zero-Bid Attack: When MEV Broke DeFi
+##  The $8 Million Zero-Bid Attack: When MEV Broke DeFi
 
 **March 12, 2020, 2:50 PM UTC**. Ethereum network congestion hits 200 gwei gas prices—20x normal—as COVID-19 panic selling crashes ETH from $194 to $100 in four hours. MakerDAO's decentralized lending protocol triggers liquidation auctions for under-collateralized vaults. Liquidation bots—designed to bid competitively for collateral—fail to execute due to out-of-gas errors.
 
@@ -82,7 +82,7 @@ timeline
 - **Liquity**: No auctions (stability pool instantly absorbs liquidations)
 - **Flashbots**: MEV-Boost separates builders from proposers (reduce monopoly risk)
 
-> **💡 Pro Tip**: Black Thursday liquidations were **legal** (smart contract execution) but **harmful** (destabilized DeFi). Not all profitable MEV strategies are ethically or systemically sound. The lesson: **just because you can, doesn't mean you should.**
+> ** Pro Tip**: Black Thursday liquidations were **legal** (smart contract execution) but **harmful** (destabilized DeFi). Not all profitable MEV strategies are ethically or systemically sound. The lesson: **just because you can, doesn't mean you should.**
 
 ---
 
@@ -104,7 +104,7 @@ graph TD
     E --> I[Detect new token launches]
 ```
 
-### 📊 MEV Economics at a Glance
+###  MEV Economics at a Glance
 
 | Platform | Annual MEV Volume | Top Strategy | Avg Bot Earnings |
 |----------|------------------|--------------|------------------|
@@ -177,7 +177,7 @@ timeline
 
 3. **Atomic execution**: Bundles execute all-or-nothing → no failed transactions, no wasted gas
 
-> **💡 Pro Tip**: 90%+ of Ethereum blocks built via MEV-Boost (as of 2023). Validators earn 10-15% more revenue from MEV payments vs. base rewards alone.
+> ** Pro Tip**: 90%+ of Ethereum blocks built via MEV-Boost (as of 2023). Validators earn 10-15% more revenue from MEV payments vs. base rewards alone.
 
 ### 15.1.5 Memecoins and PumpSwap: The Sniping Era (2023-Present)
 
@@ -281,7 +281,7 @@ $$\text{Profit} = (P_2 - P_1) \times Q - \text{Gas Fees}$$
 | Gas | $5 |
 | **Profit** | **$995** |
 
-> **⚡ Speed Matters**: All bots see opportunity → race to submit highest priority fee → profit declines toward zero (minus infrastructure costs).
+> ** Speed Matters**: All bots see opportunity → race to submit highest priority fee → profit declines toward zero (minus infrastructure costs).
 
 ### 15.3.2 Liquidations: Race to Click the Button
 
@@ -293,7 +293,7 @@ $$\text{Profit} = (P_2 - P_1) \times Q - \text{Gas Fees}$$
 - Liquidation threshold: 110% → $8,000 × 1.10 = $8,800 < $9,000 → liquidatable
 - Liquidator pays $8,000, receives $9,000 → **profit: $1,000 (12.5% return)**
 
-> **📊 Black Thursday Impact**: March 12, 2020 - Network congestion → liquidation bots failed → one bot got liquidations at 0 bids (no competition) → $8M profit.
+> ** Black Thursday Impact**: March 12, 2020 - Network congestion → liquidation bots failed → one bot got liquidations at 0 bids (no competition) → $8M profit.
 
 ### 15.3.3 Sandwich Attacks: Extracting Slippage
 
@@ -416,13 +416,13 @@ From `15_pumpswap_sniper.solisp`:
     (when (= tx_type "create_token")
       (define token_addr (get tx "token"))
       (define timestamp (get tx "timestamp"))
-      (log :message "🎯 NEW TOKEN DETECTED:" :value token_addr)
+      (log :message " NEW TOKEN DETECTED:" :value token_addr)
       (set! new_tokens (concat new_tokens [tx]))))
 
   (log :message "New tokens found:" :value (length new_tokens))
 ```
 
-> **⏱️ Latency target**: <100ms from event to order submission.
+> ** Latency target**: <100ms from event to order submission.
 
 ### 15.5.2 Liquidity Analysis: Sniping Viability
 
@@ -552,10 +552,10 @@ From `15_pumpswap_sniper.solisp`:
 
   (define snipe_decision
     (if (>= snipe_score 0.7)
-        "🚀 EXECUTE SNIPE - High probability setup"
+        " EXECUTE SNIPE - High probability setup"
         (if (>= snipe_score 0.5)
-            "⚠️ CAUTION - Moderate risk, consider position sizing"
-            "❌ SKIP - Poor risk/reward ratio")))
+            " CAUTION - Moderate risk, consider position sizing"
+            " SKIP - Poor risk/reward ratio")))
 
   (log :message "Bot decision:" :value snipe_decision)
 ```
@@ -581,8 +581,8 @@ From `15_pumpswap_sniper.solisp`:
   (define is_safe (>= safety_score 60))
   (define safety_verdict
     (if is_safe
-        "✅ SAFE - Proceed with caution"
-        "🚨 DANGEROUS - Likely honeypot/rug pull"))
+        " SAFE - Proceed with caution"
+        " DANGEROUS - Likely honeypot/rug pull"))
 ```
 
 ```mermaid
@@ -910,8 +910,8 @@ Oct 11, 7:00 PM: Mango Markets insolvent (-$116M bad debt)
 - MEV gave 400ms-2 second advantage (critical for execution)
 
 **Lesson**: **MEV + market manipulation = federal crime.** Key distinctions:
-- ✅ **Legal MEV**: Arbitrage inefficiencies (price gaps between DEXs)
-- ❌ **Illegal MEV**: Manipulate oracles/markets to create artificial profits
+-  **Legal MEV**: Arbitrage inefficiencies (price gaps between DEXs)
+-  **Illegal MEV**: Manipulate oracles/markets to create artificial profits
 
 ### 15.8.5 Memecoin Snipe Epidemic: 90% Lose Money (2023-2024 Data)
 
@@ -1390,7 +1390,7 @@ This section presents production-ready Solisp implementations for MEV sniping on
         ;; CONDITION 1: Take profit hit (2x)
         (if (>= current-price take-profit-price)
             (do
-              (log :message "🎯 TAKE PROFIT HIT" :price current-price)
+              (log :message " TAKE PROFIT HIT" :price current-price)
               (execute-sell-order token-address entry-amount :reason "take-profit")
               (return {:exit-reason "take-profit"
                        :entry-price entry-price
@@ -1510,7 +1510,7 @@ This section presents production-ready Solisp implementations for MEV sniping on
         (if (<= loss-pct (- circuit-breaker-loss-pct))
             (do
               (set! circuit-breaker-triggered true)
-              (log :error "🔴 CIRCUIT BREAKER TRIGGERED"
+              (log :error " CIRCUIT BREAKER TRIGGERED"
                    :daily-loss daily-pnl
                    :threshold-pct circuit-breaker-loss-pct)
               (return {:approved false
@@ -1619,16 +1619,16 @@ This section presents a complete, realistic memecoin snipe scenario using all pr
 
 | Factor | Check Result | Risk Points | Explanation |
 |--------|-------------|-------------|-------------|
-| 1. LP Lock | ❌ **NOT LOCKED** | +30 | Liquidity can be drained anytime |
-| 2. Anti-Sell | ✅ OK | +0 | No `disable_sell` or `canSell` in code |
-| 3. Deployer History | ✅ CLEAN | +0 | No prior rug pulls found |
-| 4. Ownership Renounced | ❌ **NOT RENOUNCED** | +20 | Deployer still has admin control |
-| 5. Honeypot Test | ✅ **CAN SELL** | +0 | Simulation: buy + sell both succeed |
-| 6. Mint Authority | ❌ **ACTIVE** | +30 | Deployer can mint infinite tokens |
-| 7. Freeze Authority | ✅ DISABLED | +0 | Cannot freeze user tokens |
-| 8. Concentrated Holdings | ❌ **75% in top 5** | +20 | High dump risk from insiders |
-| 9. Liquidity Amount | ✅ 50 SOL | +0 | Adequate liquidity |
-| 10. Social Presence | ❌ **NO LINKS** | +15 | No website, Twitter, or Telegram |
+| 1. LP Lock |  **NOT LOCKED** | +30 | Liquidity can be drained anytime |
+| 2. Anti-Sell |  OK | +0 | No `disable_sell` or `canSell` in code |
+| 3. Deployer History |  CLEAN | +0 | No prior rug pulls found |
+| 4. Ownership Renounced |  **NOT RENOUNCED** | +20 | Deployer still has admin control |
+| 5. Honeypot Test |  **CAN SELL** | +0 | Simulation: buy + sell both succeed |
+| 6. Mint Authority |  **ACTIVE** | +30 | Deployer can mint infinite tokens |
+| 7. Freeze Authority |  DISABLED | +0 | Cannot freeze user tokens |
+| 8. Concentrated Holdings |  **75% in top 5** | +20 | High dump risk from insiders |
+| 9. Liquidity Amount |  50 SOL | +0 | Adequate liquidity |
+| 10. Social Presence |  **NO LINKS** | +15 | No website, Twitter, or Telegram |
 
 **Final Risk Score: 115/300 → Risk Level: HIGH**
 
@@ -1663,7 +1663,7 @@ However, for educational purposes, let's assume the user **manually overrides** 
 
 **Log output:**
 ```
-[14:30:17.500] ⚠️ RISK CHECK FAILED
+[14:30:17.500]  RISK CHECK FAILED
 [14:30:17.500] Risk Score: 115/300 (HIGH)
 [14:30:17.500] Threshold: 30/300
 [14:30:17.500] Recommendation: REJECT
@@ -1726,7 +1726,7 @@ Transaction 2 (Buy):
 
 **Log output:**
 ```
-[14:30:20.800] ✅ SNIPE SUCCESSFUL
+[14:30:20.800]  SNIPE SUCCESSFUL
 [14:30:20.800] Signature: Buy7x...3kl
 [14:30:20.800] Slot: 245,183,921
 [14:30:20.800] Cost: 0.510 SOL
@@ -1756,7 +1756,7 @@ Unrealized P&L: +$365 (+73%)
 ```
 Price: $0.000022 (+100% from entry)
 Unrealized P&L: +$500 (+100%)
-🎯 TAKE PROFIT TARGET HIT
+ TAKE PROFIT TARGET HIT
 ```
 
 ### 15.10.6 Phase 5: Exit (T+54 to T+56 seconds)
@@ -1799,9 +1799,9 @@ Priority fee: 0.005 SOL
 
 **Log output:**
 ```
-[14:31:15.500] 🎯 TAKE PROFIT HIT at $0.000022
+[14:31:15.500]  TAKE PROFIT HIT at $0.000022
 [14:31:15.500] Executing sell: 45,500,000 PEPE2
-[14:31:16.000] ✅ SELL SUCCESSFUL
+[14:31:16.000]  SELL SUCCESSFUL
 [14:31:16.000] SOL Received: 0.995
 [14:31:16.000] Holding Time: 55 seconds
 ```
@@ -1861,15 +1861,15 @@ PROFIT:
 ### 15.10.9 Post-Mortem Analysis
 
 **What Went Right:**
-1. ✅ **Fast detection**: WebSocket monitoring gave 0.2s edge
-2. ✅ **Exit discipline**: Sold exactly at 2x target (no greed)
-3. ✅ **Jito bundle**: Landed in first slot, no frontrunning
-4. ✅ **Risk override worked**: User reduced size from 1.0 → 0.5 SOL (smart)
+1.  **Fast detection**: WebSocket monitoring gave 0.2s edge
+2.  **Exit discipline**: Sold exactly at 2x target (no greed)
+3.  **Jito bundle**: Landed in first slot, no frontrunning
+4.  **Risk override worked**: User reduced size from 1.0 → 0.5 SOL (smart)
 
 **What Went Wrong:**
-1. ⚠️ **Risk score 115**: Should have rejected (LP not locked, mint authority active)
-2. ⚠️ **No social presence**: Anonymous deployer, no community = high rug risk
-3. ⚠️ **Concentrated holdings**: 75% held by top 5 wallets (dump risk)
+1.  **Risk score 115**: Should have rejected (LP not locked, mint authority active)
+2.  **No social presence**: Anonymous deployer, no community = high rug risk
+3.  **Concentrated holdings**: 75% held by top 5 wallets (dump risk)
 
 **Lessons Learned:**
 - **This was a lucky win, not a repeatable strategy**: Risk score 115 is EXTREME
@@ -1944,33 +1944,33 @@ MEV extraction represents a fundamental property of blockchain systems with tran
 
 ### What Works: Profitable MEV Strategies
 
-✅ **1. Arbitrage between DEXs (Value-Additive MEV)**
+ **1. Arbitrage between DEXs (Value-Additive MEV)**
 - **Why it works**: Provides genuine price efficiency (moves prices toward equilibrium)
 - **Infrastructure**: Co-located servers, direct validator connections, sub-100ms latency
 - **Sharpe ratio**: 1.5-2.5 (arbitrage), significantly better than sniping (0.3-0.8)
 - **Win rate**: 60-80% (predictable opportunities, no rug pull risk)
 - **Example**: ETH price $2,000 on Uniswap, $2,005 on SushiSwap → buy Uni, sell Sushi, profit $5 minus gas
 
-✅ **2. Liquidation Bots (Value-Additive MEV)**
+ **2. Liquidation Bots (Value-Additive MEV)**
 - **Why it works**: Essential service (prevents bad debt in lending protocols)
 - **Black Thursday lesson**: Network congestion creates monopoly opportunities (but also protocol risk)
 - **Post-2020 improvements**: Auction mechanisms redesigned, circuit breakers added
 - **Sharpe ratio**: 1.2-2.0 (during normal markets)
 - **Capital required**: $100k+ (need reserves to liquidate large positions)
 
-✅ **3. Jito Bundles for MEV Protection**
+ **3. Jito Bundles for MEV Protection**
 - **Why it works**: Atomic execution prevents frontrunning the frontrunner
 - **Cost**: 0.001-0.005 SOL tip per bundle (~$0.10-0.50)
 - **Benefit**: No public mempool visibility → no MEV competition
 - **Use case**: Worked example (Section 15.10) succeeded via Jito bundle
 
-✅ **4. Rug Pull Detection (10-Factor Scoring)**
+ **4. Rug Pull Detection (10-Factor Scoring)**
 - **Why it works**: Risk score 115 correctly predicted token rugged within 4 hours
 - **Effectiveness**: Filters 80% of scams before execution
 - **False positive rate**: 30% (rejects some legitimate tokens)
 - **Net result**: Reduces loss rate from 90% to 60% (still negative EV, but less catastrophic)
 
-✅ **5. Exit Discipline (Take Profit at 2x)**
+ **5. Exit Discipline (Take Profit at 2x)**
 - **Why it works**: Prevents greed-induced holding (memecoins pump fast, dump faster)
 - **Worked example**: 2x target hit at T+55s → exited before -96% crash at T+1hr
 - **Alternative scenario**: Held for "3x" → caught in dump → -80% instead of +94%
@@ -1978,39 +1978,39 @@ MEV extraction represents a fundamental property of blockchain systems with tran
 
 ### What Fails: Catastrophic MEV Mistakes
 
-❌ **1. Black Thursday Zero-Bid Liquidations ($8.32M Protocol Loss)**
+ **1. Black Thursday Zero-Bid Liquidations ($8.32M Protocol Loss)**
 - **Failure mode**: Network congestion → single-bot monopoly → 0 DAI bids accepted
 - **MakerDAO impact**: $4.5M protocol deficit, emergency governance, MKR token dilution
 - **Why it failed**: Assumed competitive bidding, no minimum bid enforcement
 - **Prevention**: Minimum bid requirements, circuit breakers when gas >200 gwei, longer auction times
 
-❌ **2. Memecoin Sniping (90.3% Lose Money, Avg -$847)**
+ **2. Memecoin Sniping (90.3% Lose Money, Avg -$847)**
 - **Failure mode**: Rug pulls (80%), competition (50+ bots), slippage (15-30%)
 - **Statistical reality**: Top 1% profit $2.5M avg, bottom 99% lose $1,204 avg
 - **Expected value**: Negative even for skilled snipers (unless top 0.1%)
 - **Why it fails**: Information asymmetry favors deployers, not snipers
 - **Worked example lesson**: Risk score 115 trade succeeded due to luck, not skill (would lose 9/10 times)
 
-❌ **3. SQUID Token Anti-Sell Honeypot ($3.38M Total Loss)**
+ **3. SQUID Token Anti-Sell Honeypot ($3.38M Total Loss)**
 - **Failure mode**: Smart contract had `require(canSell[msg.sender])` → only deployer could sell
 - **Victim experience**: Price pumped to $2,861 → snipers tried to sell 100+ times → all failed → LP drained → $0
 - **Why snipers fell for it**: Didn't simulate sell transaction before buying
 - **Prevention**: Always run `simulate-buy-sell-test` (Section 15.9.2) before sniping
 
-❌ **4. AnubisDAO Instant Rug ($60M Vanished in 60 Seconds)**
+ **4. AnubisDAO Instant Rug ($60M Vanished in 60 Seconds)**
 - **Failure mode**: "Fair launch" with "20-day LP lock" (promised) → LP drained 1 minute after launch (reality)
 - **Timeline**: T+0s create LP → T+20s snipers buy → T+60s deployer calls `emergencyWithdraw` → LP gone
 - **Why it failed**: Trusted announcements instead of verifying on-chain LP lock
 - **Prevention**: Check LP lock on-chain (burn address or timelock contract), never trust Twitter promises
 
-❌ **5. Jaredfromsubway.eth Sandwich Attacks ($40M+ Extracted, SEC Investigation)**
+ **5. Jaredfromsubway.eth Sandwich Attacks ($40M+ Extracted, SEC Investigation)**
 - **Failure mode**: Profitable but harmful MEV (extracted from retail users)
 - **Community response**: Blacklisted by MEV-Blocker, protocol-level bans, #StopJared trending
 - **Regulatory risk**: SEC investigating as potential market manipulation
 - **Why it's risky**: Legal gray area (wire fraud, commodities manipulation charges possible)
 - **Lesson**: Profitable ≠ legal or sustainable
 
-❌ **6. Mango Markets Oracle Manipulation ($114M, Federal Charges)**
+ **6. Mango Markets Oracle Manipulation ($114M, Federal Charges)**
 - **Failure mode**: MEV + market manipulation → criminal fraud
 - **Attack**: Frontrun oracle updates via MEV → pump spot price → oracle updates → perp position profits
 - **Legal aftermath**: Eisenberg arrested December 2022, convicted April 2023, up to 20 years prison
@@ -2021,57 +2021,57 @@ MEV extraction represents a fundamental property of blockchain systems with tran
 
 **Pre-Trade Checks (MANDATORY):**
 
-1. ✅ **Run 10-factor rug pull assessment** (Section 15.9.2)
+1.  **Run 10-factor rug pull assessment** (Section 15.9.2)
    - Risk score >50 → reject immediately
    - Risk score 30-50 → only tiny position (0.1-0.5 SOL max)
    - Risk score <30 → proceed with standard position sizing
 
-2. ✅ **Verify LP lock on-chain** (not social media claims)
+2.  **Verify LP lock on-chain** (not social media claims)
    - Check LP tokens sent to burn address (`0x000...dead`)
    - Or timelock contract with unlock >30 days
    - AnubisDAO lesson: "Fair launch" claims mean nothing without on-chain proof
 
-3. ✅ **Simulate buy + sell transaction** (honeypot test)
+3.  **Simulate buy + sell transaction** (honeypot test)
    - Use Solana `simulateTransaction` RPC call
    - If sell fails → instant reject (SQUID Token lesson)
    - If sell succeeds with >20% slippage → warning sign
 
-4. ✅ **Check deployer history**
+4.  **Check deployer history**
    - Scan deployer address for prior token launches
    - If >1 rug pull → instant reject
    - If no history → unknown risk (could be new scammer or legitimate)
 
-5. ✅ **Position limits enforcement**
+5.  **Position limits enforcement**
    - Max 2 SOL per snipe (4% of $50 SOL capital)
    - Max 10 snipes per day (prevent emotional trading)
    - Circuit breaker at -20% daily loss (halt all trading)
 
 **Execution Requirements:**
 
-6. ✅ **Use Jito bundles for all snipes**
+6.  **Use Jito bundles for all snipes**
    - Public mempool = frontrun = loss
    - Atomic execution prevents partial fills
    - 0.001 SOL tip is worth MEV protection
 
-7. ✅ **Pre-define exit targets BEFORE entry**
+7.  **Pre-define exit targets BEFORE entry**
    - Take profit: 2x (100% gain)
    - Stop loss: -50%
    - Max hold: 30 minutes
    - NO emotional decisions during trade
 
-8. ✅ **Dynamic priority fees** (Section 15.9.3)
+8.  **Dynamic priority fees** (Section 15.9.3)
    - Calculate based on competition + liquidity
    - Cap at 0.05 SOL max (prevent MEV war escalation)
    - Underbid → lose snipe, overbid → negative EV
 
 **Post-Trade Discipline:**
 
-9. ✅ **Record every trade outcome**
+9.  **Record every trade outcome**
    - Track daily P&L, snipe count, risk scores
    - Analyze: Which risk factors predicted losses?
    - Adjust thresholds if losing >20% monthly
 
-10. ✅ **Never override risk scores >50**
+10.  **Never override risk scores >50**
     - Worked example: Risk 115 → should reject
     - User override → succeeded due to luck (1/10 probability)
     - 10 similar trades → expect -$4,452 total loss
@@ -2180,7 +2180,7 @@ MEV extraction represents a fundamental property of blockchain systems with tran
 - Require MEV profit disclosure for tax purposes
 - Educate retail investors about MEV risks
 
-> **🎯 Final Word:** MEV extraction is not a democratized opportunity—it's a professional, capital-intensive, ethically complex domain where 90% of participants lose money to subsidize the top 1%. The disasters documented in this chapter ($8.32M Black Thursday, $60M AnubisDAO, $114M Mango Markets) prove that MEV without rigorous risk management, legal counsel, and ethical boundaries leads to catastrophic losses or criminal charges. Proceed only if you're willing to invest $100k+ capital, 1,000+ hours learning, and accept that even with perfect execution, regulatory changes may render your strategy illegal overnight.
+> ** Final Word:** MEV extraction is not a democratized opportunity—it's a professional, capital-intensive, ethically complex domain where 90% of participants lose money to subsidize the top 1%. The disasters documented in this chapter ($8.32M Black Thursday, $60M AnubisDAO, $114M Mango Markets) prove that MEV without rigorous risk management, legal counsel, and ethical boundaries leads to catastrophic losses or criminal charges. Proceed only if you're willing to invest $100k+ capital, 1,000+ hours learning, and accept that even with perfect execution, regulatory changes may render your strategy illegal overnight.
 
 ---
 

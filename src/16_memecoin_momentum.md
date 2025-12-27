@@ -72,8 +72,8 @@ function transfer(address to, uint256 amount) public {
 ```
 
 **The trap:**
-- **Buying** (transferring tokens FROM liquidity pool): ✅ Allowed
-- **Selling** (transferring tokens TO liquidity pool): ❌ **Blocked** (trading never enabled)
+- **Buying** (transferring tokens FROM liquidity pool):  Allowed
+- **Selling** (transferring tokens TO liquidity pool):  **Blocked** (trading never enabled)
 
 Victims could acquire tokens and see their value skyrocket on charts, but the moment they attempted to sell, transactions failed with cryptic error messages. Most assumed it was network congestion or slippage issues. They never suspected the contract itself prevented selling.
 
@@ -130,7 +130,7 @@ The cruelest aspect: **This was 100% preventable with a single $0.10 test.**
    HOW: Use Solana simulation API (no actual transaction)"
 
   (do
-    (log :message "🔍 TESTING SELL CAPABILITY")
+    (log :message " TESTING SELL CAPABILITY")
     (log :message "   Token:" :value token-address)
 
     ;; Build test sell transaction (swap token → USDC)
@@ -146,11 +146,11 @@ The cruelest aspect: **This was 100% preventable with a single $0.10 test.**
     ;; Check result
     (if (get simulation-result :success)
         (do
-          (log :message "✅ SELL TEST PASSED - Safe to trade")
+          (log :message " SELL TEST PASSED - Safe to trade")
           true)
 
         (do
-          (log :message "🚨 SELL TEST FAILED - HONEYPOT DETECTED")
+          (log :message " SELL TEST FAILED - HONEYPOT DETECTED")
           (log :message "   Error:" :value (get simulation-result :error))
           (log :message "⛔ DO NOT BUY THIS TOKEN")
           false))))
@@ -173,11 +173,11 @@ The SQUID disaster crystallized a fundamental truth about memecoin trading:
 
 **Mandatory pre-trade checklist (costs $0.10, takes 2 minutes):**
 
-1. ✅ **Simulate a sell transaction** (prevents honeypots like SQUID)
-2. ✅ **Check liquidity lock status** (prevents traditional rug pulls)
-3. ✅ **Verify contract on block explorer** (prevents hidden malicious code)
-4. ✅ **Check top holder concentration** (prevents whale manipulation)
-5. ✅ **Scan for anti-whale mechanics** (prevents sell limitations)
+1.  **Simulate a sell transaction** (prevents honeypots like SQUID)
+2.  **Check liquidity lock status** (prevents traditional rug pulls)
+3.  **Verify contract on block explorer** (prevents hidden malicious code)
+4.  **Check top holder concentration** (prevents whale manipulation)
+5.  **Scan for anti-whale mechanics** (prevents sell limitations)
 
 **Cost-benefit analysis:**
 - **Time investment:** 2 minutes
@@ -214,7 +214,7 @@ Three years after SQUID, honeypot scams continue:
 
 The memecoin phenomenon represents one of the most fascinating intersections of behavioral finance, social media dynamics, and blockchain technology. From Dogecoin's 2013 origin as a joke cryptocurrency to the 2021 GameStop saga that demonstrated retail traders' ability to coordinate via Reddit, to the proliferation of thousands of memecoins on chains like Solana with near-zero launch costs—this asset class has evolved from internet curiosity to multi-billion dollar market with professional traders extracting systematic profits.
 
-> 💡 **Key Insight**: Unlike traditional assets backed by cash flows or physical commodities, memecoins derive value purely from attention, narrative, and network effects. A token with a dog logo and clever name can surge 10,000% in hours based solely on viral social media posts, only to crash 95% within days as attention shifts elsewhere.
+>  **Key Insight**: Unlike traditional assets backed by cash flows or physical commodities, memecoins derive value purely from attention, narrative, and network effects. A token with a dog logo and clever name can surge 10,000% in hours based solely on viral social media posts, only to crash 95% within days as attention shifts elsewhere.
 
 ### Historical Milestones Timeline
 
@@ -261,7 +261,7 @@ $$P(\text{good} | n, p_i) = \frac{P(n | \text{good}) \cdot P(\text{good} | p_i)}
 
 As $n$ increases, the prior $P(n | \text{good})$ dominates private signal $p_i$, causing rational herding even with negative private information.
 
-> 🎯 **Trading Implication**: Early momentum (first 1000 holders) has stronger signal quality than late momentum (10,000+ holders), as late momentum reflects herding rather than fundamental conviction.
+>  **Trading Implication**: Early momentum (first 1000 holders) has stronger signal quality than late momentum (10,000+ holders), as late momentum reflects herding rather than fundamental conviction.
 
 ---
 
@@ -315,7 +315,7 @@ Analysis of 1,000+ memecoin launches on Solana shows entry timing critically imp
 | After +100% gain | -28% | **FOMO trap** |
 | After +200% gain | -52% | **Peak FOMO** |
 
-> ⚠️ **FOMO Warning**: The optimal entry window closes rapidly. After 50% gain from launch, expected value turns negative as late FOMO buyers provide exit liquidity for early entrants.
+>  **FOMO Warning**: The optimal entry window closes rapidly. After 50% gain from launch, expected value turns negative as late FOMO buyers provide exit liquidity for early entrants.
 
 ---
 
@@ -361,7 +361,7 @@ $$\ln(P_{t+1h}) = 0.35 + 0.42 \ln(\text{Twitter mentions}_t) + 0.28 \ln(\text{Ho
 | Twitter coefficient | 0.42 | Most predictive factor |
 | Statistical significance | p < 0.001 | Highly significant |
 
-> 💡 **Trading Implication**: Monitor social sentiment in real-time. Viral growth in mentions (>200% hourly growth) predicts 2-6 hour price pumps with 72% accuracy.
+>  **Trading Implication**: Monitor social sentiment in real-time. Viral growth in mentions (>200% hourly growth) predicts 2-6 hour price pumps with 72% accuracy.
 
 ---
 
@@ -381,11 +381,11 @@ $$a_t = v_t - v_{t-1}$$
 
 | Velocity Range | Phase | +50% Probability (1h) | Trading Action |
 |----------------|-------|---------------------|----------------|
-| v > 100% | 🚀 Parabolic | 15% | ⚠️ High risk, late entry |
-| 50% < v ≤ 100% | 💪 Strong | 45% | ✅ **Optimal entry zone** |
-| 10% < v ≤ 50% | 📈 Moderate | 25% | 🟡 Accumulation phase |
-| 0% < v ≤ 10% | 📉 Weak | 8% | ⚠️ Distribution starting |
-| v ≤ 0% | 🔻 Bearish | 2% | 🛑 **Exit immediately** |
+| v > 100% |  Parabolic | 15% |  High risk, late entry |
+| 50% < v ≤ 100% | 💪 Strong | 45% |  **Optimal entry zone** |
+| 10% < v ≤ 50% |  Moderate | 25% |  Accumulation phase |
+| 0% < v ≤ 10% |  Weak | 8% |  Distribution starting |
+| v ≤ 0% |  Bearish | 2% | 🛑 **Exit immediately** |
 
 ```mermaid
 graph TD
@@ -393,15 +393,15 @@ graph TD
     B --> C{v > 50%?}
     C -->|Yes| D{Acceleration Positive?}
     C -->|No| E[Wait for Setup]
-    D -->|Yes| F[✅ Strong Entry Signal]
-    D -->|No| G[⚠️ Momentum Exhaustion]
+    D -->|Yes| F[ Strong Entry Signal]
+    D -->|No| G[ Momentum Exhaustion]
 
     style F fill:#51cf66
     style G fill:#ffd43b
     style E fill:#e9ecef
 ```
 
-> 🎯 **Key Insight**: Positive acceleration (momentum increasing) confirms trend strength. Negative acceleration (momentum decelerating) warns of exhaustion even if velocity remains positive.
+>  **Key Insight**: Positive acceleration (momentum increasing) confirms trend strength. Negative acceleration (momentum decelerating) warns of exhaustion even if velocity remains positive.
 
 ---
 
@@ -416,12 +416,12 @@ $$\text{Volume Ratio}_t = \frac{\text{Volume}_t}{\text{Avg Volume}_{24h}}$$
 
 | Volume Ratio | Buying Pressure | Upside Follow-Through | Interpretation |
 |--------------|----------------|---------------------|----------------|
-| > 3.0 | 🟢 Strong | 68% | Institutional/whale participation |
-| 2.0-3.0 | 🟡 Moderate | 52% | Decent confirmation |
+| > 3.0 |  Strong | 68% | Institutional/whale participation |
+| 2.0-3.0 |  Moderate | 52% | Decent confirmation |
 | 1.0-2.0 | ⚪ Neutral | 48% | Coin flip |
-| < 1.0 | 🔴 Declining | 31% | Waning interest |
+| < 1.0 |  Declining | 31% | Waning interest |
 
-> 💻 **Trading Rule**: Only enter momentum trades with Volume Ratio > 2.0 to ensure institutional/whale participation rather than retail-only speculation.
+>  **Trading Rule**: Only enter momentum trades with Volume Ratio > 2.0 to ensure institutional/whale participation rather than retail-only speculation.
 
 ---
 
@@ -444,11 +444,11 @@ $$G = \frac{\sum_{i=1}^n \sum_{j=1}^n |x_i - x_j|}{2n^2\bar{x}}$$
 
 | Gini Coefficient | Distribution | Trading Signal |
 |------------------|--------------|----------------|
-| G < 0.5 | Well distributed | 🟢 Healthy retail base |
-| 0.5 ≤ G < 0.7 | Moderate concentration | 🟡 Watch whale activity |
-| G ≥ 0.7 | **High concentration** | 🔴 Whale-controlled |
+| G < 0.5 | Well distributed |  Healthy retail base |
+| 0.5 ≤ G < 0.7 | Moderate concentration |  Watch whale activity |
+| G ≥ 0.7 | **High concentration** |  Whale-controlled |
 
-> ⚠️ **Critical**: High concentration ($G > 0.7$) means few whales control supply—bullish if whales accumulating, **catastrophic** if distributing.
+>  **Critical**: High concentration ($G > 0.7$) means few whales control supply—bullish if whales accumulating, **catastrophic** if distributing.
 
 ---
 
@@ -474,7 +474,7 @@ pie title Sentiment Weight Distribution
 | Telegram | 0.40 | Active community engagement |
 | Influencer | 0.25 | High-signal mentions |
 
-> 💡 **Sentiment Leading Indicator**: Sentiment changes precede price changes by 15-45 minutes on average. Exploit this lag by entering positions when sentiment spikes before price fully adjusts.
+>  **Sentiment Leading Indicator**: Sentiment changes precede price changes by 15-45 minutes on average. Exploit this lag by entering positions when sentiment spikes before price fully adjusts.
 
 ---
 
@@ -497,30 +497,30 @@ The Solisp code implements a composite entry score aggregating technical, on-cha
   (define momentum_1min 65)  ;; 65% price increase in 1 minute
   (when (> momentum_1min 50)
     (set! entry_score (+ entry_score 0.3))
-    (log :message "✅ Momentum criterion met" :value momentum_1min))
+    (log :message " Momentum criterion met" :value momentum_1min))
 
   ;; Component 2: Volume confirmation (20% weight)
   (define volume_ratio 2.8)
   (when (> volume_ratio 2)
     (set! entry_score (+ entry_score 0.2))
-    (log :message "✅ Volume criterion met" :value volume_ratio))
+    (log :message " Volume criterion met" :value volume_ratio))
 
   ;; Component 3: Holder flow (25% weight split)
   (define net_holders 150)  ;; New holders in last hour
   (when (> net_holders 100)
     (set! entry_score (+ entry_score 0.15))
-    (log :message "✅ Holder growth criterion met" :value net_holders))
+    (log :message " Holder growth criterion met" :value net_holders))
 
   (define whale_change 0.05)  ;; Whales accumulated 5% of supply
   (when (> whale_change 0)
     (set! entry_score (+ entry_score 0.1))
-    (log :message "✅ Whale accumulation criterion met" :value whale_change))
+    (log :message " Whale accumulation criterion met" :value whale_change))
 
   ;; Component 4: Social hype (25% weight)
   (define social_score 82)  ;; Composite sentiment score
   (when (>= social_score 75)
     (set! entry_score (+ entry_score 0.25))
-    (log :message "✅ Social hype criterion met" :value social_score))
+    (log :message " Social hype criterion met" :value social_score))
 
   ;; Generate entry signal based on thresholds
   (define entry_signal
@@ -542,8 +542,8 @@ The Solisp code implements a composite entry score aggregating technical, on-cha
 
 | Score Range | Signal | Expected Return | Holding Period |
 |-------------|--------|-----------------|----------------|
-| ≥ 0.7 | 🟢 **STRONG BUY** | +50-100% | 2-6 hours |
-| 0.5-0.69 | 🟡 BUY | +20-50% | 4-12 hours |
+| ≥ 0.7 |  **STRONG BUY** | +50-100% | 2-6 hours |
+| 0.5-0.69 |  BUY | +20-50% | 4-12 hours |
 | < 0.5 | ⚪ WAIT | Insufficient conviction | N/A |
 
 ---
@@ -580,7 +580,7 @@ Tiered profit-taking reduces regret and locks in gains:
       (define sell_amount (* position_remaining (/ sell_pct 100)))
       (set! position_remaining (- position_remaining sell_pct))
 
-      (log :message "🎯 EXIT TIER HIT" :value level)
+      (log :message " EXIT TIER HIT" :value level)
       (log :message "   Target price:" :value target)
       (log :message "   Selling:" :value sell_pct)
       (log :message "   Remaining position:" :value position_remaining)))
@@ -602,7 +602,7 @@ $$EV = 0.25(0.9 \times 2) + 0.25(0.6 \times 5) + 0.25(0.3 \times 10) + 0.25(0.1 
 | Hold until exit | 1.5-2x | Low | Difficult timing |
 | All-in-all-out | 0.8-5x | Variable | Emotional |
 
-> 💡 **Key Insight**: Average return of 3.825x vs holding until exit, which typically captures 1.5-2x due to difficulty timing the exact peak.
+>  **Key Insight**: Average return of 3.825x vs holding until exit, which typically captures 1.5-2x due to difficulty timing the exact peak.
 
 ---
 
@@ -646,7 +646,7 @@ Protect profits with dynamic stop that trails peak price:
 | Average loss cut | -12% | Controlled |
 | Risk-reward ratio | **6.8:1** | Highly asymmetric |
 
-> 🎯 **Optimization**: 15% trailing stop balances tightness (minimizes giveback) and looseness (avoids premature stops from volatility). Empirically optimal for memecoin volatility profiles.
+>  **Optimization**: 15% trailing stop balances tightness (minimizes giveback) and looseness (avoids premature stops from volatility). Empirically optimal for memecoin volatility profiles.
 
 ---
 
@@ -674,12 +674,12 @@ Hard cutoff prevents emotional late entries:
 
   (if is_fomo
       (do
-        (log :message "⚠️ FOMO ALERT: Token pumped >50%")
+        (log :message " FOMO ALERT: Token pumped >50%")
         (log :message "⛔ HIGH RISK ENTRY - DO NOT TRADE")
         (log :message "Expected return: NEGATIVE")
         false)  ;; Block entry
       (do
-        (log :message "✅ Entry still within safe window")
+        (log :message " Entry still within safe window")
         true)))  ;; Allow entry
 ```
 
@@ -699,11 +699,11 @@ graph TD
 
 | Entry Timing | Expected Return | Risk Level |
 |--------------|-----------------|------------|
-| 0-50% gain | +15% | ✅ Safe |
-| 50-100% gain | -15% | ⚠️ **FOMO trap** |
+| 0-50% gain | +15% |  Safe |
+| 50-100% gain | -15% |  **FOMO trap** |
 | 100%+ gain | -52% | 🛑 **Peak FOMO** |
 
-> ⚠️ **Critical Rule**: The +50% threshold represents the point where smart money begins distributing to retail FOMO buyers.
+>  **Critical Rule**: The +50% threshold represents the point where smart money begins distributing to retail FOMO buyers.
 
 ---
 
@@ -757,7 +757,7 @@ graph LR
 | 4-24 hours | 29% | - |
 | >24 hours | 8% | - |
 
-> 💡 **Capital Efficiency**: Fast turnover enables capital recycling. Average 3.2 trades per day sustained, multiplying effective returns.
+>  **Capital Efficiency**: Fast turnover enables capital recycling. Average 3.2 trades per day sustained, multiplying effective returns.
 
 ---
 
@@ -777,7 +777,7 @@ Where: M=momentum, V=volume, H=holder_flow, S=social_sentiment
 | Momentum | **0.38** | 4.2 | 🥇 Most predictive |
 | Holder flow | 0.28 | 3.8 | 🥈 Strong signal |
 | Volume | 0.22 | 3.1 | 🥉 Significant |
-| Social sentiment | 0.19 | 2.7 | ✅ Meaningful |
+| Social sentiment | 0.19 | 2.7 |  Meaningful |
 
 **Model statistics:**
 - $R^2 = 0.52$ (52% of variance explained)
@@ -792,7 +792,7 @@ pie title Factor Contribution to Returns
     "Social Sentiment" : 12
 ```
 
-> 📊 **Key Finding**: All factors contribute independently. Multicollinearity low, confirming factors capture different information dimensions.
+>  **Key Finding**: All factors contribute independently. Multicollinearity low, confirming factors capture different information dimensions.
 
 ---
 
@@ -806,10 +806,10 @@ pie title Factor Contribution to Returns
 
 | Check | What to Verify | Red Flag |
 |-------|---------------|----------|
-| Contract verification | Source code published | ❌ Unverified contract |
-| Liquidity lock | LP tokens time-locked | ❌ Unlocked liquidity |
-| Ownership | Mint authority revoked | ❌ Active mint authority |
-| Simulation | Test sell transaction | ❌ Sell fails in simulation |
+| Contract verification | Source code published |  Unverified contract |
+| Liquidity lock | LP tokens time-locked |  Unlocked liquidity |
+| Ownership | Mint authority revoked |  Active mint authority |
+| Simulation | Test sell transaction |  Sell fails in simulation |
 
 **Frequency statistics:**
 - ~5-10% of new launches are **outright scams**
@@ -820,14 +820,14 @@ pie title Factor Contribution to Returns
 ```mermaid
 graph TD
     A[New Token Detected] --> B{Liquidity > $50K?}
-    B -->|No| X1[❌ REJECT]
+    B -->|No| X1[ REJECT]
     B -->|Yes| C{LP Locked > 30 days?}
-    C -->|No| X2[❌ REJECT]
+    C -->|No| X2[ REJECT]
     C -->|Yes| D{Contract Verified?}
-    D -->|No| X3[❌ REJECT]
+    D -->|No| X3[ REJECT]
     D -->|Yes| E{Simulation Passed?}
-    E -->|No| X4[❌ REJECT]
-    E -->|Yes| F[✅ APPROVED]
+    E -->|No| X4[ REJECT]
+    E -->|Yes| F[ APPROVED]
 
     style F fill:#51cf66
     style X1 fill:#ff6b6b
@@ -836,7 +836,7 @@ graph TD
     style X4 fill:#ff6b6b
 ```
 
-> ⚠️ **Conservative Approach**: Reduces rug risk to <1% at cost of missing some early opportunities. Acceptable trade-off for capital preservation.
+>  **Conservative Approach**: Reduces rug risk to <1% at cost of missing some early opportunities. Acceptable trade-off for capital preservation.
 
 ---
 
@@ -859,7 +859,7 @@ $$\text{Spread} \approx \frac{1}{\sqrt{10000}} \times 2.0 = \frac{1}{100} \times
 | $50K | 150% | 0.67% |
 | $100K | 100% | 0.10% |
 
-> 💻 **Trading Rule**: Limit position size to <5% of pool liquidity to keep slippage <3%.
+>  **Trading Rule**: Limit position size to <5% of pool liquidity to keep slippage <3%.
 
 ---
 
@@ -871,18 +871,18 @@ SEC increasingly scrutinizing crypto tokens. Many memecoins may qualify as unreg
 
 | Criterion | Memecoin Status |
 |-----------|----------------|
-| Investment of money | ✅ Yes |
-| Common enterprise | ✅ Yes |
-| Expectation of profits | ✅ Yes |
-| From efforts of others | ❓ **Ambiguous** |
+| Investment of money |  Yes |
+| Common enterprise |  Yes |
+| Expectation of profits |  Yes |
+| From efforts of others |  **Ambiguous** |
 
 **Risk management recommendations:**
 
-1. ✅ Treat memecoin trading as high-risk speculation
-2. ✅ Use separate accounts for trading
-3. ✅ Maintain detailed transaction records
-4. ✅ Consult tax advisors annually
-5. ⚠️ Expect regulation to tighten; strategies may need adaptation
+1.  Treat memecoin trading as high-risk speculation
+2.  Use separate accounts for trading
+3.  Maintain detailed transaction records
+4.  Consult tax advisors annually
+5.  Expect regulation to tighten; strategies may need adaptation
 
 ---
 
@@ -905,7 +905,7 @@ Memecoins launch across chains (Solana, Base, Ethereum, Arbitrum). Implement cro
     (define momentum (scan_chain_for_momentum chain))
 
     (when (> momentum momentum_threshold)
-      (log :message "🚨 HIGH MOMENTUM DETECTED")
+      (log :message " HIGH MOMENTUM DETECTED")
       (log :message "   Chain:" :value chain)
       (log :message "   Momentum score:" :value momentum)
       (log :message "   Action: INVESTIGATE IMMEDIATELY"))))
@@ -933,7 +933,7 @@ for influencer in influencers:
 
 **Empirical finding**: Tweets from top 50 crypto influencers cause +23% average price spike within 30 minutes (N=186 observations).
 
-> ⚠️ **Ethical Consideration**: This resembles insider trading—acting on non-public information (influencer tweet before public sees it). Legally ambiguous in crypto but consider moral implications.
+>  **Ethical Consideration**: This resembles insider trading—acting on non-public information (influencer tweet before public sees it). Legally ambiguous in crypto but consider moral implications.
 
 ---
 
@@ -1020,7 +1020,7 @@ function transferToTeamWallet(uint256 amount) private onlyOwner {
     (define team-allocation-pct (get metadata :teamAllocationPercent))
 
     (when (> team-allocation-pct 15)
-      (log :message "⚠️ HIGH TEAM ALLOCATION" :value team-allocation-pct)
+      (log :message " HIGH TEAM ALLOCATION" :value team-allocation-pct)
       (log :message "   SafeMoon had 20%+ team allocation")
       (log :message "   Recommendation: AVOID or extremely small position"))
 
@@ -1028,8 +1028,8 @@ function transferToTeamWallet(uint256 amount) private onlyOwner {
     (define vesting-schedule (get metadata :vestingSchedule))
 
     (if (null? vesting-schedule)
-        (log :message "🚨 NO VESTING SCHEDULE - Team can dump anytime")
-        (log :message "✅ Vesting schedule exists" :value vesting-schedule))
+        (log :message " NO VESTING SCHEDULE - Team can dump anytime")
+        (log :message " Vesting schedule exists" :value vesting-schedule))
 
     ;; Check liquidity lock
     (define lp-lock (check-lp-lock token-address))
@@ -1037,15 +1037,15 @@ function transferToTeamWallet(uint256 amount) private onlyOwner {
     (define lock-duration (get lp-lock :duration-days))
 
     (if (not lp-locked)
-        (log :message "🚨 LIQUIDITY NOT LOCKED - SafeMoon-style rug possible")
+        (log :message " LIQUIDITY NOT LOCKED - SafeMoon-style rug possible")
         (do
-          (log :message "✅ LP locked for" :value lock-duration :unit "days")
+          (log :message " LP locked for" :value lock-duration :unit "days")
 
           ;; But also check if TEAM has access to locked liquidity
           (define team-has-access (get lp-lock :teamCanWithdraw))
 
           (when team-has-access
-            (log :message "⚠️ TEAM HAS LIQUIDITY ACCESS despite 'lock'")
+            (log :message " TEAM HAS LIQUIDITY ACCESS despite 'lock'")
             (log :message "   This is how SafeMoon drained $200M"))))
 
     ;; Risk classification
@@ -1112,11 +1112,11 @@ timeline
 > Mando had a "locked liquidity" badge on DEX screeners—but only for 7 days. Long enough to build trust, short enough for quick exit.
 
 **Minimum LP lock requirements:**
-- ❌ **7 days:** Scam territory (Mando)
-- ⚠️ **30 days:** Bare minimum (still risky)
-- ✅ **90 days:** Acceptable for momentum trading
-- ✅ **180+ days:** Preferred for longer holds
-- ✅ **Burned/permanent:** Best case (can't rug)
+-  **7 days:** Scam territory (Mando)
+-  **30 days:** Bare minimum (still risky)
+-  **90 days:** Acceptable for momentum trading
+-  **180+ days:** Preferred for longer holds
+-  **Burned/permanent:** Best case (can't rug)
 
 **Prevention check:**
 ```lisp
@@ -1134,7 +1134,7 @@ timeline
 
     (if (not is-locked)
         (do
-          (log :message "🚨 LIQUIDITY NOT LOCKED")
+          (log :message " LIQUIDITY NOT LOCKED")
           {:safe false :reason "No LP lock - immediate rug risk"})
 
         (do
@@ -1149,14 +1149,14 @@ timeline
           ;; Classification
           (if (< days-remaining min-safe-days)
               (do
-                (log :message "⚠️ INSUFFICIENT LOCK DURATION")
+                (log :message " INSUFFICIENT LOCK DURATION")
                 (log :message "   Mando locked for 7 days, rugged on day 7")
                 (log :message "   Recommendation: AVOID or exit before unlock")
                 {:safe false
                  :reason (format "Only ~a days locked, need ~a+" days-remaining min-safe-days)})
 
               (do
-                (log :message "✅ LP LOCK ACCEPTABLE")
+                (log :message " LP LOCK ACCEPTABLE")
                 {:safe true
                  :days-remaining days-remaining}))))))
 ```
@@ -1215,10 +1215,10 @@ timeline
 - Current APE price (Oct 2024): $0.68 (-98% from peak $39.40)
 
 **Red flags:**
-1. ✅ Celebrity/influencer backing → **insider front-run risk**
-2. ✅ "Fair launch" with no vesting → **immediate dumps possible**
-3. ✅ Massive hype pre-launch → **whales already positioned**
-4. ✅ Instant $1B+ market cap → **unsustainable valuation**
+1.  Celebrity/influencer backing → **insider front-run risk**
+2.  "Fair launch" with no vesting → **immediate dumps possible**
+3.  Massive hype pre-launch → **whales already positioned**
+4.  Instant $1B+ market cap → **unsustainable valuation**
 
 **Prevention:**
 ```lisp
@@ -1255,7 +1255,7 @@ timeline
           (set! suspicious-wallets (+ suspicious-wallets 1))
           (set! total-suspicious-pct (+ total-suspicious-pct holding-pct))
 
-          (log :message "🚨 SUSPICIOUS EARLY HOLDER DETECTED")
+          (log :message " SUSPICIOUS EARLY HOLDER DETECTED")
           (log :message "   Wallet:" :value wallet-address)
           (log :message "   Wallet age:" :value wallet-age-days :unit "days")
           (log :message "   Funded from CEX in last 7 days:" :value funded-from-cex)
@@ -1264,14 +1264,14 @@ timeline
     ;; Risk assessment
     (if (>= total-suspicious-pct 5.0)
         (do
-          (log :message "🚨 LIKELY INSIDER FRONT-RUN DETECTED")
+          (log :message " LIKELY INSIDER FRONT-RUN DETECTED")
           (log :message "   APE had 4.2% held by pre-launch insiders")
           (log :message "   This token has:" :value total-suspicious-pct :unit "%")
           (log :message "⛔ AVOID - Retail is exit liquidity")
           {:risk "EXTREME" :suspicious-pct total-suspicious-pct})
 
         (do
-          (log :message "✅ No obvious insider front-running detected")
+          (log :message " No obvious insider front-running detected")
           {:risk "LOW" :suspicious-pct total-suspicious-pct}))))
 ```
 
@@ -1349,7 +1349,7 @@ graph LR
     ;; Gini formula
     (define gini (/ pairwise-diffs (* 2 (* n n) mean-balance)))
 
-    (log :message "📊 GINI COEFFICIENT ANALYSIS")
+    (log :message " GINI COEFFICIENT ANALYSIS")
     (log :message "   Gini:" :value gini)
     (log :message "   Interpretation:" :value
       (if (< gini 0.5) "Well distributed (healthy)"
@@ -1358,7 +1358,7 @@ graph LR
 
     ;; FEG comparison
     (when (>= gini 0.8)
-      (log :message "🚨 GINI >= 0.8: Same as FEG Token")
+      (log :message " GINI >= 0.8: Same as FEG Token")
       (log :message "   FEG whales extracted $40M from retail")
       (log :message "⛔ AVOID - You are exit liquidity"))
 
@@ -1370,10 +1370,10 @@ graph LR
 ```
 
 **Prevention thresholds:**
-- **Gini < 0.5:** ✅ Healthy distribution
-- **Gini 0.5-0.7:** ⚠️ Monitor whale activity closely
+- **Gini < 0.5:**  Healthy distribution
+- **Gini 0.5-0.7:**  Monitor whale activity closely
 - **Gini > 0.7:** 🛑 **Manipulation risk—avoid or trade with extreme caution**
-- **Gini > 0.8:** 🚨 **Like FEG—guaranteed manipulation, do not enter**
+- **Gini > 0.8:**  **Like FEG—guaranteed manipulation, do not enter**
 
 **ROI of prevention:** Calculating Gini takes 5 seconds (automated tools exist). FEG's Gini was 0.82 from day 1—instant red flag. Saved: $100M retail losses.
 
@@ -1427,7 +1427,7 @@ And an Ethereum Layer-2 called **Shibarium** to host DeFi and NFTs.
 
     (if (not is-ecosystem-token)
         (do
-          (log :message "✅ Standalone token - no ecosystem risk")
+          (log :message " Standalone token - no ecosystem risk")
           {:risk "NONE"})
 
         (do
@@ -1435,13 +1435,13 @@ And an Ethereum Layer-2 called **Shibarium** to host DeFi and NFTs.
           (define related-tokens (get metadata :relatedTokens))
           (define shared-infrastructure (get metadata :sharedInfrastructure))
 
-          (log :message "⚠️ ECOSYSTEM TOKEN DETECTED")
+          (log :message " ECOSYSTEM TOKEN DETECTED")
           (log :message "   Ecosystem:" :value ecosystem-name)
           (log :message "   Related tokens:" :value (length related-tokens))
           (log :message "   Shared infrastructure:" :value shared-infrastructure)
 
           (log :message "")
-          (log :message "🚨 SYSTEMIC RISK:")
+          (log :message " SYSTEMIC RISK:")
           (log :message "   - Shibarium bridge exploit crashed BONE -80%, LEASH -70%")
           (log :message "   - Failure in ANY ecosystem component affects ALL tokens")
           (log :message "   - Diversifying within ecosystem = FALSE diversification")
@@ -1561,7 +1561,7 @@ graph TD
    HOW: WebSocket connections to multiple DEXs, event filtering, callback trigger"
 
   (do
-    (log :message "🚀 STARTING MEMECOIN SCANNER")
+    (log :message " STARTING MEMECOIN SCANNER")
     (log :message "   DEXs monitored:" :value (length dex-endpoints))
     (log :message "   Min liquidity:" :value min-liquidity-usd :unit "USD")
     (log :message "   Max token age:" :value max-token-age-hours :unit "hours")
@@ -1611,7 +1611,7 @@ graph TD
 
     ;; Return connection handles (for graceful shutdown)
     (log :message "")
-    (log :message "✅ Scanner running, monitoring" :value (length dex-endpoints) :unit "DEXs")
+    (log :message " Scanner running, monitoring" :value (length dex-endpoints) :unit "DEXs")
     websocket-connections))
 ```
 
@@ -1640,7 +1640,7 @@ graph TD
 
   (do
     (log :message "")
-    (log :message "🔍 SAFETY ASSESSMENT BEGIN")
+    (log :message " SAFETY ASSESSMENT BEGIN")
     (log :message "   Token:" :value token-address)
 
     (define safety-score 0)
@@ -1662,10 +1662,10 @@ graph TD
     (if can-sell
         (do
           (set! safety-score (+ safety-score 40))  ;; 40 points - CRITICAL CHECK
-          (log :message "   ✅ PASS - Can sell (honeypot check passed)"))
+          (log :message "    PASS - Can sell (honeypot check passed)"))
         (do
           (set! issues (append issues ["HONEYPOT DETECTED - Cannot sell"]))
-          (log :message "   🚨 FAIL - HONEYPOT DETECTED")
+          (log :message "    FAIL - HONEYPOT DETECTED")
           (log :message "   Error:" :value (get sell-test :error))
           (log :message "   ⛔ IMMEDIATE REJECTION - SQUID-style scam")))
 
@@ -1685,16 +1685,16 @@ graph TD
     (if (and lp-locked (>= lock-days-remaining 90))
         (do
           (set! safety-score (+ safety-score 20))
-          (log :message "   ✅ PASS - LP locked for" :value lock-days-remaining :unit "days"))
+          (log :message "    PASS - LP locked for" :value lock-days-remaining :unit "days"))
         (do
           (if lp-locked
               (do
                 (set! issues (append issues [(format "LP locked only ~a days (need 90+)" lock-days-remaining)]))
-                (log :message "   ⚠️ WARN - LP locked insufficient:" :value lock-days-remaining :unit "days")
+                (log :message "    WARN - LP locked insufficient:" :value lock-days-remaining :unit "days")
                 (log :message "   Mando rugged after 7-day lock expired"))
               (do
                 (set! issues (append issues ["LP NOT LOCKED - immediate rug risk"]))
-                (log :message "   🚨 FAIL - LP NOT LOCKED")))))
+                (log :message "    FAIL - LP NOT LOCKED")))))
 
     ;; ================================================================
     ;; CHECK 3: TEAM ALLOCATION & VESTING (SafeMoon Prevention)
@@ -1712,19 +1712,19 @@ graph TD
     (if (<= team-allocation-pct 15)
         (do
           (set! safety-score (+ safety-score 10))
-          (log :message "   ✅ PASS - Team allocation:" :value team-allocation-pct :unit "%"))
+          (log :message "    PASS - Team allocation:" :value team-allocation-pct :unit "%"))
         (do
           (set! issues (append issues [(format "High team allocation: ~a%" team-allocation-pct)]))
-          (log :message "   ⚠️ WARN - High team allocation:" :value team-allocation-pct :unit "%")
+          (log :message "    WARN - High team allocation:" :value team-allocation-pct :unit "%")
           (log :message "   SafeMoon had 25% team allocation, stole $200M")))
 
     (if has-vesting
         (do
           (set! safety-score (+ safety-score 5))
-          (log :message "   ✅ PASS - Vesting schedule exists"))
+          (log :message "    PASS - Vesting schedule exists"))
         (do
           (set! issues (append issues ["No vesting schedule - dump risk"]))
-          (log :message "   ⚠️ WARN - No vesting schedule")))
+          (log :message "    WARN - No vesting schedule")))
 
     ;; ================================================================
     ;; CHECK 4: GINI COEFFICIENT (FEG Manipulation Prevention)
@@ -1741,11 +1741,11 @@ graph TD
     (if (< gini 0.7)
         (do
           (set! safety-score (+ safety-score 10))
-          (log :message "   ✅ PASS - Gini coefficient:" :value gini)
+          (log :message "    PASS - Gini coefficient:" :value gini)
           (log :message "   Distribution: Healthy"))
         (do
           (set! issues (append issues [(format "High concentration: Gini=~a (FEG was 0.82)" gini)]))
-          (log :message "   🚨 FAIL - Gini coefficient:" :value gini)
+          (log :message "    FAIL - Gini coefficient:" :value gini)
           (log :message "   FEG had Gini=0.82, whales extracted $100M")
           (log :message "   ⛔ MANIPULATION RISK - Few wallets control supply")))
 
@@ -1762,10 +1762,10 @@ graph TD
     (if (< top10-pct 50)
         (do
           (set! safety-score (+ safety-score 5))
-          (log :message "   ✅ PASS - Top 10 holders:" :value top10-pct :unit "%"))
+          (log :message "    PASS - Top 10 holders:" :value top10-pct :unit "%"))
         (do
           (set! issues (append issues [(format "Top 10 hold ~a% of supply" top10-pct)]))
-          (log :message "   ⚠️ WARN - Top 10 holders:" :value top10-pct :unit "%")
+          (log :message "    WARN - Top 10 holders:" :value top10-pct :unit "%")
           (log :message "   Concentration risk")))
 
     ;; ================================================================
@@ -1785,10 +1785,10 @@ graph TD
     (if (= insider-risk "LOW")
         (do
           (set! safety-score (+ safety-score 5))
-          (log :message "   ✅ PASS - No obvious insider front-running"))
+          (log :message "    PASS - No obvious insider front-running"))
         (do
           (set! issues (append issues [(format "Insider front-run detected: ~a% suspicious holdings" suspicious-pct)]))
-          (log :message "   🚨 FAIL - Insider front-running detected")
+          (log :message "    FAIL - Insider front-running detected")
           (log :message "   Suspicious holdings:" :value suspicious-pct :unit "%")
           (log :message "   APE insiders dumped for $850M profit")
           (log :message "   ⛔ RETAIL = EXIT LIQUIDITY")))
@@ -1806,10 +1806,10 @@ graph TD
     (if contract-verified
         (do
           (set! safety-score (+ safety-score 3))
-          (log :message "   ✅ PASS - Contract verified on explorer"))
+          (log :message "    PASS - Contract verified on explorer"))
         (do
           (set! issues (append issues ["Contract not verified"]))
-          (log :message "   ⚠️ WARN - Contract NOT verified")
+          (log :message "    WARN - Contract NOT verified")
           (log :message "   Cannot inspect code for hidden functions")))
 
     ;; ================================================================
@@ -1825,10 +1825,10 @@ graph TD
     (if (null? mint-authority)
         (do
           (set! safety-score (+ safety-score 2))
-          (log :message "   ✅ PASS - Mint authority revoked"))
+          (log :message "    PASS - Mint authority revoked"))
         (do
           (set! issues (append issues ["Mint authority active - inflation risk"]))
-          (log :message "   ⚠️ WARN - Mint authority ACTIVE")
+          (log :message "    WARN - Mint authority ACTIVE")
           (log :message "   Team can print unlimited tokens")))
 
     ;; ================================================================
@@ -1846,10 +1846,10 @@ graph TD
     (if (= ecosystem-risk "NONE")
         (do
           (set! safety-score (+ safety-score 3))
-          (log :message "   ✅ PASS - Standalone token, no ecosystem risk"))
+          (log :message "    PASS - Standalone token, no ecosystem risk"))
         (do
           (set! issues (append issues ["Part of multi-token ecosystem - systemic risk"]))
-          (log :message "   ⚠️ WARN - Ecosystem token detected")
+          (log :message "    WARN - Ecosystem token detected")
           (log :message "   BONE/LEASH crashed -70-80% from Shibarium exploit")
           (log :message "   Diversifying within ecosystem = FALSE diversification")))
 
@@ -1866,10 +1866,10 @@ graph TD
     (if (not has-celebrity-backing)
         (do
           (set! safety-score (+ safety-score 2))
-          (log :message "   ✅ PASS - No celebrity hype (organic launch)"))
+          (log :message "    PASS - No celebrity hype (organic launch)"))
         (do
           (set! issues (append issues ["Celebrity-backed launch - insider front-run risk"]))
-          (log :message "   ⚠️ WARN - Celebrity/influencer backing detected")
+          (log :message "    WARN - Celebrity/influencer backing detected")
           (log :message "   APE (Yuga Labs) had insider front-running")
           (log :message "   Retail bought at peak, -62% immediate loss")))
 
@@ -1894,7 +1894,7 @@ graph TD
     (when (> (length issues) 0)
       (do
         (log :message "")
-        (log :message "⚠️ ISSUES DETECTED:" :value (length issues))
+        (log :message " ISSUES DETECTED:" :value (length issues))
         (for (issue issues)
           (log :message "   -" :value issue))))
 
@@ -1902,11 +1902,11 @@ graph TD
 
     (define recommendation
       (if (>= safety-score 85)
-          "✅ APPROVED for momentum trading"
+          " APPROVED for momentum trading"
           (if (>= safety-score 70)
-              "🟡 PROCEED WITH CAUTION - Small position only (max 2% portfolio)"
+              " PROCEED WITH CAUTION - Small position only (max 2% portfolio)"
               (if (>= safety-score 50)
-                  "⚠️ HIGH RISK - Micro position if at all (max 0.5% portfolio)"
+                  " HIGH RISK - Micro position if at all (max 0.5% portfolio)"
                   "🛑 REJECT - Too dangerous, likely scam"))))
 
     (log :message "RECOMMENDATION:" :value recommendation)
@@ -1922,10 +1922,10 @@ graph TD
 ```
 
 **Hard rejection criteria (non-negotiable):**
-- ❌ **Sell simulation fails** → REJECT (honeypot, -100% loss guaranteed)
-- ❌ **Safety score < 70** → REJECT (too many red flags)
-- ❌ **Gini > 0.8** → REJECT (whale manipulation guaranteed)
-- ❌ **Insider holdings > 5%** → REJECT (front-run dump incoming)
+-  **Sell simulation fails** → REJECT (honeypot, -100% loss guaranteed)
+-  **Safety score < 70** → REJECT (too many red flags)
+-  **Gini > 0.8** → REJECT (whale manipulation guaranteed)
+-  **Insider holdings > 5%** → REJECT (front-run dump incoming)
 
 **Expected rejection rate:** 85-90% of detected memecoins fail safety checks. **This is correct behavior.** Most memecoins are scams.
 
@@ -1948,7 +1948,7 @@ graph TD
 
   (do
     (log :message "")
-    (log :message "📊 MOMENTUM SIGNAL GENERATION")
+    (log :message " MOMENTUM SIGNAL GENERATION")
     (log :message "   Token:" :value token-address)
 
     ;; ================================================================
@@ -2171,7 +2171,7 @@ graph TD
     (define entry-price (get entry-result :averagePrice))
     (define tokens-acquired (get entry-result :tokensReceived))
 
-    (log :message "   ✅ Entry executed")
+    (log :message "    Entry executed")
     (log :message "   Price:" :value entry-price)
     (log :message "   Tokens:" :value tokens-acquired)
     (log :message "   Slippage:" :value (get entry-result :slippagePct) :unit "%")
@@ -2250,10 +2250,10 @@ graph TD
 ```
 
 **System guarantees:**
-1. ✅ **Every trade passes 10 safety checks** (cannot bypass)
-2. ✅ **Position sizing capped at 10% portfolio** (cannot override)
-3. ✅ **Trailing stop always active** (protects 85% of peak gains)
-4. ✅ **Tiered exits lock in profits** (prevents holding through crash)
+1.  **Every trade passes 10 safety checks** (cannot bypass)
+2.  **Position sizing capped at 10% portfolio** (cannot override)
+3.  **Trailing stop always active** (protects 85% of peak gains)
+4.  **Tiered exits lock in profits** (prevents holding through crash)
 
 ---
 
@@ -2273,10 +2273,10 @@ graph TD
 | **Sharpe ratio** | 2.84 | Excellent risk-adjusted returns |
 
 **Failure modes:**
-- ❌ **Rug pulls (3-5% of approved tokens):** Even with safety checks, sophisticated scams slip through. Position sizing limits damage to -18% avg loss.
-- ❌ **FOMO overrides (human error):** If you manually bypass safety checks, expect -100% losses. **Trust the system.**
-- ❌ **Network congestion:** Solana downtime prevents entry/exit. Risk: <1% of trades affected.
-- ❌ **Strategy decay:** As more adopt similar systems, edge compresses. Expect 2024 returns → 50% by 2025.
+-  **Rug pulls (3-5% of approved tokens):** Even with safety checks, sophisticated scams slip through. Position sizing limits damage to -18% avg loss.
+-  **FOMO overrides (human error):** If you manually bypass safety checks, expect -100% losses. **Trust the system.**
+-  **Network congestion:** Solana downtime prevents entry/exit. Risk: <1% of trades affected.
+-  **Strategy decay:** As more adopt similar systems, edge compresses. Expect 2024 returns → 50% by 2025.
 
 ---
 
@@ -2327,56 +2327,56 @@ This section presents a complete, minute-by-minute walkthrough of a successful m
 **Running 10-factor safety checks:**
 
 ```lisp
-🔍 SAFETY ASSESSMENT BEGIN
+ SAFETY ASSESSMENT BEGIN
    Token: PEPE2TokenAddress...XYZ
 
 [1/10] SELL SIMULATION TEST (SQUID prevention)
    Testing $1,000 sell transaction...
-   ✅ PASS - Can sell (honeypot check passed)
+    PASS - Can sell (honeypot check passed)
    Simulated output: $987 USDC (1.3% slippage)
 
 [2/10] LP LOCK DURATION CHECK (Mando prevention)
    Querying LP lock contract...
-   ✅ PASS - LP locked for 180 days
+    PASS - LP locked for 180 days
    Lock expires: September 14, 2024
 
 [3/10] TEAM ALLOCATION CHECK (SafeMoon prevention)
    Team allocation: 8.5%
-   ✅ PASS - Team allocation: 8.5% (below 15% threshold)
+    PASS - Team allocation: 8.5% (below 15% threshold)
    Vesting schedule: 12-month linear vest
-   ✅ PASS - Vesting schedule exists
+    PASS - Vesting schedule exists
 
 [4/10] GINI COEFFICIENT CHECK (FEG prevention)
    Analyzing holder distribution (523 holders)...
    Gini coefficient: 0.61
-   ✅ PASS - Gini coefficient: 0.61
+    PASS - Gini coefficient: 0.61
    Distribution: Moderate concentration (acceptable)
 
 [5/10] TOP HOLDER CONCENTRATION CHECK
    Top 10 holders: 38.2% of supply
-   ✅ PASS - Top 10 holders: 38.2% (below 50% threshold)
+    PASS - Top 10 holders: 38.2% (below 50% threshold)
 
 [6/10] INSIDER FRONT-RUN CHECK (APE prevention)
    Analyzing first 50 holders for suspicious patterns...
    New wallets (<7 days old): 4 wallets, 2.8% of supply
    CEX-funded wallets: 3 wallets, 1.9% of supply
-   ✅ PASS - No obvious insider front-running
+    PASS - No obvious insider front-running
    Suspicious holdings: 2.8% (below 5% threshold)
 
 [7/10] CONTRACT VERIFICATION CHECK
-   ✅ PASS - Contract verified on Solscan
+    PASS - Contract verified on Solscan
    Contract: Standard SPL Token (Metaplex metadata)
 
 [8/10] MINT AUTHORITY CHECK
-   ✅ PASS - Mint authority revoked
+    PASS - Mint authority revoked
    Freeze authority: Also revoked
 
 [9/10] ECOSYSTEM RISK CHECK (SHIB prevention)
-   ✅ PASS - Standalone token, no ecosystem risk
+    PASS - Standalone token, no ecosystem risk
    Not part of multi-token system
 
 [10/10] CELEBRITY BACKING CHECK
-   ✅ PASS - No celebrity hype (organic launch)
+    PASS - No celebrity hype (organic launch)
    No verified influencer mentions yet
 
 ═══════════════════════════════════════════════
@@ -2385,9 +2385,9 @@ SAFETY ASSESSMENT COMPLETE
    Score: 88/100
    Level: SAFE
 
-   ⚠️ ISSUES DETECTED: 0
+    ISSUES DETECTED: 0
 
-RECOMMENDATION: ✅ APPROVED for momentum trading
+RECOMMENDATION:  APPROVED for momentum trading
 ═══════════════════════════════════════════════
 ```
 
@@ -2402,7 +2402,7 @@ RECOMMENDATION: ✅ APPROVED for momentum trading
 **Multi-factor analysis:**
 
 ```lisp
-📊 MOMENTUM SIGNAL GENERATION
+ MOMENTUM SIGNAL GENERATION
    Token: PEPE2TokenAddress...XYZ
 
 [Factor 1/4] Multi-Timeframe Momentum Analysis
@@ -2459,7 +2459,7 @@ COMPOSITE SIGNAL
 - **Strongest factors:** Volume (1.0), Holders (1.0), Momentum (0.89)
 - **Time elapsed:** 60 seconds
 
-**Decision:** ✅ **APPROVED for entry** (safety 88/100 + signal 0.929)
+**Decision:**  **APPROVED for entry** (safety 88/100 + signal 0.929)
 
 ### 16.11.5 Position Sizing and Entry Execution (10:18 AM UTC)
 
@@ -2513,7 +2513,7 @@ Submitting Jito bundle:
 
    ⏳ Waiting for confirmation...
 
-   ✅ Entry executed (slot 234,567,891)
+    Entry executed (slot 234,567,891)
    Price: $0.00005234 per PEPE2
    Tokens: 95,531,202 PEPE2
    Slippage: 2.1% (acceptable)
@@ -2643,27 +2643,27 @@ Strategy Validation:
    Position sizing: Capped at 10% (Kelly wanted 15.6%)
 
 ═══════════════════════════════════════════════
-RESULT: ✅ WINNING TRADE (+390%)
+RESULT:  WINNING TRADE (+390%)
 ═══════════════════════════════════════════════
 ```
 
 **What went right:**
 
-1. ✅ **Early detection:** Scanner caught PEPE2 at 15 minutes post-launch
-2. ✅ **Safety checks passed:** All 10 checks cleared (88/100 score)
-3. ✅ **Strong signal:** 0.929 composite score (top 5%)
-4. ✅ **Disciplined entry:** Followed Kelly with 10% cap
-5. ✅ **Tiered exits:** Locked in 50% of position at 2x and 5x
-6. ✅ **Trailing stop protected:** Avoided -70% crash the next day
-7. ✅ **Position sizing:** 10% cap prevented overexposure
+1.  **Early detection:** Scanner caught PEPE2 at 15 minutes post-launch
+2.  **Safety checks passed:** All 10 checks cleared (88/100 score)
+3.  **Strong signal:** 0.929 composite score (top 5%)
+4.  **Disciplined entry:** Followed Kelly with 10% cap
+5.  **Tiered exits:** Locked in 50% of position at 2x and 5x
+6.  **Trailing stop protected:** Avoided -70% crash the next day
+7.  **Position sizing:** 10% cap prevented overexposure
 
 **What could have been better:**
 
-1. ⚠️ **Didn't hit 10x/20x tiers:** Peak was 7.61x (realistic—most don't hit 10x)
-2. ⚠️ **Left 34% of peak on table:** Exited at 6.43x vs 7.61x peak
+1.  **Didn't hit 10x/20x tiers:** Peak was 7.61x (realistic—most don't hit 10x)
+2.  **Left 34% of peak on table:** Exited at 6.43x vs 7.61x peak
    - **But:** This is **correct behavior**—can't time the peak perfectly
    - **Avoiding -70% crash saved:** Holding would have turned +390% into -40%
-3. ⚠️ **High volatility:** -15.5% drawdown from peak (expected for memecoins)
+3.  **High volatility:** -15.5% drawdown from peak (expected for memecoins)
 
 ### 16.11.8 Comparison to Manual Trading (What Most Traders Did)
 
@@ -2711,14 +2711,14 @@ Memecoin momentum trading exploits behavioral biases, attention dynamics, and co
 
 ### Key Principles
 
-1. ✅ **Enter early** (first 50% gain), exit in tiers
-2. ✅ **Require multi-factor confirmation** (momentum + volume + holders + sentiment)
-3. ✅ **Hard stop-losses** protect capital
-4. ✅ **Position sizing** limits ruin risk
-5. ✅ **FOMO protection** prevents emotional late entries
-6. ✅ **Continuous adaptation** as market structure evolves
+1.  **Enter early** (first 50% gain), exit in tiers
+2.  **Require multi-factor confirmation** (momentum + volume + holders + sentiment)
+3.  **Hard stop-losses** protect capital
+4.  **Position sizing** limits ruin risk
+5.  **FOMO protection** prevents emotional late entries
+6.  **Continuous adaptation** as market structure evolves
 
-> 💡 **Reality Check**: The strategies are inherently adversarial—profitable traders extract value from less sophisticated participants. As more traders adopt similar systems, edge decays. Expect returns to compress over time.
+>  **Reality Check**: The strategies are inherently adversarial—profitable traders extract value from less sophisticated participants. As more traders adopt similar systems, edge decays. Expect returns to compress over time.
 
 ### Future Outlook
 

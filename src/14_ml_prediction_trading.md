@@ -1,6 +1,6 @@
 # Chapter 14: Machine Learning for Price Prediction
 
-## 💥 The 95.9% Performance Gap: When the Same ML Fails Spectacularly
+##  The 95.9% Performance Gap: When the Same ML Fails Spectacularly
 
 **2020, Renaissance Technologies**. The most successful quantitative hedge fund in history runs two funds using machine learning. Same founders. Same PhDs. Same data infrastructure. Same ML techniques.
 
@@ -81,7 +81,7 @@ where $t$ is the prediction horizon.
 
 **The Lesson:**
 
-> **⚠️ ML Prediction Accuracy Decays Exponentially with Time**
+> ** ML Prediction Accuracy Decays Exponentially with Time**
 >
 > - **Medallion's secret:** Trade so fast that predictions don't have time to decay
 > - **RIEF's failure:** Hold so long that predictions become noise
@@ -110,17 +110,17 @@ This chapter will teach you:
 But more importantly, it will teach you **why most ML trading research is fairy tales**.
 
 The algorithms that crushed RIEF in 2020 had:
-- ✅ State-of-the-art ML (random forests, gradient boosting, neural networks)
-- ✅ Massive data (decades of tick data)
-- ✅ Nobel Prize-level researchers (Jim Simons, Field Medal mathematicians)
-- ❌ **Wrong time horizon**
+-  State-of-the-art ML (random forests, gradient boosting, neural networks)
+-  Massive data (decades of tick data)
+-  Nobel Prize-level researchers (Jim Simons, Field Medal mathematicians)
+-  **Wrong time horizon**
 
 You will learn to build ML systems that:
-- ✅ Trade intraday only (< 1 day holding periods)
-- ✅ Retrain continuously (models decay fast)
-- ✅ Detect regime changes (COVID scenario)
-- ✅ Walk-forward validate (never trust in-sample)
-- ✅ Correct for multiple testing (feature selection bias)
+-  Trade intraday only (< 1 day holding periods)
+-  Retrain continuously (models decay fast)
+-  Detect regime changes (COVID scenario)
+-  Walk-forward validate (never trust in-sample)
+-  Correct for multiple testing (feature selection bias)
 
 The ML is powerful. The data is vast. But without respecting prediction decay, you're Renaissance RIEF: -19.9% while your competitors make +76%.
 
@@ -134,7 +134,7 @@ The dream of predicting future prices has consumed traders since the first excha
 
 Machine learning shatters these constraints. Random forests capture non-linear interactions between hundreds of features. Gradient boosting sequentially corrects prediction errors. Long short-term memory (LSTM) networks remember patterns across months of price history. Reinforcement learning agents learn optimal trading policies through trial-and-error interaction with markets.
 
-💡 **Key Insight**
+ **Key Insight**
 The question is no longer *can* ML predict prices, but *how well* and *for how long*. Renaissance Technologies—the most successful quantitative hedge fund in history—reportedly uses ML extensively, generating 66% annualized returns (before fees) from 1988-2018.
 
 Yet the graveyard of failed ML trading funds is vast. The challenge isn't building accurate models—it's building models that remain accurate out-of-sample, after transaction costs, during regime changes, and under adversarial competition from other ML traders.
@@ -165,7 +165,7 @@ $$\mathbb{E}[R_i] = R_f + \beta_i (\mathbb{E}[R_m] - R_f)$$
 **Fama-French Three-Factor Model** (1993):
 $$R_{i,t} = \alpha_i + \beta_{i,M} R_{M,t} + \beta_{i,SMB} SMB_t + \beta_{i,HML} HML_t + \epsilon_{i,t}$$
 
-⚠️ **Critical Limitation**
+ **Critical Limitation**
 These models miss non-linear patterns: volatility clustering, jumps, regime switching, and interaction effects. October 1987 crash (-23% in one day) lies 24 standard deviations from mean—impossible under normal distribution.
 
 ```mermaid
@@ -192,7 +192,7 @@ graph LR
 - **Methods**: Linear regression, LASSO, ridge, random forest, gradient boosting, neural networks
 - **Result**: ML models outperform by 2-4% annually; gradient boosting performs best
 
-📊 **Performance Comparison**
+ **Performance Comparison**
 
 | Model Type | Annual Alpha | Sharpe Ratio | Complexity |
 |------------|--------------|--------------|------------|
@@ -209,7 +209,7 @@ graph LR
 - **Features**: Returns, volume, volatility (last 240 days)
 - **Result**: 2.5% monthly return (30% annualized), Sharpe ratio 3.6
 
-🎯 **Current Frontiers**
+ **Current Frontiers**
 - **Graph neural networks**: Model correlation networks between stocks
 - **Reinforcement learning**: Learn optimal trading policies, not just predictions
 - **Meta-learning**: "Learn to learn"—quickly adapt to new market regimes
@@ -237,7 +237,7 @@ flowchart TD
 
 ## 14.2 Feature Engineering: The 80% Problem
 
-💡 **Quant Aphorism**
+ **Quant Aphorism**
 "Models are 20% of the work. Features are 80%." Garbage in, garbage out. The finest neural network cannot extract signal from noisy, redundant, or leaked features.
 
 ### 14.2.1 Price-Based Features
@@ -250,7 +250,7 @@ $$r_t = \log\left(\frac{P_t}{P_{t-1}}\right)$$
 - **Skewness**: $\frac{1}{20}\sum_{i=1}^{20} \left(\frac{r_{t-i} - \bar{r}}{\sigma_t}\right)^3$ (negative skewness = crash risk)
 - **Kurtosis**: $\frac{1}{20}\sum_{i=1}^{20} \left(\frac{r_{t-i} - \bar{r}}{\sigma_t}\right)^4$ (fat tails)
 
-📊 **Technical Indicators Comparison**
+ **Technical Indicators Comparison**
 
 | Indicator | Formula | Signal | Lag |
 |-----------|---------|--------|-----|
@@ -274,7 +274,7 @@ $$\text{Spread}_t = 2\sqrt{-\text{Cov}(r_t, r_{t-1})}$$
 
 ### 14.2.3 Alternative Data Features
 
-💻 **Modern Data Sources**
+ **Modern Data Sources**
 
 | Data Type | Example | Predictive Power | Cost |
 |-----------|---------|------------------|------|
@@ -284,7 +284,7 @@ $$\text{Spread}_t = 2\sqrt{-\text{Cov}(r_t, r_{t-1})}$$
 | Credit Cards | Transaction volumes | Very High | Very High |
 | Geolocation | Foot traffic to stores | High | High |
 
-⚠️ **Timing Matters**
+ **Timing Matters**
 All features must be **lagged** to avoid look-ahead bias. If predicting return at close, features must use data available before close (not after).
 
 ---
@@ -341,7 +341,7 @@ quadrantChart
 - **Decorrelation**: Random feature selection ensures trees are different
 - **Out-of-bag error**: Unbiased error estimate without separate test set
 
-📊 **Hyperparameter Tuning Guide**
+ **Hyperparameter Tuning Guide**
 
 | Parameter | Recommended Range | Impact | Priority |
 |-----------|-------------------|--------|----------|
@@ -360,7 +360,7 @@ quadrantChart
    - Update: $\hat{y}_i \leftarrow \hat{y}_i + \eta h_m(x_i)$ where η = learning rate (0.01-0.1)
 3. Final prediction: $\hat{y} = \sum_{m=1}^M \eta h_m(x)$
 
-💡 **Intuition**: Each tree corrects mistakes of previous trees. Gradually reduce residuals.
+ **Intuition**: Each tree corrects mistakes of previous trees. Gradually reduce residuals.
 
 **XGBoost advantages**:
 - **Regularization**: Penalize tree complexity (number of leaves, sum of leaf weights)
@@ -380,7 +380,7 @@ where each layer: $f_\ell(x) = \sigma(W_\ell x + b_\ell)$, σ = activation funct
 - **Batch normalization**: Normalize layer activations to mean 0, std 1
 - **L2 regularization**: Add $\lambda \sum W^2$ penalty to loss
 
-🎯 **Architecture for Time Series**
+ **Architecture for Time Series**
 - Input: Last 20 days of returns, volume, volatility (20 × 3 = 60 features)
 - Hidden layer 1: 128 neurons, ReLU activation
 - Dropout: 0.5
@@ -396,7 +396,7 @@ where each layer: $f_\ell(x) = \sigma(W_\ell x + b_\ell)$, σ = activation funct
 - **Cell state**: $C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t$
 - **Output gate**: $o_t = \sigma(W_o [h_{t-1}, x_t])$
 
-💡 **Intuition**: Cell state C_t is a "memory" carrying information across hundreds of time steps. Gates learn to preserve important information, discard noise.
+ **Intuition**: Cell state C_t is a "memory" carrying information across hundreds of time steps. Gates learn to preserve important information, discard noise.
 
 ```mermaid
 graph LR
@@ -415,7 +415,7 @@ graph LR
 
 ## 14.4 Overfitting Prevention: The Crucial Challenge
 
-⚠️ **The Fundamental Problem**
+ **The Fundamental Problem**
 1,000 stocks × 100 features × 1,000 days = 100 million observations. Train neural network with 10,000 parameters. In-sample R² = 0.95. Out-of-sample R² = 0.02. **The model memorized noise.**
 
 ```mermaid
@@ -442,7 +442,7 @@ timeline
 4. **Roll forward**: Expand training to 2000-2007, validate on 2008, test on 2009
 5. Repeat until present
 
-📊 **Walk-Forward Timeline**
+ **Walk-Forward Timeline**
 
 | Period | Years | Purpose | Data Leakage? |
 |--------|-------|---------|---------------|
@@ -451,7 +451,7 @@ timeline
 | Test | 1 | Performance recording | No |
 | **Total Cycle** | **7** | **One iteration** | **No** |
 
-🎯 **Key Principles**
+ **Key Principles**
 - Never look at test period data during development
 - Retrain model periodically (quarterly or annually) as new data arrives
 - Report only test period performance (no cherry-picking)
@@ -480,7 +480,7 @@ timeline
 **Deflated Sharpe Ratio** (Bailey and Lopez de Prado, 2014):
 $$\text{SR}_{\text{deflated}} = \frac{\text{SR}_{\text{estimated}} - \text{SR}_{\text{expected}}[\text{max of N trials}]}{\text{SE}(\text{SR})}$$
 
-⚠️ **Extreme Example**: Bailey et al. (2015) tried all possible combinations of 30 technical indicators on S&P 500 (1987-2007). Found strategy with Sharpe 5.5 in-sample. Out-of-sample (2007-2013): Sharpe -0.8.
+ **Extreme Example**: Bailey et al. (2015) tried all possible combinations of 30 technical indicators on S&P 500 (1987-2007). Found strategy with Sharpe 5.5 in-sample. Out-of-sample (2007-2013): Sharpe -0.8.
 
 ---
 
@@ -534,7 +534,7 @@ From `14_ml_prediction_trading.solisp`:
 )
 ```
 
-💡 **Interpretation**: R² = 1.0 means model explains 100% of variance (perfect fit). R² = 0 means model is no better than predicting the mean. Real-world: R² = 0.01-0.05 is typical for daily return prediction (markets are noisy).
+ **Interpretation**: R² = 1.0 means model explains 100% of variance (perfect fit). R² = 0 means model is no better than predicting the mean. Real-world: R² = 0.01-0.05 is typical for daily return prediction (markets are noisy).
 
 ### 14.5.2 Exponential Moving Average (EMA) Prediction
 
@@ -559,7 +559,7 @@ From `14_ml_prediction_trading.solisp`:
         "BEARISH - Price below EMA"))
 ```
 
-📊 **EMA vs SMA Comparison**
+ **EMA vs SMA Comparison**
 
 | Metric | SMA | EMA |
 |--------|-----|-----|
@@ -635,7 +635,7 @@ From `14_ml_prediction_trading.solisp`:
             "LOW CONFIDENCE - No consensus")))
 ```
 
-💡 **Weighted Ensemble (More Sophisticated)**
+ **Weighted Ensemble (More Sophisticated)**
 - Weight models by historical performance (Sharpe ratio or accuracy)
 - Dynamic weighting: Increase weight of models that performed well recently
 - Meta-learning: Train neural network to optimally combine model predictions
@@ -650,7 +650,7 @@ From `14_ml_prediction_trading.solisp`:
 
 **Example**: Momentum strategy (buy past winners) worked 1993-2019 (Sharpe 1.5). Then COVID-19 hit (March 2020): momentum crashed -30% in one month as correlations went to 1.0.
 
-📊 **Regime Detection Methods**
+ **Regime Detection Methods**
 
 | Method | Approach | Latency | Accuracy |
 |--------|----------|---------|----------|
@@ -671,7 +671,7 @@ From `14_ml_prediction_trading.solisp`:
 **Net profitability**:
 $$\text{Net Return} = \text{Predicted Return} - \text{Transaction Costs} - \text{Market Impact}$$
 
-📊 **Cost Breakdown Analysis**
+ **Cost Breakdown Analysis**
 
 | Cost Component | Typical Range | Impact on 1% Prediction |
 |----------------|---------------|------------------------|
@@ -682,7 +682,7 @@ $$\text{Net Return} = \text{Predicted Return} - \text{Transaction Costs} - \text
 | **Total Costs** | **0.45-1.1%** | **-0.60%** |
 | **Net Profit** | - | **0.40%** |
 
-⚠️ **Optimization strategies**:
+ **Optimization strategies**:
 - **Liquidity filtering**: Only trade assets with tight spreads, high volume
 - **Execution algorithms**: VWAP/TWAP to minimize market impact
 - **Fee minimization**: Maker fees (provide liquidity) vs. taker fees
@@ -700,7 +700,7 @@ $$\text{Net Return} = \text{Predicted Return} - \text{Transaction Costs} - \text
 
 **Empirical evidence** (Moallemi and Saglam, 2013): High-frequency strategies have half-lives of 6-18 months before crowding erodes profitability.
 
-🎯 **Defensive Strategies**
+ **Defensive Strategies**
 1. **Proprietary data**: Use data competitors don't have (satellite imagery, web scraping)
 2. **Complexity**: Non-linear models harder to reverse-engineer than linear
 3. **Diversification**: 50 uncorrelated strategies → less vulnerable to any one being arbitraged away
@@ -756,7 +756,7 @@ model = TemporalFusionTransformer.from_dataset(
 )
 ```
 
-💡 **Advantage**: Quantile predictions → full distribution, not just point estimate. Trade when 90th percentile > threshold (high confidence).
+ **Advantage**: Quantile predictions → full distribution, not just point estimate. Trade when 90th percentile > threshold (high confidence).
 
 ### 14.7.3 Reinforcement Learning: Direct Policy Optimization
 
@@ -770,12 +770,12 @@ model = TemporalFusionTransformer.from_dataset(
 - **Reward**: Portfolio return - transaction costs
 - **Goal**: Maximize cumulative discounted reward $\sum_{t=0}^\infty \gamma^t r_t$
 
-🎯 **Advantages**
+ **Advantages**
 - Directly optimizes trading objective (Sharpe, Sortino, cumulative return)
 - Naturally incorporates transaction costs (penalize excessive trading)
 - Explores unconventional strategies (supervised learning limited to imitation)
 
-⚠️ **Challenges**
+ **Challenges**
 - Sample inefficient: Needs millions of time steps to converge
 - Unstable: Q-values can diverge
 - Overfitting: Agent exploits simulator bugs if training environment ≠ reality
@@ -786,17 +786,17 @@ model = TemporalFusionTransformer.from_dataset(
 
 Machine learning has revolutionized quantitative finance, enabling exploitation of non-linear patterns, high-dimensional feature spaces, and massive datasets. Gradient boosting, LSTMs, and ensembles consistently outperform linear models by 2-4% annually—a massive edge when compounded over decades.
 
-📊 **Success vs. Failure Factors**
+ **Success vs. Failure Factors**
 
 | Success Factors | Failure Factors |
 |----------------|-----------------|
-| ✅ Strict train/validation/test splits | ❌ Overfitting to training data |
-| ✅ Feature engineering with domain knowledge | ❌ Look-ahead bias |
-| ✅ Regularization and ensembles | ❌ Transaction costs ignored |
-| ✅ Transaction cost modeling from day one | ❌ Alpha decay from crowding |
-| ✅ Continuous monitoring and retraining | ❌ No regime change adaptation |
+|  Strict train/validation/test splits |  Overfitting to training data |
+|  Feature engineering with domain knowledge |  Look-ahead bias |
+|  Regularization and ensembles |  Transaction costs ignored |
+|  Transaction cost modeling from day one |  Alpha decay from crowding |
+|  Continuous monitoring and retraining |  No regime change adaptation |
 
-🎯 **Best Practices**
+ **Best Practices**
 1. **Strict train/validation/test splits** with walk-forward analysis
 2. **Feature engineering** with domain knowledge, not blind feature generation
 3. **Regularization and ensembles** to prevent overfitting
@@ -809,7 +809,7 @@ Machine learning has revolutionized quantitative finance, enabling exploitation 
 - **Robustness**: Adversarial training against adversarial traders
 - **Efficiency**: Lower latency inference for high-frequency applications
 
-💡 **Final Wisdom**
+ **Final Wisdom**
 Machine learning is not a silver bullet—it's a power tool that, like any tool, requires skill and care. Used properly, it provides measurable, sustainable alpha. Used carelessly, it's a fast path to ruin.
 
 ---
@@ -850,7 +850,7 @@ ating them.
 4. **Train/test temporal overlap** (tomorrow's data in today's model)
 
 **The Lesson:**
-> **💡 95% of Academic ML Trading Papers Are Fairy Tales**
+> ** 95% of Academic ML Trading Papers Are Fairy Tales**
 >
 > Trust nothing without:
 > - Shared code (GitHub)
@@ -876,7 +876,7 @@ With 1,000 random features and α=0.05, expect 50 false positives by chance. Tho
 - Most "predictive" features disappear with correct threshold
 
 **The Lesson:**
-> **⚠️ Multiple Testing Correction Is NOT Optional**
+> ** Multiple Testing Correction Is NOT Optional**
 >
 > If testing N features, divide significance threshold by N.  
 > Expect 95% of "predictive" features to vanish.
@@ -897,7 +897,7 @@ Models trained on 2010-2019 data assumed:
 March 2020 violated ALL assumptions simultaneously.
 
 **The Lesson:**
-> **💡 Regime Changes Invalidate Historical Patterns Instantly**
+> ** Regime Changes Invalidate Historical Patterns Instantly**
 >
 > Defense:
 > - Online learning (retrain daily)
@@ -913,19 +913,19 @@ ML for price prediction is powerful but fragile. Success requires understanding 
 
 ### What Works:
 
-✅ **Short horizons:** < 1 day (Medallion +76%), not months (RIEF -19.9%)
-✅ **Ensembles:** RF + GBM + LASSO > any single model
-✅ **Walk-forward:** Always out-of-sample, retrain frequently
-✅ **Bonferroni correction:** For feature selection with N tests
-✅ **Regime detection:** Detect when model breaks, reduce/stop trading
+ **Short horizons:** < 1 day (Medallion +76%), not months (RIEF -19.9%)
+ **Ensembles:** RF + GBM + LASSO > any single model
+ **Walk-forward:** Always out-of-sample, retrain frequently
+ **Bonferroni correction:** For feature selection with N tests
+ **Regime detection:** Detect when model breaks, reduce/stop trading
 
 ### What Fails:
 
-❌ **Long horizons:** RIEF -19.9% while Medallion +76% (same company!)
-❌ **Static models:** COVID killed all pre-2020 models
-❌ **Data leakage:** 95% of papers unreproducible, 70% MSE increase when fixed
-❌ **Feature mining:** 1000 features → 20 "work" → 0 work out-of-sample
-❌ **Academic optimism:** Papers report Sharpe 2-3x higher than reality
+ **Long horizons:** RIEF -19.9% while Medallion +76% (same company!)
+ **Static models:** COVID killed all pre-2020 models
+ **Data leakage:** 95% of papers unreproducible, 70% MSE increase when fixed
+ **Feature mining:** 1000 features → 20 "work" → 0 work out-of-sample
+ **Academic optimism:** Papers report Sharpe 2-3x higher than reality
 
 ### Disaster Prevention Checklist:
 

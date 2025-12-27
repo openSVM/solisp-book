@@ -1,0 +1,449 @@
+/* Solisp Book - Newspaper Style Theme */
+/* High contrast, professional typography */
+
+:root {
+    /* Light theme (default) - Newspaper style */
+    --bg: #FAFAF8;
+    --fg: #1A1A1A;
+    --sidebar-bg: #F5F5F3;
+    --sidebar-fg: #2D2D2D;
+    --sidebar-active: #000000;
+    --links: #1a5f7a;
+    --inline-code-color: #2d2d2d;
+    --code-bg: #F0F0ED;
+    --quote-bg: #F8F8F5;
+    --quote-border: #C0C0B8;
+    --table-border: #D0D0C8;
+    --table-header-bg: #E8E8E3;
+    --search-mark-bg: #FFEB3B;
+    --heading-color: #000000;
+    --chapter-title: #1A1A1A;
+
+    /* Typography */
+    --content-font: "Charter", "Georgia", "Cambria", "Times New Roman", serif;
+    --heading-font: "Franklin Gothic Medium", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --code-font: "JetBrains Mono", "Fira Code", "Source Code Pro", "Consolas", monospace;
+
+    /* Reading progress */
+    --progress-bg: #E0E0D8;
+    --progress-fg: #1a5f7a;
+}
+
+/* Dark theme - High contrast night mode */
+.coal, .navy, .ayu {
+    --bg: #0D0D0D;
+    --fg: #E8E8E8;
+    --sidebar-bg: #141414;
+    --sidebar-fg: #C8C8C8;
+    --sidebar-active: #FFFFFF;
+    --links: #6CB4D4;
+    --inline-code-color: #E0E0E0;
+    --code-bg: #1A1A1A;
+    --quote-bg: #161616;
+    --quote-border: #404040;
+    --table-border: #333333;
+    --table-header-bg: #1F1F1F;
+    --search-mark-bg: #5C5C00;
+    --heading-color: #FFFFFF;
+    --chapter-title: #F0F0F0;
+    --progress-bg: #2A2A2A;
+    --progress-fg: #6CB4D4;
+}
+
+/* Base styles */
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--content-font);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main content area */
+.content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+main {
+    background: var(--bg);
+}
+
+/* Headings - Newspaper style */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--heading-color);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 3px solid var(--heading-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 1.875rem;
+    border-bottom: 1px solid var(--table-border);
+    padding-bottom: 0.4rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 1.25rem;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* First paragraph after heading - drop cap style hint */
+h1 + p::first-letter,
+h2 + p::first-letter {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Links */
+a {
+    color: var(--links);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+a:hover {
+    border-bottom-color: var(--links);
+}
+
+/* Code blocks */
+pre {
+    background: var(--code-bg);
+    border: 1px solid var(--table-border);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+}
+
+pre code {
+    font-family: var(--code-font);
+    background: transparent;
+    padding: 0;
+}
+
+/* Inline code */
+code {
+    font-family: var(--code-font);
+    background: var(--code-bg);
+    color: var(--inline-code-color);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* Blockquotes */
+blockquote {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--quote-border);
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    font-style: italic;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+th, td {
+    border: 1px solid var(--table-border);
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+th {
+    background: var(--table-header-bg);
+    font-family: var(--heading-font);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+tr:nth-child(even) {
+    background: var(--quote-bg);
+}
+
+/* Lists */
+ul, ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+li > ul, li > ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Sidebar */
+.sidebar {
+    background: var(--sidebar-bg);
+    font-family: var(--heading-font);
+}
+
+.sidebar .sidebar-scrollbox {
+    padding: 1rem;
+}
+
+.sidebar a {
+    color: var(--sidebar-fg);
+    display: block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    border-bottom: none;
+}
+
+.sidebar a:hover {
+    background: var(--bg);
+}
+
+.sidebar a.active {
+    color: var(--sidebar-active);
+    font-weight: 700;
+    background: var(--bg);
+}
+
+.sidebar .chapter-item {
+    margin: 0.25rem 0;
+}
+
+/* Chapter title in sidebar */
+.sidebar .chapter {
+    font-weight: 600;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--table-border);
+}
+
+.sidebar .chapter:first-child {
+    border-top: none;
+    margin-top: 0;
+}
+
+/* Part titles */
+.sidebar .part-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sidebar-fg);
+    opacity: 0.7;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.8rem;
+}
+
+/* Reading Progress Bar */
+#reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--progress-fg);
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+}
+
+/* Bookmark indicator */
+.bookmark-indicator {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: var(--sidebar-bg);
+    border: 1px solid var(--table-border);
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-family: var(--heading-font);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+}
+
+.bookmark-indicator.visible {
+    opacity: 1;
+}
+
+/* Chapter progress dots */
+.chapter-progress {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+}
+
+.chapter-progress .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--progress-bg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chapter-progress .dot.read {
+    background: var(--progress-fg);
+}
+
+.chapter-progress .dot.current {
+    width: 10px;
+    height: 10px;
+    background: var(--progress-fg);
+    box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--progress-fg);
+}
+
+/* Menu bar */
+.menu-bar {
+    background: var(--sidebar-bg);
+    border-bottom: 1px solid var(--table-border);
+}
+
+.menu-bar i {
+    color: var(--sidebar-fg);
+}
+
+/* Search */
+#searchbar {
+    background: var(--bg);
+    border: 1px solid var(--table-border);
+    color: var(--fg);
+    font-family: var(--content-font);
+}
+
+#searchresults a {
+    border-bottom: none;
+}
+
+mark {
+    background: var(--search-mark-bg);
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+}
+
+/* Navigation buttons */
+.nav-chapters {
+    color: var(--links);
+    font-size: 2rem;
+}
+
+.nav-chapters:hover {
+    color: var(--heading-color);
+}
+
+/* Print styles */
+@media print {
+    .sidebar, .menu-bar, .nav-chapters, #reading-progress, .chapter-progress {
+        display: none !important;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    body {
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    pre, blockquote, table {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .content {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .chapter-progress {
+        display: none;
+    }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+    :root {
+        --bg: #FFFFFF;
+        --fg: #000000;
+        --links: #0000EE;
+        --code-bg: #F0F0F0;
+    }
+
+    .coal, .navy, .ayu {
+        --bg: #000000;
+        --fg: #FFFFFF;
+        --links: #99CCFF;
+        --code-bg: #1A1A1A;
+    }
+}
