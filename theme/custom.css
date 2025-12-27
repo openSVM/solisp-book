@@ -1,0 +1,371 @@
+/* Solisp Book - Newspaper Style Theme */
+/* High contrast, professional typography */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Light theme variables */
+.light {
+    --bg: #FAFAF8 !important;
+    --fg: #1A1A1A !important;
+    --sidebar-bg: #F0F0ED !important;
+    --sidebar-fg: #2D2D2D !important;
+    --sidebar-active: #000000 !important;
+    --links: #1a5f7a !important;
+    --inline-code-color: #2d2d2d !important;
+    --theme-popup-bg: #FAFAF8 !important;
+    --theme-popup-border: #D0D0C8 !important;
+    --quote-bg: #F5F5F0 !important;
+    --quote-border: #C0C0B8 !important;
+    --table-border-color: #D0D0C8 !important;
+    --table-header-bg: #E8E8E3 !important;
+    --table-alternate-bg: #F5F5F0 !important;
+    --searchbar-border-color: #D0D0C8 !important;
+    --searchbar-bg: #FFFFFF !important;
+    --searchresults-header-fg: #1A1A1A !important;
+    --searchresults-border-color: #D0D0C8 !important;
+    --icons: #4A4A4A !important;
+    --icons-hover: #000000 !important;
+}
+
+/* Dark theme variables - true black for OLED */
+.coal, .navy, .ayu {
+    --bg: #0A0A0A !important;
+    --fg: #E8E8E8 !important;
+    --sidebar-bg: #111111 !important;
+    --sidebar-fg: #C8C8C8 !important;
+    --sidebar-active: #FFFFFF !important;
+    --links: #6CB4D4 !important;
+    --inline-code-color: #E0E0E0 !important;
+    --theme-popup-bg: #111111 !important;
+    --theme-popup-border: #333333 !important;
+    --quote-bg: #151515 !important;
+    --quote-border: #404040 !important;
+    --table-border-color: #333333 !important;
+    --table-header-bg: #1A1A1A !important;
+    --table-alternate-bg: #0F0F0F !important;
+    --searchbar-border-color: #404040 !important;
+    --searchbar-bg: #1A1A1A !important;
+    --searchresults-header-fg: #E8E8E8 !important;
+    --searchresults-border-color: #333333 !important;
+    --icons: #A0A0A0 !important;
+    --icons-hover: #FFFFFF !important;
+}
+
+/* Base typography */
+html {
+    font-size: 18px !important;
+    scroll-behavior: smooth;
+}
+
+body, .content {
+    font-family: "Crimson Pro", "Charter", "Georgia", "Times New Roman", serif !important;
+    line-height: 1.8 !important;
+    letter-spacing: 0.01em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Main content */
+.content main {
+    max-width: 750px !important;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem !important;
+}
+
+/* Headings - Newspaper style */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.25 !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+h1 {
+    font-size: 2.4rem !important;
+    border-bottom: 3px solid currentColor !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+h2 {
+    font-size: 1.8rem !important;
+    border-bottom: 1px solid var(--table-border-color) !important;
+    padding-bottom: 0.4rem !important;
+}
+
+h3 {
+    font-size: 1.4rem !important;
+}
+
+h4 {
+    font-size: 1.1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 1.3rem !important;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Links */
+a {
+    color: var(--links) !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+a:hover {
+    border-bottom-color: var(--links) !important;
+}
+
+/* Code blocks */
+pre {
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    border-radius: 6px !important;
+    padding: 1.2rem !important;
+    margin: 1.5rem 0 !important;
+    border: 1px solid var(--table-border-color) !important;
+}
+
+code {
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace !important;
+    font-size: 0.88em !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 4px !important;
+}
+
+/* Blockquotes */
+blockquote {
+    background: var(--quote-bg) !important;
+    border-left: 4px solid var(--quote-border) !important;
+    margin: 1.5rem 0 !important;
+    padding: 1rem 1.5rem !important;
+    font-style: italic !important;
+    border-radius: 0 6px 6px 0 !important;
+}
+
+/* Tables */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1.5rem 0 !important;
+    font-size: 0.95rem !important;
+}
+
+th, td {
+    border: 1px solid var(--table-border-color) !important;
+    padding: 0.8rem 1rem !important;
+    text-align: left !important;
+}
+
+th {
+    background: var(--table-header-bg) !important;
+    font-family: "Inter", sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.08em !important;
+}
+
+tr:nth-child(even) {
+    background: var(--table-alternate-bg) !important;
+}
+
+/* Sidebar */
+.sidebar {
+    font-family: "Inter", sans-serif !important;
+    font-size: 0.9rem !important;
+}
+
+.sidebar .sidebar-scrollbox {
+    padding: 1rem 0.5rem !important;
+}
+
+.sidebar ol.chapter li a {
+    padding: 0.5rem 1rem !important;
+    border-radius: 4px !important;
+    display: block !important;
+}
+
+.sidebar ol.chapter li a:hover {
+    background: var(--bg) !important;
+}
+
+.sidebar ol.chapter li.chapter-item.expanded > a,
+.sidebar ol.chapter li a.active {
+    font-weight: 700 !important;
+    background: var(--bg) !important;
+}
+
+/* Part titles in sidebar */
+.sidebar .part-title {
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    opacity: 0.7 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+    padding: 0 1rem !important;
+    font-weight: 600 !important;
+}
+
+/* Menu bar */
+.menu-bar {
+    border-bottom: 1px solid var(--table-border-color) !important;
+}
+
+/* Search */
+#searchbar {
+    font-family: "Inter", sans-serif !important;
+    border-radius: 6px !important;
+}
+
+/* Navigation arrows */
+.nav-chapters {
+    font-size: 2.5rem !important;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.nav-chapters:hover {
+    opacity: 1;
+}
+
+/* Reading Progress Bar */
+#reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--links);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+}
+
+/* Chapter progress indicator */
+.chapter-progress-container {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 100;
+}
+
+.chapter-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--table-border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+}
+
+.chapter-dot:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.chapter-dot.read {
+    background: var(--links);
+    opacity: 1;
+}
+
+.chapter-dot.current {
+    background: var(--links);
+    opacity: 1;
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--links);
+}
+
+/* Bookmark saved notification */
+.bookmark-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--table-border-color);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.bookmark-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lists */
+ul, ol {
+    margin: 1rem 0 1.5rem !important;
+    padding-left: 1.8rem !important;
+}
+
+li {
+    margin-bottom: 0.5rem !important;
+}
+
+li > ul, li > ol {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Print styles */
+@media print {
+    .sidebar, .menu-bar, .nav-chapters, #reading-progress-bar, .chapter-progress-container {
+        display: none !important;
+    }
+
+    .content main {
+        max-width: 100% !important;
+    }
+
+    body {
+        font-size: 11pt !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    html {
+        font-size: 16px !important;
+    }
+
+    .content main {
+        padding: 1rem !important;
+    }
+
+    h1 {
+        font-size: 1.8rem !important;
+    }
+
+    h2 {
+        font-size: 1.4rem !important;
+    }
+
+    .chapter-progress-container {
+        display: none;
+    }
+}
+
+/* Smooth theme transitions */
+body, .sidebar, .menu-bar, .content, a, pre, code, blockquote, table, th, td {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
