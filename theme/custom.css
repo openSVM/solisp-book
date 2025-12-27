@@ -117,8 +117,9 @@ body, .content {
 }
 
 .content main {
-    max-width: 100% !important;
-    padding: 0.4rem 1rem 1rem 0.5rem !important;
+    max-width: 75% !important;
+    margin: 0 auto !important;
+    padding: 0.5rem 2rem !important;
 }
 
 #content {
@@ -418,19 +419,19 @@ figcaption::before {
    SIDEBAR
    ============================================ */
 .sidebar {
-    font-family: "Inter", sans-serif !important;
-    font-size: 0.9rem !important;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 0.85rem !important;
 }
 
 .sidebar .sidebar-scrollbox {
-    padding: 1rem 0.5rem !important;
+    padding: 0.5rem 0.25rem !important;
 }
 
 .sidebar ol.chapter li a {
-    padding: 0.5rem 1rem !important;
-    border-radius: 4px !important;
+    padding: 0.2rem 0.5rem !important;
+    border-radius: 2px !important;
     display: block !important;
-    transition: all 0.15s ease;
+    line-height: 1.2 !important;
 }
 
 .sidebar ol.chapter li a:hover {
@@ -446,11 +447,11 @@ figcaption::before {
 }
 
 .sidebar .part-title {
-    font-size: 0.7rem !important;
+    font-size: 0.65rem !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.12em !important;
+    letter-spacing: 0.08em !important;
     opacity: 0.7 !important;
-    margin-top: 1.5rem !important;
+    margin-top: 0.75rem !important;
     margin-bottom: 0.5rem !important;
     padding: 0 1rem !important;
     font-weight: 600 !important;
