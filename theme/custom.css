@@ -114,22 +114,32 @@ body, .content {
 }
 
 /* ============================================
-   MAIN CONTENT - Full width
+   MAIN CONTENT - Full width utilization
    ============================================ */
 .content {
     max-width: none !important;
+    padding: 0 !important;
 }
 
 .content main {
-    max-width: 900px !important;
-    margin: 0 auto;
-    padding: 1.5rem 2rem 3rem !important;
+    max-width: 100% !important;
+    padding: 1.5rem 3rem 3rem 2rem !important;
 }
 
-/* Remove excessive margins on content container */
 #content {
     max-width: 100% !important;
-    padding: 0 1rem !important;
+    padding: 0 !important;
+}
+
+/* Page wrapper */
+.page-wrapper .page {
+    padding: 0 !important;
+}
+
+/* Make content fill available space */
+.page {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 /* ============================================
