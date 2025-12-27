@@ -1,0 +1,39 @@
+[book]
+title = "Algorithmic Trading with Solisp"
+authors = ["OpenSVM Team"]
+description = "A comprehensive guide to algorithmic trading on Solana using the Solisp LISP dialect"
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "rust"
+preferred-dark-theme = "ayu"
+git-repository-url = "https://github.com/openSVM/solisp-book"
+edit-url-template = "https://github.com/openSVM/solisp-book/edit/main/{path}"
+site-url = "/solisp-book/"
+
+[output.html.playground]
+editable = true
+copyable = true
+copy-js = true
+line-numbers = true
+runnable = false
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+
+[output.html.fold]
+enable = true
+level = 1

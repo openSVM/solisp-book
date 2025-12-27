@@ -1,0 +1,122 @@
+name: Deploy Book
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - name: Build HTML Book
+        run: mdbook build
+
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra librsvg2-bin
+
+      - name: Generate PDF
+        run: |
+          mkdir -p book/downloads
+          cd src
+          pandoc -s SUMMARY.md \
+            $(cat SUMMARY.md | grep -oP '\./\K[^)]+\.md' | tr '\n' ' ') \
+            -o ../book/downloads/solisp-algorithmic-trading.pdf \
+            --pdf-engine=xelatex \
+            --toc \
+            --toc-depth=3 \
+            -V geometry:margin=1in \
+            -V documentclass=report \
+            -V title="Algorithmic Trading with Solisp" \
+            -V author="OpenSVM Team" \
+            -V date="$(date +%Y-%m-%d)" \
+            --highlight-style=tango \
+            || echo "PDF generation failed, continuing..."
+
+      - name: Generate EPUB
+        run: |
+          cd src
+          pandoc -s SUMMARY.md \
+            $(cat SUMMARY.md | grep -oP '\./\K[^)]+\.md' | tr '\n' ' ') \
+            -o ../book/downloads/solisp-algorithmic-trading.epub \
+            --toc \
+            --toc-depth=3 \
+            --epub-title="Algorithmic Trading with Solisp" \
+            --epub-creator="OpenSVM Team" \
+            || echo "EPUB generation failed, continuing..."
+
+      - name: Generate MOBI (Kindle)
+        run: |
+          # Install Calibre for ebook-convert
+          sudo apt-get install -y calibre
+          cd book/downloads
+          if [ -f solisp-algorithmic-trading.epub ]; then
+            ebook-convert solisp-algorithmic-trading.epub solisp-algorithmic-trading.mobi || echo "MOBI generation failed"
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./book
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: ./artifact
+
+      - name: Extract artifact
+        run: |
+          mkdir -p release
+          tar -xf artifact/artifact.tar -C release || true
+          cp release/downloads/* . 2>/dev/null || true
+          ls -la
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            solisp-algorithmic-trading.pdf
+            solisp-algorithmic-trading.epub
+            solisp-algorithmic-trading.mobi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
