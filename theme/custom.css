@@ -75,17 +75,15 @@
 }
 
 /* ============================================
-   BASE TYPOGRAPHY - Dense
+   BASE TYPOGRAPHY - Ultra Dense
    ============================================ */
 html {
-    font-size: 12px !important;
-    scroll-behavior: smooth;
+    font-size: 10px !important;
 }
 
 body, .content {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    line-height: 1.3 !important;
-    letter-spacing: 0;
+    line-height: 1.2 !important;
 }
 
 /* Skip to content - Accessibility */
@@ -140,38 +138,36 @@ body, .content {
 }
 
 /* ============================================
-   HEADINGS - Dense
+   HEADINGS - Ultra Dense
    ============================================ */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600 !important;
-    line-height: 1.15 !important;
-    margin-top: 0.6rem !important;
-    margin-bottom: 0.3rem !important;
+    line-height: 1.1 !important;
+    margin-top: 0.4rem !important;
+    margin-bottom: 0.2rem !important;
 }
 
 h1 {
-    font-size: 1.3rem !important;
+    font-size: 1.2rem !important;
     border-bottom: 1px solid var(--accent) !important;
-    padding-bottom: 0.2rem !important;
-    margin-bottom: 0.4rem !important;
+    padding-bottom: 0.1rem !important;
+    margin-bottom: 0.3rem !important;
 }
 
 h2 {
-    font-size: 1.1rem !important;
+    font-size: 1.05rem !important;
     border-bottom: 1px solid var(--table-border-color) !important;
-    padding-bottom: 0.15rem !important;
-    margin-top: 0.8rem !important;
+    padding-bottom: 0.1rem !important;
+    margin-top: 0.5rem !important;
 }
 
 h3 {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     color: var(--accent) !important;
 }
 
 h4 {
-    font-size: 0.9rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.03em !important;
+    font-size: 0.85rem !important;
 }
 
 /* Drop caps disabled - too aggressive on index pages */
