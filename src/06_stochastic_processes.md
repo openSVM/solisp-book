@@ -13,7 +13,7 @@ Financial markets exhibit behaviors that deterministic models cannot capture:
 - **Mean reversion**: Commodity spreads drift back to historical norms
 - **Fat tails**: Market crashes happen far more often than normal distributions predict
 
-We'll build mathematical models for each phenomenon, implement them in OVSM, and demonstrate how to use them for pricing derivatives, managing risk, and designing trading strategies.
+We'll build mathematical models for each phenomenon, implement them in Solisp, and demonstrate how to use them for pricing derivatives, managing risk, and designing trading strategies.
 
 **What you'll learn:**
 

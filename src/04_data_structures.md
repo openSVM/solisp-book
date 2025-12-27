@@ -1142,7 +1142,7 @@ Floating-point numbers have precision issues:
 - Storage: int32 (exact representation)
 - Decode: 456,700 / 10,000 = $45.67
 
-**Conceptual Binary Encoding** (OVSM doesn't have native binary I/O):
+**Conceptual Binary Encoding** (Solisp doesn't have native binary I/O):
 
 ```lisp
 ;; Conceptual encoding specification
@@ -1178,7 +1178,7 @@ Floating-point numbers have precision issues:
 
 **What this code does**: Defines binary layout specification, implements price scaling/unscaling for exact arithmetic.
 
-**Why we wrote it this way**: Conceptual demonstration (OVSM lacks binary I/O), shows compression ratio calculation.
+**Why we wrote it this way**: Conceptual demonstration (Solisp lacks binary I/O), shows compression ratio calculation.
 
 **Efficiency Gain**:
 

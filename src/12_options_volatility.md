@@ -93,7 +93,7 @@ The Black-Scholes-Merton options pricing model, published independently by Fisch
 
 However, the model's simplifying assumptions—constant volatility, continuous trading, no transaction costs, log-normal returns—quickly proved inadequate for real markets. The 1987 stock market crash revealed systematic mispricing, with deep out-of-the-money puts trading far above Black-Scholes predictions. This gave birth to the *volatility smile*: the empirical observation that implied volatility varies with strike price and expiration, forming characteristic patterns that encode market fears, leverage effects, and supply-demand dynamics.
 
-This chapter develops options pricing theory from first principles, implements the Black-Scholes formula in OVSM, explores the volatility surface structure, and builds practical trading strategies that exploit mispricing in options markets.
+This chapter develops options pricing theory from first principles, implements the Black-Scholes formula in Solisp, explores the volatility surface structure, and builds practical trading strategies that exploit mispricing in options markets.
 
 > **💡 Key Concept**
 > The Black-Scholes model assumes constant volatility σ, yet empirical markets reveal σ(K,T)—a volatility *surface* that varies with both strike price K and time to expiration T. Understanding this surface is the key to modern options trading.
@@ -104,7 +104,7 @@ This chapter develops options pricing theory from first principles, implements t
 2. **Greeks and sensitivity analysis**: Delta, gamma, vega, theta, rho and their trading applications
 3. **Implied volatility**: Newton-Raphson inversion and volatility surface construction
 4. **Volatility patterns**: Smile, skew, term structure, and their economic interpretations
-5. **OVSM implementation**: Complete pricing engine with Greeks calculation
+5. **Solisp implementation**: Complete pricing engine with Greeks calculation
 6. **Trading strategies**: Volatility arbitrage, dispersion trading, and gamma scalping
 7. **Advanced models**: Stochastic volatility (Heston), jump-diffusion, and local volatility
 
@@ -772,9 +772,9 @@ Not all volatility surfaces are economically feasible. Arbitrage-free conditions
 
 ---
 
-## 12.6 OVSM Implementation
+## 12.6 Solisp Implementation
 
-We now implement a complete Black-Scholes pricing engine in OVSM, including:
+We now implement a complete Black-Scholes pricing engine in Solisp, including:
 1. Cumulative normal distribution (required for N(d))
 2. Black-Scholes call/put pricing
 3. Greeks calculation (delta, gamma, vega, theta, rho)
@@ -787,7 +787,7 @@ The standard normal CDF has no closed form, requiring numerical approximation. W
 
 $$N(x) = \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]$$
 
-**OVSM Implementation** (Abramowitz & Stegun polynomial approximation):
+**Solisp Implementation** (Abramowitz & Stegun polynomial approximation):
 
 ```lisp
 ;; Approximation of cumulative normal distribution N(x)
@@ -1536,7 +1536,7 @@ graph TD
 > - **Chapter 46**: Volatility surface arbitrage and relative value trading
 > - **Chapter 29**: Volatility forecasting with GARCH and realized volatility
 
-The options market is vast and ever-evolving. The OVSM implementation provides a production-ready foundation for building sophisticated volatility trading systems. From here, the sky's the limit—literally, as options have unlimited upside.
+The options market is vast and ever-evolving. The Solisp implementation provides a production-ready foundation for building sophisticated volatility trading systems. From here, the sky's the limit—literally, as options have unlimited upside.
 ---
 
 ## 12.8 Volatility Trading Disasters and Lessons
@@ -1909,7 +1909,7 @@ Based on lessons from LTCM, GameStop, and countless retail blowups, here's a pro
 - Stress testing shows "what if" scenarios BEFORE taking risk
 - If worst case exceeds -5% of capital, reject the trade
 
-**Cost to Implement:** 200 lines of OVSM code, $0 additional infra
+**Cost to Implement:** 200 lines of Solisp code, $0 additional infra
 
 **Benefit:** Survived 2008, 2020 COVID, 2021 GameStop if you had these limits
 
@@ -1965,7 +1965,7 @@ Options trading combines elegant mathematics with brutal practical realities. Su
 
 **1. Greeks Calculation:** Prove that for delta-hedged position, $\Theta + \frac{1}{2}\sigma^2 S^2 \Gamma = 0$
 
-**2. Implied Volatility:** Implement Newton-Raphson IV solver in OVSM
+**2. Implied Volatility:** Implement Newton-Raphson IV solver in Solisp
 
 **3. Gamma Squeeze:** Simulate GameStop scenario—what delta hedge rebalancing would be needed?
 

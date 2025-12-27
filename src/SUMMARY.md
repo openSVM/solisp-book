@@ -6,8 +6,8 @@
 
 - [Introduction to Algorithmic Trading](./01_introduction_algorithmic_trading.md)
 - [Domain-Specific Languages for Finance](./02_domain_specific_languages.md)
-- [Solisp Language Specification](./03_ovsm_specification.md)
-- [Solisp to sBPF Compilation](./04_ovsm_to_sbpf.md)
+- [Solisp Language Specification](./03_solisp_specification.md)
+- [Solisp to sBPF Compilation](./04_solisp_to_sbpf.md)
 - [Data Structures for Financial Computing](./04_data_structures.md)
 - [Functional Programming for Trading Systems](./05_functional_programming.md)
 - [Stochastic Processes and Simulation](./06_stochastic_processes.md)

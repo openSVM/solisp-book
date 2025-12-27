@@ -844,7 +844,7 @@ $$T = \frac{0.057}{0.40} = 0.1425 \text{ years} = 52 \text{ days}$$
 
 ---
 
-### 20.4.3 OVSM Implementation: Net P&L Calculator
+### 20.4.3 Solisp Implementation: Net P&L Calculator
 
 ```lisp
 ;; ============================================
@@ -1397,7 +1397,7 @@ graph TD
 
 ---
 
-### OVSM: Rug Pull Risk Analyzer
+### Solisp: Rug Pull Risk Analyzer
 
 ```lisp
 ;; ============================================
@@ -1515,7 +1515,7 @@ graph TD
 
 ---
 
-## 20.7 OVSM Implementation: Comprehensive Tools
+## 20.7 Solisp Implementation: Comprehensive Tools
 
 ### 20.7.1 Advanced LP Analysis Script
 
@@ -2000,7 +2000,7 @@ quadrantChart
 
 ---
 
-### OVSM: Fee Tier Optimizer
+### Solisp: Fee Tier Optimizer
 
 ```lisp
 ;; ============================================
@@ -3036,7 +3036,7 @@ graph TD
     style I fill:#c92a2a
 ```
 
-### Production Implementation (600+ Lines OVSM)
+### Production Implementation (600+ Lines Solisp)
 
 ```lisp
 ;;; ============================================================================
@@ -4483,7 +4483,7 @@ The difference isn't luck—it's systematic execution of proven principles that 
 - **ROI of safety:** >10,000%
 - **The difference:** Implementation
 
-Equip yourself with knowledge (this chapter), tools (OVSM 20.12), and discipline (20.11 disaster checklist). Or skip LP entirely—there's no shame in admitting the bar is now too high for casual participation.
+Equip yourself with knowledge (this chapter), tools (Solisp 20.12), and discipline (20.11 disaster checklist). Or skip LP entirely—there's no shame in admitting the bar is now too high for casual participation.
 
 **The choice is yours. The disasters are documented. The solutions are provided.**
 

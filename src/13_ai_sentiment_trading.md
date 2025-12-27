@@ -127,13 +127,13 @@ The rise of social media, news aggregators, and alternative data vendors has tra
 
 Natural language processing (NLP) and machine learning have evolved from academic curiosities to critical trading infrastructure. Goldman Sachs, Renaissance Technologies, and Two Sigma employ hundreds of computational linguists and NLP engineers. Sentiment analysis—the algorithmic extraction of emotional tone from text—has become a core component of alpha generation.
 
-This chapter develops sentiment-based trading strategies from theoretical foundations through production implementation in OVSM. We'll cover:
+This chapter develops sentiment-based trading strategies from theoretical foundations through production implementation in Solisp. We'll cover:
 
 1. **Historical context**: From newspaper archives to transformer models, how alternative data emerged as alpha source
 2. **Economic foundations**: Information dissemination theory, market efficiency violations, and sentiment propagation dynamics
 3. **NLP techniques**: Sentiment lexicons, BERT embeddings, aspect-based sentiment, and multi-modal analysis
 4. **Empirical evidence**: Academic studies quantifying sentiment's predictive power (spoiler: it's real but decays fast)
-5. **OVSM implementation**: Complete sentiment analysis pipeline with scoring, aggregation, and signal generation
+5. **Solisp implementation**: Complete sentiment analysis pipeline with scoring, aggregation, and signal generation
 6. **Risk analysis**: Sentiment lag, false signals, overfitting, data quality, and regulatory considerations
 7. **Advanced extensions**: Multi-source fusion, real-time stream processing, and social network graph analysis
 
@@ -593,11 +593,11 @@ Aspect-based sentiment decomposes:
 
 ---
 
-## 13.5 OVSM Implementation
+## 13.5 Solisp Implementation
 
 ### 13.5.1 Sentiment Scoring Pipeline
 
-We'll implement a complete sentiment analysis system using the OVSM code from `13_ai_sentiment_trading.ovsm`.
+We'll implement a complete sentiment analysis system using the Solisp code from `13_ai_sentiment_trading.solisp`.
 
 **Step 1: Data Ingestion (Mock)**
 ```lisp
@@ -999,7 +999,7 @@ $$P(\text{Return} > 0 | \text{Twitter Positive}) = \frac{0.65 \times 0.52}{0.65 
 Now observe positive Reddit sentiment (independent):
 $$P(\text{Return} > 0 | \text{Twitter+Reddit Positive}) = \frac{0.65 \times 0.64}{0.65 \times 0.64 + 0.40 \times 0.36} = 0.74$$
 
-**Implementation in OVSM**:
+**Implementation in Solisp**:
 ```lisp
 (define prior 0.52)
 (define twitter_pos_given_up 0.65)
@@ -1036,7 +1036,7 @@ graph LR
     A[Twitter API<br/>WebSocket] --> B[Kafka/Pulsar<br/>Message Queue]
     B --> C[FinBERT Inference<br/>GPU Cluster]
     C --> D[Flink/Spark<br/>Windowed Aggregation]
-    D --> E[OVSM Script<br/>Signal Generation]
+    D --> E[Solisp Script<br/>Signal Generation]
     E --> F[FIX Protocol<br/>Order Placement]
 
     style C fill:#ffcccc
@@ -1050,7 +1050,7 @@ graph LR
 | API → Kafka | 50ms | Use WebSocket, not polling |
 | FinBERT inference | 300ms | Batch size 32, INT8 quantization |
 | Aggregation | 100ms | Pre-aggregated windows |
-| OVSM signal | 50ms | Compiled OVSM interpreter |
+| Solisp signal | 50ms | Compiled Solisp interpreter |
 | Order placement | 200ms | Co-located with exchange |
 | **Total** | **700ms** | Sub-second latency achieved |
 
@@ -1112,7 +1112,7 @@ If δ ≠ 0, sentiment has causal effect on returns (not just correlation).
 
 ---
 
-## 13.8 Complete OVSM Trading System
+## 13.8 Complete Solisp Trading System
 
 Bringing it all together: end-to-end sentiment trading strategy.
 

@@ -389,11 +389,11 @@ graph TD
 
 ---
 
-## 15.5 OVSM Implementation: Complete Sniping Bot
+## 15.5 Solisp Implementation: Complete Sniping Bot
 
 ### 15.5.1 Event Detection: Monitoring PumpSwap Deployments
 
-From `15_pumpswap_sniper.ovsm`:
+From `15_pumpswap_sniper.solisp`:
 
 ```lisp
 (do
@@ -975,7 +975,7 @@ Bottom 90% (11,106 addresses): -$13.4M total loss
 
 ## 15.9 Production MEV Sniping System
 
-This section presents production-ready OVSM implementations for MEV sniping on Solana, incorporating all disaster lessons from Section 15.8. The code follows defensive programming principles: verify everything, assume nothing, fail safely.
+This section presents production-ready Solisp implementations for MEV sniping on Solana, incorporating all disaster lessons from Section 15.8. The code follows defensive programming principles: verify everything, assume nothing, fail safely.
 
 ### 15.9.1 Mempool Monitoring with WebSocket Streaming
 

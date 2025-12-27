@@ -1086,7 +1086,7 @@ graph TB
 - Identified bottleneck: 3-hop database queries (fixed: 30ms → 5ms)
 - Capacity planning: predicted scaling needs 3 months ahead
 
-### 10.4.4 Implementing Observability in OVSM
+### 10.4.4 Implementing Observability in Solisp
 
 ```lisp
 ;; ============================================

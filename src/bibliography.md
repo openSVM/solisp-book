@@ -1,6 +1,6 @@
-# Bibliography: Algorithmic Trading with OVSM
+# Bibliography: Algorithmic Trading with Solisp
 
-This bibliography contains 100+ curated academic references organized by topic area. Each entry includes full citation, abstract summary, key contribution, and relevance to OVSM trading strategies.
+This bibliography contains 100+ curated academic references organized by topic area. Each entry includes full citation, abstract summary, key contribution, and relevance to Solisp trading strategies.
 
 ---
 
@@ -12,7 +12,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Unified framework integrating information-based and inventory-based models of market making. Shows how adverse selection drives bid-ask spreads and influences market liquidity.
 
-**Relevance to OVSM:** Essential theory for implementing market-making algorithms (Chapters 10, 25). Information asymmetry models inform order placement strategies and toxicity detection (Chapter 50).
+**Relevance to Solisp:** Essential theory for implementing market-making algorithms (Chapters 10, 25). Information asymmetry models inform order placement strategies and toxicity detection (Chapter 50).
 
 ---
 
@@ -22,7 +22,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Kyle's lambda (market impact coefficient) provides tractable measure of market resilience. Model predicts linear price impact and gradual information revelation through trading.
 
-**Relevance to OVSM:** Market impact models (Chapter 41) directly implement Kyle's framework. Optimal execution algorithms (Chapter 42) use lambda estimates to minimize costs. Order anticipation (Chapter 47) detects strategic order splitting.
+**Relevance to Solisp:** Market impact models (Chapter 41) directly implement Kyle's framework. Optimal execution algorithms (Chapter 42) use lambda estimates to minimize costs. Order anticipation (Chapter 47) detects strategic order splitting.
 
 ---
 
@@ -32,7 +32,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows bid-ask spread contains information about adverse selection. Spread widens when probability of informed trading increases. Provides theoretical foundation for VPIN and order toxicity measures.
 
-**Relevance to OVSM:** Adverse selection minimization (Chapter 60) implements Glosten-Milgrom insights. Toxicity-based market making (Chapter 50) uses spread dynamics to detect informed traders. High-frequency strategies (Chapter 25) adjust quotes based on information flow.
+**Relevance to Solisp:** Adverse selection minimization (Chapter 60) implements Glosten-Milgrom insights. Toxicity-based market making (Chapter 50) uses spread dynamics to detect informed traders. High-frequency strategies (Chapter 25) adjust quotes based on information flow.
 
 ---
 
@@ -42,7 +42,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Provides empirical methodology for measuring information content of trades. Shows trade direction has predictive power for future price changes. Quantifies price discovery process.
 
-**Relevance to OVSM:** Order flow imbalance trading (Chapter 24) exploits information in trade direction. Microstructure noise filtering (Chapter 49) separates permanent from transitory price movements. Market maker behavior classification (Chapter 87) distinguishes informed from uninformed flow.
+**Relevance to Solisp:** Order flow imbalance trading (Chapter 24) exploits information in trade direction. Microstructure noise filtering (Chapter 49) separates permanent from transitory price movements. Market maker behavior classification (Chapter 87) distinguishes informed from uninformed flow.
 
 ---
 
@@ -52,7 +52,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** PIN provides empirical measure of adverse selection risk. Shows high-PIN stocks have wider spreads and lower liquidity. Enables cross-sectional comparison of information asymmetry.
 
-**Relevance to OVSM:** Toxicity-based market making (Chapter 50) implements volume-synchronized PIN (VPIN). Liquidity provision strategies (Chapter 27) avoid high-PIN stocks or demand higher compensation. Execution algorithms (Chapter 42) adjust aggression based on PIN estimates.
+**Relevance to Solisp:** Toxicity-based market making (Chapter 50) implements volume-synchronized PIN (VPIN). Liquidity provision strategies (Chapter 27) avoid high-PIN stocks or demand higher compensation. Execution algorithms (Chapter 42) adjust aggression based on PIN estimates.
 
 ---
 
@@ -62,7 +62,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Synthesizes 40 years of microstructure research into unified framework. Discusses policy implications for market regulation and design. Identifies open research questions.
 
-**Relevance to OVSM:** Essential background for all market-making and execution chapters (10, 25, 27, 42). Informs design of order placement algorithms, smart order routing (Chapter 28), and transaction cost analysis (Chapter 56).
+**Relevance to Solisp:** Essential background for all market-making and execution chapters (10, 25, 27, 42). Informs design of order placement algorithms, smart order routing (Chapter 28), and transaction cost analysis (Chapter 56).
 
 ---
 
@@ -72,7 +72,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** First large-scale empirical evidence that algorithmic trading benefits markets. Shows algorithms provide liquidity, improve price discovery, and reduce transaction costs for all participants.
 
-**Relevance to OVSM:** Justifies algorithmic approach to trading. Informs market-making algorithms (Chapters 10, 25) with empirical evidence of profitability. Relevant to regulatory discussions (Chapter 108) on algo trading benefits.
+**Relevance to Solisp:** Justifies algorithmic approach to trading. Informs market-making algorithms (Chapters 10, 25) with empirical evidence of profitability. Relevant to regulatory discussions (Chapter 108) on algo trading benefits.
 
 ---
 
@@ -82,7 +82,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Mathematical framework for optimal execution and market making under various market conditions. Extends Almgren-Chriss to incorporate order flow, volatility, and information.
 
-**Relevance to OVSM:** Core reference for execution algorithms (Chapter 42), market impact (Chapter 41), and HFT strategies (Chapters 25, 61). Provides mathematical foundations for implementation in OVSM.
+**Relevance to Solisp:** Core reference for execution algorithms (Chapter 42), market impact (Chapter 41), and HFT strategies (Chapters 25, 61). Provides mathematical foundations for implementation in Solisp.
 
 ---
 
@@ -92,7 +92,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Establishes square-root law of market impact: ΔP ∝ √Q. Shows impact decays exponentially with half-life of minutes to hours. Provides empirical foundation for realistic execution models.
 
-**Relevance to OVSM:** Market impact models (Chapter 41) implement square-root impact. Optimal execution (Chapter 42) uses impact decay for trade scheduling. Slippage prediction (Chapter 40) incorporates non-linear impact.
+**Relevance to Solisp:** Market impact models (Chapter 41) implement square-root impact. Optimal execution (Chapter 42) uses impact decay for trade scheduling. Slippage prediction (Chapter 40) incorporates non-linear impact.
 
 ---
 
@@ -102,7 +102,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Explains arms race in speed: traders invest in latency reduction not for absolute advantage but to avoid being picked off. Shows speed can improve or harm welfare depending on information structure.
 
-**Relevance to OVSM:** Latency arbitrage defense (Chapter 57) implements strategies to avoid being sniped. HFT market making (Chapter 25) balances speed investment costs with adverse selection benefits.
+**Relevance to Solisp:** Latency arbitrage defense (Chapter 57) implements strategies to avoid being sniped. HFT market making (Chapter 25) balances speed investment costs with adverse selection benefits.
 
 ---
 
@@ -112,7 +112,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows continuous trading creates mechanical arbitrage opportunities exploited by speed. FBA eliminates these opportunities while preserving liquidity and price discovery. Provocative market design proposal.
 
-**Relevance to OVSM:** Informs latency arbitrage strategies (Chapter 57) and defenses. Relevant to market design discussions and potential future market structure changes.
+**Relevance to Solisp:** Informs latency arbitrage strategies (Chapter 57) and defenses. Relevant to market design discussions and potential future market structure changes.
 
 ---
 
@@ -122,7 +122,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Detailed empirics on HFT market-making economics. Shows thin margins, high turnover, and value from speed. Documents benefits of HFT to market quality.
 
-**Relevance to OVSM:** Provides realistic parameters for HFT market making (Chapter 25). Informs inventory management models and profitability expectations.
+**Relevance to Solisp:** Provides realistic parameters for HFT market making (Chapter 25). Informs inventory management models and profitability expectations.
 
 ---
 
@@ -132,7 +132,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Decomposes price impact by event type. Shows cancellations have information content. Quantifies speed of impact decay.
 
-**Relevance to OVSM:** Order book reconstruction (Chapter 36) implements event processing. Execution algorithms (Chapter 42) account for differential impact. Order anticipation (Chapter 47) monitors cancellation patterns.
+**Relevance to Solisp:** Order book reconstruction (Chapter 36) implements event processing. Execution algorithms (Chapter 42) account for differential impact. Order anticipation (Chapter 47) monitors cancellation patterns.
 
 ---
 
@@ -142,7 +142,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows liquidity-taking strategies can be profitable even after fees. Optimal strategy depends on urgency, queue position, and fee structure.
 
-**Relevance to OVSM:** Adaptive execution algorithms (Chapter 42) implement queue-aware order placement. Transaction cost analysis (Chapter 56) compares aggressive vs. passive execution costs.
+**Relevance to Solisp:** Adaptive execution algorithms (Chapter 42) implement queue-aware order placement. Transaction cost analysis (Chapter 56) compares aggressive vs. passive execution costs.
 
 ---
 
@@ -152,7 +152,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Quantifies value of queue priority. Shows first position worth multiples of last position. Explains rush to post orders at new price levels.
 
-**Relevance to OVSM:** Market-making algorithms (Chapters 10, 25) incorporate queue position value. Order placement strategies optimize for queue priority vs. adverse selection.
+**Relevance to Solisp:** Market-making algorithms (Chapters 10, 25) incorporate queue position value. Order placement strategies optimize for queue priority vs. adverse selection.
 
 ---
 
@@ -164,7 +164,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** First rigorous academic study of pairs trading profitability. Establishes that simple distance-based pair selection works historically. Documents decline in returns possibly due to crowding.
 
-**Relevance to OVSM:** Statistical arbitrage chapter (Chapter 11) implements distance-based pair selection. Provides benchmark returns for evaluating OVSM implementations. Regime-switching pairs (Chapter 30) addresses profitability decline.
+**Relevance to Solisp:** Statistical arbitrage chapter (Chapter 11) implements distance-based pair selection. Provides benchmark returns for evaluating Solisp implementations. Regime-switching pairs (Chapter 30) addresses profitability decline.
 
 ---
 
@@ -174,7 +174,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Bridges academic theory and practical implementation. Provides actionable guidance on pair selection, entry/exit rules, position sizing, and risk management.
 
-**Relevance to OVSM:** Primary reference for pairs trading implementation (Chapters 11, 30). Cointegration methods directly translate to OVSM code. Risk management principles apply to all strategies.
+**Relevance to Solisp:** Primary reference for pairs trading implementation (Chapters 11, 30). Cointegration methods directly translate to Solisp code. Risk management principles apply to all strategies.
 
 ---
 
@@ -184,7 +184,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Foundational econometric theory enabling statistical arbitrage. Shows how to test for and estimate cointegrating relationships. Provides framework for modeling mean-reverting spreads.
 
-**Relevance to OVSM:** Cointegration testing (Chapters 11, 30) implements Engle-Granger method. Error correction models capture spread dynamics. Essential for pairs trading theoretical foundations.
+**Relevance to Solisp:** Cointegration testing (Chapters 11, 30) implements Engle-Granger method. Error correction models capture spread dynamics. Essential for pairs trading theoretical foundations.
 
 ---
 
@@ -194,7 +194,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Generalizes Engle-Granger to multiple assets. Enables basket arbitrage strategies. More powerful tests than two-step method.
 
-**Relevance to OVSM:** Basket arbitrage (Chapter 11) uses Johansen for multi-asset cointegration. More sophisticated than pairwise approaches. Requires matrix operations well-suited to OVSM.
+**Relevance to Solisp:** Basket arbitrage (Chapter 11) uses Johansen for multi-asset cointegration. More sophisticated than pairwise approaches. Requires matrix operations well-suited to Solisp.
 
 ---
 
@@ -204,7 +204,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows importance of factor decomposition for robust stat arb. Documents capacity constraints and alpha decay. Proposes PCA-based approach.
 
-**Relevance to OVSM:** Statistical arbitrage with ML (Chapter 35) extends PCA approach. Factor models inform portfolio construction. Alpha decay analysis guides strategy lifecycle management.
+**Relevance to Solisp:** Statistical arbitrage with ML (Chapter 35) extends PCA approach. Factor models inform portfolio construction. Alpha decay analysis guides strategy lifecycle management.
 
 ---
 
@@ -214,7 +214,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Documents that pairs trading still works but requires careful implementation. Transaction costs matter significantly. Shorter holding periods may be necessary.
 
-**Relevance to OVSM:** Validates pairs trading viability for OVSM implementation (Chapter 11). Emphasizes need for realistic transaction cost modeling (Chapter 56). Informs holding period selection.
+**Relevance to Solisp:** Validates pairs trading viability for Solisp implementation (Chapter 11). Emphasizes need for realistic transaction cost modeling (Chapter 56). Informs holding period selection.
 
 ---
 
@@ -224,7 +224,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Demonstrates importance of adaptive parameters. Kalman filter provides optimal online estimation. Handles regime changes gracefully.
 
-**Relevance to OVSM:** Kalman filter implementation in pairs trading (Chapter 11). Dynamic hedge ratios (Chapter 35). Regime-switching strategies (Chapter 38).
+**Relevance to Solisp:** Kalman filter implementation in pairs trading (Chapter 11). Dynamic hedge ratios (Chapter 35). Regime-switching strategies (Chapter 38).
 
 ---
 
@@ -234,7 +234,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Synthesizes 18 years of research into coherent framework. Compares performance of different methodologies. Proposes research agenda.
 
-**Relevance to OVSM:** Survey of pair selection methods informs implementation choices (Chapters 11, 30). Identifies best practices. Guides future research directions.
+**Relevance to Solisp:** Survey of pair selection methods informs implementation choices (Chapters 11, 30). Identifies best practices. Guides future research directions.
 
 ---
 
@@ -244,7 +244,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Direct empirical comparison of major pair selection methods. Provides guidance on method selection. Shows cointegration superiority.
 
-**Relevance to OVSM:** Informs pair selection in Chapters 11 and 30. Copula methods (Chapter 35) for tail risk. Empirical evidence guides implementation priorities.
+**Relevance to Solisp:** Informs pair selection in Chapters 11 and 30. Copula methods (Chapter 35) for tail risk. Empirical evidence guides implementation priorities.
 
 ---
 
@@ -254,7 +254,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Extends pairs trading evidence to international markets. Shows profitability not explained by risk factors. Suggests genuine mispricing correction.
 
-**Relevance to OVSM:** Validates pairs trading across markets. Relevant for international strategy deployment. Factor decomposition (Chapter 99) informs risk attribution.
+**Relevance to Solisp:** Validates pairs trading across markets. Relevant for international strategy deployment. Factor decomposition (Chapter 99) informs risk attribution.
 
 ---
 
@@ -264,7 +264,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Optimal trading rules for mean-reverting spreads. Accounts for transaction costs, position limits, and risk aversion.
 
-**Relevance to OVSM:** Optimal threshold selection in pairs trading (Chapter 11). Portfolio optimization with mean reversion (Chapter 23). Mathematical foundations for OVSM implementation.
+**Relevance to Solisp:** Optimal threshold selection in pairs trading (Chapter 11). Portfolio optimization with mean reversion (Chapter 23). Mathematical foundations for Solisp implementation.
 
 ---
 
@@ -274,7 +274,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous mathematical framework for pairs trading. Connects to stochastic control theory. Provides optimal policies under various objectives.
 
-**Relevance to OVSM:** Theoretical foundation for pairs trading (Chapters 11, 30). OU process simulation (Chapter 6). Optimal control implementation.
+**Relevance to Solisp:** Theoretical foundation for pairs trading (Chapters 11, 30). OU process simulation (Chapter 6). Optimal control implementation.
 
 ---
 
@@ -286,7 +286,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Revolutionary breakthrough enabling modern derivatives markets. Provides closed-form pricing formula. Establishes risk-neutral pricing framework.
 
-**Relevance to OVSM:** Options pricing chapter (Chapter 12) derives and implements Black-Scholes. Foundation for all derivatives strategies (Chapters 44-46, 96-98). Greek calculations for hedging.
+**Relevance to Solisp:** Options pricing chapter (Chapter 12) derives and implements Black-Scholes. Foundation for all derivatives strategies (Chapters 44-46, 96-98). Greek calculations for hedging.
 
 ---
 
@@ -296,7 +296,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous mathematical foundation for derivatives pricing. PDE methods enable numerical solutions. Handles path-dependent options.
 
-**Relevance to OVSM:** Options pricing implementation (Chapter 12). Jump-diffusion hedging (Chapter 54). Advanced derivatives (Chapters 97-98).
+**Relevance to Solisp:** Options pricing implementation (Chapter 12). Jump-diffusion hedging (Chapter 54). Advanced derivatives (Chapters 97-98).
 
 ---
 
@@ -306,7 +306,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Tractable stochastic volatility model. Explains implied volatility patterns. Enables calibration to market prices.
 
-**Relevance to OVSM:** Volatility surface modeling (Chapter 12). Stochastic processes (Chapter 6). Volatility trading strategies (Chapter 29).
+**Relevance to Solisp:** Volatility surface modeling (Chapter 12). Stochastic processes (Chapter 6). Volatility trading strategies (Chapter 29).
 
 ---
 
@@ -316,7 +316,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows which volatility risks are priced. Provides intuition for volatility smile. Enables practical pricing.
 
-**Relevance to OVSM:** Volatility modeling (Chapters 12, 29). Risk premium decomposition. Hedging strategies for stochastic volatility.
+**Relevance to Solisp:** Volatility modeling (Chapters 12, 29). Risk premium decomposition. Hedging strategies for stochastic volatility.
 
 ---
 
@@ -326,7 +326,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Bridges academic models and market practice. Provides practical guidance for volatility surface arbitrage. SVI parameterization widely used.
 
-**Relevance to OVSM:** Volatility surface arbitrage (Chapter 46). Implied volatility calculations (Chapter 12). Vol trading strategies (Chapter 29).
+**Relevance to Solisp:** Volatility surface arbitrage (Chapter 46). Implied volatility calculations (Chapter 12). Vol trading strategies (Chapter 29).
 
 ---
 
@@ -336,7 +336,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practical method for pricing exotics with smile. Ensures arbitrage-free pricing. Widely used by practitioners.
 
-**Relevance to OVSM:** Exotic options pricing (Chapters 97-98). Numerical methods implementation. Volatility surface consistency.
+**Relevance to Solisp:** Exotic options pricing (Chapters 97-98). Numerical methods implementation. Volatility surface consistency.
 
 ---
 
@@ -346,7 +346,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Local volatility model foundations. Forward equation for option pricing. Calibration to market prices.
 
-**Relevance to OVSM:** Options pricing (Chapter 12). Volatility surface modeling. Numerical PDE methods.
+**Relevance to Solisp:** Options pricing (Chapter 12). Volatility surface modeling. Numerical PDE methods.
 
 ---
 
@@ -356,7 +356,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows stochastic volatility and jumps improve pricing. Black-Scholes fails systematically. Identifies best-performing models.
 
-**Relevance to OVSM:** Model selection for options pricing (Chapter 12). Jump-diffusion implementation (Chapter 54). Empirical guidance for strategy development.
+**Relevance to Solisp:** Model selection for options pricing (Chapter 12). Jump-diffusion implementation (Chapter 54). Empirical guidance for strategy development.
 
 ---
 
@@ -366,7 +366,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Computational breakthrough for option pricing. Makes sophisticated models practical. Widely used for Heston, VG, NIG models.
 
-**Relevance to OVSM:** Efficient options pricing implementation. Relevant for high-frequency options strategies. Computational optimization.
+**Relevance to Solisp:** Efficient options pricing implementation. Relevant for high-frequency options strategies. Computational optimization.
 
 ---
 
@@ -376,7 +376,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Empirical evidence for jumps in asset prices. Shows volatility smile reflects crash fears. Model estimation methodology.
 
-**Relevance to OVSM:** Jump-diffusion modeling (Chapters 6, 54). Crash hedging strategies. Volatility smile explanation.
+**Relevance to Solisp:** Jump-diffusion modeling (Chapters 6, 54). Crash hedging strategies. Volatility smile explanation.
 
 ---
 
@@ -386,7 +386,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practical wisdom on options trading. Focuses on P&L drivers and risk. Discusses trader psychology and common mistakes.
 
-**Relevance to OVSM:** Gamma scalping (Chapter 44). Volatility trading (Chapter 29). Risk management principles. Practitioner perspective complements academic theory.
+**Relevance to Solisp:** Gamma scalping (Chapter 44). Volatility trading (Chapter 29). Risk management principles. Practitioner perspective complements academic theory.
 
 ---
 
@@ -396,7 +396,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Accessible treatment of advanced topics. Clear explanations of smile dynamics. Practical implementation guidance.
 
-**Relevance to OVSM:** Volatility modeling (Chapters 12, 29). Educational resource for options strategies. Bridges theory and practice.
+**Relevance to Solisp:** Volatility modeling (Chapters 12, 29). Educational resource for options strategies. Bridges theory and practice.
 
 ---
 
@@ -406,7 +406,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Robust numerical method for options pricing. Handles complex features. Production-quality implementation.
 
-**Relevance to OVSM:** Numerical methods for options (Chapter 12). American option pricing. Computational finance techniques.
+**Relevance to Solisp:** Numerical methods for options (Chapter 12). American option pricing. Computational finance techniques.
 
 ---
 
@@ -416,7 +416,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Unifies jumps and stochastic volatility. Elegant mathematical framework. Rich dynamics from simple construction.
 
-**Relevance to OVSM:** Advanced stochastic process modeling (Chapter 6). Options pricing under complex dynamics. Volatility modeling.
+**Relevance to Solisp:** Advanced stochastic process modeling (Chapter 6). Options pricing under complex dynamics. Volatility modeling.
 
 ---
 
@@ -426,7 +426,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Enables simulation-based pricing of early exercise options. Addresses upward bias. Practical implementation.
 
-**Relevance to OVSM:** Monte Carlo simulation (Chapter 6). American option pricing. Numerical methods implementation.
+**Relevance to Solisp:** Monte Carlo simulation (Chapter 6). American option pricing. Numerical methods implementation.
 
 ---
 
@@ -436,7 +436,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous treatment of simulation methods. Extensive coverage of variance reduction. Standard reference for computational finance.
 
-**Relevance to OVSM:** Monte Carlo implementation (Chapter 6). Simulation-based pricing and risk management. Variance reduction techniques for efficient computation.
+**Relevance to Solisp:** Monte Carlo implementation (Chapter 6). Simulation-based pricing and risk management. Variance reduction techniques for efficient computation.
 
 ---
 
@@ -446,7 +446,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Breakthrough making simulation practical for early exercise options. Handles high-dimensional problems. Extends to Bermudan, exotic options.
 
-**Relevance to OVSM:** American option pricing (Chapter 12). Simulation methods (Chapter 6). Practical implementation in OVSM.
+**Relevance to Solisp:** American option pricing (Chapter 12). Simulation methods (Chapter 6). Practical implementation in Solisp.
 
 ---
 
@@ -456,7 +456,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Comprehensive treatment of fixed income derivatives. State-of-the-art models and methods. Industry standard reference.
 
-**Relevance to OVSM:** Fixed income chapters (64-68). Yield curve modeling. Interest rate derivatives strategies.
+**Relevance to Solisp:** Fixed income chapters (64-68). Yield curve modeling. Interest rate derivatives strategies.
 
 ---
 
@@ -468,7 +468,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Powerful, easy-to-use ML algorithm. Handles non-linear relationships, interactions. Provides feature importance.
 
-**Relevance to OVSM:** ML prediction models (Chapter 14). Feature selection. Non-linear pattern recognition in financial data.
+**Relevance to Solisp:** ML prediction models (Chapter 14). Feature selection. Non-linear pattern recognition in financial data.
 
 ---
 
@@ -478,7 +478,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Unifies boosting as gradient descent in function space. Enables principled design of loss functions. Extremely effective ML method.
 
-**Relevance to OVSM:** Gradient boosting implementation (Chapter 14). Superior performance on structured data. Key algorithm for prediction tasks.
+**Relevance to Solisp:** Gradient boosting implementation (Chapter 14). Superior performance on structured data. Key algorithm for prediction tasks.
 
 ---
 
@@ -488,7 +488,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Production-quality boosting implementation. Widely used in ML competitions and industry. Sets performance benchmarks.
 
-**Relevance to OVSM:** State-of-the-art ML for financial prediction (Chapter 14). Practical implementation guidance. Benchmark for OVSM-based ML.
+**Relevance to Solisp:** State-of-the-art ML for financial prediction (Chapter 14). Practical implementation guidance. Benchmark for Solisp-based ML.
 
 ---
 
@@ -498,7 +498,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Breakthrough in sequence modeling. Enables deep learning on time series. Foundation for modern NLP and time series forecasting.
 
-**Relevance to OVSM:** Time series prediction (Chapters 8, 14). Sentiment analysis (Chapter 13). Deep learning for financial sequences.
+**Relevance to Solisp:** Time series prediction (Chapters 8, 14). Sentiment analysis (Chapter 13). Deep learning for financial sequences.
 
 ---
 
@@ -508,7 +508,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Revolutionary architecture dominating NLP and beyond. Attention mechanism captures long-range dependencies. Scalable to large datasets.
 
-**Relevance to OVSM:** Advanced sentiment analysis (Chapter 13). Time series modeling (Chapter 14). News processing for trading signals.
+**Relevance to Solisp:** Advanced sentiment analysis (Chapter 13). Time series modeling (Chapter 14). News processing for trading signals.
 
 ---
 
@@ -518,7 +518,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous empirical evaluation of ML in finance. Shows ML captures non-linear interactions. Provides implementation best practices.
 
-**Relevance to OVSM:** ML for return prediction (Chapter 14). Feature engineering. Model comparison and selection.
+**Relevance to Solisp:** ML for return prediction (Chapter 14). Feature engineering. Model comparison and selection.
 
 ---
 
@@ -528,7 +528,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Head-to-head ML comparison in realistic trading setting. Shows gradient boosting superiority on financial data. Addresses overfitting carefully.
 
-**Relevance to OVSM:** Algorithm selection for trading (Chapter 14). Empirical validation of ML approaches. Transaction cost considerations.
+**Relevance to Solisp:** Algorithm selection for trading (Chapter 14). Empirical validation of ML approaches. Transaction cost considerations.
 
 ---
 
@@ -538,7 +538,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Demonstrates LSTM effectiveness for financial time series. Careful evaluation including transaction costs. Provides implementation details.
 
-**Relevance to OVSM:** LSTM implementation for trading (Chapters 13, 14). Deep learning best practices. Time series forecasting.
+**Relevance to Solisp:** LSTM implementation for trading (Chapters 13, 14). Deep learning best practices. Time series forecasting.
 
 ---
 
@@ -548,7 +548,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Shows RL can optimize trading metrics directly. Avoids prediction as intermediate step. Handles transaction costs naturally.
 
-**Relevance to OVSM:** Reinforcement learning for trading (Chapter 51). Direct policy optimization. Alternative to supervised learning.
+**Relevance to Solisp:** Reinforcement learning for trading (Chapter 51). Direct policy optimization. Alternative to supervised learning.
 
 ---
 
@@ -558,7 +558,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Integrates representation learning and decision making. Shows deep RL can learn profitable strategies. Handles high-dimensional state spaces.
 
-**Relevance to OVSM:** Deep RL implementation (Chapter 51). Feature learning. End-to-end trading systems.
+**Relevance to Solisp:** Deep RL implementation (Chapter 51). Feature learning. End-to-end trading systems.
 
 ---
 
@@ -568,7 +568,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practitioner wisdom on ML failures. Emphasizes importance of rigorous methodology. Provides checklist for avoiding mistakes.
 
-**Relevance to OVSM:** Critical warnings for ML trading (Chapters 13-14). Methodology best practices. Reality check on ML hype.
+**Relevance to Solisp:** Critical warnings for ML trading (Chapters 13-14). Methodology best practices. Reality check on ML hype.
 
 ---
 
@@ -578,7 +578,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Detailed practical guidance. Introduces triple-barrier labeling, fractional differentiation, combinatorial purged cross-validation. Essential reference.
 
-**Relevance to OVSM:** Complete framework for ML in trading (Chapters 13-14). Best practices for all ML tasks. Meta-labeling (Chapter 14).
+**Relevance to Solisp:** Complete framework for ML in trading (Chapters 13-14). Best practices for all ML tasks. Meta-labeling (Chapter 14).
 
 ---
 
@@ -588,7 +588,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practical implementation guide. Connects theory to code. Covers full ML trading pipeline.
 
-**Relevance to OVSM:** Implementation reference for ML strategies (Chapters 13-14). Data pipeline design. Production deployment considerations.
+**Relevance to Solisp:** Implementation reference for ML strategies (Chapters 13-14). Data pipeline design. Production deployment considerations.
 
 ---
 
@@ -598,7 +598,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Mathematical treatment of multiple testing problem. Provides statistical correction. Essential for rigorous backtesting.
 
-**Relevance to OVSM:** Backtesting methodology (Chapter 9). Overfitting prevention. Statistical significance testing.
+**Relevance to Solisp:** Backtesting methodology (Chapter 9). Overfitting prevention. Statistical significance testing.
 
 ---
 
@@ -608,7 +608,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Documents p-hacking epidemic in factor research. Proposes statistical corrections. Advocates for higher evidence standards.
 
-**Relevance to OVSM:** Feature selection (Chapter 14). Multiple testing correction. Critical evaluation of published strategies.
+**Relevance to Solisp:** Feature selection (Chapter 14). Multiple testing correction. Critical evaluation of published strategies.
 
 ---
 
@@ -620,7 +620,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Birth of modern portfolio theory. Mathematical framework for portfolio selection. Risk-return trade-off quantification.
 
-**Relevance to OVSM:** Portfolio optimization (Chapters 7, 23). Risk management foundation. Mean-variance framework implementation.
+**Relevance to Solisp:** Portfolio optimization (Chapters 7, 23). Risk management foundation. Mean-variance framework implementation.
 
 ---
 
@@ -630,7 +630,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practical solution to Markowitz instability. Blends prior (equilibrium) and views. Widely used by institutional investors.
 
-**Relevance to OVSM:** Portfolio optimization (Chapters 7, 23). Incorporating forecasts. Regularization of optimization problems.
+**Relevance to Solisp:** Portfolio optimization (Chapters 7, 23). Incorporating forecasts. Regularization of optimization problems.
 
 ---
 
@@ -640,7 +640,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Standard reference for VaR. Practical implementation guidance. Regulatory perspective.
 
-**Relevance to OVSM:** Risk metrics (Chapter 43). VaR calculation. Risk management framework.
+**Relevance to Solisp:** Risk metrics (Chapter 43). VaR calculation. Risk management framework.
 
 ---
 
@@ -650,7 +650,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Coherent risk measure avoiding VaR deficiencies. Convex optimization formulation. Enables portfolio optimization with tail risk control.
 
-**Relevance to OVSM:** Advanced risk metrics (Chapter 43). Portfolio optimization under CVaR. Risk management implementation.
+**Relevance to Solisp:** Advanced risk metrics (Chapter 43). Portfolio optimization under CVaR. Risk management implementation.
 
 ---
 
@@ -660,7 +660,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous model of execution problem. Shows optimal strategy is linear in time. Widely used in practice.
 
-**Relevance to OVSM:** Execution algorithms (Chapter 42). Market impact (Chapter 41). Optimal trading strategies.
+**Relevance to Solisp:** Execution algorithms (Chapter 42). Market impact (Chapter 41). Optimal trading strategies.
 
 ---
 
@@ -670,7 +670,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Integrates alpha generation and execution. Dynamic optimization framework. Practical guidance on trading intensity.
 
-**Relevance to OVSM:** Execution with alpha signals (Chapter 42). Dynamic trading strategies. Portfolio rebalancing (Chapter 39).
+**Relevance to Solisp:** Execution with alpha signals (Chapter 42). Dynamic trading strategies. Portfolio rebalancing (Chapter 39).
 
 ---
 
@@ -680,7 +680,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Realistic impact model with decay. Explains empirical trading patterns. Provides implementation guidance.
 
-**Relevance to OVSM:** Market impact modeling (Chapter 41). Optimal execution (Chapter 42). Empirically grounded implementation.
+**Relevance to Solisp:** Market impact modeling (Chapter 41). Optimal execution (Chapter 42). Empirically grounded implementation.
 
 ---
 
@@ -690,7 +690,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Flexible VaR estimation. Captures volatility clustering. Model-free approach.
 
-**Relevance to OVSM:** Risk measurement (Chapter 43). Time-varying VaR. Quantile regression implementation.
+**Relevance to Solisp:** Risk measurement (Chapter 43). Time-varying VaR. Quantile regression implementation.
 
 ---
 
@@ -700,7 +700,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Empirical evaluation of VaR performance. Identifies model deficiencies. Recommends testing improvements.
 
-**Relevance to OVSM:** VaR backtesting (Chapter 43). Model validation. Risk management reality check.
+**Relevance to Solisp:** VaR backtesting (Chapter 43). Model validation. Risk management reality check.
 
 ---
 
@@ -710,7 +710,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Statistical framework for VaR backtesting. Widely adopted by regulators. Rigorous evaluation methodology.
 
-**Relevance to OVSM:** VaR validation (Chapter 43). Backtesting procedures. Regulatory compliance.
+**Relevance to Solisp:** VaR validation (Chapter 43). Backtesting procedures. Regulatory compliance.
 
 ---
 
@@ -720,7 +720,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Axiomatic foundation for risk measurement. Identifies VaR deficiencies. Establishes expected shortfall superiority.
 
-**Relevance to OVSM:** Risk measurement theory (Chapter 43). Risk measure selection. Foundation for CVaR use.
+**Relevance to Solisp:** Risk measurement theory (Chapter 43). Risk measure selection. Foundation for CVaR use.
 
 ---
 
@@ -730,7 +730,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Unified treatment of market, credit, and operational risk. Mathematical rigor with practical examples. Standard graduate reference.
 
-**Relevance to OVSM:** Complete risk management framework (Chapter 43). Advanced risk concepts. Implementation guidance.
+**Relevance to Solisp:** Complete risk management framework (Chapter 43). Advanced risk concepts. Implementation guidance.
 
 ---
 
@@ -742,7 +742,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Popularizes AMM model. Open-source reference implementation. Enables permissionless liquidity provision.
 
-**Relevance to OVSM:** AMM mechanics (Chapters 15, 20). Liquidity provision strategies (Chapter 27). DEX arbitrage (Chapter 26).
+**Relevance to Solisp:** AMM mechanics (Chapters 15, 20). Liquidity provision strategies (Chapter 27). DEX arbitrage (Chapter 26).
 
 ---
 
@@ -752,7 +752,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Breakthrough in AMM design. Capital efficiency improvements of 4000x possible. Creates new strategy space.
 
-**Relevance to OVSM:** Advanced liquidity provision (Chapter 27). Range order strategies. Concentrated liquidity management.
+**Relevance to Solisp:** Advanced liquidity provision (Chapter 27). Range order strategies. Concentrated liquidity management.
 
 ---
 
@@ -762,7 +762,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous oracle security analysis. Quantifies manipulation costs. Informs oracle design.
 
-**Relevance to OVSM:** DEX price oracles. Flash loan attack analysis (Chapter 19). Oracle manipulation risks.
+**Relevance to Solisp:** DEX price oracles. Flash loan attack analysis (Chapter 19). Oracle manipulation risks.
 
 ---
 
@@ -772,7 +772,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Defines MEV concept. Quantifies extraction opportunities. Warns of consensus instability.
 
-**Relevance to OVSM:** MEV strategies (Chapters 15, 18). Frontrunning detection. Bundle construction.
+**Relevance to Solisp:** MEV strategies (Chapters 15, 18). Frontrunning detection. Bundle construction.
 
 ---
 
@@ -782,7 +782,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** First large-scale MEV empirics. Documents $280M extracted value. Characterizes attacker strategies.
 
-**Relevance to OVSM:** MEV strategy analysis (Chapters 15, 18). Sandwich attack implementation. Defense mechanisms.
+**Relevance to Solisp:** MEV strategy analysis (Chapters 15, 18). Sandwich attack implementation. Defense mechanisms.
 
 ---
 
@@ -792,7 +792,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practical MEV solution. Used by 90%+ of Ethereum validators. Model for Solana (Jito).
 
-**Relevance to OVSM:** MEV bundle submission (Chapter 18). Block builder interaction. MEV infrastructure understanding.
+**Relevance to Solisp:** MEV bundle submission (Chapter 18). Block builder interaction. MEV infrastructure understanding.
 
 ---
 
@@ -802,7 +802,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Mathematical foundation for AMM analysis. Introduces loss-versus-rebalancing (LVR). Quantifies LP opportunity cost.
 
-**Relevance to OVSM:** Arbitrage strategies (Chapters 19, 26). Impermanent loss (Chapter 20). LP risk analysis.
+**Relevance to Solisp:** Arbitrage strategies (Chapters 19, 26). Impermanent loss (Chapter 20). LP risk analysis.
 
 ---
 
@@ -812,7 +812,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Precise quantification of LP costs. Shows LVR > fees often. Informs LP profitability analysis.
 
-**Relevance to OVSM:** Liquidity provision strategies (Chapter 27). LP profitability calculation. Risk management for LPs.
+**Relevance to Solisp:** Liquidity provision strategies (Chapter 27). LP profitability calculation. Risk management for LPs.
 
 ---
 
@@ -822,7 +822,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Economic model of DEX vs CEX. Predicts market structure evolution. Informs trading venue selection.
 
-**Relevance to OVSM:** Cross-exchange arbitrage (Chapter 26). Venue selection. Market structure understanding.
+**Relevance to Solisp:** Cross-exchange arbitrage (Chapter 26). Venue selection. Market structure understanding.
 
 ---
 
@@ -832,7 +832,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Comprehensive CeFi-DeFi comparison. Identifies relative advantages. Informs strategy deployment decisions.
 
-**Relevance to OVSM:** Understanding DeFi trade-offs. Strategy selection across venues. Infrastructure decisions.
+**Relevance to Solisp:** Understanding DeFi trade-offs. Strategy selection across venues. Infrastructure decisions.
 
 ---
 
@@ -842,7 +842,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Case study of DeFi stress event. Identifies failure modes. Warns of systemic risks.
 
-**Relevance to OVSM:** Risk management (Chapter 43). Crisis detection (Chapter 53). Stress testing scenarios.
+**Relevance to Solisp:** Risk management (Chapter 43). Crisis detection (Chapter 53). Stress testing scenarios.
 
 ---
 
@@ -852,7 +852,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Accessible introduction to DeFi. Central bank perspective. Balanced treatment of opportunities and risks.
 
-**Relevance to OVSM:** DeFi landscape understanding. Protocol interaction (Chapter 90). Risk awareness.
+**Relevance to Solisp:** DeFi landscape understanding. Protocol interaction (Chapter 90). Risk awareness.
 
 ---
 
@@ -862,7 +862,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous mathematical foundations for AMMs. Formal verification methods. Security guarantees.
 
-**Relevance to OVSM:** AMM theory (Chapters 15, 20). Smart contract security. Formal methods for strategy verification.
+**Relevance to Solisp:** AMM theory (Chapters 15, 20). Smart contract security. Formal methods for strategy verification.
 
 ---
 
@@ -872,7 +872,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Dynamic fee mechanisms. Reduces LVR. Potential future AMM design.
 
-**Relevance to OVSM:** Advanced AMM mechanics. Future-proofing strategies. Dynamic fee impact on arbitrage.
+**Relevance to Solisp:** Advanced AMM mechanics. Future-proofing strategies. Dynamic fee impact on arbitrage.
 
 ---
 
@@ -882,7 +882,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Identifies timestamp manipulation vulnerability. Quantifies MEV from time manipulation. Informs protocol design.
 
-**Relevance to OVSM:** MEV attack vectors. Timestamp-dependent strategy risks. Defense mechanisms.
+**Relevance to Solisp:** MEV attack vectors. Timestamp-dependent strategy risks. Defense mechanisms.
 
 ---
 
@@ -894,7 +894,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Foundational interest rate model. Analytical tractability. Mean-reversion captures rate dynamics.
 
-**Relevance to OVSM:** Interest rate modeling (Chapter 6). Fixed income strategies (Chapters 64-68). Yield curve analysis.
+**Relevance to Solisp:** Interest rate modeling (Chapter 6). Fixed income strategies (Chapters 64-68). Yield curve analysis.
 
 ---
 
@@ -904,7 +904,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Tractable model with positive rates. Links interest rates to economic fundamentals. Widely used in practice.
 
-**Relevance to OVSM:** Interest rate modeling (Chapters 6, 64). Bond pricing. Term structure strategies.
+**Relevance to Solisp:** Interest rate modeling (Chapters 6, 64). Bond pricing. Term structure strategies.
 
 ---
 
@@ -914,7 +914,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** General framework subsuming previous models. Forward rate modeling. Arbitrage-free conditions.
 
-**Relevance to OVSM:** Yield curve modeling (Chapter 64). Interest rate derivatives. Fixed income framework.
+**Relevance to Solisp:** Yield curve modeling (Chapter 64). Interest rate derivatives. Fixed income framework.
 
 ---
 
@@ -924,7 +924,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Empirical factor structure of yield curve. Three-factor model explains 96% of variance. Simplifies risk management.
 
-**Relevance to OVSM:** Yield curve trading (Chapter 64). Factor-based hedging. Dimension reduction.
+**Relevance to Solisp:** Yield curve trading (Chapter 64). Factor-based hedging. Dimension reduction.
 
 ---
 
@@ -934,7 +934,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Unified framework for interest rate and credit risk. Tractable pricing formulas. Standard credit model.
 
-**Relevance to OVSM:** Credit spread strategies (Chapter 66). Defaultable bond pricing. Credit risk modeling.
+**Relevance to Solisp:** Credit spread strategies (Chapter 66). Defaultable bond pricing. Credit risk modeling.
 
 ---
 
@@ -944,7 +944,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Separates credit and liquidity risk. Shows liquidity importance. Informs trading strategies.
 
-**Relevance to OVSM:** Credit spread analysis (Chapter 66). Liquidity premium trading. Risk decomposition.
+**Relevance to Solisp:** Credit spread analysis (Chapter 66). Liquidity premium trading. Risk decomposition.
 
 ---
 
@@ -954,7 +954,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Links macro and finance. Improves yield curve forecasting. Macro factor trading.
 
-**Relevance to OVSM:** Macro momentum strategies (Chapter 77). Yield curve modeling (Chapter 64). Factor identification.
+**Relevance to Solisp:** Macro momentum strategies (Chapter 77). Yield curve modeling (Chapter 64). Factor identification.
 
 ---
 
@@ -964,7 +964,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Identifies return predictability in bonds. Challenges expectations hypothesis. Trading strategy implications.
 
-**Relevance to OVSM:** Yield curve trading (Chapter 64). Factor-based strategies. Return prediction.
+**Relevance to Solisp:** Yield curve trading (Chapter 64). Factor-based strategies. Return prediction.
 
 ---
 
@@ -974,7 +974,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Macro-based bond return forecasting. Out-of-sample prediction. Factor extraction methodology.
 
-**Relevance to OVSM:** Macro momentum (Chapter 77). Bond return prediction. Multi-asset strategies.
+**Relevance to Solisp:** Macro momentum (Chapter 77). Bond return prediction. Multi-asset strategies.
 
 ---
 
@@ -984,7 +984,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Tractable discrete-time models. Consistent with continuous theory. Practical estimation.
 
-**Relevance to OVSM:** Model implementation in OVSM (Chapter 64). Discrete-time simulation. Parameter estimation.
+**Relevance to Solisp:** Model implementation in Solisp (Chapter 64). Discrete-time simulation. Parameter estimation.
 
 ---
 
@@ -996,7 +996,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Foundational market efficiency theory. Framework for testing. Decades of subsequent research.
 
-**Relevance to OVSM:** Theoretical foundation. Justification for information-based trading. Understanding market efficiency limits.
+**Relevance to Solisp:** Theoretical foundation. Justification for information-based trading. Understanding market efficiency limits.
 
 ---
 
@@ -1006,7 +1006,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Spread estimation without quote data. Connects microstructure to returns. Widely used measure.
 
-**Relevance to OVSM:** Microstructure noise (Chapter 49). Transaction cost estimation. Spread modeling.
+**Relevance to Solisp:** Microstructure noise (Chapter 49). Transaction cost estimation. Spread modeling.
 
 ---
 
@@ -1016,7 +1016,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Establishes momentum anomaly. Widely replicated. Influential for trading strategies.
 
-**Relevance to OVSM:** Momentum strategies (Chapters 16, 61, 73). Factor investing. Anomaly exploitation.
+**Relevance to Solisp:** Momentum strategies (Chapters 16, 61, 73). Factor investing. Anomaly exploitation.
 
 ---
 
@@ -1026,7 +1026,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Four-factor model. Documents momentum robustness. Performance attribution standard.
 
-**Relevance to OVSM:** Factor models (Chapter 99). Performance attribution (Chapter 107). Momentum implementation.
+**Relevance to Solisp:** Factor models (Chapter 99). Performance attribution (Chapter 107). Momentum implementation.
 
 ---
 
@@ -1036,7 +1036,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Links liquidity to expected returns. Explains illiquidity premium. Trading strategy implications.
 
-**Relevance to OVSM:** Liquidity provision strategies (Chapter 27). Asset selection. Liquidity risk premium.
+**Relevance to Solisp:** Liquidity provision strategies (Chapter 27). Asset selection. Liquidity risk premium.
 
 ---
 
@@ -1046,7 +1046,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Distinguishes level vs. risk. Shows systematic liquidity risk priced. Extends liquidity research.
 
-**Relevance to OVSM:** Liquidity risk modeling (Chapter 43). Factor construction. Multi-factor strategies.
+**Relevance to Solisp:** Liquidity risk modeling (Chapter 43). Factor construction. Multi-factor strategies.
 
 ---
 
@@ -1056,7 +1056,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Explains persistent anomalies. Shows arbitrageurs face constraints. Realistic arbitrage theory.
 
-**Relevance to OVSM:** Understanding strategy limits. Risk management (Chapter 43). Capital allocation.
+**Relevance to Solisp:** Understanding strategy limits. Risk management (Chapter 43). Capital allocation.
 
 ---
 
@@ -1066,7 +1066,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** M&M theorem. Revolutionized corporate finance. Basis for derivatives pricing.
 
-**Relevance to OVSM:** Theoretical foundations. Capital structure arbitrage. Corporate finance connections.
+**Relevance to Solisp:** Theoretical foundations. Capital structure arbitrage. Corporate finance connections.
 
 ---
 
@@ -1076,7 +1076,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Multi-factor asset pricing theory. Arbitrage-based derivation. Empirically testable.
 
-**Relevance to OVSM:** Factor models (Chapter 99). Multi-factor strategies. Theoretical framework.
+**Relevance to Solisp:** Factor models (Chapter 99). Multi-factor strategies. Theoretical framework.
 
 ---
 
@@ -1086,7 +1086,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Challenges CAPM. Establishes size and value effects. Three-factor model standard.
 
-**Relevance to OVSM:** Factor investing. Portfolio construction. Risk decomposition (Chapter 99).
+**Relevance to Solisp:** Factor investing. Portfolio construction. Risk decomposition (Chapter 99).
 
 ---
 
@@ -1096,7 +1096,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Introduces jumps to derivatives pricing. Explains volatility smile. Foundation for modern models.
 
-**Relevance to OVSM:** Jump-diffusion modeling (Chapters 6, 54). Options pricing (Chapter 12). Tail risk.
+**Relevance to Solisp:** Jump-diffusion modeling (Chapters 6, 54). Options pricing (Chapter 12). Tail risk.
 
 ---
 
@@ -1106,7 +1106,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** CAPM development. Beta as risk measure. Equilibrium asset pricing.
 
-**Relevance to OVSM:** Beta hedging (Chapter 99). Risk measurement. Performance evaluation.
+**Relevance to Solisp:** Beta hedging (Chapter 99). Risk measurement. Performance evaluation.
 
 ---
 
@@ -1116,7 +1116,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** GARCH model. Captures volatility clustering. Standard volatility specification.
 
-**Relevance to OVSM:** Volatility modeling (Chapters 8, 29, 62). Forecasting. Risk management.
+**Relevance to Solisp:** Volatility modeling (Chapters 8, 29, 62). Forecasting. Risk management.
 
 ---
 
@@ -1126,7 +1126,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Asymmetric volatility modeling. Log specification ensures positivity. Captures leverage effect.
 
-**Relevance to OVSM:** Volatility modeling (Chapters 8, 29). Asymmetric response. Advanced GARCH.
+**Relevance to Solisp:** Volatility modeling (Chapters 8, 29). Asymmetric response. Advanced GARCH.
 
 ---
 
@@ -1136,7 +1136,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** GJR-GARCH model. Empirical evidence for asymmetry. Widely used specification.
 
-**Relevance to OVSM:** Volatility modeling (Chapters 8, 29, 62). Implementation in OVSM. Forecasting.
+**Relevance to Solisp:** Volatility modeling (Chapters 8, 29, 62). Implementation in Solisp. Forecasting.
 
 ---
 
@@ -1146,7 +1146,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Affine model framework. Analytical tractability. Unifies term structure models.
 
-**Relevance to OVSM:** Interest rate modeling (Chapters 64-68). Bond pricing. Fixed income framework.
+**Relevance to Solisp:** Interest rate modeling (Chapters 64-68). Bond pricing. Fixed income framework.
 
 ---
 
@@ -1156,7 +1156,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Empirical validation of GARCH. High-frequency benchmarks. Forecasting performance.
 
-**Relevance to OVSM:** Volatility forecasting (Chapters 8, 29). Model selection. Empirical validation.
+**Relevance to Solisp:** Volatility forecasting (Chapters 8, 29). Model selection. Empirical validation.
 
 ---
 
@@ -1166,7 +1166,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Realized volatility measure. High-frequency econometrics. Volatility estimation.
 
-**Relevance to OVSM:** Volatility measurement (Chapters 8, 12, 49). High-frequency data. Volatility trading.
+**Relevance to Solisp:** Volatility measurement (Chapters 8, 12, 49). High-frequency data. Volatility trading.
 
 ---
 
@@ -1176,7 +1176,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Standard graduate textbook. Comprehensive coverage. Rigorous treatment.
 
-**Relevance to OVSM:** Foundational econometrics. Statistical methods. Theoretical background for all strategies.
+**Relevance to Solisp:** Foundational econometrics. Statistical methods. Theoretical background for all strategies.
 
 ---
 
@@ -1186,7 +1186,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous treatment of technical analysis. Statistical foundations. Pattern recognition methods.
 
-**Relevance to OVSM:** Pattern recognition (Chapter 22). Technical indicators. ML for chart patterns.
+**Relevance to Solisp:** Pattern recognition (Chapter 22). Technical indicators. ML for chart patterns.
 
 ---
 
@@ -1196,7 +1196,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Comprehensive stylized facts. Standard reference. Informs modeling choices.
 
-**Relevance to OVSM:** Understanding price dynamics. Model selection. Reality check for simulations.
+**Relevance to Solisp:** Understanding price dynamics. Model selection. Reality check for simulations.
 
 ---
 
@@ -1206,7 +1206,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Powerful test of asset pricing models. Shows equity premium puzzle. Influences model development.
 
-**Relevance to OVSM:** Asset pricing theory. Model evaluation. Risk premium understanding.
+**Relevance to Solisp:** Asset pricing theory. Model evaluation. Risk premium understanding.
 
 ---
 
@@ -1218,7 +1218,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Comprehensive derivatives reference. Clear explanations. Widely used in industry and academia.
 
-**Relevance to OVSM:** Options strategies (Chapters 12, 44-46, 96-98). Derivatives pricing. Foundation for implementation.
+**Relevance to Solisp:** Options strategies (Chapters 12, 44-46, 96-98). Derivatives pricing. Foundation for implementation.
 
 ---
 
@@ -1228,7 +1228,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Mathematical rigor. Self-contained treatment. Standard graduate text.
 
-**Relevance to OVSM:** Mathematical foundations (Chapters 6, 12). Stochastic calculus. Rigorous derivations.
+**Relevance to Solisp:** Mathematical foundations (Chapters 6, 12). Stochastic calculus. Rigorous derivations.
 
 ---
 
@@ -1238,7 +1238,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Empirical focus. Practical methods. Standard reference for microstructure.
 
-**Relevance to OVSM:** Market microstructure (Chapters 8, 10, 24-25, 47-50). Empirical methods. Data analysis.
+**Relevance to Solisp:** Market microstructure (Chapters 8, 10, 24-25, 47-50). Empirical methods. Data analysis.
 
 ---
 
@@ -1248,7 +1248,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Financial time series focus. R code examples. Practical implementation.
 
-**Relevance to OVSM:** Time series analysis (Chapter 8). Statistical methods. Forecasting techniques.
+**Relevance to Solisp:** Time series analysis (Chapter 8). Statistical methods. Forecasting techniques.
 
 ---
 
@@ -1258,7 +1258,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Encyclopedia of technical methods. Practitioner perspective. Widely referenced.
 
-**Relevance to OVSM:** Technical indicators. Pattern recognition. Practitioner knowledge.
+**Relevance to Solisp:** Technical indicators. Pattern recognition. Practitioner knowledge.
 
 ---
 
@@ -1268,7 +1268,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Rigorous backtesting methodology. Overfitting prevention. Reality-based approach.
 
-**Relevance to OVSM:** Backtesting (Chapter 9). Strategy development. Performance evaluation.
+**Relevance to Solisp:** Backtesting (Chapter 9). Strategy development. Performance evaluation.
 
 ---
 
@@ -1278,7 +1278,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Accessible introduction. Practical focus. MATLAB examples.
 
-**Relevance to OVSM:** Strategy implementation. Practical considerations. Solo trader perspective.
+**Relevance to Solisp:** Strategy implementation. Practical considerations. Solo trader perspective.
 
 ---
 
@@ -1288,7 +1288,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Concrete strategy examples. Theoretical justifications. Implementation details.
 
-**Relevance to OVSM:** Strategy library. Implementation patterns. Practical wisdom.
+**Relevance to Solisp:** Strategy library. Implementation patterns. Practical wisdom.
 
 ---
 
@@ -1298,7 +1298,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Demystifies quant trading. Clear framework. Industry perspective.
 
-**Relevance to OVSM:** System architecture (Chapter 10). Industry practices. Conceptual framework.
+**Relevance to Solisp:** System architecture (Chapter 10). Industry practices. Conceptual framework.
 
 ---
 
@@ -1308,7 +1308,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Practitioner perspective. Detailed implementation. Real-world considerations.
 
-**Relevance to OVSM:** Statistical arbitrage (Chapters 11, 30, 35). Practical guidance. Industry insights.
+**Relevance to Solisp:** Statistical arbitrage (Chapters 11, 30, 35). Practical guidance. Industry insights.
 
 ---
 
@@ -1318,7 +1318,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** HFT focus. Infrastructure considerations. Regulatory awareness.
 
-**Relevance to OVSM:** HFT strategies (Chapters 25, 61). Low-latency design (Chapter 10). Market making.
+**Relevance to Solisp:** HFT strategies (Chapters 25, 61). Low-latency design (Chapter 10). Market making.
 
 ---
 
@@ -1328,7 +1328,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Academic rigor with practical focus. TCA emphasis. Industry standard.
 
-**Relevance to OVSM:** Execution algorithms (Chapter 42). TCA (Chapter 56). Portfolio management.
+**Relevance to Solisp:** Execution algorithms (Chapter 42). TCA (Chapter 56). Portfolio management.
 
 ---
 
@@ -1338,7 +1338,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Execution focus. Detailed algorithms. Practical implementation.
 
-**Relevance to OVSM:** Execution algorithms (Chapter 42). Smart order routing (Chapter 28). DMA strategies.
+**Relevance to Solisp:** Execution algorithms (Chapter 42). Smart order routing (Chapter 28). DMA strategies.
 
 ---
 
@@ -1348,7 +1348,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Encyclopedic coverage. Practitioner wisdom. Engaging style.
 
-**Relevance to OVSM:** Options pricing (Chapter 12). Risk management (Chapter 43). Comprehensive reference.
+**Relevance to Solisp:** Options pricing (Chapter 12). Risk management (Chapter 43). Comprehensive reference.
 
 ---
 
@@ -1358,7 +1358,7 @@ This bibliography contains 100+ curated academic references organized by topic a
 
 **Key Contribution:** Philosophical perspective on risk. Tail risk emphasis. Risk management mindset.
 
-**Relevance to OVSM:** Risk management philosophy (Chapter 43). Tail risk awareness. Robustness principles.
+**Relevance to Solisp:** Risk management philosophy (Chapter 43). Tail risk awareness. Robustness principles.
 
 ---
 
@@ -1373,4 +1373,4 @@ This bibliography contains 100+ curated academic references organized by topic a
 ---
 
 **Last Updated:** November 2025
-**Compiled by:** OVSM Textbook Project
+**Compiled by:** Solisp Textbook Project

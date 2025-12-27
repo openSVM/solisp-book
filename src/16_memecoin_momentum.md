@@ -478,11 +478,11 @@ pie title Sentiment Weight Distribution
 
 ---
 
-## 16.4 OVSM Implementation
+## 16.4 Solisp Implementation
 
 ### 16.4.1 Multi-Factor Momentum Scoring
 
-The OVSM code implements a composite entry score aggregating technical, on-chain, and social signals:
+The Solisp code implements a composite entry score aggregating technical, on-chain, and social signals:
 
 ```lisp
 ;; ====================================================================
@@ -711,7 +711,7 @@ graph TD
 
 ### 16.5.1 Historical Performance
 
-Backtesting the OVSM momentum system on 1,000 Solana memecoins (Jan-Mar 2024):
+Backtesting the Solisp momentum system on 1,000 Solana memecoins (Jan-Mar 2024):
 
 #### Entry Statistics
 

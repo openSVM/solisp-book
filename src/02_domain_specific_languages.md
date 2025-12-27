@@ -2,13 +2,13 @@
 
 ## 2.1 Introduction
 
-The evolution of financial computing has been inextricably linked to the development of specialized programming languages designed to address the unique demands of quantitative finance. This chapter examines the historical progression, theoretical foundations, and practical implications of domain-specific languages (DSLs) in financial applications, with particular emphasis on the design principles underlying OVSM as a modern synthesis of these traditions.
+The evolution of financial computing has been inextricably linked to the development of specialized programming languages designed to address the unique demands of quantitative finance. This chapter examines the historical progression, theoretical foundations, and practical implications of domain-specific languages (DSLs) in financial applications, with particular emphasis on the design principles underlying Solisp as a modern synthesis of these traditions.
 
 Domain-specific languages occupy a distinct position in the hierarchy of programming abstractions. Unlike general-purpose languages (GPLs) such as Python, Java, or C++, DSLs sacrifice generality for expressiveness within a narrowly defined problem domain. In financial computing, this trade-off proves particularly advantageous: the mathematical notation of finance—with its vectors, matrices, time series operations, and stochastic processes—maps poorly onto imperative programming constructs designed for general-purpose computing.
 
 The tension between expressiveness and efficiency has driven financial DSL development for over five decades. Early languages like APL (A Programming Language) demonstrated that alternative syntactic paradigms could dramatically reduce code complexity for array-oriented operations. Later developments, including the K and Q languages underlying kdb+, showed that specialized type systems and evaluation strategies could achieve performance characteristics unattainable by GPLs while maintaining or improving programmer productivity.
 
-This chapter proceeds in five sections. Section 2.2 traces the historical evolution of financial programming languages from APL through modern blockchain-oriented languages. Section 2.3 examines the lambda calculus and functional programming foundations that underpin many financial DSLs. Section 2.4 provides comparative technical analysis of representative languages, including executable code examples. Section 2.5 analyzes OVSM's design philosophy in the context of this evolution. Section 2.6 discusses future directions and emerging paradigms.
+This chapter proceeds in five sections. Section 2.2 traces the historical evolution of financial programming languages from APL through modern blockchain-oriented languages. Section 2.3 examines the lambda calculus and functional programming foundations that underpin many financial DSLs. Section 2.4 provides comparative technical analysis of representative languages, including executable code examples. Section 2.5 analyzes Solisp's design philosophy in the context of this evolution. Section 2.6 discusses future directions and emerging paradigms.
 
 ## 2.2 Historical Evolution of Financial Programming Languages
 
@@ -54,7 +54,7 @@ The key insight from APL was that financial computations exhibit regular structu
 
 ```mermaid
 timeline
-    title DSL Evolution: From APL to OVSM
+    title DSL Evolution: From APL to Solisp
     section Era 1 (1960-1990): Array Languages
         1962: APL Created (Iverson Notation)
         1985: J Language (ASCII APL)
@@ -64,10 +64,10 @@ timeline
     section Era 3 (2010-2025): Modern DSLs
         2015: Python/NumPy dominates quant finance
         2020: LISP renaissance (Clojure for trading)
-        2023: OVSM (Solana-native LISP dialect)
+        2023: Solisp (Solana-native LISP dialect)
 ```
 
-*This timeline illustrates six decades of financial DSL evolution, from APL's revolutionary array-oriented paradigm in 1962 through K/Q's high-performance database integration, culminating in OVSM's blockchain-native design. Each era represents a fundamental shift in how traders express computational intent.*
+*This timeline illustrates six decades of financial DSL evolution, from APL's revolutionary array-oriented paradigm in 1962 through K/Q's high-performance database integration, culminating in Solisp's blockchain-native design. Each era represents a fundamental shift in how traders express computational intent.*
 
 ---
 
@@ -270,7 +270,7 @@ $$
 \text{PLUS} = \lambda m.\lambda n.\lambda f.\lambda x. (m\,f)\,((n\,f)\,x)
 $$
 
-These definitions, while abstract, reveal a profound insight: all computation can be expressed through function abstraction and application. This insight underlies the design of LISP and its descendants, including OVSM.
+These definitions, while abstract, reveal a profound insight: all computation can be expressed through function abstraction and application. This insight underlies the design of LISP and its descendants, including Solisp.
 
 ### 2.3.2 The LISP Heritage
 
@@ -404,7 +404,7 @@ Value-at-Risk (VaR) estimates the maximum expected loss over a given time horizo
 2. Computing portfolio returns from historical constituent returns
 3. Determining the loss quantile corresponding to the confidence level
 
-We implement this algorithm in Python, K/Q, C++, and OVSM.
+We implement this algorithm in Python, K/Q, C++, and Solisp.
 
 #### Python Implementation
 
@@ -610,10 +610,10 @@ int main() {
 
 **Analysis**: The C++ implementation is significantly more verbose than Python or Q. Memory management, while automatic via STL containers, still requires careful design. Type safety catches errors at compile time. Performance is excellent—comparable to Q for single-threaded execution. However, the code obscures the mathematical algorithm beneath implementation details.
 
-#### OVSM Implementation
+#### Solisp Implementation
 
 ```lisp
-;; Historical VaR calculation in OVSM
+;; Historical VaR calculation in Solisp
 (defun historical-var (prices weights confidence)
   "Calculate portfolio VaR using historical simulation.
 
@@ -689,7 +689,7 @@ int main() {
 (log :message "95% VaR:" :value var-95)
 ```
 
-**Analysis**: The OVSM implementation balances Python's readability with LISP's functional elegance. Higher-order functions (`map`, `reduce`, `filter`) express iteration naturally. S-expression syntax eliminates parser ambiguities. Type flexibility enables rapid prototyping. Performance depends on the runtime implementation—interpreted OVSM will be slower than C++ but faster than pure Python through optimized primitives.
+**Analysis**: The Solisp implementation balances Python's readability with LISP's functional elegance. Higher-order functions (`map`, `reduce`, `filter`) express iteration naturally. S-expression syntax eliminates parser ambiguities. Type flexibility enables rapid prototyping. Performance depends on the runtime implementation—interpreted Solisp will be slower than C++ but faster than pure Python through optimized primitives.
 
 ### 2.4.2 Performance Comparison
 
@@ -699,7 +699,7 @@ To quantify performance differences, we benchmark the VaR calculation with 500 a
 |----------|----------------|----------------|---------------|
 | C++ (g++ -O3) | 45 ms | 1.0x | 120 |
 | Q (kdb+) | 52 ms | 1.16x | 25 |
-| OVSM (optimized) | 180 ms | 4.0x | 85 |
+| Solisp (optimized) | 180 ms | 4.0x | 85 |
 | Python (NumPy) | 850 ms | 18.9x | 65 |
 | Python (pure) | 12,500 ms | 277.8x | 95 |
 
@@ -710,7 +710,7 @@ graph TD
     A[VaR Implementation Comparison] --> B[Performance vs. Clarity Trade-off]
     B --> C[C++: Fast but Verbose<br/>45ms, 120 LOC]
     B --> D[Q: Fast and Concise<br/>52ms, 25 LOC]
-    B --> E[OVSM: Balanced<br/>180ms, 85 LOC]
+    B --> E[Solisp: Balanced<br/>180ms, 85 LOC]
     B --> F[Python NumPy: Clear but Slow<br/>850ms, 65 LOC]
     B --> G[Pure Python: Very Slow<br/>12500ms, 95 LOC]
 
@@ -727,23 +727,23 @@ The benchmark reveals interesting trade-offs:
 
 2. **Q** matches C++ performance while reducing code size by 79%. However, Q's learning curve is steep, and the language's terseness can impede maintenance.
 
-3. **OVSM** runs 4x slower than C++ but maintains reasonable performance while providing readable syntax. The 85 lines of code balance clarity and conciseness.
+3. **Solisp** runs 4x slower than C++ but maintains reasonable performance while providing readable syntax. The 85 lines of code balance clarity and conciseness.
 
-4. **Python with NumPy** is 19x slower than C++ but only 13% more verbose than OVSM. The performance gap is acceptable for exploratory analysis but problematic for production systems.
+4. **Python with NumPy** is 19x slower than C++ but only 13% more verbose than Solisp. The performance gap is acceptable for exploratory analysis but problematic for production systems.
 
 5. **Pure Python** without vectorization is 278x slower than C++, demonstrating the critical importance of leveraging compiled libraries.
 
-## 2.5 OVSM Design Philosophy
+## 2.5 Solisp Design Philosophy
 
 ### 2.5.1 Design Principles
 
-OVSM synthesizes lessons from five decades of financial DSL evolution. The language's design prioritizes several key principles:
+Solisp synthesizes lessons from five decades of financial DSL evolution. The language's design prioritizes several key principles:
 
 **Principle 1: S-Expression Uniformity**
 
-OVSM adopts LISP's S-expression syntax exclusively. Every construct—variables, functions, control flow, data structures—uses the same syntactic form: `(operator arg1 arg2 ...)`. This uniformity eliminates parser ambiguities and enables powerful metaprogramming.
+Solisp adopts LISP's S-expression syntax exclusively. Every construct—variables, functions, control flow, data structures—uses the same syntactic form: `(operator arg1 arg2 ...)`. This uniformity eliminates parser ambiguities and enables powerful metaprogramming.
 
-Compare OVSM's uniform syntax with Python's heterogeneous constructs:
+Compare Solisp's uniform syntax with Python's heterogeneous constructs:
 
 ```python
 # Python: Different syntax for each construct
@@ -756,7 +756,7 @@ squares = [x**2 for x in range(10)]  # List comprehension
 ```
 
 ```lisp
-;; OVSM: Uniform S-expression syntax
+;; Solisp: Uniform S-expression syntax
 (define x 10)                   ;; Assignment
 (if (> x 5)                     ;; Control flow (expression)
     "large"
@@ -778,9 +778,9 @@ The uniformity principle has profound implications:
 
 **Principle 2: Functional-First, Pragmatically Imperative**
 
-OVSM provides functional constructs as the primary abstraction but permits imperative programming when necessary. Pure functional code offers referential transparency and easier reasoning, but financial systems require stateful operations: maintaining order books, tracking portfolio positions, recording trades.
+Solisp provides functional constructs as the primary abstraction but permits imperative programming when necessary. Pure functional code offers referential transparency and easier reasoning, but financial systems require stateful operations: maintaining order books, tracking portfolio positions, recording trades.
 
-OVSM resolves this tension through clearly distinguished constructs:
+Solisp resolves this tension through clearly distinguished constructs:
 
 ```lisp
 ;; Functional style (preferred)
@@ -799,11 +799,11 @@ OVSM resolves this tension through clearly distinguished constructs:
   (set! total-value (+ total-value (* (get pos :shares) price))))
 ```
 
-The language encourages functional style but never prohibits imperative approaches. This pragmatism distinguishes OVSM from pure functional languages like Haskell, which require monads to encapsulate side effects—a powerful but complex abstraction inappropriate for a DSL.
+The language encourages functional style but never prohibits imperative approaches. This pragmatism distinguishes Solisp from pure functional languages like Haskell, which require monads to encapsulate side effects—a powerful but complex abstraction inappropriate for a DSL.
 
 **Principle 3: Blockchain-Native Primitives**
 
-Unlike general-purpose languages retrofitted for blockchain use, OVSM incorporates blockchain operations as first-class constructs. The language provides native support for:
+Unlike general-purpose languages retrofitted for blockchain use, Solisp incorporates blockchain operations as first-class constructs. The language provides native support for:
 
 - **Address types**: Distinguished from strings at the type level
 - **Signature operations**: Cryptographic functions integrated into the standard library
@@ -841,9 +841,9 @@ This integration eliminates the impedance mismatch between blockchain APIs and g
 
 **Principle 4: Gradual Typing (Future Direction)**
 
-OVSM currently uses dynamic typing for rapid prototyping but is architected to support gradual typing—optional type annotations that enable static checking where desired. This follows the trajectory of Python (type hints), JavaScript (TypeScript), and Common Lisp (type declarations).
+Solisp currently uses dynamic typing for rapid prototyping but is architected to support gradual typing—optional type annotations that enable static checking where desired. This follows the trajectory of Python (type hints), JavaScript (TypeScript), and Common Lisp (type declarations).
 
-Future OVSM versions will permit:
+Future Solisp versions will permit:
 
 ```lisp
 ;; Without type annotations (current)
@@ -866,7 +866,7 @@ Type annotations would enable:
 
 ### 2.5.2 Comparison to Alternative DSL Designs
 
-OVSM's position in the design space becomes clearer through comparison with alternative DSL approaches for financial computing.
+Solisp's position in the design space becomes clearer through comparison with alternative DSL approaches for financial computing.
 
 **Figure 2.2**: Language Positioning (Performance vs Expressiveness)
 
@@ -879,7 +879,7 @@ quadrantChart
     quadrant-2 Expressive but Slow
     quadrant-3 Avoid
     quadrant-4 Fast but Verbose
-    OVSM: [0.75, 0.80]
+    Solisp: [0.75, 0.80]
     C++: [0.50, 0.95]
     Rust: [0.55, 0.92]
     Q/KDB+: [0.70, 0.88]
@@ -889,13 +889,13 @@ quadrantChart
     Bash: [0.40, 0.20]
 ```
 
-*This quadrant chart maps financial programming languages across two critical dimensions. OVSM occupies the optimal zone (Q1), combining high expressiveness through S-expression syntax with strong performance via JIT compilation. Python excels in expressiveness but sacrifices performance, while C++ achieves maximum speed at the cost of verbosity. The ideal language balances both axes.*
+*This quadrant chart maps financial programming languages across two critical dimensions. Solisp occupies the optimal zone (Q1), combining high expressiveness through S-expression syntax with strong performance via JIT compilation. Python excels in expressiveness but sacrifices performance, while C++ achieves maximum speed at the cost of verbosity. The ideal language balances both axes.*
 
 ---
 
 **Table 2.1**: DSL Design Space Comparison
 
-| Dimension | OVSM | Q | Solidity | Python | Haskell |
+| Dimension | Solisp | Q | Solidity | Python | Haskell |
 |-----------|------|---|----------|--------|---------|
 | Syntax Paradigm | S-expressions | Array-oriented | C-like | Multi-paradigm | ML-family |
 | Type System | Dynamic (gradual planned) | Dynamic | Static | Dynamic | Static |
@@ -907,7 +907,7 @@ quadrantChart
 | Performance | Good (JIT-able) | Excellent | Good (EVM limits) | Poor (w/o NumPy) | Excellent |
 | Safety | Runtime checks | Runtime checks | Compiler checks | Runtime checks | Compiler + proof |
 
-OVSM occupies a middle ground: more expressive than Solidity, more performant than Python, more accessible than Q or Haskell. This positioning reflects pragmatic design choices informed by the realities of financial software development.
+Solisp occupies a middle ground: more expressive than Solidity, more performant than Python, more accessible than Q or Haskell. This positioning reflects pragmatic design choices informed by the realities of financial software development.
 
 ### 2.5.3 Metaprogramming and Domain-Specific Extensions
 
@@ -927,14 +927,14 @@ mindmap
       Gradual typing TypeScript
       Dependent types Idris
     Paradigm
-      Functional OVSM
+      Functional Solisp
       Object-Oriented Java
       Imperative C
       Logic Prolog
     Execution
       Compiled C++
       Interpreted Python
-      JIT Compilation Java/OVSM
+      JIT Compilation Java/Solisp
       Transpiled TypeScript
     Evaluation
       Eager default
@@ -942,11 +942,11 @@ mindmap
       Mixed evaluation
 ```
 
-*This mindmap captures the multidimensional design space of domain-specific languages. Each branch represents a fundamental architectural choice that cascades through the language's capabilities. OVSM's selections—S-expression syntax, gradual typing, functional paradigm, JIT execution, and eager evaluation—optimize for the specific demands of real-time financial computing where clarity and performance are non-negotiable.*
+*This mindmap captures the multidimensional design space of domain-specific languages. Each branch represents a fundamental architectural choice that cascades through the language's capabilities. Solisp's selections—S-expression syntax, gradual typing, functional paradigm, JIT execution, and eager evaluation—optimize for the specific demands of real-time financial computing where clarity and performance are non-negotiable.*
 
 ---
 
-OVSM's macro system enables the language to be extended without modifying its core. Financial domain concepts can be implemented as libraries using macros to provide specialized syntax.
+Solisp's macro system enables the language to be extended without modifying its core. Financial domain concepts can be implemented as libraries using macros to provide specialized syntax.
 
 Example: Technical indicator DSL
 
@@ -993,7 +993,7 @@ pie title Programming Languages in Quantitative Finance (2023)
     "Other" : 2
 ```
 
-*Python dominates the quantitative finance landscape with 45% market share, driven by its extensive ecosystem (NumPy, pandas, scikit-learn) and accessibility. C++ maintains a strong 25% share for performance-critical applications. Q/KDB+ holds a specialized 8% niche in high-frequency trading. LISP variants, including OVSM, represent 3% but are experiencing a renaissance as functional programming principles gain traction in finance. This distribution reflects the industry's tension between rapid prototyping (Python) and production performance (C++).*
+*Python dominates the quantitative finance landscape with 45% market share, driven by its extensive ecosystem (NumPy, pandas, scikit-learn) and accessibility. C++ maintains a strong 25% share for performance-critical applications. Q/KDB+ holds a specialized 8% niche in high-frequency trading. LISP variants, including Solisp, represent 3% but are experiencing a renaissance as functional programming principles gain traction in finance. This distribution reflects the industry's tension between rapid prototyping (Python) and production performance (C++).*
 
 ---
 
@@ -1004,7 +1004,7 @@ Several emerging paradigms will shape the next generation of financial DSLs:
 Languages like Stan, Pyro, and Gen integrate probabilistic inference directly into the language. Rather than manually implementing Monte Carlo or variational inference, programmers declare probabilistic models, and the runtime performs inference automatically:
 
 ```python
-# Pyro example (hypothetical OVSM equivalent)
+# Pyro example (hypothetical Solisp equivalent)
 (defmodel stock-return (data)
   (define mu (sample :mu (normal 0.0 0.1)))
   (define sigma (sample :sigma (half-normal 0.2)))
@@ -1021,7 +1021,7 @@ This approach dramatically simplifies Bayesian modeling for risk estimation, por
 Languages with automatic differentiation (AD) built into the runtime enable gradient-based optimization of complex financial models. Rather than manually deriving Greeks or optimization gradients, the runtime computes derivatives automatically:
 
 ```lisp
-;; OVSM with AD (hypothetical)
+;; Solisp with AD (hypothetical)
 (defun option-portfolio-value (params)
   (define call-values
     (map (lambda (opt)
@@ -1046,7 +1046,7 @@ Libraries like JAX and PyTorch demonstrate the power of this approach for financ
 Smart contract exploits have motivated interest in formally verified financial code. Languages like F*, Coq, and Isabelle enable machine-checked proofs of program correctness. Future financial DSLs may integrate lightweight verification:
 
 ```lisp
-;; Hypothetical verified OVSM
+;; Hypothetical verified Solisp
 (defun-verified transfer (from to amount)
   :requires [(>= (get-balance from) amount)
              (>= amount 0.0)]
@@ -1075,9 +1075,9 @@ A quantum-aware financial DSL might look like:
 
 Such languages remain speculative, but they suggest that financial DSLs will need to adapt to radically different computational substrates as quantum hardware matures.
 
-### 2.6.3 OVSM Roadmap
+### 2.6.3 Solisp Roadmap
 
-OVSM's evolution will prioritize three areas:
+Solisp's evolution will prioritize three areas:
 
 **Phase 1: Core Language Maturation (Current)**
 - Complete Common Lisp compatibility (90%+ coverage)
@@ -1094,7 +1094,7 @@ OVSM's evolution will prioritize three areas:
 - Implement probabilistic programming constructs
 - Develop quantum simulation capabilities for research
 
-The goal is to position OVSM as the premier DSL for algorithmic trading across traditional and decentralized finance, providing the expressiveness of specialized languages like Q with the accessibility of Python, while maintaining first-class blockchain integration.
+The goal is to position Solisp as the premier DSL for algorithmic trading across traditional and decentralized finance, providing the expressiveness of specialized languages like Q with the accessibility of Python, while maintaining first-class blockchain integration.
 
 ## 2.7 Summary
 
@@ -1110,7 +1110,7 @@ This chapter has traced the evolution of domain-specific languages for financial
 
 5. **Future directions are promising**: Probabilistic programming, automatic differentiation, formal verification, and quantum computing will reshape financial DSLs. Languages must be architected for extensibility to accommodate these developments.
 
-OVSM's design synthesizes these lessons, providing a modern LISP dialect optimized for financial computing with native blockchain support. Subsequent chapters will demonstrate how this design enables clear, concise expression of sophisticated algorithmic trading strategies.
+Solisp's design synthesizes these lessons, providing a modern LISP dialect optimized for financial computing with native blockchain support. Subsequent chapters will demonstrate how this design enables clear, concise expression of sophisticated algorithmic trading strategies.
 
 ## References
 

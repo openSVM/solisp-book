@@ -627,7 +627,7 @@ Single whale buy = interesting. Multiple whales buying = **strong signal**.
 
 ---
 
-## 17.5 OVSM Implementation: Copy Trading System
+## 17.5 Solisp Implementation: Copy Trading System
 
 ### 17.5.1 Signal Generation Logic
 

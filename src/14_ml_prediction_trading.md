@@ -139,13 +139,13 @@ The question is no longer *can* ML predict prices, but *how well* and *for how l
 
 Yet the graveyard of failed ML trading funds is vast. The challenge isn't building accurate models—it's building models that remain accurate out-of-sample, after transaction costs, during regime changes, and under adversarial competition from other ML traders.
 
-This chapter develops ML-based price prediction from theoretical foundations through production-ready implementation in OVSM. We'll cover:
+This chapter develops ML-based price prediction from theoretical foundations through production-ready implementation in Solisp. We'll cover:
 
 1. **Historical context**: Evolution from linear models to deep learning
 2. **Feature engineering**: Constructing predictive features from prices, volumes, microstructure
 3. **Model zoo**: Linear models, decision trees, random forests, gradient boosting, neural networks
 4. **Overfitting prevention**: Walk-forward analysis, cross-validation, regularization
-5. **OVSM implementation**: Complete ML pipeline from feature extraction through backtesting
+5. **Solisp implementation**: Complete ML pipeline from feature extraction through backtesting
 6. **Risk analysis**: Regime change fragility, data snooping bias, execution vs. prediction gap
 7. **Advanced extensions**: Deep learning (LSTM, CNN, Transformers), reinforcement learning
 
@@ -484,11 +484,11 @@ $$\text{SR}_{\text{deflated}} = \frac{\text{SR}_{\text{estimated}} - \text{SR}_{
 
 ---
 
-## 14.5 OVSM Implementation
+## 14.5 Solisp Implementation
 
 ### 14.5.1 Linear Regression Price Prediction
 
-From `14_ml_prediction_trading.ovsm`:
+From `14_ml_prediction_trading.solisp`:
 
 ```lisp
 (do

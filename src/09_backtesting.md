@@ -1516,23 +1516,23 @@ xychart-beta
 
 ---
 
-## 9.7 Complete OVSM Backtest Framework
+## 9.7 Complete Solisp Backtest Framework
 
 ```lisp
 ;; ============================================
-;; PRODUCTION-GRADE OVSM BACKTESTING FRAMEWORK
+;; PRODUCTION-GRADE Solisp BACKTESTING FRAMEWORK
 ;; ============================================
 ;; Complete event-driven backtesting system with realistic execution,
 ;; risk management, and comprehensive performance reporting.
 ;;
 ;; WHAT: Orchestrates data handler, strategy, portfolio, execution, risk
-;; WHY: Provides production-quality backtest infrastructure for OVSM strategies
+;; WHY: Provides production-quality backtest infrastructure for Solisp strategies
 ;; HOW: Event-driven loop with market → signal → order → fill → update
 
-(define (ovsm-backtest strategy-config data-config :initial-capital 100000)
+(define (solisp-backtest strategy-config data-config :initial-capital 100000)
   (do
     (log :message "========================================")
-    (log :message "OVSM BACKTESTING FRAMEWORK v2.0")
+    (log :message "Solisp BACKTESTING FRAMEWORK v2.0")
     (log :message "========================================")
     (log :message (format "Initial capital: ${:,.0f}" initial-capital))
     (log :message (format "Strategy: {}" (get strategy-config :name)))

@@ -327,7 +327,7 @@ We'll learn each of these tools in depth:
 - **Section 6:** Spectral analysis (cycle detection)
 - **Section 7:** Practical implementation
 
-By the end, you'll have production-ready OVSM code to:
+By the end, you'll have production-ready Solisp code to:
 - Test any time series for stationarity
 - Build ARIMA forecasting models
 - Identify cointegrated pairs
@@ -910,9 +910,9 @@ Both ADF and KPSS agree: SPY returns are stationary. High confidence in result.
             {:stationary false :confidence "high"}))))
 ```
 
-### 2.10 OVSM Implementation: ADF Test with Full Explanation
+### 2.10 Solisp Implementation: ADF Test with Full Explanation
 
-Now let's implement the ADF test in OVSM with detailed comments explaining every step.
+Now let's implement the ADF test in Solisp with detailed comments explaining every step.
 
 ```lisp
 ;;═══════════════════════════════════════════════════════════════════════════
@@ -1207,7 +1207,7 @@ $$Y_t^{\text{log}} = \log(Y_t)$$
 
 **Benefit:** Converts exponential trend to linear trend
 
-**OVSM Automatic Transformation:**
+**Solisp Automatic Transformation:**
 
 ```lisp
 ;; Automatically make series stationary
@@ -1471,7 +1471,7 @@ $$R_t = 0.0012 - 0.05 R_{t-1} + 0.08 R_{t-2} - 0.03 R_{t-3} - 0.12 R_{t-4} + \ep
 - 2 weeks ago positive → this week positive (medium-term momentum)
 - 4 weeks ago negative → this week positive (monthly pattern)
 
-### 3.4 OVSM Implementation: AR(p) Model
+### 3.4 Solisp Implementation: AR(p) Model
 
 ```lisp
 ;;═══════════════════════════════════════════════════════════════════════════
@@ -1762,7 +1762,7 @@ Step 5: Repeat Steps 2-4 until convergence
 
 **In Practice:**
 
-Modern software (statsmodels, R's arima, OVSM below) handles this automatically. But understanding the challenge explains why:
+Modern software (statsmodels, R's arima, Solisp below) handles this automatically. But understanding the challenge explains why:
 - MA estimation is slower than AR
 - MA models are less common in practice (AR often sufficient)
 - ARMA combines both (best of both worlds)
@@ -2570,7 +2570,7 @@ Conclusion: Profitable, but barely. Need:
 4. Dynamic hedge ratio (Kalman filter—next section)
 ```
 
-### 4.5 OVSM Implementation: Engle-Granger Cointegration Test
+### 4.5 Solisp Implementation: Engle-Granger Cointegration Test
 
 ```lisp
 ;;═══════════════════════════════════════════════════════════════════════════
@@ -3015,9 +3015,9 @@ The weight depends on:
 - ✓ Low-frequency trading (weekly rebalancing)
 - ✓ Simplicity matters (production systems, easier to monitor)
 
-**OVSM Implementation Note:**
+**Solisp Implementation Note:**
 
-Full Kalman filter implementation requires matrix operations (covariance updates, matrix inversion). This adds ~150 lines of code. Given chapter length, we defer to Section 11 (which covers Kalman filtering for pairs trading in complete detail with OVSM code).
+Full Kalman filter implementation requires matrix operations (covariance updates, matrix inversion). This adds ~150 lines of code. Given chapter length, we defer to Section 11 (which covers Kalman filtering for pairs trading in complete detail with Solisp code).
 
 **Quick Concept:**
 
@@ -3199,7 +3199,7 @@ Before going live with a time series strategy:
 ☐ Costs: Track actual costs vs. assumed (0.10% often becomes 0.25%)
 ```
 
-### Key OVSM Functions Developed
+### Key Solisp Functions Developed
 
 This chapter provided production-ready implementations:
 

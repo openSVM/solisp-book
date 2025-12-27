@@ -914,7 +914,7 @@ pie title Bundle Failure Modes
 
 ---
 
-## 18.7 OVSM Implementation
+## 18.7 Solisp Implementation
 
 ### 18.7.1 Bundle Simulation and Validation
 

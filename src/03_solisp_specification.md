@@ -1,14 +1,14 @@
-# Chapter 3: OVSM Language Specification
+# Chapter 3: Solisp Language Specification
 
 ## 3.1 Introduction and Overview
 
-This chapter provides the complete formal specification of the OVSM (Open Versatile S-expression Machine) programming language. OVSM is a LISP-1 dialect (functions and variables share a single namespace) designed specifically for algorithmic trading, blockchain analysis, and quantitative finance applications. The language prioritizes three goals:
+This chapter provides the complete formal specification of the Solisp (Open Versatile S-expression Machine) programming language. Solisp is a LISP-1 dialect (functions and variables share a single namespace) designed specifically for algorithmic trading, blockchain analysis, and quantitative finance applications. The language prioritizes three goals:
 
 1. **Expressiveness**: Financial algorithms should be expressible in notation close to their mathematical formulations
 2. **Safety**: Type errors and runtime failures should be caught early with clear diagnostic messages
 3. **Performance**: Critical paths should execute with efficiency comparable to compiled languages
 
-OVSM achieves these goals through careful language design informed by six decades of LISP evolution, modern type theory, and the specific requirements of financial computing. This chapter documents every aspect of the language systematically, progressing from lexical structure through type system semantics to memory model guarantees.
+Solisp achieves these goals through careful language design informed by six decades of LISP evolution, modern type theory, and the specific requirements of financial computing. This chapter documents every aspect of the language systematically, progressing from lexical structure through type system semantics to memory model guarantees.
 
 The specification is organized as follows:
 
@@ -30,13 +30,13 @@ Throughout this chapter, we maintain rigorous mathematical precision while provi
 - **Examples**: Executable code demonstrating the feature
 - **Gotchas**: Common mistakes and how to avoid them
 
-The specification targets three audiences: language implementers requiring precise semantics for building OVSM runtimes, tool developers building IDEs and analysis tools, and advanced users seeking deep understanding of language behavior. Basic tutorials and quick-start guides appear in Chapters 1 and 4; readers unfamiliar with LISP should consult those chapters before reading this specification.
+The specification targets three audiences: language implementers requiring precise semantics for building Solisp runtimes, tool developers building IDEs and analysis tools, and advanced users seeking deep understanding of language behavior. Basic tutorials and quick-start guides appear in Chapters 1 and 4; readers unfamiliar with LISP should consult those chapters before reading this specification.
 
 ## 3.2 Lexical Structure
 
 ### 3.2.1 Character Set and Encoding
 
-OVSM source code consists of Unicode text encoded in UTF-8. The language distinguishes three character classes:
+Solisp source code consists of Unicode text encoded in UTF-8. The language distinguishes three character classes:
 
 **Whitespace**: Unicode character categories Zs, Zl, Zp, plus ASCII space (U+0020), tab (U+0009), newline (U+000A), and carriage return (U+000D).
 
@@ -99,7 +99,7 @@ make-account!        ;; Mutating function (! suffix convention)
 *debug-mode*         ;; Dynamic variable (* earmuffs convention)
 ```
 
-**Reserved words**: OVSM has no reserved words. All identifiers, including language keywords, exist in the same namespace as user-defined names. This design enables macros to shadow built-in forms. However, shadowing built-ins is discouraged except in macro implementations.
+**Reserved words**: Solisp has no reserved words. All identifiers, including language keywords, exist in the same namespace as user-defined names. This design enables macros to shadow built-in forms. However, shadowing built-ins is discouraged except in macro implementations.
 
 **Naming conventions** (not enforced by the language):
 
@@ -111,7 +111,7 @@ make-account!        ;; Mutating function (! suffix convention)
 
 ### 3.2.4 Numbers
 
-OVSM supports integer and floating-point numeric literals.
+Solisp supports integer and floating-point numeric literals.
 
 **Integer literals**:
 
@@ -210,7 +210,7 @@ preserving all
 
 ### 3.2.6 Booleans and Null
 
-OVSM provides three special literals:
+Solisp provides three special literals:
 
 ```lisp
 true        ;; Boolean true
@@ -305,7 +305,7 @@ Function calls use keywords for named arguments:
 
 ## 3.3 Formal Grammar
 
-This section presents OVSM's complete syntactic structure in Extended Backus-Naur Form (EBNF).
+This section presents Solisp's complete syntactic structure in Extended Backus-Naur Form (EBNF).
 
 ### 3.3.1 Top-Level Program Structure
 
@@ -463,7 +463,7 @@ Examples:
 
 ### 3.4.1 Type Taxonomy
 
-**Figure 3.1**: OVSM Type Hierarchy
+**Figure 3.1**: Solisp Type Hierarchy
 
 ```mermaid
 classDiagram
@@ -500,11 +500,11 @@ classDiagram
     }
 ```
 
-*This class diagram illustrates OVSM's type hierarchy, following a clean separation between scalar values (immutable primitives) and collections (mutable containers). The numeric tower distinguishes integers from floating-point values, enabling type-specific optimizations while maintaining seamless promotion during mixed arithmetic. This design balances simplicity (few core types) with expressiveness (rich operations on each type).*
+*This class diagram illustrates Solisp's type hierarchy, following a clean separation between scalar values (immutable primitives) and collections (mutable containers). The numeric tower distinguishes integers from floating-point values, enabling type-specific optimizations while maintaining seamless promotion during mixed arithmetic. This design balances simplicity (few core types) with expressiveness (rich operations on each type).*
 
 ---
 
-OVSM provides eight primitive types and two compound type constructors:
+Solisp provides eight primitive types and two compound type constructors:
 
 **Primitive types**:
 
@@ -540,7 +540,7 @@ OVSM provides eight primitive types and two compound type constructors:
 
 ### 3.4.2 Numeric Tower
 
-OVSM implements a simplified numeric tower with two levels:
+Solisp implements a simplified numeric tower with two levels:
 
 ```
 Number
@@ -573,7 +573,7 @@ Number
 
 ### 3.4.3 Type Coercion
 
-OVSM provides explicit coercion functions. Implicit coercion is limited to numeric promotion:
+Solisp provides explicit coercion functions. Implicit coercion is limited to numeric promotion:
 
 ```lisp
 ;; To integer
@@ -674,14 +674,14 @@ Objects are mutable string-keyed hash maps. Keys are typically keywords but any 
 (entries person)                ;; => [[:name "Bob"] [:age 26] ...]
 ```
 
-**Lazy field access**: OVSM supports automatic nested field search:
+**Lazy field access**: Solisp supports automatic nested field search:
 
 ```lisp
 (define response {
   :supply 999859804306166700
   :metadata {
-    :name "OVSM.AI"
-    :symbol "OVSM"
+    :name "Solisp.AI"
+    :symbol "Solisp"
     :links {
       :website "https://osvm.ai"
     }}})
@@ -690,8 +690,8 @@ Objects are mutable string-keyed hash maps. Keys are typically keywords but any 
 (get response :supply)          ;; => 999859804306166700
 
 ;; Lazy search (finds nested field automatically)
-(get response :name)            ;; => "OVSM.AI" (finds metadata.name)
-(get response :symbol)          ;; => "OVSM" (finds metadata.symbol)
+(get response :name)            ;; => "Solisp.AI" (finds metadata.name)
+(get response :symbol)          ;; => "Solisp" (finds metadata.symbol)
 (get response :website)         ;; => "https://osvm.ai" (finds metadata.links.website)
 ```
 
@@ -734,11 +734,11 @@ stateDiagram-v2
     end note
 ```
 
-*This state diagram traces the lifecycle of OVSM expression evaluation through five stages. Source code progresses through lexing (tokenization), parsing (AST construction), type checking (inference), and evaluation (runtime execution), with multiple error exit points. The clean separation of stages enables precise error reporting—syntax errors halt at parsing, type errors at checking, and runtime errors during evaluation. This phased approach balances compile-time safety with runtime flexibility.*
+*This state diagram traces the lifecycle of Solisp expression evaluation through five stages. Source code progresses through lexing (tokenization), parsing (AST construction), type checking (inference), and evaluation (runtime execution), with multiple error exit points. The clean separation of stages enables precise error reporting—syntax errors halt at parsing, type errors at checking, and runtime errors during evaluation. This phased approach balances compile-time safety with runtime flexibility.*
 
 ---
 
-OVSM uses **eager evaluation** (also called strict evaluation): all function arguments are evaluated before the function is applied. This contrasts with lazy evaluation (Haskell) where arguments are evaluated only when needed.
+Solisp uses **eager evaluation** (also called strict evaluation): all function arguments are evaluated before the function is applied. This contrasts with lazy evaluation (Haskell) where arguments are evaluated only when needed.
 
 **Evaluation rules** for different expression types:
 
@@ -781,7 +781,7 @@ x            ;; => 10
 
 ### 3.5.2 Evaluation Order
 
-For function applications, OVSM guarantees **left-to-right evaluation** of arguments:
+For function applications, Solisp guarantees **left-to-right evaluation** of arguments:
 
 ```lisp
 (define counter 0)
@@ -796,7 +796,7 @@ This guarantee simplifies reasoning about side effects. Languages without order 
 
 ### 3.5.3 Environment Model
 
-OVSM uses **lexical scoping** (also called static scoping): variable references resolve to the nearest enclosing binding in the source text. This contrasts with dynamic scoping where references resolve based on the runtime call stack.
+Solisp uses **lexical scoping** (also called static scoping): variable references resolve to the nearest enclosing binding in the source text. This contrasts with dynamic scoping where references resolve based on the runtime call stack.
 
 **Example demonstrating lexical scoping**:
 
@@ -813,7 +813,7 @@ OVSM uses **lexical scoping** (also called static scoping): variable references 
 (g)  ;; => 10 (lexical scoping)
 ```
 
-With dynamic scoping (not used in OVSM), `(g)` would return 20 because `f` would see `g`'s local `x`.
+With dynamic scoping (not used in Solisp), `(g)` would return 20 because `f` would see `g`'s local `x`.
 
 **Environment structure**: Environments form a chain of frames. Each frame contains bindings (name → value). Variable lookup walks the chain from innermost to outermost:
 
@@ -834,7 +834,7 @@ Global Environment
 
 ### 3.5.4 Tail Call Optimization
 
-OVSM guarantees **proper tail calls**: tail-recursive functions execute in constant stack space. A call is in tail position if the caller returns its result directly without further computation.
+Solisp guarantees **proper tail calls**: tail-recursive functions execute in constant stack space. A call is in tail position if the caller returns its result directly without further computation.
 
 **Tail position examples**:
 
@@ -914,7 +914,7 @@ Each closure maintains its own copy of `initial`. The variable outlives the call
 
 ## 3.6 Built-In Functions Reference
 
-OVSM provides 91 built-in functions organized into 15 categories. This section documents each function with signature, semantics, and examples.
+Solisp provides 91 built-in functions organized into 15 categories. This section documents each function with signature, semantics, and examples.
 
 ### 3.6.1 Control Flow
 
@@ -2251,7 +2251,7 @@ Prints key-value pairs to standard output.
 
 ### 3.7.1 Value Semantics
 
-OVSM distinguishes **value types** (immutable) from **reference types** (mutable):
+Solisp distinguishes **value types** (immutable) from **reference types** (mutable):
 
 **Value types**: Numbers, strings, booleans, keywords, nil. Copying creates independent values.
 
@@ -2280,7 +2280,7 @@ To avoid aliasing, explicitly copy:
 
 ### 3.7.2 Garbage Collection
 
-OVSM implementations must provide automatic memory management. The specification does not mandate a specific GC algorithm, but requires:
+Solisp implementations must provide automatic memory management. The specification does not mandate a specific GC algorithm, but requires:
 
 1. **Reachability**: Objects reachable from roots (stack, globals) are retained
 2. **Finalization**: Unreachable objects are eventually collected
@@ -2292,7 +2292,7 @@ Recommended implementations: mark-sweep, generational GC, or reference counting 
 
 ### 3.8.1 Error Types
 
-OVSM defines five error categories:
+Solisp defines five error categories:
 
 1. **SyntaxError**: Malformed source code
 2. **TypeError**: Type mismatch (e.g., calling non-function)
@@ -2337,7 +2337,7 @@ Standard library is organized into modules (future feature):
 
 ### 3.10.2 Interpreter vs. Compiler
 
-**Figure 3.3**: OVSM Compiler Pipeline
+**Figure 3.3**: Solisp Compiler Pipeline
 
 ```mermaid
 sankey-beta
@@ -2359,7 +2359,7 @@ Runtime,Result,80
 Runtime,Runtime Errors,5
 ```
 
-*This Sankey diagram visualizes the complete OVSM compilation and execution pipeline, showing data flow from source code through final execution. Each stage filters invalid inputs—5% syntax errors at lexing, 5% parse errors, 5% type errors—resulting in 85% of source code reaching optimization. The pipeline then splits between bytecode interpretation (50%) for rapid development and JIT compilation (35%) for production performance. This dual-mode execution strategy balances development velocity with runtime efficiency, with 94% of well-formed programs executing successfully.*
+*This Sankey diagram visualizes the complete Solisp compilation and execution pipeline, showing data flow from source code through final execution. Each stage filters invalid inputs—5% syntax errors at lexing, 5% parse errors, 5% type errors—resulting in 85% of source code reaching optimization. The pipeline then splits between bytecode interpretation (50%) for rapid development and JIT compilation (35%) for production performance. This dual-mode execution strategy balances development velocity with runtime efficiency, with 94% of well-formed programs executing successfully.*
 
 ---
 
@@ -2369,7 +2369,7 @@ Reference implementation is tree-walking interpreter. Production implementations
 2. JIT compilation to machine code
 3. Transpilation to JavaScript/Rust/C++
 
-**Figure 3.4**: Performance Benchmarks (OVSM vs Alternatives)
+**Figure 3.4**: Performance Benchmarks (Solisp vs Alternatives)
 
 ```mermaid
 xychart-beta
@@ -2377,18 +2377,18 @@ xychart-beta
     x-axis "Array Length (elements)" [1000, 10000, 100000, 1000000]
     y-axis "Execution Time (ms)" 0 --> 2500
     line "C++" [2, 18, 180, 1800]
-    line "OVSM (JIT)" [8, 72, 720, 7200]
+    line "Solisp (JIT)" [8, 72, 720, 7200]
     line "Python+NumPy" [20, 170, 1700, 17000]
     line "Pure Python" [500, 5500, 60000, 650000]
 ```
 
-*This performance benchmark compares OVSM against industry-standard languages for array-heavy financial computations (calculating rolling averages). C++ establishes the performance ceiling at 1.8 seconds for 1M elements. OVSM's JIT compilation achieves 4x C++ performance—acceptable for most trading applications. Python with NumPy runs 10x slower than OVSM, while pure Python is catastrophically slow (360x slower), demonstrating why compiled approaches dominate production systems. OVSM's sweet spot balances near-C++ performance with LISP's expressiveness.*
+*This performance benchmark compares Solisp against industry-standard languages for array-heavy financial computations (calculating rolling averages). C++ establishes the performance ceiling at 1.8 seconds for 1M elements. Solisp's JIT compilation achieves 4x C++ performance—acceptable for most trading applications. Python with NumPy runs 10x slower than Solisp, while pure Python is catastrophically slow (360x slower), demonstrating why compiled approaches dominate production systems. Solisp's sweet spot balances near-C++ performance with LISP's expressiveness.*
 
 ---
 
 ## 3.11 Summary
 
-This chapter has provided a complete formal specification of the OVSM language, covering:
+This chapter has provided a complete formal specification of the Solisp language, covering:
 
 - **Lexical structure**: Character encoding, tokens, identifiers
 - **Grammar**: EBNF syntax for all language constructs

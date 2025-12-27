@@ -944,7 +944,7 @@ $$\text{EV} = 0.1(500) - 0.9(5) = 50 - 4.5 = \$45.5$$
 
 ---
 
-## 19.6 OVSM Implementation
+## 19.6 Solisp Implementation
 
 ### 19.6.1 Flash Loan Profitability Calculator
 

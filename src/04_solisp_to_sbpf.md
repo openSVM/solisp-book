@@ -1,8 +1,8 @@
-# Chapter 4: Compiling OVSM to sBPF
+# Chapter 4: Compiling Solisp to sBPF
 
 ## 4.1 Introduction: From LISP to Blockchain Bytecode
 
-This chapter documents the complete pipeline for compiling OVSM LISP source code into sBPF (Solana Berkeley Packet Filter) bytecode executable on the Solana blockchain. While previous chapters focused on OVSM as an interpreted language for algorithmic trading, this chapter demonstrates how OVSM strategies can be compiled to trustless, on-chain programs that execute without intermediaries.
+This chapter documents the complete pipeline for compiling Solisp LISP source code into sBPF (Solana Berkeley Packet Filter) bytecode executable on the Solana blockchain. While previous chapters focused on Solisp as an interpreted language for algorithmic trading, this chapter demonstrates how Solisp strategies can be compiled to trustless, on-chain programs that execute without intermediaries.
 
 **Why Compile to sBPF?**
 
@@ -10,14 +10,14 @@ The motivation for sBPF compilation extends beyond mere technical curiosity:
 
 1. **Trustless Execution**: On-chain programs execute deterministically without relying on off-chain infrastructure
 2. **Composability**: sBPF programs can interact with DeFi protocols, oracles, and other on-chain components
-3. **Verifiability**: Anyone can audit the deployed bytecode and verify it matches the source OVSM
+3. **Verifiability**: Anyone can audit the deployed bytecode and verify it matches the source Solisp
 4. **MEV Resistance**: On-chain execution eliminates front-running vectors present in off-chain order submission
 5. **24/7 Operation**: No server maintenance, no downtime, no custody risk
 
 **Chapter Organization:**
 
 - **Section 4.2**: sBPF Architecture and Virtual Machine Model
-- **Section 4.3**: OVSM-to-sBPF Compilation Pipeline
+- **Section 4.3**: Solisp-to-sBPF Compilation Pipeline
 - **Section 4.4**: Intermediate Representation (IR) Design
 - **Section 4.5**: Code Generation and Optimization
 - **Section 4.6**: Memory Model Mapping and Data Layout
@@ -26,7 +26,7 @@ The motivation for sBPF compilation extends beyond mere technical curiosity:
 - **Section 4.9**: Deployment, Testing, and Verification
 - **Section 4.10**: Complete Worked Example: Pairs Trading On-Chain
 
-This chapter assumes familiarity with OVSM language features (Chapter 3) and basic blockchain concepts. Readers implementing compilers should consult the formal semantics in Chapter 3; practitioners deploying strategies can focus on Sections 4.9-4.10.
+This chapter assumes familiarity with Solisp language features (Chapter 3) and basic blockchain concepts. Readers implementing compilers should consult the formal semantics in Chapter 3; practitioners deploying strategies can focus on Sections 4.9-4.10.
 
 ---
 
@@ -65,11 +65,11 @@ r11 - Program counter (implicit, not directly accessible)
 
 **Register Allocation Strategy:**
 
-Our OVSM compiler uses the following allocation strategy:
+Our Solisp compiler uses the following allocation strategy:
 
 - **r0**: Expression evaluation results, return values
 - **r1-r5**: Function arguments (up to 5 parameters)
-- **r6**: Environment pointer (access to OVSM runtime context)
+- **r6**: Environment pointer (access to Solisp runtime context)
 - **r7**: Heap pointer (current allocation frontier)
 - **r8-r9**: Temporary registers for complex expressions
 - **r10**: Stack frame base (managed by VM)
@@ -133,7 +133,7 @@ Bytes: 0f 21 00 00 00 00 00 00
 
 sBPF programs interact with the Solana runtime through syscalls:
 
-**Core Syscalls for OVSM:**
+**Core Syscalls for Solisp:**
 
 ```rust
 // Memory management
@@ -166,16 +166,16 @@ sol_set_return_data(data: &[u8])
 
 ---
 
-## 4.3 OVSM-to-sBPF Compilation Pipeline
+## 4.3 Solisp-to-sBPF Compilation Pipeline
 
 ### 4.3.1 Pipeline Overview
 
-The OVSM compiler transforms source code through six phases:
+The Solisp compiler transforms source code through six phases:
 
 ```
 ┌──────────────┐
-│  OVSM Source │  (define x (+ 1 2))
-│   (.ovsm)    │
+│  Solisp Source │  (define x (+ 1 2))
+│   (.solisp)    │
 └──────┬───────┘
        │
        ▼
@@ -224,9 +224,9 @@ The OVSM compiler transforms source code through six phases:
 └──────────────┘
 ```
 
-### 4.3.2 Scanner: OVSM Lexical Analysis
+### 4.3.2 Scanner: Solisp Lexical Analysis
 
-The scanner (Chapter 3.2) tokenizes OVSM source into a stream of tokens. For sBPF compilation, we extend the scanner to track source location metadata for better error messages:
+The scanner (Chapter 3.2) tokenizes Solisp source into a stream of tokens. For sBPF compilation, we extend the scanner to track source location metadata for better error messages:
 
 ```rust
 #[derive(Debug, Clone)]
@@ -245,11 +245,11 @@ pub struct SourceLocation {
 }
 ```
 
-This metadata enables stack traces that map sBPF program counters back to OVSM source lines.
+This metadata enables stack traces that map sBPF program counters back to Solisp source lines.
 
 ### 4.3.3 Parser: Building the Abstract Syntax Tree
 
-The parser (Chapter 3.3) constructs an AST representation of the OVSM program. For compilation, we use a typed AST variant:
+The parser (Chapter 3.3) constructs an AST representation of the Solisp program. For compilation, we use a typed AST variant:
 
 ```rust
 #[derive(Debug, Clone)]
@@ -285,7 +285,7 @@ pub enum Expr {
 
 ### 4.3.4 Type Checking (Optional Phase)
 
-sBPF is statically typed at the bytecode level. The type checker infers OVSM types and ensures operations are well-typed:
+sBPF is statically typed at the bytecode level. The type checker infers Solisp types and ensures operations are well-typed:
 
 ```rust
 pub enum OvsmType {
@@ -331,7 +331,7 @@ result = operand1 op operand2
 **Example Transformation:**
 
 ```lisp
-;; OVSM source
+;; Solisp source
 (define total (+ (* price quantity) tax))
 
 ;; Three-address code IR
@@ -414,7 +414,7 @@ pub struct ControlFlowGraph {
 **Example CFG for If Statement:**
 
 ```lisp
-;; OVSM source
+;; Solisp source
 (if (> x 10)
     (log :message "big")
     (log :message "small"))
@@ -610,7 +610,7 @@ b = t2
 
 ### 4.6.1 Value Representation
 
-OVSM values are represented in sBPF using tagged unions:
+Solisp values are represented in sBPF using tagged unions:
 
 ```rust
 // 64-bit value representation
@@ -720,12 +720,12 @@ stxdw [r10-24], r2  ; Store r2 to local var
 
 ## 4.7 Syscall Integration and Cross-Program Invocation
 
-### 4.7.1 Logging from OVSM
+### 4.7.1 Logging from Solisp
 
-The `log` function in OVSM compiles to `sol_log` syscalls:
+The `log` function in Solisp compiles to `sol_log` syscalls:
 
 ```lisp
-;; OVSM source
+;; Solisp source
 (log :message "Price:" :value price)
 
 ;; Generated sBPF
@@ -739,10 +739,10 @@ call sol_log_64       ; Syscall
 
 ### 4.7.2 Cross-Program Invocation (CPI)
 
-OVSM can invoke other Solana programs via CPI:
+Solisp can invoke other Solana programs via CPI:
 
 ```lisp
-;; OVSM source: Swap tokens on Raydium
+;; Solisp source: Swap tokens on Raydium
 (define swap-instruction
   (raydium-swap
     :pool pool-address
@@ -778,7 +778,7 @@ call sol_invoke_signed_
 Reading Pyth or Switchboard price oracles:
 
 ```lisp
-;; OVSM source
+;; Solisp source
 (define btc-price (pyth-get-price btc-oracle-account))
 
 ;; Generated sBPF
@@ -897,8 +897,8 @@ The compiler identifies expensive code paths:
 ### 4.9.1 Compilation Workflow
 
 ```bash
-# Compile OVSM to sBPF
-osvm ovsm compile strategy.ovsm \
+# Compile Solisp to sBPF
+osvm solisp compile strategy.solisp \
   --output strategy.so \
   --optimize 2 \
   --target bpf
@@ -933,7 +933,7 @@ mod tests {
         // Setup program test environment
         let program_id = Pubkey::new_unique();
         let mut program_test = ProgramTest::new(
-            "ovsm_pairs_trading",
+            "solisp_pairs_trading",
             program_id,
             processor!(process_instruction),
         );
@@ -1087,11 +1087,11 @@ We'll compile a simplified pairs trading strategy to sBPF that:
 3. Executes trades when spread exceeds threshold
 4. Closes positions on mean reversion
 
-**OVSM Source Code:**
+**Solisp Source Code:**
 
 ```lisp
 ;;; =========================================================================
-;;; OVSM Pairs Trading Strategy - On-Chain Edition
+;;; Solisp Pairs Trading Strategy - On-Chain Edition
 ;;; =========================================================================
 ;;;
 ;;; WHAT: Cointegration-based statistical arbitrage on Solana
@@ -1420,8 +1420,8 @@ We'll compile a simplified pairs trading strategy to sBPF that:
 ### 4.10.2 Compilation Process
 
 ```bash
-# Step 1: Compile OVSM to sBPF
-osvm ovsm compile pairs_trading.ovsm \
+# Step 1: Compile Solisp to sBPF
+osvm solisp compile pairs_trading.solisp \
   --output pairs_trading.so \
   --optimize 2 \
   --target bpf \
@@ -1502,11 +1502,11 @@ Unlike off-chain execution where your strategy can be front-run or censored, sBP
 sBPF's register-based design (inherited from BPF's kernel origins) enables static analysis that's impossible with stack machines. The verifier can prove memory safety and compute bounds *before* execution—critical for a blockchain where every instruction costs real money.
 
 **3. Compute Units as First-Class Concern:**
-On traditional platforms, you optimize for speed. On Solana, you optimize for compute units because CU consumption directly determines transaction fees and whether your program fits in a block. The OVSM compiler's CU estimation pass isn't optional—it's essential economics.
+On traditional platforms, you optimize for speed. On Solana, you optimize for compute units because CU consumption directly determines transaction fees and whether your program fits in a block. The Solisp compiler's CU estimation pass isn't optional—it's essential economics.
 
 `─────────────────────────────────────────────────`
 
-This chapter demonstrated the complete pipeline from OVSM LISP source to deployable sBPF bytecode. The key insight: **compilation enables trustless execution**. Your pairs trading strategy, once compiled and deployed, runs exactly as written—no servers, no custody, no trust required.
+This chapter demonstrated the complete pipeline from Solisp LISP source to deployable sBPF bytecode. The key insight: **compilation enables trustless execution**. Your pairs trading strategy, once compiled and deployed, runs exactly as written—no servers, no custody, no trust required.
 
 For production deployments, extend this foundation with:
 - Multi-oracle price aggregation (Pyth + Switchboard)
@@ -1515,7 +1515,7 @@ For production deployments, extend this foundation with:
 - Monitoring dashboards reading on-chain state
 
 **Next Steps:**
-- **Chapter 5**: Advanced OVSM features (macros, hygiene, continuations)
+- **Chapter 5**: Advanced Solisp features (macros, hygiene, continuations)
 - **Chapter 10**: Production trading systems (monitoring, alerting, failover)
 - **Chapter 11**: Pairs trading deep-dive with real disasters documented
 

@@ -359,7 +359,7 @@ These examples illustrate the diversity of algorithmic trading. Strategies diffe
 
 ## 1.4 Why Traditional Programming Languages Fall Short
 
-Before introducing OVSM (the subject of subsequent chapters), we must understand why algorithmic traders gravitate toward specialized languages. General-purpose programming languages (Python, Java, C++) are powerful but poorly suited to financial computing for several reasons:
+Before introducing Solisp (the subject of subsequent chapters), we must understand why algorithmic traders gravitate toward specialized languages. General-purpose programming languages (Python, Java, C++) are powerful but poorly suited to financial computing for several reasons:
 
 ### 1.4.1 Impedance Mismatch with Financial Concepts
 
@@ -508,7 +508,7 @@ The REPL enables rapid iteration:
 
 Each line executes immediately, allowing experimentation without edit-compile-run cycles. This interactivity is crucial for hypothesis testing and parameter tuning.
 
-OVSM, as a Lisp dialect, provides a powerful REPL for strategy development. Data loads instantly, indicators calculate immediately, plots render in real-time. Iteration speed directly impacts productivity—financial engineers spend 80% of time exploring data, only 20% implementing final strategies.
+Solisp, as a Lisp dialect, provides a powerful REPL for strategy development. Data loads instantly, indicators calculate immediately, plots render in real-time. Iteration speed directly impacts productivity—financial engineers spend 80% of time exploring data, only 20% implementing final strategies.
 
 ---
 
@@ -697,18 +697,18 @@ This chapter traced the evolution of financial markets from open-outcry trading 
 
 3. **Strategy Diversity**: Algorithmic trading encompasses execution optimization, market making, statistical arbitrage, momentum, and dozens of other approaches, each with different objectives and risk profiles.
 
-4. **Specialized Languages**: Financial computing's unique requirements—time-series operations, vectorization, formal verification, REPL-driven development—motivate domain-specific languages like OVSM.
+4. **Specialized Languages**: Financial computing's unique requirements—time-series operations, vectorization, formal verification, REPL-driven development—motivate domain-specific languages like Solisp.
 
 5. **Careers Require Multidisciplinary Skills**: Success in quantitative finance demands mathematics, programming, finance, and communication skills. Career paths vary widely in compensation, responsibilities, and work-life balance.
 
 The subsequent chapters build on these foundations:
 
-- **Chapter 2** explores domain-specific languages for finance, examining APL, K, Q, and LISP's influences on OVSM
-- **Chapter 3** provides formal OVSM language specification: grammar, types, semantics, built-in functions
+- **Chapter 2** explores domain-specific languages for finance, examining APL, K, Q, and LISP's influences on Solisp
+- **Chapter 3** provides formal Solisp language specification: grammar, types, semantics, built-in functions
 - **Chapters 4-10** develop foundations: data structures, functional programming, stochastic processes, optimization, time series analysis, backtesting, and production systems
-- **Chapters 11-110** implement complete trading strategies in OVSM, from statistical arbitrage to exotic derivatives to production infrastructure
+- **Chapters 11-110** implement complete trading strategies in Solisp, from statistical arbitrage to exotic derivatives to production infrastructure
 
-Each chapter follows the same pattern: theoretical foundations, mathematical derivations, empirical evidence, and OVSM implementation. By the end, readers will have comprehensive knowledge to develop, test, and deploy sophisticated trading strategies using OVSM.
+Each chapter follows the same pattern: theoretical foundations, mathematical derivations, empirical evidence, and Solisp implementation. By the end, readers will have comprehensive knowledge to develop, test, and deploy sophisticated trading strategies using Solisp.
 
 The journey from floor trading to algorithmic trading took 40 years. The next 40 years will bring further disruption: quantum computing, decentralized finance, artificial intelligence. The principles developed in this textbook—rigorous modeling, careful backtesting, risk management, and continuous adaptation—will remain essential regardless of technological change.
 

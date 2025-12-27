@@ -785,15 +785,15 @@ stateDiagram-v2
 
 ---
 
-## 11.5 OVSM Implementation
+## 11.5 Solisp Implementation
 
-This section presents complete OVSM code for pairs trading, progressing from basic spread calculation to production-grade systems.
+This section presents complete Solisp code for pairs trading, progressing from basic spread calculation to production-grade systems.
 
 ### 11.5.1 Basic Spread Calculation and Signaling
 
 ```lisp
 ;; ============================================
-;; Basic Pairs Trading in OVSM
+;; Basic Pairs Trading in Solisp
 ;; ============================================
 
 (defun calculate-hedge-ratio (prices-a prices-b)
@@ -3052,7 +3052,7 @@ graph TD
     style J fill:#c92a2a
 ```
 
-### Production Implementation (500+ Lines OVSM)
+### Production Implementation (500+ Lines Solisp)
 
 ```lisp
 ;;; ============================================================================
@@ -3983,7 +3983,7 @@ The production system (Section 11.11) prevented the exact disaster documented in
 - Renaissance survives with 66% returns
 - Retail fails without risk controls
 
-The code is OVSM (Section 11.11). The theory is proven. The disasters are documented. The prevention is automated.
+The code is Solisp (Section 11.11). The theory is proven. The disasters are documented. The prevention is automated.
 
 **What happens next is up to you.**
 
