@@ -75,15 +75,16 @@
 }
 
 /* ============================================
-   BASE TYPOGRAPHY - Ultra Dense
+   BASE TYPOGRAPHY - Consistent 12px
    ============================================ */
 html {
-    font-size: 10px !important;
+    font-size: 12px !important;
 }
 
-body, .content {
+body, .content, p, li, td, th {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-    line-height: 1.2 !important;
+    font-size: 12px !important;
+    line-height: 1.35 !important;
 }
 
 /* Skip to content - Accessibility */
@@ -139,36 +140,35 @@ body, .content {
 }
 
 /* ============================================
-   HEADINGS - Ultra Dense
+   HEADINGS - Consistent sizing
    ============================================ */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600 !important;
-    line-height: 1.1 !important;
-    margin-top: 0.4rem !important;
-    margin-bottom: 0.2rem !important;
+    line-height: 1.2 !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
 }
 
 h1 {
-    font-size: 1.2rem !important;
+    font-size: 16px !important;
     border-bottom: 1px solid var(--accent) !important;
-    padding-bottom: 0.1rem !important;
-    margin-bottom: 0.3rem !important;
+    padding-bottom: 2px !important;
 }
 
 h2 {
-    font-size: 1.05rem !important;
+    font-size: 14px !important;
     border-bottom: 1px solid var(--table-border-color) !important;
-    padding-bottom: 0.1rem !important;
-    margin-top: 0.5rem !important;
+    padding-bottom: 2px !important;
 }
 
 h3 {
-    font-size: 0.95rem !important;
+    font-size: 13px !important;
     color: var(--accent) !important;
 }
 
 h4 {
-    font-size: 0.85rem !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
 }
 
 /* Drop caps disabled - too aggressive on index pages */
@@ -416,45 +416,49 @@ figcaption::before {
 }
 
 /* ============================================
-   SIDEBAR
+   SIDEBAR - Compact readable
    ============================================ */
 .sidebar {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
-    font-size: 0.85rem !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
 }
 
 .sidebar .sidebar-scrollbox {
-    padding: 0.5rem 0.25rem !important;
+    padding: 4px 2px !important;
+}
+
+.sidebar ol, .sidebar ul {
+    padding: 0 0 0 8px !important;
+    margin: 0 !important;
+}
+
+.sidebar ol.chapter > li {
+    margin: 0 !important;
 }
 
 .sidebar ol.chapter li a {
-    padding: 0.2rem 0.5rem !important;
-    border-radius: 2px !important;
+    padding: 1px 4px !important;
     display: block !important;
-    line-height: 1.2 !important;
+    line-height: 1.35 !important;
 }
 
 .sidebar ol.chapter li a:hover {
     background: var(--bg) !important;
-    transform: translateX(4px);
 }
 
-.sidebar ol.chapter li.chapter-item.expanded > a,
 .sidebar ol.chapter li a.active {
-    font-weight: 700 !important;
-    background: var(--bg) !important;
-    border-left: 3px solid var(--accent);
+    font-weight: 600 !important;
+    color: var(--accent) !important;
 }
 
 .sidebar .part-title {
-    font-size: 0.65rem !important;
+    font-size: 9px !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
-    opacity: 0.7 !important;
-    margin-top: 0.75rem !important;
-    margin-bottom: 0.5rem !important;
-    padding: 0 1rem !important;
-    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    opacity: 0.6 !important;
+    margin: 4px 0 2px 0 !important;
+    padding: 0 4px !important;
 }
 
 /* ============================================
