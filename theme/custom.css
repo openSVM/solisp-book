@@ -75,20 +75,19 @@
 }
 
 /* ============================================
-   BASE TYPOGRAPHY
+   BASE TYPOGRAPHY - Compact
    ============================================ */
 html {
-    font-size: 18px !important;
+    font-size: 15px !important;
     scroll-behavior: smooth;
 }
 
 body, .content {
-    font-family: "Crimson Pro", "Charter", "Georgia", serif !important;
-    line-height: 1.85 !important;
-    letter-spacing: 0.01em;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "kern" 1, "liga" 1;
 }
 
 /* Skip to content - Accessibility */
@@ -123,7 +122,7 @@ body, .content {
 
 .content main {
     max-width: 100% !important;
-    padding: 1.5rem 3rem 3rem 2rem !important;
+    padding: 0.75rem 1.5rem 1.5rem 1rem !important;
 }
 
 #content {
@@ -143,53 +142,51 @@ body, .content {
 }
 
 /* ============================================
-   HEADINGS - Newspaper Style
+   HEADINGS - Compact
    ============================================ */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Inter", "Helvetica Neue", sans-serif !important;
-    font-weight: 700 !important;
-    letter-spacing: -0.02em !important;
-    line-height: 1.25 !important;
-    margin-top: 2.5rem !important;
-    margin-bottom: 1rem !important;
+    font-family: "Inter", sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.2 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 h1 {
-    font-size: 2.4rem !important;
-    border-bottom: 3px solid var(--accent) !important;
-    padding-bottom: 0.5rem !important;
-    margin-bottom: 1.5rem !important;
+    font-size: 1.5rem !important;
+    border-bottom: 2px solid var(--accent) !important;
+    padding-bottom: 0.3rem !important;
+    margin-bottom: 0.75rem !important;
 }
 
 h2 {
-    font-size: 1.75rem !important;
+    font-size: 1.25rem !important;
     border-bottom: 1px solid var(--table-border-color) !important;
-    padding-bottom: 0.4rem !important;
-    margin-top: 3rem !important;
+    padding-bottom: 0.2rem !important;
+    margin-top: 1.25rem !important;
 }
 
 h3 {
-    font-size: 1.35rem !important;
+    font-size: 1.1rem !important;
     color: var(--accent) !important;
 }
 
 h4 {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
+    letter-spacing: 0.05em !important;
     font-weight: 600 !important;
 }
 
 /* Drop caps disabled - too aggressive on index pages */
 
 /* ============================================
-   PARAGRAPHS
+   PARAGRAPHS - Compact
    ============================================ */
 p {
-    margin-bottom: 1.3rem !important;
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
+    margin-bottom: 0.5rem !important;
+    text-align: left;
 }
 
 /* ============================================
@@ -213,15 +210,15 @@ a:focus {
 }
 
 /* ============================================
-   CODE BLOCKS - Enhanced
+   CODE BLOCKS - Compact
    ============================================ */
 pre {
     font-family: "JetBrains Mono", "Fira Code", monospace !important;
-    font-size: 0.85rem !important;
-    line-height: 1.6 !important;
-    border-radius: 8px !important;
-    padding: 1.25rem !important;
-    margin: 1.5rem 0 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+    margin: 0.5rem 0 !important;
     border: 1px solid var(--code-border) !important;
     background: var(--code-bg) !important;
     position: relative;
@@ -701,20 +698,20 @@ figcaption::before {
 }
 
 /* ============================================
-   LISTS
+   LISTS - Compact
    ============================================ */
 ul, ol {
-    margin: 1rem 0 1.5rem !important;
-    padding-left: 1.8rem !important;
+    margin: 0.25rem 0 0.5rem !important;
+    padding-left: 1.25rem !important;
 }
 
 li {
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.15rem !important;
 }
 
 li > ul, li > ol {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: 0.15rem !important;
+    margin-bottom: 0.15rem !important;
 }
 
 /* Checklist style */
