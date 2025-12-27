@@ -7,7 +7,6 @@
     function init() {
         createProgressBar();
         createBackToTop();
-        createMiniTOC();
         createChapterInfo();
         addSkipToContent();
         loadProgress();
